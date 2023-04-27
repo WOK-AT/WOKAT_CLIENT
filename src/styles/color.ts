@@ -1,0 +1,20 @@
+export const COLOR = {
+    BLUE_800: '#003F9E',
+    BLUE_700: '#0055D4',
+    BLUE_600: '#0066FF',
+    BLUE_500: '#3687FF',
+    BLUE_400: '#5C9DFF',
+    BLUE_300: '#97C1FF',
+    BLUE_200: '#C9DEFF',
+    BLUE_100: '#E0EDFF',
+    BLUE_50: '#F0F6FF',
+    GRAY_900: '#29303F',
+    GRAY_800: '#364659',
+    GRAY_600: '#576981',
+    GRAY_400: '#7C8A9E',
+    GRAY_300: '#9FAABA',
+    GRAY_200: '#C5CBD5',
+    GRAY_100: '#ECEFF5',
+    GRAY_50: '#F6F6F9',
+    WHTIE: '#FFFFFF'
+  };
