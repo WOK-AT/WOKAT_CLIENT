@@ -17,7 +17,7 @@ function Header(props: HeaderProps) {
       </button>
 
       {title ? (
-        <h1 className="text-BLUE_500 font-system1">{title}</h1>
+        <h1 className="text-BLUE_500 font-system2_bold">{title}</h1>
       ) : (
         <div className="relative w-[105px] h-[13px]">
           <Image src={logo} alt="wokat_logo" fill />
