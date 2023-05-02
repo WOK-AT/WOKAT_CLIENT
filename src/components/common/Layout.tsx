@@ -1,5 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useContext } from 'react';
 import Header from './Header';
+import Navigation from './Navigation';
+import { NavContext } from '@/Contexts/Navagation';
 
 interface LayoutProps {
   title?: string;
@@ -8,10 +10,12 @@ interface LayoutProps {
 
 function Layout(props: PropsWithChildren<LayoutProps>) {
   const { children, title, right } = props;
+  const { navType } = useContext(NavContext);
 
   return (
     <main>
       <Header title={title} right={right} />
+      <Navigation></Navigation>
       <div>{children}</div>
     </main>
   );

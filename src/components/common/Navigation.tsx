@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { NavContext } from '@/Contexts/Navagation';
 
 const NAV_TYPE = ['무료 공간', '무료 회의룸', '카페'];
-function Navigation() {
-  const [navType, setNavType] = useState('무료 공간');
 
-  const switchNav = (currentNav: string) => {
-    setNavType(currentNav);
-  };
+function Navigation() {
+  const { navType, switchNav } = useContext(NavContext);
 
   return (
     <div className="flex items-center justify-between rounded-[42px] bg-GRAY_50 px-[0.4rem] py-[0.4rem] mx-[1.3rem] my-[1.2rem]">
