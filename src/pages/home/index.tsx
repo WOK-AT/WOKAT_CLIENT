@@ -15,13 +15,9 @@ function Home() {
         className="fixed bottom-0 w-screen translate-x-[-15px]"
       />
       <div className="relative mt-6 flex h-screen w-full flex-col items-center">
-        <Image
-          src={block}
-          alt="background block"
-          className="absolute  top-6 h-[334px] "
-        />
+        <Image src={block} alt="block" className="absolute  top-6 h-[334px] " />
         <div className="absolute  top-[72px]  h-full">
-          <div className="mb-[49px] flex flex-col items-center">
+          <section className="mb-[49px] flex flex-col items-center">
             <p className=" font-system1_bold text-system1_bold text-GRAY_800">
               일과 함께
             </p>
@@ -32,9 +28,9 @@ function Home() {
             <p className="mt-3.5 font-system4_medium text-GRAY_400">
               주변의 업무 공간을 찾아드려요
             </p>
-          </div>
+          </section>
 
-          <div className="flex flex-col items-center justify-center">
+          <section className="flex flex-col items-center justify-center">
             <button
               className="mb-3.5 flex h-[52px] w-[303px] items-center  rounded-[38px] border border-solid
            border-BLUE_400 bg-white py-3.5 pl-6 font-system4 text-system4 text-GRAY_200 max-[340px]:h-[42px] max-[340px]:w-[250px]"
@@ -54,7 +50,7 @@ function Home() {
               </div>
               내 주변 장소 찾기
             </button>
-          </div>
+          </section>
         </div>
       </div>
     </Layout>
