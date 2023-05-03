@@ -25,6 +25,23 @@ module.exports = {
         system5_bold: ['system5_bold'],
         system6_bold: ['system6_bold'],
       },
+      fontSize: {
+        system1: ['24px', { lineHeight: '30px' }],
+        system2: ['20px', { lineHeight: '26px' }],
+        system3: ['18px', { lineHeight: '24px' }],
+        system4: ['16px', { lineHeight: '24px' }],
+        system5: ['14px', { lineHeight: '21px' }],
+        system6: ['12px', { lineHeight: '18px' }],
+        system4_medium: ['16px', { lineHeight: '24px' }],
+        system5_medium: ['14px', { lineHeight: '21px' }],
+        system6_medium: ['12px', { lineHeight: '18px' }],
+        system1_bold: ['24px', { lineHeight: '31px' }],
+        system2_bold: ['20px', { lineHeight: '30px' }],
+        system3_bold: ['18px', { lineHeight: '27px' }],
+        system4_bold: ['16px', { lineHeight: '24px' }],
+        system5_bold: ['14px', { lineHeight: '21px' }],
+        system6_bold: ['12px', { lineHeight: '18px' }],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
