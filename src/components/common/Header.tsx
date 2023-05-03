@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import arrow_back from '@/assets/icons/arrow_back.svg';
 import logo from '@/assets/icons/logo.svg';
+import { useRouter } from 'next/router';
 
 interface HeaderProps {
   title?: string;
@@ -9,22 +10,23 @@ interface HeaderProps {
 
 function Header(props: HeaderProps) {
   const { title, right } = props;
+  const router = useRouter();
 
   return (
-    <header className="flex items-center justify-between px-4 cursor-pointer h-14">
-      <button className="relative w-6 h-6">
+    <header className="flex h-14 cursor-pointer items-center justify-between px-4">
+      <button className="relative h-6 w-6" onClick={() => router.back()}>
         <Image src={arrow_back} alt="back" fill />
       </button>
 
       {title ? (
-        <h1 className="text-BLUE_500 font-system1">{title}</h1>
+        <h1 className="font-system1 text-BLUE_500">{title}</h1>
       ) : (
-        <div className="relative w-[105px] h-[13px]">
+        <div className="relative h-[13px] w-[105px]">
           <Image src={logo} alt="wokat_logo" fill />
         </div>
       )}
 
-      <button className="relative w-6 h-6">
+      <button className="relative h-6 w-6">
         {right && <Image src={right} alt="right_icon" fill />}
       </button>
     </header>
