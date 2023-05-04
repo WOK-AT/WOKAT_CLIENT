@@ -9,5 +9,8 @@ export const useInput = () => {
     } = event;
     setInput(value);
   };
-  return { input, onChange };
+  const onReset = () => {
+    setInput('');
+  };
+  return { input, onChange, onReset };
 };
