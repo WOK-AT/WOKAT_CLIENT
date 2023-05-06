@@ -1,7 +1,8 @@
 import Layout from '@/components/common/Layout';
 import login from '@/assets/icons/login.svg';
-import PlaceInfo from '@/components/detail/placeInfo';
-import ImageCarousel from '@/components/detail/imageCarousel';
+import PlaceInfo from '@/components/detail/PlaceInfo';
+import ImageCarousel from '@/components/detail/ImageCarousel';
+import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 
 function Detail() {
   const dummyData = {
@@ -12,6 +13,7 @@ function Detail() {
     <Layout right={login}>
       <ImageCarousel imgUrls={dummyData.imgUrls} />
       <PlaceInfo tags={dummyData.tags} />
+      <PlaceDetailInfo />
     </Layout>
   );
 }
