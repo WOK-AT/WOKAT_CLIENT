@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react';
 import Header from './Header';
-
 interface LayoutProps {
   title?: string;
   right?: string;
