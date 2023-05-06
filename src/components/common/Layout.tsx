@@ -11,7 +11,7 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
   return (
     <main>
       <Header title={title} right={right} />
-      <div>{children}</div>
+      <div className="mx-4">{children}</div>
     </main>
   );
 }
