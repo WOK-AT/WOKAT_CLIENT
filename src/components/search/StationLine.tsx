@@ -1,7 +1,7 @@
 import { SubwayType } from '@/types/search';
 import { line_color } from '@/utils/subway_line_color';
 
-function LineNumber({ line_num }: Pick<SubwayType, 'line_num'>) {
+function StationLine({ line_num }: Pick<SubwayType, 'line_num'>) {
   const replaceLineText = (line_num: string) => {
     if (line_num.includes('호선')) return line_num.replace('호선', '');
     if (line_num.at(-1) === '선') return line_num.slice(0, -1);
@@ -41,4 +41,4 @@ function LineNumber({ line_num }: Pick<SubwayType, 'line_num'>) {
   );
 }
 
-export default LineNumber;
+export default StationLine;
