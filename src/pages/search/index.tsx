@@ -7,22 +7,14 @@ import delete_gray from '@/assets/icons/delete_gray.svg';
 import recent from '@/assets/icons/recent.svg';
 import Image from 'next/image';
 import subway_info from '@/data/subway_station_info.json';
-import { line_color } from '@/utils/subway_line_color';
 import { getStorageItem, setStorageItem } from '@/utils/localStorage';
 import { useRouter } from 'next/router';
-
-interface SubwayType {
-  line_num: string | string[];
-  station_nm: string;
-}
-
-interface ResultProps {
-  data: SubwayType;
-  icon: React.ReactNode;
-}
+import { SubwayType } from '@/types/search';
+import SearchList from '@/components/search/SearchList';
 
 function Search() {
   const { input, onChange, onReset } = useInput();
+  const router = useRouter();
   const [result, setResult] = useState<SubwayType[]>([]);
   const [recentSearch, setRecentSearch] = useState<SubwayType[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -40,15 +32,34 @@ function Search() {
     setResult(stations);
   };
 
-  const removeItem = (target: SubwayType) => {
+  const deleteSearch = (target: SubwayType) => {
     const updatedRecentSearch = recentSearch.filter((v) => v !== target);
     setStorageItem('recent', updatedRecentSearch);
     setRecentSearch(updatedRecentSearch);
   };
 
-  const removeAllSearch = () => {
+  const resetSearch = () => {
     isSearching ? setResult([]) : setRecentSearch([]);
     setStorageItem('recent', []);
+  };
+
+  const addRecentSearch = (target: SubwayType) => {
+    if (!isSearching) return;
+    const updatedRecentSearch = [
+      target,
+      ...recentSearch.filter(
+        ({ station_nm }) => target.station_nm !== station_nm,
+      ),
+    ];
+    setStorageItem('recent', updatedRecentSearch);
+  };
+
+  const onClickStation = (station: SubwayType) => {
+    addRecentSearch(station);
+    router.push({
+      pathname: '/list',
+      query: { title: station.station_nm },
+    });
   };
 
   useEffect(() => {
@@ -60,88 +71,6 @@ function Search() {
     setIsSearching(input.length > 0);
     input.length && searchStation();
   }, [input]);
-
-  // 검색 결과
-  const Result = (props: ResultProps) => {
-    const { data, icon } = props;
-    const { line_num, station_nm } = data;
-    const router = useRouter();
-
-    const addRecentSearch = (target: SubwayType) => {
-      if (!isSearching) return;
-      const updatedRecentSearch = [
-        target,
-        ...recentSearch.filter(
-          ({ station_nm }) => target.station_nm !== station_nm,
-        ),
-      ];
-      setStorageItem('recent', updatedRecentSearch);
-    };
-
-    const onClickStation = (station: SubwayType) => {
-      addRecentSearch(station);
-      router.push({
-        pathname: '/list',
-        query: { title: station.station_nm },
-      });
-    };
-
-    return (
-      <li
-        onClick={() => onClickStation(data)}
-        className="flex items-center justify-between border-b-[0.75px] border-GRAY_100 py-3"
-      >
-        <div className="flex items-center">
-          <LineNumber line_num={line_num} />
-          <p className="ml-3 font-system4_medium text-system4_medium text-GRAY_900">
-            {station_nm}역
-          </p>
-        </div>
-        {icon}
-      </li>
-    );
-  };
-
-  // 지하철 호선
-  const LineNumber = ({ line_num }: Pick<SubwayType, 'line_num'>) => {
-    const replaceLineText = (line_num: string) => {
-      if (line_num.includes('호선')) return line_num.replace('호선', '');
-      if (line_num.at(-1) === '선') return line_num.slice(0, -1);
-      return line_num;
-    };
-
-    return (
-      <>
-        {Array.isArray(line_num) ? (
-          line_num.map((num, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: `${line_color[num] || '#666699'}`,
-                marginRight: index === line_num.length - 1 ? '0px' : '8px',
-              }}
-              className={`flex  h-5  items-center justify-center rounded-full
-              ${replaceLineText(num).length > 1 ? 'w-fit px-2' : 'w-5'}`}
-            >
-              <p className="font-system5_medium text-system5_medium text-white ">
-                {replaceLineText(num)}
-              </p>
-            </div>
-          ))
-        ) : (
-          <div
-            style={{ backgroundColor: `${line_color[line_num] || '#666699'}` }}
-            className={`flex h-5  items-center  justify-center rounded-full 
-            ${replaceLineText(line_num).length > 1 ? 'w-fit px-2' : 'w-5'}`}
-          >
-            <p className="font-system5_medium text-system5_medium text-white">
-              {replaceLineText(line_num)}
-            </p>
-          </div>
-        )}
-      </>
-    );
-  };
 
   return (
     <Layout>
@@ -176,7 +105,7 @@ function Search() {
               {isSearching ? '검색 결과' : '최근 검색'}
             </h1>
             <span
-              onClick={removeAllSearch}
+              onClick={resetSearch}
               className="font-system5_medium text-system5_medium text-GRAY_300"
             >
               전체삭제
@@ -189,7 +118,7 @@ function Search() {
           >
             {isSearching
               ? result.map((item, index) => (
-                  <Result
+                  <SearchList
                     key={index}
                     data={item}
                     icon={
@@ -197,19 +126,21 @@ function Search() {
                         (rs) => rs.station_nm === item.station_nm,
                       ) && <Image src={recent} alt="recent search icon" />
                     }
+                    onClick={() => onClickStation(item)}
                   />
                 ))
               : recentSearch.map((item, index) => (
-                  <Result
+                  <SearchList
                     key={index}
                     data={item}
                     icon={
                       <Image
                         src={delete_gray}
                         alt="delete search history"
-                        onClick={() => removeItem(item)}
+                        onClick={() => deleteSearch(item)}
                       />
                     }
+                    onClick={() => onClickStation(item)}
                   />
                 ))}
           </ul>
