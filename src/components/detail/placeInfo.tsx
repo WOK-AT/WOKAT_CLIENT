@@ -10,7 +10,7 @@ interface PlaceInfoProps {
 function PlaceInfo({ tags }: PlaceInfoProps) {
   return (
     <>
-      <section className="mb-2 flex flex-row items-center justify-between">
+      <section className="mb-2 mt-8 flex flex-row items-center justify-between">
         <p className="font-system6_medium text-system6_medium text-GRAY_400">
           무료 대여 공간
         </p>
