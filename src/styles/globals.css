@@ -16,7 +16,7 @@ body {
   padding: 0;
   margin: 0;
   position: fixed;
-  overflow: hidden;
+  overflow: auto;
 
   /* iOS only */
   @supports (-webkit-touch-callout: none) {
