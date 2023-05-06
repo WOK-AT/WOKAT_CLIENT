@@ -11,7 +11,7 @@ function Map() {
     const mapScript = document.createElement('script');
 
     mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false`;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false&libraries=services`;
 
     document.head.appendChild(mapScript);
 
@@ -42,6 +42,22 @@ function Map() {
               image: markerImage,
             });
 
+            const places = new window.kakao.maps.services.Places();
+
+            const callback = (result, status) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                console.log(result[0].place_name);
+              }
+            };
+            const options = {
+              location: locPosition,
+              radius: 10000,
+              sort: window.kakao.maps.services.SortBy.DISTANCE,
+              size: 1,
+            };
+
+            places.keywordSearch('지하철역', callback, options);
+
             // 마커가 지도 위에 표시되도록 설정합니다
             markers.setMap(map);
             map.setCenter(locPosition);
@@ -56,7 +72,7 @@ function Map() {
 
   return (
     <>
-      <div id="map" style={{ width: '500px', height: '400px' }}></div>
+      <div id="map" className="mx-0 h-[500px] w-[375px]"></div>
     </>
   );
 }
