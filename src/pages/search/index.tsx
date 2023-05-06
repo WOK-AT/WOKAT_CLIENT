@@ -138,7 +138,7 @@ function Search() {
   return (
     <Layout>
       <div className="mt-3 flex flex-col">
-        <section className="relative mb-[18px] flex items-center justify-center">
+        <section className="relative mb-[18px] flex items-center justify-center ">
           <input
             type="text"
             placeholder="지하철역을 검색하세요."
@@ -175,7 +175,10 @@ function Search() {
             </span>
           </nav>
 
-          <ul className="flex flex-col">
+          <ul
+            style={{ height: 'calc(100vh - 170px)' }}
+            className="flex flex-col overflow-y-scroll scrollbar-hide"
+          >
             {isSearching
               ? result.map((item, index) => (
                   <Result
