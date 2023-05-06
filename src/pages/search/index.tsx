@@ -71,8 +71,7 @@ function Search() {
       const updatedRecentSearch = [
         target,
         ...recentSearch.filter(
-          ({ line_num, station_nm }) =>
-            target.line_num !== line_num && target.station_nm !== station_nm,
+          ({ station_nm }) => target.station_nm !== station_nm,
         ),
       ];
       setStorageItem('recent', updatedRecentSearch);
