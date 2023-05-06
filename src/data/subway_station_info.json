@@ -25,15 +25,15 @@
       "station_nm": "신용산"
     },
     {
-      "line_num": ["경의선", "4호선"],
+      "line_num": ["경의중앙선", "4호선"],
       "station_nm": "이촌"
     },
     {
-      "line_num": ["경의선", "수인분당선", "경춘선", "1호선"],
+      "line_num": ["경의중앙선", "수인분당선", "경춘선", "1호선"],
       "station_nm": "청량리"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "운천"
     },
     {
@@ -94,22 +94,18 @@
     },
     {
       "line_num": "4호선",
-      "station_nm": "창동"
-    },
-    {
-      "line_num": "4호선",
       "station_nm": "길음"
     },
     {
-      "line_num": ["2호선", "5호선", "경의선", "수인분당선"],
+      "line_num": ["2호선", "5호선", "경의중앙선", "수인분당선"],
       "station_nm": "왕십리"
     },
     {
-      "line_num": ["경의선", "5호선"],
+      "line_num": ["경의중앙선", "5호선"],
       "station_nm": "양평"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "원덕"
     },
     {
@@ -161,12 +157,8 @@
       "station_nm": "초지"
     },
     {
-      "line_num": "수인분당선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "안산"
-    },
-    {
-      "line_num": "수인분당선",
-      "station_nm": "신길온천"
     },
     {
       "line_num": ["수인분당선", "4호선"],
@@ -214,19 +206,19 @@
       "station_nm": "회현"
     },
     {
-      "line_num": ["1호선", "경의선"],
+      "line_num": ["1호선", "경의중앙선"],
       "station_nm": "용산"
     },
     {
-      "line_num": ["2호선", "경의선", "공항철도"],
+      "line_num": ["2호선", "경의중앙선", "공항철도"],
       "station_nm": "홍대입구"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "가좌"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "금릉"
     },
     {
@@ -254,7 +246,7 @@
       "station_nm": "복정"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "양원"
     },
     {
@@ -454,7 +446,7 @@
       "station_nm": "화정"
     },
     {
-      "line_num": ["3호선", "경의선"],
+      "line_num": ["3호선", "경의중앙선"],
       "station_nm": "대곡"
     },
     {
@@ -470,7 +462,7 @@
       "station_nm": "진접"
     },
     {
-      "line_num": ["1호선", "경의선", "경춘선"],
+      "line_num": ["1호선", "경의중앙선", "경춘선"],
       "station_nm": "회기"
     },
     {
@@ -478,11 +470,11 @@
       "station_nm": "신길"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "덕소"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "용문"
     },
     {
@@ -566,15 +558,15 @@
       "station_nm": "숙대입구"
     },
     {
-      "line_num": ["경의선", "경춘선"],
+      "line_num": ["경의중앙선", "경춘선"],
       "station_nm": "중랑"
     },
     {
-      "line_num": ["6호선", "공항철도", "경의선"],
+      "line_num": ["6호선", "공항철도", "경의중앙선"],
       "station_nm": "디지털미디어시티"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "화전"
     },
     {
@@ -590,7 +582,7 @@
       "station_nm": "마포"
     },
     {
-      "line_num": ["5호선", "6호선", "경의선", "공항철도"],
+      "line_num": ["5호선", "6호선", "경의중앙선", "공항철도"],
       "station_nm": "공덕"
     },
     {
@@ -662,15 +654,15 @@
       "station_nm": "경찰병원"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "서빙고"
     },
     {
-      "line_num": ["경의선", "경춘선"],
+      "line_num": ["경의중앙선", "경춘선"],
       "station_nm": "망우"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "국수"
     },
     {
@@ -766,7 +758,7 @@
       "station_nm": "대치"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "한남"
     },
     {
@@ -778,7 +770,7 @@
       "station_nm": "마포구청"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["2호선", "6호선"],
       "station_nm": "합정"
     },
     {
@@ -807,15 +799,15 @@
       "station_nm": "한강진"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["5호선", "6호선"],
       "station_nm": "청구"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["2호선", "6호선"],
       "station_nm": "신당"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["1호선", "6호선"],
       "station_nm": "동묘앞"
     },
     {
@@ -823,7 +815,7 @@
       "station_nm": "창신"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["6호선", "우이신설선"],
       "station_nm": "보문"
     },
     {
@@ -835,11 +827,11 @@
       "station_nm": "고려대"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["2호선", "9호선"],
       "station_nm": "종합운동장"
     },
     {
-      "line_num": "3호선",
+      "line_num": ["3호선", "경의중앙선"],
       "station_nm": "옥수"
     },
     {
@@ -851,7 +843,7 @@
       "station_nm": "구룡"
     },
     {
-      "line_num": "수인분당선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "오이도"
     },
     {
@@ -875,11 +867,11 @@
       "station_nm": "돌곶이"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["1호선", "6호선"],
       "station_nm": "석계"
     },
     {
-      "line_num": "6호선",
+      "line_num": ["6호선", "7호선"],
       "station_nm": "태릉입구"
     },
     {
@@ -895,7 +887,7 @@
       "station_nm": "장암"
     },
     {
-      "line_num": "7호선",
+      "line_num": ["1호선", "7호선"],
       "station_nm": "도봉산"
     },
     {
@@ -903,16 +895,8 @@
       "station_nm": "마들"
     },
     {
-      "line_num": "7호선",
+      "line_num": ["4호선", "7호선"],
       "station_nm": "노원"
-    },
-    {
-      "line_num": "7호선",
-      "station_nm": "태릉입구"
-    },
-    {
-      "line_num": "7호선",
-      "station_nm": "상봉"
     },
     {
       "line_num": "7호선",
@@ -923,7 +907,7 @@
       "station_nm": "용마산"
     },
     {
-      "line_num": "8호선",
+      "line_num": ["3호선", "8호선"],
       "station_nm": "가락시장"
     },
     {
@@ -943,11 +927,11 @@
       "station_nm": "개포동"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "강매"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "일산"
     },
     {
@@ -979,15 +963,15 @@
       "station_nm": "상록수"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "한대앞"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "중앙"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "고잔"
     },
     {
@@ -999,19 +983,19 @@
       "station_nm": "오남"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "탄현"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "야당"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "금촌"
     },
     {
-      "line_num": "경춘선",
+      "line_num": ["6호선", "경춘선"],
       "station_nm": "신내"
     },
     {
@@ -1039,7 +1023,7 @@
       "station_nm": "화서"
     },
     {
-      "line_num": "1호선",
+      "line_num": ["1호선", "수인분당선"],
       "station_nm": "수원"
     },
     {
@@ -1071,35 +1055,35 @@
       "station_nm": "홍제"
     },
     {
-      "line_num": "3호선",
+      "line_num": ["3호선", "4호선"],
       "station_nm": "충무로"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "지평"
     },
     {
-      "line_num": "경의선",
+      "line_num": ["1호선", "4호선", "경의중앙선", "공항철도"],
       "station_nm": "서울역"
     },
     {
-      "line_num": "경의선",
+      "line_num": ["6호선", "경의중앙선"],
       "station_nm": "효창공원앞"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "곡산"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "운정"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "파주"
     },
     {
-      "line_num": "경춘선",
+      "line_num": ["1호선", "경춘선"],
       "station_nm": "광운대"
     },
     {
@@ -1131,7 +1115,7 @@
       "station_nm": "도화"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["2호선", "5호선"],
       "station_nm": "충정로"
     },
     {
@@ -1155,63 +1139,59 @@
       "station_nm": "수유"
     },
     {
-      "line_num": "4호선",
-      "station_nm": "서울역"
+      "line_num": ["4호선", "7호선"],
+      "station_nm": "이수(총신대입구)"
     },
     {
-      "line_num": "4호선",
-      "station_nm": "총신대입구"
-    },
-    {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "구리"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "도농"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "양정"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "팔당"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "운길산"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "양수"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "신원"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "아신"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "오빈"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "문산"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["1호선", "2호선", "우이신설선"],
       "station_nm": "신설동"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "9호선"],
       "station_nm": "동작"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["2호선", "4호선"],
       "station_nm": "사당"
     },
     {
@@ -1219,7 +1199,7 @@
       "station_nm": "남태령"
     },
     {
-      "line_num": "1호선",
+      "line_num": ["1호선", "9호선"],
       "station_nm": "노량진"
     },
     {
@@ -1227,11 +1207,7 @@
       "station_nm": "영등포"
     },
     {
-      "line_num": "경의선",
-      "station_nm": "옥수"
-    },
-    {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "응봉"
     },
     {
@@ -1244,22 +1220,14 @@
     },
     {
       "line_num": "1호선",
-      "station_nm": "석계"
-    },
-    {
-      "line_num": "1호선",
-      "station_nm": "광운대"
-    },
-    {
-      "line_num": "1호선",
       "station_nm": "월계"
     },
     {
-      "line_num": "1호선",
+      "line_num": ["1호선", "4호선"],
       "station_nm": "창동"
     },
     {
-      "line_num": "수인분당선",
+      "line_num": ["2호선", "수인분당선"],
       "station_nm": "선릉"
     },
     {
@@ -1267,11 +1235,7 @@
       "station_nm": "대모산입구"
     },
     {
-      "line_num": "2호선",
-      "station_nm": "합정"
-    },
-    {
-      "line_num": "2호선",
+      "line_num": ["2호선", "경의중앙선"],
       "station_nm": "신촌"
     },
     {
@@ -1303,7 +1267,7 @@
       "station_nm": "상계"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "우이신설선"],
       "station_nm": "성신여대입구"
     },
     {
@@ -1316,14 +1280,10 @@
     },
     {
       "line_num": "2호선",
-      "station_nm": "선릉"
-    },
-    {
-      "line_num": "2호선",
       "station_nm": "역삼"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["2호선", "신분당선"],
       "station_nm": "강남"
     },
     {
@@ -1333,10 +1293,6 @@
     {
       "line_num": "2호선",
       "station_nm": "방배"
-    },
-    {
-      "line_num": "2호선",
-      "station_nm": "사당"
     },
     {
       "line_num": "2호선",
@@ -1350,10 +1306,7 @@
       "line_num": "2호선",
       "station_nm": "봉천"
     },
-    {
-      "line_num": "2호선",
-      "station_nm": "신림"
-    },
+
     {
       "line_num": "2호선",
       "station_nm": "신대방"
@@ -1363,16 +1316,12 @@
       "station_nm": "구로디지털단지"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["1호선", "2호선"],
       "station_nm": "신도림"
     },
     {
       "line_num": "2호선",
       "station_nm": "문래"
-    },
-    {
-      "line_num": "2호선",
-      "station_nm": "신당"
     },
     {
       "line_num": "2호선",
@@ -1392,7 +1341,7 @@
       "station_nm": "성수"
     },
     {
-      "line_num": "2호선",
+      "line_num": ["2호선", "7호선"],
       "station_nm": "건대입구"
     },
     {
@@ -1413,38 +1362,18 @@
     },
     {
       "line_num": "1호선",
-      "station_nm": "신도림"
-    },
-    {
-      "line_num": "1호선",
       "station_nm": "구로"
     },
     {
-      "line_num": "3호선",
-      "station_nm": "가락시장"
-    },
-    {
-      "line_num": "4호선",
-      "station_nm": "노원"
-    },
-    {
-      "line_num": "4호선",
-      "station_nm": "충무로"
-    },
-    {
-      "line_num": "경의선",
-      "station_nm": "신촌"
-    },
-    {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "행신"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "월롱"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "임진강"
     },
     {
@@ -1485,10 +1414,6 @@
     },
     {
       "line_num": "경춘선",
-      "station_nm": "상봉"
-    },
-    {
-      "line_num": "경춘선",
       "station_nm": "청평"
     },
     {
@@ -1504,19 +1429,19 @@
       "station_nm": "중동"
     },
     {
-      "line_num": "경의선",
+      "line_num": ["7호선", "경춘선", "경의중앙선"],
       "station_nm": "상봉"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "도심"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "서강대"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "풍산"
     },
     {
@@ -1532,7 +1457,7 @@
       "station_nm": "관악"
     },
     {
-      "line_num": "1호선",
+      "line_num": ["1호선", "인천선"],
       "station_nm": "부평"
     },
     {
@@ -1540,7 +1465,7 @@
       "station_nm": "동암"
     },
     {
-      "line_num": "1호선",
+      "line_num": ["1호선", "인천2호선"],
       "station_nm": "주안"
     },
     {
@@ -1560,11 +1485,11 @@
       "station_nm": "덕계"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "수색"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "백마"
     },
     {
@@ -1605,10 +1530,6 @@
     },
     {
       "line_num": "경강선",
-      "station_nm": "판교"
-    },
-    {
-      "line_num": "경강선",
       "station_nm": "부발"
     },
     {
@@ -1628,14 +1549,6 @@
       "station_nm": "서동탄"
     },
     {
-      "line_num": "4호선",
-      "station_nm": "안산"
-    },
-    {
-      "line_num": "4호선",
-      "station_nm": "오이도"
-    },
-    {
       "line_num": "1호선",
       "station_nm": "제물포"
     },
@@ -1648,7 +1561,7 @@
       "station_nm": "평택지제"
     },
     {
-      "line_num": "4호선",
+      "line_num": ["4호선", "수인분당선"],
       "station_nm": "신길온천"
     },
     {
@@ -1661,14 +1574,6 @@
     },
     {
       "line_num": "수인분당선",
-      "station_nm": "한대앞"
-    },
-    {
-      "line_num": "수인분당선",
-      "station_nm": "중앙"
-    },
-    {
-      "line_num": "수인분당선",
       "station_nm": "야목"
     },
     {
@@ -1676,23 +1581,11 @@
       "station_nm": "숭의"
     },
     {
-      "line_num": "5호선",
-      "station_nm": "청구"
-    },
-    {
-      "line_num": "수인분당선",
-      "station_nm": "고잔"
-    },
-    {
-      "line_num": "수인분당선",
-      "station_nm": "수원"
-    },
-    {
       "line_num": "수인분당선",
       "station_nm": "압구정로데오"
     },
     {
-      "line_num": "수인분당선",
+      "line_num": ["수인분당선", "용인경전철"],
       "station_nm": "기흥"
     },
     {
@@ -1714,10 +1607,6 @@
     {
       "line_num": "수인분당선",
       "station_nm": "어천"
-    },
-    {
-      "line_num": "1호선",
-      "station_nm": "도봉산"
     },
     {
       "line_num": "1호선",
@@ -1777,10 +1666,6 @@
     },
     {
       "line_num": "5호선",
-      "station_nm": "충정로"
-    },
-    {
-      "line_num": "5호선",
       "station_nm": "서대문"
     },
     {
@@ -1796,7 +1681,7 @@
       "station_nm": "버티고개"
     },
     {
-      "line_num": "5호선",
+      "line_num": ["5호선", "9호선"],
       "station_nm": "올림픽공원"
     },
     {
@@ -1810,10 +1695,6 @@
     {
       "line_num": "6호선",
       "station_nm": "구산"
-    },
-    {
-      "line_num": "6호선",
-      "station_nm": "효창공원앞"
     },
     {
       "line_num": "7호선",
@@ -1841,10 +1722,6 @@
     },
     {
       "line_num": "7호선",
-      "station_nm": "이수"
-    },
-    {
-      "line_num": "7호선",
       "station_nm": "남성"
     },
     {
@@ -1856,20 +1733,12 @@
       "station_nm": "장지"
     },
     {
-      "line_num": "6호선",
-      "station_nm": "신내"
-    },
-    {
       "line_num": "7호선",
       "station_nm": "중곡"
     },
     {
       "line_num": "7호선",
       "station_nm": "어린이대공원"
-    },
-    {
-      "line_num": "7호선",
-      "station_nm": "건대입구"
     },
     {
       "line_num": "7호선",
@@ -1882,10 +1751,6 @@
     {
       "line_num": "7호선",
       "station_nm": "학동"
-    },
-    {
-      "line_num": "7호선",
-      "station_nm": "논현"
     },
     {
       "line_num": "7호선",
@@ -1916,7 +1781,7 @@
       "station_nm": "신대방삼거리"
     },
     {
-      "line_num": "7호선",
+      "line_num": ["7호선", "신림선"],
       "station_nm": "보라매"
     },
     {
@@ -1941,15 +1806,7 @@
     },
     {
       "line_num": "9호선",
-      "station_nm": "동작"
-    },
-    {
-      "line_num": "9호선",
       "station_nm": "구반포"
-    },
-    {
-      "line_num": "신분당선",
-      "station_nm": "강남"
     },
     {
       "line_num": "신림선",
@@ -1984,7 +1841,7 @@
       "station_nm": "몽촌토성"
     },
     {
-      "line_num": "8호선",
+      "line_num": ["8호선", "9호선"],
       "station_nm": "석촌"
     },
     {
@@ -2016,7 +1873,7 @@
       "station_nm": "남위례"
     },
     {
-      "line_num": "인천선",
+      "line_num": ["인천선", "공항철도"],
       "station_nm": "계양"
     },
     {
@@ -2048,12 +1905,8 @@
       "station_nm": "갈산"
     },
     {
-      "line_num": "인천선",
+      "line_num": ["7호선", "인천선"],
       "station_nm": "부평구청"
-    },
-    {
-      "line_num": "인천선",
-      "station_nm": "부평"
     },
     {
       "line_num": "인천선",
@@ -2068,7 +1921,7 @@
       "station_nm": "간석오거리"
     },
     {
-      "line_num": "인천선",
+      "line_num": ["인천선", "인천2호선"],
       "station_nm": "인천시청"
     },
     {
@@ -2144,7 +1997,7 @@
       "station_nm": "독정"
     },
     {
-      "line_num": "인천2호선",
+      "line_num": ["인천2호선", "공항철도"],
       "station_nm": "검암"
     },
     {
@@ -2168,7 +2021,7 @@
       "station_nm": "가정중앙시장"
     },
     {
-      "line_num": "인천2호선",
+      "line_num": ["7호선", "인천2호선"],
       "station_nm": "석남"
     },
     {
@@ -2189,19 +2042,11 @@
     },
     {
       "line_num": "인천2호선",
-      "station_nm": "주안"
-    },
-    {
-      "line_num": "인천2호선",
       "station_nm": "시민공원"
     },
     {
       "line_num": "인천2호선",
       "station_nm": "석바위시장"
-    },
-    {
-      "line_num": "인천2호선",
-      "station_nm": "인천시청"
     },
     {
       "line_num": "인천2호선",
@@ -2257,16 +2102,9 @@
     },
     {
       "line_num": "7호선",
-      "station_nm": "부평구청"
-    },
-    {
-      "line_num": "7호선",
       "station_nm": "산곡"
     },
-    {
-      "line_num": "7호선",
-      "station_nm": "석남"
-    },
+
     {
       "line_num": "9호선",
       "station_nm": "개화"
@@ -2277,7 +2115,7 @@
       "station_nm": "신방화"
     },
     {
-      "line_num": "9호선",
+      "line_num": ["9호선", "공항철도"],
       "station_nm": "마곡나루"
     },
     {
@@ -2313,12 +2151,8 @@
       "station_nm": "국회의사당"
     },
     {
-      "line_num": "9호선",
+      "line_num": ["9호선", "신림선"],
       "station_nm": "샛강"
-    },
-    {
-      "line_num": "9호선",
-      "station_nm": "노량진"
     },
     {
       "line_num": "9호선",
@@ -2337,7 +2171,7 @@
       "station_nm": "사평"
     },
     {
-      "line_num": "9호선",
+      "line_num": ["9호선", "신분당선"],
       "station_nm": "신논현"
     },
     {
@@ -2350,19 +2184,11 @@
     },
     {
       "line_num": "9호선",
-      "station_nm": "종합운동장"
-    },
-    {
-      "line_num": "9호선",
       "station_nm": "삼전"
     },
     {
       "line_num": "9호선",
       "station_nm": "석촌고분"
-    },
-    {
-      "line_num": "9호선",
-      "station_nm": "석촌"
     },
     {
       "line_num": "9호선",
@@ -2374,35 +2200,16 @@
     },
     {
       "line_num": "9호선",
-      "station_nm": "올림픽공원"
-    },
-    {
-      "line_num": "9호선",
       "station_nm": "둔촌오륜"
     },
     {
       "line_num": "9호선",
       "station_nm": "중앙보훈병원"
     },
-    {
-      "line_num": "공항철도",
-      "station_nm": "서울역"
-    },
+
     {
       "line_num": "9호선",
       "station_nm": "봉은사"
-    },
-    {
-      "line_num": "공항철도",
-      "station_nm": "마곡나루"
-    },
-    {
-      "line_num": "공항철도",
-      "station_nm": "계양"
-    },
-    {
-      "line_num": "공항철도",
-      "station_nm": "검암"
     },
     {
       "line_num": "공항철도",
@@ -2429,12 +2236,8 @@
       "station_nm": "영종"
     },
     {
-      "line_num": "신분당선",
+      "line_num": ["7호선", "신분당선"],
       "station_nm": "논현"
-    },
-    {
-      "line_num": "신분당선",
-      "station_nm": "신논현"
     },
     {
       "line_num": "신분당선",
@@ -2445,7 +2248,7 @@
       "station_nm": "청계산입구"
     },
     {
-      "line_num": "신분당선",
+      "line_num": ["신분당선", "경강선"],
       "station_nm": "판교"
     },
     {
@@ -2474,15 +2277,7 @@
     },
     {
       "line_num": "신림선",
-      "station_nm": "샛강"
-    },
-    {
-      "line_num": "신림선",
       "station_nm": "서울지방병무청"
-    },
-    {
-      "line_num": "신림선",
-      "station_nm": "보라매"
     },
     {
       "line_num": "신림선",
@@ -2497,7 +2292,7 @@
       "station_nm": "당곡"
     },
     {
-      "line_num": "신림선",
+      "line_num": ["2호선", "신림선"],
       "station_nm": "신림"
     },
     {
@@ -2507,10 +2302,6 @@
     {
       "line_num": "신림선",
       "station_nm": "서울대벤처타운"
-    },
-    {
-      "line_num": "용인경전철",
-      "station_nm": "기흥"
     },
     {
       "line_num": "용인경전철",
@@ -2690,56 +2481,44 @@
       "station_nm": "탑석"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "북한산우이"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "솔밭공원"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "4·19민주묘지"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "가오리"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "화계"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "삼양"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "삼양사거리"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "솔샘"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "북한산보국문"
     },
     {
-      "line_num": "우이신설경전철",
+      "line_num": "우이신설선",
       "station_nm": "정릉"
-    },
-    {
-      "line_num": "우이신설경전철",
-      "station_nm": "성신여대입구"
-    },
-    {
-      "line_num": "우이신설경전철",
-      "station_nm": "보문"
-    },
-    {
-      "line_num": "우이신설경전철",
-      "station_nm": "신설동"
     },
     {
       "line_num": "서해선",
@@ -2754,19 +2533,16 @@
       "station_nm": "신천"
     },
     {
-      "line_num": "경의선",
+      "line_num": "경의중앙선",
       "station_nm": "능곡"
     },
     {
       "line_num": "경춘선",
       "station_nm": "강촌"
     },
+
     {
-      "line_num": "1호선",
-      "station_nm": "서울역"
-    },
-    {
-      "line_num": "1호선",
+      "line_num": ["1호선", "2호선"],
       "station_nm": "시청"
     },
     {
@@ -2779,19 +2555,7 @@
     },
     {
       "line_num": "1호선",
-      "station_nm": "신설동"
-    },
-    {
-      "line_num": "1호선",
       "station_nm": "제기동"
-    },
-    {
-      "line_num": "1호선",
-      "station_nm": "동묘앞"
-    },
-    {
-      "line_num": "2호선",
-      "station_nm": "시청"
     },
     {
       "line_num": "2호선",
