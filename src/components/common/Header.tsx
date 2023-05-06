@@ -19,7 +19,9 @@ function Header(props: HeaderProps) {
       </button>
 
       {title ? (
-        <h1 className="font-system1 text-BLUE_500">{title}</h1>
+        <h1 className="font-system2_bold text-system2_bold text-BLUE_600">
+          {title}
+        </h1>
       ) : (
         <div className="relative h-[13px] w-[105px]">
           <Image src={logo} alt="wokat_logo" fill />

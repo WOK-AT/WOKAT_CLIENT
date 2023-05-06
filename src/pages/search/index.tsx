@@ -9,6 +9,7 @@ import Image from 'next/image';
 import subway_info from '@/data/subway_station_info.json';
 import { line_color } from '@/utils/subway_line_color';
 import { getStorageItem, setStorageItem } from '@/utils/localStorage';
+import { useRouter } from 'next/router';
 
 interface SubwayType {
   line_num: string | string[];
@@ -64,8 +65,8 @@ function Search() {
   const Result = (props: ResultProps) => {
     const { data, icon } = props;
     const { line_num, station_nm } = data;
+    const router = useRouter();
 
-    /* TODO : 검색 결과 클릭 시 공간 리스트 뷰로 이동 */
     const addRecentSearch = (target: SubwayType) => {
       if (!isSearching) return;
       const updatedRecentSearch = [
@@ -77,9 +78,17 @@ function Search() {
       setStorageItem('recent', updatedRecentSearch);
     };
 
+    const onClickStation = (station: SubwayType) => {
+      addRecentSearch(station);
+      router.push({
+        pathname: '/list',
+        query: { title: station.station_nm },
+      });
+    };
+
     return (
       <li
-        onClick={() => addRecentSearch(data)}
+        onClick={() => onClickStation(data)}
         className="flex items-center justify-between border-b-[0.75px] border-GRAY_100 py-3"
       >
         <div className="flex items-center">
