@@ -1,17 +1,10 @@
 import placeIntroduce from '@/assets/icons/placeIntroduce.svg';
-import Image from 'next/image';
+import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 
 function PlaceIntroduce() {
   return (
     <section className="mb-9">
-      <article className=" mb-3.5 flex flex-row items-center font-system3_bold text-system3_bold text-GRAY_600">
-        <Image
-          src={placeIntroduce}
-          alt="placeIntroduce icon"
-          className="mr-2"
-        />
-        <h1>공간 소개</h1>
-      </article>
+      <DetailInformationTitle icon={placeIntroduce} title="공간 소개" />
 
       <p className="font-system4 text-system4 text-GRAY_600">
         지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며,

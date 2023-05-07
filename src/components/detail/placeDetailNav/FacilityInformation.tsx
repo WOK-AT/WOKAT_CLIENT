@@ -1,4 +1,6 @@
 import facilityInformation from '@/assets/icons/facilityInformation.svg';
+import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
+import DetailInformationTextBox from '@/components/common/detail/DetailInformationTextBox';
 import phone from '@/assets/icons/phone.svg';
 import internet from '@/assets/icons/internet.svg';
 import elec from '@/assets/icons/elec.svg';
@@ -19,15 +21,8 @@ const FACILITY_LIST = [
 function FacilityInformation() {
   return (
     <section className="mb-9">
-      <article className=" mb-3.5 flex flex-row items-center font-system3_bold text-system3_bold text-GRAY_600">
-        <Image
-          src={facilityInformation}
-          alt="facilityInformation icon"
-          className="mr-2"
-        />
-        <h1>시설 정보</h1>
-      </article>
-      <article className="flex-column mb-3 flex rounded-[10px] bg-GRAY_50 px-4 py-5 ">
+      <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
+      <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-col items-start">
           <div className="mb-3 flex flex-row">
             <Image src={phone} alt="phone icon" className="mr-4" />
@@ -42,33 +37,35 @@ function FacilityInformation() {
             </h2>
           </div>
         </div>
-      </article>
-      <article className="mb-3 flex flex-row rounded-[10px] bg-GRAY_50 px-4 py-5">
-        <Image src={wifi} alt="wifi icon" className="mr-4" />
-        <div>
-          <div className="mb-1.5 flex flex-row items-start">
-            <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
-              ID :
-            </h2>
-            <p className="font-system4 text-system4 text-GRAY_600">
-              KT_GIGA_2G_Wave3_B829
-            </p>
-          </div>
-          <div className="mb-1.5 flex flex-row items-start">
-            <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
-              PW :
-            </h2>
-            <p className="font-system4 text-system4 text-GRAY_600">
-              234475869003
-            </p>
+      </DetailInformationTextBox>
+      <DetailInformationTextBox>
+        <div className="flex flex-row">
+          <Image src={wifi} alt="wifi icon" className="mr-4" />
+          <div>
+            <div className="mb-1.5 flex flex-row items-start">
+              <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
+                ID :
+              </h2>
+              <p className="font-system4 text-system4 text-GRAY_600">
+                KT_GIGA_2G_Wave3_B829
+              </p>
+            </div>
+            <div className="mb-1.5 flex flex-row items-start">
+              <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
+                PW :
+              </h2>
+              <p className="font-system4 text-system4 text-GRAY_600">
+                234475869003
+              </p>
+            </div>
           </div>
         </div>
-      </article>
-      <article className="mb-3 flex flex-col  rounded-[10px] bg-GRAY_50 px-4 pb-1 pt-5">
+      </DetailInformationTextBox>
+      <DetailInformationTextBox>
         {FACILITY_LIST.map((item, index) => {
           return (
             <div
-              className="mb-4 flex w-full flex-row items-center justify-between"
+              className="mb-4 flex w-full flex-row items-center justify-between last:mb-0"
               key={index}
             >
               <div className="flex flex-row items-center">
@@ -83,7 +80,7 @@ function FacilityInformation() {
             </div>
           );
         })}
-      </article>
+      </DetailInformationTextBox>
     </section>
   );
 }
