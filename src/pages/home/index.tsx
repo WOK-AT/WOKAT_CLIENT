@@ -5,6 +5,7 @@ import background from '@/assets/images/main_background.svg';
 import block from '@/assets/images/block.svg';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Home() {
   return (
@@ -31,7 +32,8 @@ function Home() {
           </section>
 
           <section className="flex flex-col items-center justify-center">
-            <button
+            <Link
+              href="/search"
               className="mb-3.5 flex h-[52px] w-[303px] items-center  rounded-[38px] border border-solid
            border-BLUE_400 bg-white py-3.5 pl-6 font-system4 text-system4 text-GRAY_200 max-[340px]:h-[42px] max-[340px]:w-[250px]"
             >
@@ -39,7 +41,7 @@ function Home() {
                 <Image src={search} alt="search" fill />
               </div>
               지하철역을 검색하세요.
-            </button>
+            </Link>
 
             <button
               className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
