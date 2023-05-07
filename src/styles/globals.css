@@ -16,7 +16,7 @@ body {
   padding: 0;
   margin: 0;
   position: fixed;
-  overflow: hidden;
+  overflow: auto;
 
   /* iOS only */
   @supports (-webkit-touch-callout: none) {
@@ -110,4 +110,24 @@ body {
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
   }
+}
+
+/* react-slick css */
+
+.slick-slider .slick-dots button:before {
+  color: #c5cbd5;
+}
+
+.slick-slider .slick-dots li.slick-active button::before {
+  color: #3687ff;
+  opacity: 1;
+}
+
+.slick-slider .slick-dots {
+  bottom: -30px;
+}
+
+.slick-slider .slick-dots li {
+  width: 10px;
+  font-size: 4px;
 }
