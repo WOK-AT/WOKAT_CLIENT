@@ -12,7 +12,7 @@ function SearchList(props: SearchListProps) {
   const { line_num, station_nm } = data;
 
   return (
-    <li className="flex w-full items-center justify-between border-b-[0.75px] border-GRAY_100 py-3">
+    <li className="flex w-full cursor-pointer items-center justify-between border-b-[0.75px] border-GRAY_100 py-3">
       <div className="flex w-full items-center" onClick={() => onClick(data)}>
         <StationLine line_num={line_num} />
         <p className="ml-3 font-system4_medium text-system4_medium text-GRAY_900">

@@ -1,6 +1,8 @@
 import { SubwayType } from '@/types/search';
 import { line_color } from '@/utils/subway_line_color';
 
+const DEFAULT_COLOR = '#666699';
+
 function StationLine({ line_num }: Pick<SubwayType, 'line_num'>) {
   const replaceLineText = (line_num: string) => {
     if (line_num.includes('호선')) return line_num.replace('호선', '');
@@ -15,7 +17,7 @@ function StationLine({ line_num }: Pick<SubwayType, 'line_num'>) {
           <div
             key={index}
             style={{
-              backgroundColor: `${line_color[num] || '#666699'}`,
+              backgroundColor: `${line_color[num] || DEFAULT_COLOR}`,
               marginRight: index === line_num.length - 1 ? '0px' : '8px',
             }}
             className={`flex  h-5  items-center justify-center rounded-full
@@ -28,7 +30,9 @@ function StationLine({ line_num }: Pick<SubwayType, 'line_num'>) {
         ))
       ) : (
         <div
-          style={{ backgroundColor: `${line_color[line_num] || '#666699'}` }}
+          style={{
+            backgroundColor: `${line_color[line_num] || DEFAULT_COLOR}`,
+          }}
           className={`flex h-5  items-center  justify-center rounded-full 
             ${replaceLineText(line_num).length > 1 ? 'w-fit px-2' : 'w-5'}`}
         >

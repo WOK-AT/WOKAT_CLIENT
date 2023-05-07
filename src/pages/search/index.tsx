@@ -54,7 +54,7 @@ function Search() {
     setStorageItem('recent', updatedRecentSearch);
   };
 
-  const onClickStation = (station: SubwayType) => {
+  const onStationClickRoute = (station: SubwayType) => {
     addRecentSearch(station);
     router.push({
       pathname: '/list',
@@ -87,12 +87,14 @@ function Search() {
           />
           <div className="absolute right-[24px]  h-6 w-6 ">
             {isSearching ? (
-              <Image
-                src={reset}
-                alt="input reset button"
-                fill
-                onClick={onReset}
-              />
+              <button>
+                <Image
+                  src={reset}
+                  alt="input reset button"
+                  fill
+                  onClick={onReset}
+                />
+              </button>
             ) : (
               <Image src={search} alt="search button" fill />
             )}
@@ -104,12 +106,12 @@ function Search() {
             <h1 className="text-GRAY-900 font-system3_bold text-system3_bold">
               {isSearching ? '검색 결과' : '최근 검색'}
             </h1>
-            <span
+            <button
               onClick={resetSearch}
               className="font-system5_medium text-system5_medium text-GRAY_300"
             >
               전체삭제
-            </span>
+            </button>
           </nav>
 
           <ul
@@ -126,7 +128,7 @@ function Search() {
                         (rs) => rs.station_nm === item.station_nm,
                       ) && <Image src={recent} alt="recent search icon" />
                     }
-                    onClick={() => onClickStation(item)}
+                    onClick={() => onStationClickRoute(item)}
                   />
                 ))
               : recentSearch.map((item, index) => (
@@ -140,7 +142,7 @@ function Search() {
                         onClick={() => deleteSearch(item)}
                       />
                     }
-                    onClick={() => onClickStation(item)}
+                    onClick={() => onStationClickRoute(item)}
                   />
                 ))}
           </ul>
