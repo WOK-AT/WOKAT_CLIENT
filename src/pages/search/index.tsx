@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/components/common/Layout';
-import { useInput } from '@/utils/hooks/useInput';
+import { useInput } from '@/hooks/useInput';
 import search from '@/assets/icons/search.svg';
 import reset from '@/assets/icons/delete.svg';
 import delete_gray from '@/assets/icons/delete_gray.svg';
@@ -74,7 +74,7 @@ function Search() {
 
   return (
     <Layout>
-      <div className="mt-3 flex flex-col">
+      <div className="flex flex-col mt-3">
         <section className="relative mb-[18px] flex items-center justify-center ">
           <input
             type="text"
@@ -102,7 +102,7 @@ function Search() {
         </section>
 
         <section>
-          <nav className="mb-1 flex items-center justify-between">
+          <nav className="flex items-center justify-between mb-1">
             <h1 className="text-GRAY-900 font-system3_bold text-system3_bold">
               {isSearching ? '검색 결과' : '최근 검색'}
             </h1>
