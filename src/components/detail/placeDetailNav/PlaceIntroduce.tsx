@@ -1,11 +1,11 @@
+import React, { forwardRef } from "react";
 import placeIntroduce from '@/assets/icons/placeIntroduce.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 
-function PlaceIntroduce() {
+const PlaceIntroduce = forwardRef((props, ref) => {
   return (
-    <section className="mb-9">
+    <section className="mb-9 scroll-mt-[50px]" ref={reviewRef => (ref.current[0] = reviewRef)}>
       <DetailInformationTitle icon={placeIntroduce} title="공간 소개" />
-
       <p className="font-system4 text-system4 text-GRAY_600">
         지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며,
         법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 모든 국민은
@@ -14,6 +14,6 @@ function PlaceIntroduce() {
       </p>
     </section>
   );
-}
+});
 
 export default PlaceIntroduce;

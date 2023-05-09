@@ -6,15 +6,15 @@ import PlaceIntroduce from './placeDetailNav/PlaceIntroduce';
 import PlaceLocation from './placeDetailNav/PlaceLocation';
 
 function PlaceDetailInfo() {
-  const scrollRef = useRef([]);
+  const scrollRef = useRef<HTMLDivElement[]>([]);
 
   return (
     <main>
       <DetailNavigator scrollRef={scrollRef} />
-      <PlaceIntroduce />
-      <OperatingTime />
-      <FacilityInformation />
-      <PlaceLocation />
+      <PlaceIntroduce ref={scrollRef} />
+      <OperatingTime ref={scrollRef} />
+      <FacilityInformation ref={scrollRef} />
+      <PlaceLocation ref={scrollRef} />
     </main>
   );
 }
