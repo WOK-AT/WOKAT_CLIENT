@@ -15,7 +15,7 @@ import SearchList from '@/components/search/SearchList';
 function Search() {
   const { input, onChange, onReset } = useInput();
   const router = useRouter();
-  const [result, setResult] = useState<SubwayType[]>([]);
+  const [searchResult, setSearchResult] = useState<SubwayType[]>([]);
   const [recentSearch, setRecentSearch] = useState<SubwayType[]>([]);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -29,7 +29,7 @@ function Search() {
       .sort((a, b) =>
         a.station_nm.localeCompare(b.station_nm, 'ko', { sensitivity: 'base' }),
       );
-    setResult(stations);
+    setSearchResult(stations);
   };
 
   const deleteSearch = (target: SubwayType) => {
@@ -39,7 +39,7 @@ function Search() {
   };
 
   const resetSearch = () => {
-    isSearching ? setResult([]) : setRecentSearch([]);
+    isSearching ? setSearchResult([]) : setRecentSearch([]);
     setStorageItem('recent', []);
   };
 
@@ -119,7 +119,7 @@ function Search() {
             className="flex flex-col overflow-y-scroll scrollbar-hide"
           >
             {isSearching
-              ? result.map((item, index) => (
+              ? searchResult.map((item, index) => (
                   <SearchList
                     key={index}
                     data={item}
