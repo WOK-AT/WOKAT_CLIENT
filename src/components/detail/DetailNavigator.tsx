@@ -1,9 +1,6 @@
-import React, { useState, useEffect, MutableRefObject } from 'react';
-interface DetailNavigatorProps {
-  scrollRef: MutableRefObject<HTMLDivElement[]>;
-}
+import React, { useState, useEffect } from 'react';
 
-function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
+function DetailNavigator() {
   const [navIndex, setNavIndex] = useState<number>(-1);
   const [navigator, setNavigator] = useState([
     { index: 0, name: '공간 소개', active: false },
@@ -32,20 +29,23 @@ function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
   };
 
   useEffect(() => {
-    scrollRef.current[navIndex]?.scrollIntoView({ behavior: 'smooth' });
+    const activeTab = document.getElementById(`nav-${navIndex}`);
+    activeTab?.scrollIntoView({ behavior: 'smooth' });
     clickNavigator(navIndex);
-  }, [scrollRef, navIndex]);
+  }, [navIndex]);
 
   useEffect(() => {
     const handleShadow = () => {
       setScrollY(document.body.scrollTop);
 
-      let newNavigator = navigator.map((item) => {
+      const newNavigator = navigator.map((item) => {
+        const activeTab = document.getElementById(`nav-${item.index}`);
+        const nextTab = document.getElementById(`nav-${item.index + 1}`);
         if (
-          scrollRef.current[item.index].offsetTop - 70 <
-            document.body.scrollTop &&
-          document.body.scrollTop <
-            scrollRef.current[item.index + 1].offsetTop - 70
+          activeTab &&
+          nextTab &&
+          activeTab?.offsetTop - 70 < document.body.scrollTop &&
+          document.body.scrollTop < nextTab?.offsetTop - 70
         ) {
           return {
             ...item,
@@ -57,6 +57,7 @@ function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
             active: false,
           };
         }
+        // }
       });
 
       setNavigator(newNavigator);

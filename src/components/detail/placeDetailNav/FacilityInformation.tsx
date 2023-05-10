@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from 'react';
 import facilityInformation from '@/assets/icons/facilityInformation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import DetailInformationTextBox from '@/components/common/detail/DetailInformationTextBox';
@@ -19,9 +19,9 @@ const FACILITY_LIST = [
   { icon: person, title: '최대 수용 인원', status: '최대 10명' },
 ];
 
-const FacilityInformation = forwardRef((props, ref) => {
+function FacilityInformation() {
   return (
-    <section className="mb-9 scroll-mt-[50px]"  ref={reviewRef => (ref.current[2] = reviewRef)}>
+    <section id="nav-2" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-col items-start">
@@ -84,6 +84,6 @@ const FacilityInformation = forwardRef((props, ref) => {
       </DetailInformationTextBox>
     </section>
   );
-});
+}
 
 export default FacilityInformation;

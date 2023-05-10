@@ -1,14 +1,11 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import operatingTime from '@/assets/icons/operatingTime.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import DetailInformationTextBox from '@/components/common/detail/DetailInformationTextBox';
 
-const OperatingTime = forwardRef((props, ref) => {
+function OperatingTime() {
   return (
-    <section
-      className="mb-9 scroll-mt-[50px]"
-      ref={(reviewRef) => (ref.current[1] = reviewRef)}
-    >
+    <section id="nav-1" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={operatingTime} title="운영 시간" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-row items-start">
@@ -33,6 +30,6 @@ const OperatingTime = forwardRef((props, ref) => {
       </DetailInformationTextBox>
     </section>
   );
-});
+}
 
 export default OperatingTime;
