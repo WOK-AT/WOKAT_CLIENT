@@ -10,13 +10,11 @@ function Detail() {
     imgUrls: ['111', '222', '333'],
   };
   return (
-    <div className="h-screen ">
-      <Layout right={login}>
-        <ImageCarousel imgUrls={dummyData.imgUrls} />
-        <PlaceInfo tags={dummyData.tags} />
-        <PlaceDetailInfo />
-      </Layout>
-    </div>
+    <Layout right={login}>
+      <ImageCarousel imgUrls={dummyData.imgUrls} />
+      <PlaceInfo tags={dummyData.tags} />
+      <PlaceDetailInfo />
+    </Layout>
   );
 }
 

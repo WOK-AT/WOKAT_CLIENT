@@ -35,7 +35,7 @@ function DetailNavigator() {
   }, [navIndex]);
 
   useEffect(() => {
-    const handleShadow = () => {
+    const handleScroll = () => {
       setScrollY(document.body.scrollTop);
 
       const newNavigator = navigator.map((item) => {
@@ -57,14 +57,13 @@ function DetailNavigator() {
             active: false,
           };
         }
-        // }
       });
 
       setNavigator(newNavigator);
     };
 
-    window.addEventListener('scroll', handleShadow, true);
-    return window.removeEventListener('scroll', handleShadow);
+    window.addEventListener('scroll', handleScroll, true);
+    return window.removeEventListener('scroll', handleScroll);
   }, [scrollY]);
 
   useEffect(() => {
