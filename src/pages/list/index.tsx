@@ -7,6 +7,7 @@ import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
 import testImage from '@/assets/images/main_background.svg';
+import FAB from '@/components/list/FAB';
 
 interface PlaceListType {
   imgUrl: string;
@@ -59,6 +60,7 @@ function List() {
 
   return (
     <Layout title={`${title}역`} right={profile}>
+      <FAB />
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         <article
           key={index}
