@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import profile from '@/assets/icons/profile.svg';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
+import bookmark from '@/assets/icons/bookmark.svg';
+import testImage from '@/assets/images/main_background.svg';
 
 interface PlaceListType {
   imgUrl: string;
@@ -17,6 +19,18 @@ interface PlaceListType {
 }
 
 const dummy = [
+  {
+    imgUrl: '',
+    title: '홍대 유유기지',
+    placeInfo: { distance: '홍대입구역 5번 출구에서 도보 10분', capacity: 10 },
+    tags: ['해쉬태그', '해쉬태그', '해쉬태그'],
+  },
+  {
+    imgUrl: '',
+    title: '홍대 유유기지',
+    placeInfo: { distance: '홍대입구역 5번 출구에서 도보 10분', capacity: 10 },
+    tags: ['해쉬태그', '해쉬태그', '해쉬태그'],
+  },
   {
     imgUrl: '',
     title: '홍대 유유기지',
@@ -48,20 +62,23 @@ function List() {
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         <article
           key={index}
-          className="h-30 mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
+          className="h-30 mb-4 flex w-full border-b-2 border-GRAY_100 pb-4 scrollbar-hide"
         >
-          <div>
+          <div className="relative">
             <Image
-              src={imgUrl || ''}
+              src={imgUrl || testImage}
               alt="place image"
-              width={100}
-              height={120}
-              className="overflow-hidden rounded"
+              className="h-[120px] w-[100px] overflow-hidden rounded border border-black max-[360px]:h-[100px] max-[360px]:w-[80px]"
+            />
+            <Image
+              src={bookmark}
+              alt="bookmark button"
+              className="absolute bottom-2 right-2"
             />
           </div>
           <div className="ml-3 flex flex-col items-center justify-between">
             <div className="flex-col">
-              <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900">
+              <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
                 {title}
               </h1>
               <div className="mb-1 flex">
@@ -71,7 +88,7 @@ function List() {
                   width={20}
                   height={20}
                 />
-                <p className=" font-system5 text-system5 text-GRAY_600">
+                <p className=" font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
                   {placeInfo.distance}
                 </p>
               </div>
@@ -82,7 +99,7 @@ function List() {
                   width={20}
                   height={20}
                 />
-                <p className="font-system5 text-system5 text-GRAY_600">
+                <p className="font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
                   최대 {placeInfo.capacity}명
                 </p>
               </div>
@@ -91,10 +108,13 @@ function List() {
               {tags.map((tag, index) => (
                 <li
                   key={index}
-                  className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 font-system6 text-system6 text-BLUE_600"
-                  style={{ marginRight: index === tags.length - 1 ? 0 : '8px' }}
+                  className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 font-system6 text-system6 text-BLUE_600 max-[360px]:px-1 "
+                  style={{
+                    marginRight: index === tags.length - 1 ? 0 : '8px',
+                  }}
                 >
-                  # {tag}
+                  <span className="mr-[3px]">#</span>
+                  {tag}
                 </li>
               ))}
             </ul>
