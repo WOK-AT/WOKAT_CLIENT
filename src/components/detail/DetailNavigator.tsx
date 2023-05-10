@@ -6,24 +6,24 @@ interface DetailNavigatorProps {
 function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
   const [navIndex, setNavIndex] = useState<number>(-1);
   const [navigator, setNavigator] = useState([
-    { index: 0, name: '공간 소개', clicked: false },
-    { index: 1, name: '운영 시간', clicked: false },
-    { index: 2, name: '시설 정보', clicked: false },
-    { index: 3, name: '공간 위치', clicked: false },
+    { index: 0, name: '공간 소개', active: false },
+    { index: 1, name: '운영 시간', active: false },
+    { index: 2, name: '시설 정보', active: false },
+    { index: 3, name: '공간 위치', active: false },
   ]);
   const [scrollY, setScrollY] = useState(0);
 
   const clickNavigator = (index: number) => {
-    let newNavigator = navigator.map((item) => {
+    const newNavigator = navigator.map((item) => {
       if (item.index === index) {
         return {
           ...item,
-          clicked: true,
+          active: true,
         };
       } else {
         return {
           ...item,
-          clicked: false,
+          active: false,
         };
       }
     });
@@ -49,12 +49,12 @@ function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
         ) {
           return {
             ...item,
-            clicked: true,
+            active: true,
           };
         } else {
           return {
             ...item,
-            clicked: false,
+            active: false,
           };
         }
       });
@@ -73,17 +73,15 @@ function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
   return (
     <>
       <nav className="sticky top-0 -ml-4 flex h-[34px] w-screen flex-row items-center justify-between bg-WHTIE px-4">
-        {navigator.map(({ index, name, clicked }) => {
+        {navigator.map(({ index, name, active }) => {
           return (
             <article className=" flex flex-col items-center active:text-BLUE_600">
               <button
                 key={index}
-                onClick={() => {
-                  setNavIndex(index);
-                }}
+                onClick={() => setNavIndex(index)}
                 type="button"
                 className={`flex flex-col items-center font-system4_bold text-system4_bold ${
-                  clicked ? 'text-BLUE_600' : 'text-GRAY_300 '
+                  active ? 'text-BLUE_600' : 'text-GRAY_300 '
                 }`}
               >
                 <p className="flex h-[36px] flex-row items-center active:text-BLUE_600">
@@ -91,7 +89,7 @@ function DetailNavigator({ scrollRef }: DetailNavigatorProps) {
                 </p>
                 <p
                   className={` h-[3px] w-[84px]  rounded-full ${
-                    clicked ? 'bg-BLUE_600 ' : null
+                    active && 'bg-BLUE_600 '
                   }`}
                 ></p>
               </button>
