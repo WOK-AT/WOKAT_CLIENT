@@ -1,3 +1,4 @@
+import React from 'react';
 import facilityInformation from '@/assets/icons/facilityInformation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import DetailInformationTextBox from '@/components/common/detail/DetailInformationTextBox';
@@ -20,7 +21,7 @@ const FACILITY_LIST = [
 
 function FacilityInformation() {
   return (
-    <section className="mb-9">
+    <section id="nav-2" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-col items-start">
