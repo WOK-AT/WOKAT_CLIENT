@@ -4,12 +4,9 @@ import DetailInformationTitle from '@/components/common/detail/DetailInformation
 
 function PlaceLocation() {
   return (
-    <section id="nav-3" className="mb-9 scroll-mt-[50px]">
+    <section id="nav-3" className="scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
-      <div className="mb-24 h-[300px] bg-BLUE_100">
-        지도가 들어갈 부분입니다.
-      </div>
-      <div>아이폰 바</div>
+      <div className="h-[300px] bg-BLUE_100">지도가 들어갈 부분입니다.</div>
     </section>
   );
 }
