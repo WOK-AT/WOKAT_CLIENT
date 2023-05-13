@@ -9,6 +9,7 @@ import bookmark from '@/assets/icons/bookmark.svg';
 import testImage from '@/assets/images/main_background.svg';
 import FAB from '@/components/list/FAB';
 import ListFilter from '@/components/common/ListFilter';
+import Navigation from '@/components/common/Navigation';
 
 interface PlaceListType {
   imgUrl: string;
@@ -62,6 +63,7 @@ function List() {
   return (
     <Layout title={`${title}역`} right={profile}>
       <FAB />
+      <Navigation />
       <ListFilter />
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         <article

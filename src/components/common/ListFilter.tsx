@@ -22,7 +22,7 @@ function ListFilter() {
     <Modal onChange={changeOption}>
       <Modal.Trigger as={<ListFilterTrigger currentOption={currentOption} />} />
       <Modal.Menu>
-        <h1 className="font-system3_bold text-system3_bold text-GRAY_900">
+        <h1 className="mb-[10px] font-system3_bold text-system3_bold text-GRAY_900">
           {currentOption}
         </h1>
         {filterOptions.map((option) => (
@@ -47,7 +47,7 @@ function ListFilterTrigger(props: ListFilterTriggerProps) {
   const { currentOption } = props;
 
   return (
-    <div className="flex justify-end">
+    <div className="flex justify-end mb-5">
       <p className="font-system5_medium text-system5_medium text-GRAY_400">
         {currentOption} {'▼'}
       </p>
@@ -67,7 +67,7 @@ function ListFilterContent(props: ListFilterContentProps) {
   return (
     <div
       onClick={onClick}
-      className="relative mt-6 flex h-6 w-full justify-between border-b-[1px] border-GRAY_100 pb-[14px] font-system4_medium text-system4_medium"
+      className="relative mt-[14px] flex h-full w-full justify-between border-b-[1px] border-GRAY_100 pb-[14px]  font-system4_medium text-system4_medium"
     >
       <p
         className={`${
