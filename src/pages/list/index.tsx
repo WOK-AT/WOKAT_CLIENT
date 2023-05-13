@@ -8,6 +8,7 @@ import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
 import testImage from '@/assets/images/main_background.svg';
 import FAB from '@/components/list/FAB';
+import ListFilter from '@/components/common/ListFilter';
 
 interface PlaceListType {
   imgUrl: string;
@@ -61,10 +62,11 @@ function List() {
   return (
     <Layout title={`${title}역`} right={profile}>
       <FAB />
+      <ListFilter />
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         <article
           key={index}
-          className="h-30 mb-4 flex w-full border-b-2 border-GRAY_100 pb-4 scrollbar-hide"
+          className="flex w-full pb-4 mb-4 border-b-2 h-30 border-GRAY_100 scrollbar-hide"
         >
           <div className="relative">
             <Image
@@ -78,12 +80,12 @@ function List() {
               className="absolute bottom-2 right-2"
             />
           </div>
-          <div className="ml-3 flex flex-col items-center justify-between">
+          <div className="flex flex-col items-center justify-between ml-3">
             <div className="flex-col">
               <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
                 {title}
               </h1>
-              <div className="mb-1 flex">
+              <div className="flex mb-1">
                 <Image
                   src={list_location}
                   alt="location icon"
