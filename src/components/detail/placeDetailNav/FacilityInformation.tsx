@@ -25,6 +25,9 @@ function FacilityInformation({ information, count }: FacilityInformationProps) {
     { icon: person, title: '최대 수용 인원', status: { count } },
   ];
 
+  const { 'wi-fi': wifiInformation } = information[0];
+  const { ID: wifiId, PW: wifiPW } = wifiInformation[0];
+
   return (
     <section id="nav-2" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
@@ -53,7 +56,7 @@ function FacilityInformation({ information, count }: FacilityInformationProps) {
                 ID :
               </h2>
               <p className="font-system4 text-system4 text-GRAY_600">
-                {information[0]['wi-fi'][0].ID}
+                {wifiId}
               </p>
             </div>
             <div className="mb-1.5 flex flex-row items-start">
@@ -61,7 +64,7 @@ function FacilityInformation({ information, count }: FacilityInformationProps) {
                 PW :
               </h2>
               <p className="font-system4 text-system4 text-GRAY_600">
-                {information[0]['wi-fi'][0].PW}
+                {wifiPW}
               </p>
             </div>
           </div>
@@ -81,7 +84,7 @@ function FacilityInformation({ information, count }: FacilityInformationProps) {
                 </h2>
               </div>
               <p className="font-system4 text-system4 text-GRAY_400">
-                {typeof item.status == 'boolean'
+                {typeof item.status === 'boolean'
                   ? item.status
                     ? '있음'
                     : '없음'
