@@ -10,6 +10,7 @@ import testImage from '@/assets/images/main_background.svg';
 import FAB from '@/components/list/FAB';
 import ListFilter from '@/components/common/ListFilter';
 import Navigation from '@/components/common/Navigation';
+import Link from 'next/link';
 
 interface PlaceListType {
   imgUrl: string;
@@ -66,7 +67,9 @@ function List() {
       <Navigation />
       <ListFilter />
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
-        <article
+        // TODO : index -> id로 변경
+        <Link
+          href={`detail/${index}`}
           key={index}
           className="flex w-full pb-4 mb-4 border-b-2 h-30 border-GRAY_100 scrollbar-hide"
         >
@@ -125,7 +128,7 @@ function List() {
               ))}
             </ul>
           </div>
-        </article>
+        </Link>
       ))}
     </Layout>
   );

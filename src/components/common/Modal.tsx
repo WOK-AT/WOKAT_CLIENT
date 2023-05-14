@@ -71,12 +71,12 @@ Modal.Menu = function Contents(props: PropsWithChildren) {
       {isOpen && (
         <>
           <Modal.Backdrop onClick={close} />
-          <div className="fixed left-1/2 top-1/2 z-10 flex h-[204px] w-[275px] translate-x-[-50%] translate-y-[-50%] flex-col  rounded-[10px] bg-WHTIE p-5">
+          <div className="fixed left-1/2 top-1/2 z-10 flex  w-[275px] translate-x-[-50%] translate-y-[-50%] flex-col  rounded-[10px] bg-WHTIE p-5">
             {children}
             <button
               type="button"
               onClick={close}
-              className=" mt-[10px] flex w-full items-center justify-end font-system4_medium text-system4_medium text-GRAY_600"
+              className="mt-[10px] flex w-full items-center justify-end font-system4_medium text-system4_medium text-GRAY_600"
             >
               취소
             </button>
