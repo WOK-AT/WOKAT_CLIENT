@@ -14,15 +14,18 @@ import { Information } from '@/types/information';
 
 interface FacilityInformationProps {
   information: Information[];
-  count: string;
+  maxPeopleCount: string;
 }
 
-function FacilityInformation({ information, count }: FacilityInformationProps) {
+function FacilityInformation({
+  information,
+  maxPeopleCount,
+}: FacilityInformationProps) {
   const FACILITY_LIST = [
     { icon: elec, title: '콘센트', status: true },
     { icon: parking, title: '주차 공간 여부', status: true },
     { icon: hdmi, title: 'HDMI / 스크린 여부', status: false },
-    { icon: person, title: '최대 수용 인원', status: { count } },
+    { icon: person, title: '최대 수용 인원', status: { maxPeopleCount } },
   ];
 
   const { 'wi-fi': wifiInformation } = information[0];
@@ -88,7 +91,7 @@ function FacilityInformation({ information, count }: FacilityInformationProps) {
                   ? item.status
                     ? '있음'
                     : '없음'
-                  : count}
+                  : maxPeopleCount}
               </p>
             </div>
           );

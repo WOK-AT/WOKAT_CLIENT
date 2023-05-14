@@ -56,7 +56,7 @@ function Detail() {
         operationHours={data['operation-hours']}
         introduce={data.introduce}
         information={data.information}
-        count={data.count}
+        maxPeopleCount={data.count}
       />
     </Layout>
   );
