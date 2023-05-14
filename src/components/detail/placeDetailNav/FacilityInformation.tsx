@@ -1,3 +1,4 @@
+import React from 'react';
 import facilityInformation from '@/assets/icons/facilityInformation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import DetailInformationTextBox from '@/components/common/detail/DetailInformationTextBox';
@@ -8,32 +9,43 @@ import parking from '@/assets/icons/parking.svg';
 import hdmi from '@/assets/icons/hdmi.svg';
 import person from '@/assets/icons/person.svg';
 import wifi from '@/assets/icons/wifi.svg';
-
 import Image from 'next/image';
+import { Information } from '@/types/information';
 
-const FACILITY_LIST = [
-  { icon: elec, title: '콘센트', status: '있음' },
-  { icon: parking, title: '주차 공간 여부', status: '있음' },
-  { icon: hdmi, title: 'HDMI / 스크린 여부', status: '없음' },
-  { icon: person, title: '최대 수용 인원', status: '최대 10명' },
-];
+interface FacilityInformationProps {
+  information: Information[];
+  maxPeopleCount: string;
+}
 
-function FacilityInformation() {
+function FacilityInformation({
+  information,
+  maxPeopleCount,
+}: FacilityInformationProps) {
+  const FACILITY_LIST = [
+    { icon: elec, title: '콘센트', status: true },
+    { icon: parking, title: '주차 공간 여부', status: true },
+    { icon: hdmi, title: 'HDMI / 스크린 여부', status: false },
+    { icon: person, title: '최대 수용 인원', status: { maxPeopleCount } },
+  ];
+
+  const { 'wi-fi': wifiInformation } = information[0];
+  const { ID: wifiId, PW: wifiPW } = wifiInformation[0];
+
   return (
-    <section className="mb-9">
+    <section id="nav-2" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-col items-start">
           <div className="mb-3 flex flex-row">
             <Image src={phone} alt="phone icon" className="mr-4" />
             <h2 className="mr-4 font-system4 text-system4 text-GRAY_400">
-              031-235-4826
+              {information[0].contact}
             </h2>
           </div>
           <div className="flex flex-row">
             <Image src={internet} alt="internet icon" className="mr-4" />
             <h2 className="mr-4 font-system4 text-system4 text-GRAY_400">
-              www.wokat.com
+              {information[0].homepage}
             </h2>
           </div>
         </div>
@@ -47,7 +59,7 @@ function FacilityInformation() {
                 ID :
               </h2>
               <p className="font-system4 text-system4 text-GRAY_600">
-                KT_GIGA_2G_Wave3_B829
+                {wifiId}
               </p>
             </div>
             <div className="mb-1.5 flex flex-row items-start">
@@ -55,7 +67,7 @@ function FacilityInformation() {
                 PW :
               </h2>
               <p className="font-system4 text-system4 text-GRAY_600">
-                234475869003
+                {wifiPW}
               </p>
             </div>
           </div>
@@ -75,7 +87,11 @@ function FacilityInformation() {
                 </h2>
               </div>
               <p className="font-system4 text-system4 text-GRAY_400">
-                {item.status}
+                {typeof item.status === 'boolean'
+                  ? item.status
+                    ? '있음'
+                    : '없음'
+                  : maxPeopleCount}
               </p>
             </div>
           );
