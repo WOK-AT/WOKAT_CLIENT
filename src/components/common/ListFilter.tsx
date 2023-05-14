@@ -13,6 +13,7 @@ interface ListFilterTriggerProps {
 interface ListFilterContentProps {
   content: string;
   currentOption: string;
+  onChange?: () => void;
 }
 
 function ListFilter() {
@@ -28,6 +29,7 @@ function ListFilter() {
         {filterOptions.map((option) => (
           <Modal.Contents
             key={option}
+            value={option}
             as={
               <ListFilterContent
                 content={option}
@@ -47,7 +49,7 @@ function ListFilterTrigger(props: ListFilterTriggerProps) {
   const { currentOption } = props;
 
   return (
-    <div className="flex justify-end mb-5">
+    <div className="mb-5 flex justify-end">
       <p className="font-system5_medium text-system5_medium text-GRAY_400">
         {currentOption} {'▼'}
       </p>
@@ -56,17 +58,11 @@ function ListFilterTrigger(props: ListFilterTriggerProps) {
 }
 
 function ListFilterContent(props: ListFilterContentProps) {
-  const { content, currentOption } = props;
-  const { onChange, close } = useContext(ModalContext);
-
-  const onClick = () => {
-    onChange(content);
-    close();
-  };
+  const { content, currentOption, onChange } = props;
 
   return (
     <div
-      onClick={onClick}
+      onClick={onChange}
       className="relative mt-[14px] flex h-full w-full justify-between border-b-[1px] border-GRAY_100 pb-[14px]  font-system4_medium text-system4_medium"
     >
       <p
@@ -77,7 +73,7 @@ function ListFilterContent(props: ListFilterContentProps) {
         {content}
       </p>
       {currentOption === content && (
-        <Image src={check} alt="check icon" className="w-6 h-6" />
+        <Image src={check} alt="check icon" className="h-6 w-6" />
       )}
     </div>
   );

@@ -29,6 +29,7 @@ interface TriggerProps {
 
 interface ContentsProps {
   as: ReactElement;
+  value?: string;
 }
 
 export const ModalContext = createContext<ModalContext>({
@@ -95,8 +96,13 @@ Modal.Trigger = function Trigger(props: TriggerProps) {
 };
 
 Modal.Contents = function Contents(props: PropsWithChildren<ContentsProps>) {
-  const { as, children } = props;
-  const { onChange } = useContext(ModalContext);
+  const { as, children, value } = props;
+  const { onChange: select, close } = useContext(ModalContext);
+
+  const onChange = () => {
+    select(value);
+    close();
+  };
 
   return cloneElement(as, { onChange }, children);
 };
