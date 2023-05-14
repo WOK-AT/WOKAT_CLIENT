@@ -26,9 +26,8 @@ function ShareModal(props: ShareModalProps) {
   const { element: urlCopyButton } = shareModalContents['urlCopy'];
 
   const onChange = (type: keyof typeof shareModalContents) => {
-    console.log(router);
     switch (type) {
-      case 'kakaoShare': // 카카오톡 공유하기,
+      case 'kakaoShare': // TODO : 카카오톡 공유하기,
       case 'urlCopy':
         navigator.clipboard.writeText(
           `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`,
