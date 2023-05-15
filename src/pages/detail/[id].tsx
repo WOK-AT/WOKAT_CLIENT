@@ -57,6 +57,7 @@ function Detail() {
         introduce={data.introduce}
         information={data.information}
         maxPeopleCount={data.count}
+        location={data.location}
       />
     </Layout>
   );
