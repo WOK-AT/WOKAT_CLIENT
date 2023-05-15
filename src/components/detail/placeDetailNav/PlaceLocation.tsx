@@ -1,5 +1,4 @@
 import React from 'react';
-
 import placeLocation from '@/assets/icons/placeLocation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import change from '@/assets/icons/change.svg';
@@ -10,6 +9,12 @@ interface PlaceLocationProps {
 }
 
 function PlaceLocation({ location }: PlaceLocationProps) {
+  const copyLocation = async () => {
+    await navigator.clipboard.writeText(location).catch((error) => {
+      console.error(error);
+    });
+  };
+
   return (
     <section id="nav-3" className="scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
@@ -30,7 +35,12 @@ function PlaceLocation({ location }: PlaceLocationProps) {
             </p>
           </article>
           <div className="border-color-GRAY_100 worigin-bottom-left mx-[3px] h-[44px] w-[1px] border-[1px]" />
-          <article className="flex w-full cursor-pointer flex-row items-center justify-center">
+          <article
+            className="flex w-full cursor-pointer flex-row items-center justify-center"
+            onClick={() => {
+              copyLocation();
+            }}
+          >
             <Image
               src={paste}
               alt="paste icon"
