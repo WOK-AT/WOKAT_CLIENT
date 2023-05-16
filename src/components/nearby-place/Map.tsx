@@ -10,7 +10,7 @@ declare global {
 
 function Map() {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
-  const [cmap, setMap] = useState();
+  const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
 
   //지도 로드하기
@@ -97,7 +97,7 @@ function Map() {
   };
 
   return (
-    <div className="relative -ml-4 h-[500px] w-screen overflow-hidden">
+    <div className="relative -ml-4 -mr-4 h-[500px] w-screen overflow-hidden">
       <div
         id="map"
         className="relative z-0 w-full h-full overflow-hidden "
