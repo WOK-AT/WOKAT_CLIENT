@@ -18,17 +18,12 @@ interface ModalContext {
   open: () => void;
   close: () => void;
 }
-
-interface BackdropProps {
-  onClick: () => void;
-}
-
 interface TriggerProps {
-  as: ReactNode;
+  asChild: ReactNode;
 }
 
 interface ContentsProps {
-  as: ReactElement;
+  asChild: ReactElement;
   value?: string;
 }
 
@@ -89,14 +84,14 @@ Modal.Menu = function Contents(props: PropsWithChildren) {
 };
 
 Modal.Trigger = function Trigger(props: TriggerProps) {
-  const { as } = props;
+  const { asChild } = props;
   const { open } = useContext(ModalContext);
 
-  return <div onClick={open}>{as}</div>;
+  return <div onClick={open}>{asChild}</div>;
 };
 
 Modal.Contents = function Contents(props: PropsWithChildren<ContentsProps>) {
-  const { as, children, value } = props;
+  const { asChild, children, value } = props;
   const { onChange: select, close } = useContext(ModalContext);
 
   const onChange = () => {
@@ -104,5 +99,5 @@ Modal.Contents = function Contents(props: PropsWithChildren<ContentsProps>) {
     close();
   };
 
-  return cloneElement(as, { onChange }, children);
+  return cloneElement(asChild, { onChange }, children);
 };

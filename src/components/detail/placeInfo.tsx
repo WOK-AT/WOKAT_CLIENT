@@ -1,5 +1,4 @@
 import book from '@/assets/icons/book.svg';
-import share from '@/assets/icons/share.svg';
 import spot from '@/assets/icons/spot.svg';
 import Image from 'next/image';
 import ShareModal from './ShareModal';
@@ -19,15 +18,7 @@ function PlaceInfo({ category, place, distance, hashtags }: PlaceInfoProps) {
           {category === 1 ? '무료 회의룸' : '무료 대여 공간'}
         </p>
         <article className="flex flex-row items-center justify-center">
-          <ShareModal
-            trigger={
-              <Image
-                src={share}
-                alt="share"
-                className="mr-2.5 cursor-pointer"
-              />
-            }
-          />
+          <ShareModal />
           <Image src={book} alt="book" className="cursor-pointer" />
         </article>
       </section>

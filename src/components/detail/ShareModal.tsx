@@ -2,6 +2,7 @@ import { ReactNode, useContext } from 'react';
 import Image from 'next/image';
 import Modal, { ModalContext } from '../common/Modal';
 import paste from '@/assets/icons/paste.svg';
+import share from '@/assets/icons/share.svg';
 import { useRouter } from 'next/router';
 
 const shareModalContents = {
@@ -15,12 +16,7 @@ const shareModalContents = {
   },
 };
 
-interface ShareModalProps {
-  trigger: ReactNode;
-}
-
-function ShareModal(props: ShareModalProps) {
-  const { trigger } = props;
+function ShareModal() {
   const router = useRouter();
   const { element: kakaoShareButton } = shareModalContents['kakaoShare'];
   const { element: urlCopyButton } = shareModalContents['urlCopy'];
@@ -38,13 +34,17 @@ function ShareModal(props: ShareModalProps) {
 
   return (
     <Modal onChange={onChange}>
-      <Modal.Trigger as={trigger} />
+      <Modal.Trigger
+        asChild={
+          <Image src={share} alt="share" className="mr-2.5 cursor-pointer" />
+        }
+      />
       <Modal.Menu>
         <h1 className="mb-[10px] font-system3_bold text-system3_bold text-GRAY_900">
           공유하기
         </h1>
-        <Modal.Contents as={kakaoShareButton} />
-        <Modal.Contents as={urlCopyButton} />
+        <Modal.Contents asChild={kakaoShareButton} />
+        <Modal.Contents asChild={urlCopyButton} />
       </Modal.Menu>
     </Modal>
   );
