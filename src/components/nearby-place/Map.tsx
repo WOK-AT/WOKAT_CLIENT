@@ -8,6 +8,30 @@ declare global {
   }
 }
 
+interface PlacePosition {
+  x: string;
+  y: string;
+}
+
+const dummy = [
+  {
+    place: '캐치카페 한양대',
+    location: '서울 성동구 왕십리로 223 동우빌딩 2층 캐치카페 한양대',
+  },
+  {
+    place: '스타벅스 한양대점',
+    location: '서울 성동구 왕십리로 225',
+  },
+  {
+    place: '덕수고등학교',
+    location: '서울특별시 성동구 왕십리로 199',
+  },
+  {
+    place: '정문약국',
+    location: '서울특별시 성동구 왕십리로 236-1 1층 정문약국',
+  },
+];
+
 function Map() {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
@@ -59,12 +83,11 @@ function Map() {
 
           await places.keywordSearch('지하철역', callback, options);
           if (cmap) {
-            console.log('중심잡기');
             cmap.setCenter(cposition);
           }
         });
       } else {
-        console.log('위치 정보 못 받아옴..');
+        alert('위치 정보를 받아오는데 실패했습니다');
       }
     });
   }, [mapLoaded]);
@@ -74,19 +97,37 @@ function Map() {
     if (cmap) {
       cmap.setCenter(cposition);
 
-      const markerImage = new window.kakao.maps.MarkerImage(
-        'http://127.0.0.1:5500/src/assets/icons/marker.svg',
-        new window.kakao.maps.Size(30, 35),
-      );
+      //위치마다 마커를 생성합니다
+      for (let i = 0; i < dummy.length; i++) {
+        const imageSize = new window.kakao.maps.Size(35, 35);
 
-      // 마커를 생성합니다
-      const markers = new window.kakao.maps.Marker({
-        position: cposition,
-        image: markerImage,
-      });
+        const markerImage = new window.kakao.maps.MarkerImage(
+          'http://127.0.0.1:5500/src/assets/icons/marker.svg',
+          imageSize,
+        );
+        const geocoder = new window.kakao.maps.services.Geocoder();
 
-      //마커가 지도 위에 표시되도록 설정합니다
-      markers.setMap(cmap);
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(
+          dummy[i].location,
+          (result: Array<PlacePosition>, status: string) => {
+            // 정상적으로 검색이 완료됐으면
+            if (status === window.kakao.maps.services.Status.OK) {
+              const coords = new window.kakao.maps.LatLng(
+                result[0].y,
+                result[0].x,
+              );
+
+              const marker = new window.kakao.maps.Marker({
+                map: cmap,
+                position: coords,
+                title: dummy[i].place,
+                image: markerImage,
+              });
+            }
+          },
+        );
+      }
     }
   }, [cposition]);
 
@@ -97,7 +138,7 @@ function Map() {
   };
 
   return (
-    <div className="relative -ml-4 -mr-4 h-[500px] w-screen overflow-hidden">
+    <div className="relative -ml-4 -mr-4 h-[600px] w-screen overflow-hidden ">
       <div
         id="map"
         className="relative z-0 w-full h-full overflow-hidden "
