@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 const MIN_Y = 60;
-const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 300;
+const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 250;
 
 interface BottomSheetMetrics {
   touchStart: {
