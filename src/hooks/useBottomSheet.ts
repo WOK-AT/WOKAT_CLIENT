@@ -1,4 +1,6 @@
 import { useRef, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 const MIN_Y = 60;
 const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 300;
 
@@ -30,6 +32,8 @@ export default function useBottomSheet() {
     },
     isContentAreaTouched: false,
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     const canUserMoveBottomSheet = () => {
@@ -97,6 +101,7 @@ export default function useBottomSheet() {
         document.body.style.overflowY = 'hidden';
       }
     };
+
     const handleTouchEnd = (e: TouchEvent) => {
       document.body.style.overflowY = 'auto';
       const { touchMove } = metrics.current;
@@ -114,6 +119,9 @@ export default function useBottomSheet() {
             'transform',
             `translateY(${MIN_Y - MAX_Y}px)`,
           );
+          setTimeout(() => {
+            router.push('/list');
+          }, 100);
         }
       }
 
@@ -134,13 +142,6 @@ export default function useBottomSheet() {
     sheet.current!.addEventListener('touchstart', handleTouchStart);
     sheet.current!.addEventListener('touchmove', handleTouchMove);
     sheet.current!.addEventListener('touchend', handleTouchEnd);
-  }, []);
-
-  useEffect(() => {
-    const handleTouchStart = () => {
-      metrics.current!.isContentAreaTouched = true;
-    };
-    content.current!.addEventListener('touchstart', handleTouchStart);
   }, []);
 
   return { sheet, content };
