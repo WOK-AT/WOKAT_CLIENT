@@ -9,7 +9,7 @@ import { useReservationForm } from '@/hooks/useReservationForm';
 function Calendar() {
   const router = useRouter();
   const title = router.query.title as string;
-  const { date, person, modifyDate, modifyPersonCount } = useReservationForm();
+  const { date, person, formatDate, modifyPersonCount } = useReservationForm();
 
   return (
     <Layout title={`${title}역`} right={profile}>

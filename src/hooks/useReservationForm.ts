@@ -7,7 +7,7 @@ export const useReservationForm = () => {
   const [date, setDate] = useState<string>('');
   const [person, setPerson] = useState(0);
 
-  const modifyDate = (date: Date) => {
+  const formatDate = (date: Date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
@@ -29,27 +29,32 @@ export const useReservationForm = () => {
     }
   };
 
-  const storePersonCount = () => {
+  const savePersonCount = () => {
     setStorageItem('person', person);
   };
 
   const getToday = () => {
     const today = new Date();
-    const newDate = modifyDate(today);
+    const newDate = formatDate(today);
     setDate(newDate);
   };
 
-  const initPerson = () => {
+  const setInitialPersonCount = () => {
     const item = getStorageItem('person', 0) as number;
     setPerson(item);
   };
 
   useEffect(() => {
-    initPerson();
+    if (typeof window !== 'undefined') {
+      window.onpopstate = savePersonCount;
+    }
+    setInitialPersonCount();
     getToday();
   }, []);
 
-  window.onpopstate = storePersonCount;
+  useEffect(() => {
+    window.onpopstate = savePersonCount;
+  }, [person]);
 
-  return { date, person, modifyDate, modifyPersonCount };
+  return { date, person, formatDate, modifyPersonCount };
 };
