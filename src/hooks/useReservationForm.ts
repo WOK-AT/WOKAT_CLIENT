@@ -1,6 +1,7 @@
+import { getStorageItem, setStorageItem } from '@/utils/localStorage';
 import { useEffect, useState } from 'react';
 
-type Operator = 'decrease' | 'increase';
+type Operator = 'decrease' | 'increase' | 'reset';
 
 export const useReservationForm = () => {
   const [date, setDate] = useState<string>('');
@@ -21,14 +22,34 @@ export const useReservationForm = () => {
       case 'decrease':
         setPerson((prev) => (prev > 0 ? prev - 1 : 0));
         break;
+      case 'reset':
+        setPerson(0);
+        setStorageItem('person', 0);
+        break;
     }
   };
 
-  useEffect(() => {
+  const storePersonCount = () => {
+    setStorageItem('person', person);
+  };
+
+  const getToday = () => {
     const today = new Date();
     const newDate = modifyDate(today);
     setDate(newDate);
+  };
+
+  const initPerson = () => {
+    const item = getStorageItem('person', 0) as number;
+    setPerson(item);
+  };
+
+  useEffect(() => {
+    initPerson();
+    getToday();
   }, []);
+
+  window.onpopstate = storePersonCount;
 
   return { date, person, modifyDate, modifyPersonCount };
 };
