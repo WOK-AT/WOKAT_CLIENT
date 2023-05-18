@@ -11,6 +11,7 @@ import FAB from '@/components/list/FAB';
 import ListFilter from '@/components/common/ListFilter';
 import Navigation from '@/components/common/Navigation';
 import Link from 'next/link';
+import ReservationForm from '@/components/list/ReservationForm';
 import useNavigation from '@/hooks/useNavigation';
 
 interface PlaceListType {
