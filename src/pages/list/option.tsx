@@ -5,15 +5,18 @@ import profile from '@/assets/icons/profile.svg';
 import increase from '@/assets/icons/increase.svg';
 import decrease from '@/assets/icons/decrease.svg';
 import { useReservationForm } from '@/hooks/useReservationForm';
+import Calendar from '@/components/list/Calendar';
 
-function Calendar() {
+function Option() {
   const router = useRouter();
   const title = router.query.title as string;
   const { date, person, formatDate, modifyPersonCount } = useReservationForm();
 
   return (
     <Layout title={`${title}역`} right={profile}>
-      <section>{/* calendar */}</section>
+      <section>
+        <Calendar />
+      </section>
 
       <section className="flex-col">
         <h1 className="mb-4 font-system3_bold text-system3_bold text-GRAY_800">
@@ -49,4 +52,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default Option;

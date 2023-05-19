@@ -7,11 +7,19 @@ export const useReservationForm = () => {
   const [date, setDate] = useState<string>('');
   const [person, setPerson] = useState(0);
 
-  const formatDate = (date: Date) => {
+  const getCurrentDate = (date: Date) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return [year, month, day].join('-');
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return [year, month, day];
+  };
+
+  const formatDate = (date: Date) => {
+    const [year, month, day] = getCurrentDate(date);
+    const formatted_year = String(year);
+    const formatted_month = String(month).padStart(2, '0');
+    const formatted_day = String(day).padStart(2, '0');
+    return [formatted_year, formatted_month, formatted_day];
   };
 
   const modifyPersonCount = (operator: Operator) => {
@@ -35,7 +43,7 @@ export const useReservationForm = () => {
 
   const getToday = () => {
     const today = new Date();
-    const newDate = formatDate(today);
+    const newDate = formatDate(today).join('-');
     setDate(newDate);
   };
 
@@ -56,5 +64,5 @@ export const useReservationForm = () => {
     window.onpopstate = savePersonCount;
   }, [person]);
 
-  return { date, person, formatDate, modifyPersonCount };
+  return { date, person, getCurrentDate, formatDate, modifyPersonCount };
 };
