@@ -23,7 +23,7 @@ function ReservationForm() {
     const title = query.title as string | undefined;
     if (typeof title === 'undefined') return;
 
-    const newUrl = `${pathname}/calendar`;
+    const newUrl = `${pathname}/option`;
     router.push({
       pathname: newUrl,
       query,

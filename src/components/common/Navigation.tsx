@@ -1,18 +1,19 @@
-import { useEffect } from 'react';
-import useNavigation, { NavType } from '@/hooks/useNavigation';
+import { createContext, useContext } from 'react';
+import { NavType } from '@/hooks/useNavigation';
 
 const NAV_TYPE: NavType[] = ['무료 공간', '무료 회의룸', '카페'];
-interface NavigationProps {
-  onChange: (navType: NavType) => void;
+interface NavigationContext {
+  navType: string;
+  switchNavType: (args: NavType) => void;
 }
 
-function Navigation(props: NavigationProps) {
-  const { onChange } = props;
-  const { navType, switchNavType } = useNavigation();
+export const NavigationContext = createContext({
+  navType: '무료 공간',
+  switchNavType: (args: NavType) => {},
+});
 
-  useEffect(() => {
-    onChange(navType);
-  }, [navType]);
+function Navigation() {
+  const { navType, switchNavType } = useContext(NavigationContext);
 
   return (
     <div className="mx-[1.3rem] my-[1.2rem] flex items-center justify-between rounded-[42px] bg-GRAY_50 px-[0.4rem] py-[0.4rem]">
