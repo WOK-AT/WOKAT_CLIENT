@@ -2,7 +2,7 @@ import React from 'react';
 import placeLocation from '@/assets/icons/placeLocation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import change from '@/assets/icons/change.svg';
-import paste from '@/assets/icons/paste.svg';
+import locationPaste from '@/assets/icons/locationPaste.svg';
 import Image from 'next/image';
 import Map from './Map';
 interface PlaceLocationProps {
@@ -44,8 +44,8 @@ function PlaceLocation({ location }: PlaceLocationProps) {
             }}
           >
             <Image
-              src={paste}
-              alt="paste icon"
+              src={locationPaste}
+              alt="locationPaste icon"
               className="mr-2.5 cursor-pointer"
             />
             <p className="font-system5_medium text-system5_medium text-GRAY_900">
