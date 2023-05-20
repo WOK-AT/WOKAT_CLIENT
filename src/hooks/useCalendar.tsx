@@ -200,9 +200,18 @@ export const useCalendar = () => {
 
   const setInitialSelectedDate = () => {
     const item = sessionStorage.getItem('date');
-    const date = item ? JSON.parse(item) : new Date();
-    setSelectedDate(date);
-    setCurrentDate(date);
+    if (item) {
+      const date = JSON.parse(item);
+      setSelectedDate(date);
+      setCurrentDate(date);
+    } else {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+      const day = today.getDate();
+      setSelectedDate({ year, month, day });
+      setCurrentDate({ year, month, day });
+    }
   };
 
   return { currentDate, renderCalendarDates, onChangeMonth };
