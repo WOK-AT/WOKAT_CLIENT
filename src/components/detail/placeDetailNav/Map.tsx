@@ -32,27 +32,7 @@ function Map({ location }: MapProps) {
     if (!mapLoaded) return;
 
     window.kakao.maps.load(async () => {
-      const lat = 33.450701; // 위도
-      const lon = 126.570667; // 경도
-      const locPosition = new window.kakao.maps.LatLng(lat, lon);
-
-      const mapContainer = document.getElementById('map');
-      const mapOption = {
-        center: locPosition, // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
-      const map = await new window.kakao.maps.Map(mapContainer, mapOption);
-
-      // 공간 정보 마커 표시
-      const imageSize = new window.kakao.maps.Size(60, 60);
-
-      const markerImage = new window.kakao.maps.MarkerImage(
-        'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
-        imageSize,
-      );
-
       const geocoder = new window.kakao.maps.services.Geocoder();
-
       // 주소로 좌표를 검색합니다
       geocoder.addressSearch(
         location,
@@ -64,15 +44,32 @@ function Map({ location }: MapProps) {
               result[0].x,
             );
 
+            const locPosition = new window.kakao.maps.LatLng(
+              coords.Ma,
+              coords.La,
+            );
+
+            const mapContainer = document.getElementById('map');
+            const mapOption = {
+              center: locPosition, // 지도의 중심좌표
+              level: 3, // 지도의 확대 레벨
+            };
+            const map = new window.kakao.maps.Map(mapContainer, mapOption);
+
+            // 공간 정보 마커 표시
+            const imageSize = new window.kakao.maps.Size(60, 60);
+
+            const markerImage = new window.kakao.maps.MarkerImage(
+              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
+              imageSize,
+            );
+
             // 결과값으로 받은 위치를 마커로 표시합니다
             const marker = new window.kakao.maps.Marker({
               map: map,
               position: coords,
               image: markerImage,
             });
-
-            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-            map.setCenter(coords);
           }
         },
       );
