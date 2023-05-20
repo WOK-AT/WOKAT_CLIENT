@@ -14,6 +14,7 @@ interface PlaceDetailInfoProps {
   information: Information[];
   operationHours: OperationHours[];
   maxPeopleCount: string;
+  location: string;
 }
 
 function PlaceDetailInfo({
@@ -22,6 +23,7 @@ function PlaceDetailInfo({
   information,
   operationHours,
   maxPeopleCount,
+  location,
 }: PlaceDetailInfoProps) {
   return (
     <main>
@@ -32,7 +34,7 @@ function PlaceDetailInfo({
         information={information}
         maxPeopleCount={maxPeopleCount}
       />
-      <PlaceLocation />
+      <PlaceLocation location={location} />
       {category === 1 && <BookingButton />}
     </main>
   );

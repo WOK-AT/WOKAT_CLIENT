@@ -16,9 +16,10 @@ function Navigation() {
   const { navType, switchNavType } = useContext(NavigationContext);
 
   return (
-    <div className="mx-[1.3rem] my-[1.2rem] flex items-center justify-between rounded-[42px] bg-GRAY_50 px-[0.4rem] py-[0.4rem]">
-      {NAV_TYPE.map((data) => (
+    <div className="my-[1.2rem] flex items-center justify-between rounded-[42px] bg-GRAY_50 px-[0.4rem] py-[0.4rem]">
+      {NAV_TYPE.map((data, index) => (
         <div
+          key={index}
           className={`${
             navType === data
               ? 'bg-BLUE_500 font-system4_bold text-white'
