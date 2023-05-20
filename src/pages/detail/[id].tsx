@@ -5,11 +5,6 @@ import ImageCarousel from '@/components/detail/ImageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 
 function Detail() {
-  const imageData = {
-    // 장소 image 데이터는  현재 서버 노션에 적혀있는 response에 없어서 따로 적어두었습니다.
-    imgUrls: ['111', '222', '333'],
-  };
-
   const data = {
     category: 1,
     place: '홍대 유유기지',
@@ -39,12 +34,13 @@ function Detail() {
         'hdmi-screen': true,
       },
     ],
-    location: '인천 연수구 아트센터로 168번길 100', // default: 도로명주소
+    imgUrls: ['111', '222', '333'],
+    location: '서울 성동구 왕십리로 223 동우빌딩 2층 캐치카페 한양대', // default: 도로명주소
   };
 
   return (
     <Layout right={login}>
-      <ImageCarousel imgUrls={imageData.imgUrls} />
+      <ImageCarousel imgUrls={data.imgUrls} />
       <PlaceInfo
         category={data.category}
         place={data.place}
@@ -57,6 +53,7 @@ function Detail() {
         introduce={data.introduce}
         information={data.information}
         maxPeopleCount={data.count}
+        location={data.location}
       />
     </Layout>
   );
