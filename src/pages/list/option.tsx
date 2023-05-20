@@ -10,7 +10,7 @@ import Calendar from '@/components/list/Calendar';
 function Option() {
   const router = useRouter();
   const title = router.query.title as string;
-  const { date, person, formatDate, modifyPersonCount } = useReservationForm();
+  const { person, formatDate, modifyPersonCount } = useReservationForm();
 
   return (
     <Layout title={`${title}역`} right={profile}>

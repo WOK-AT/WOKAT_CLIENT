@@ -41,10 +41,17 @@ export const useReservationForm = () => {
     setStorageItem('person', person);
   };
 
-  const getToday = () => {
-    const today = new Date();
-    const newDate = formatDate(today).join('-');
-    setDate(newDate);
+  const setInitialDate = () => {
+    const item = sessionStorage.getItem('date');
+    const date = item ? JSON.parse(item) : new Date();
+    if (date instanceof Date) {
+      const newDate = formatDate(date).join('-');
+      setDate(newDate);
+    } else {
+      const { year, month, day } = date;
+      const newDate = formatDate(new Date(year, month - 1, day)).join('-');
+      setDate(newDate);
+    }
   };
 
   const setInitialPersonCount = () => {
@@ -57,7 +64,7 @@ export const useReservationForm = () => {
       window.onpopstate = savePersonCount;
     }
     setInitialPersonCount();
-    getToday();
+    setInitialDate();
   }, []);
 
   useEffect(() => {

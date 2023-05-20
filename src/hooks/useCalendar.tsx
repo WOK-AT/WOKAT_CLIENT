@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useReservationForm } from './useReservationForm';
 
 interface DateType {
   year: number;
@@ -16,13 +15,17 @@ const initialDate = {
 export const useCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<DateType>(initialDate);
   const [currentDate, setCurrentDate] = useState<DateType>(initialDate);
-  const { getCurrentDate } = useReservationForm();
 
   useEffect(() => {
-    const [year, month, day] = getCurrentDate(new Date(2023, 4, 1));
-    setSelectedDate({ year, month, day });
-    setCurrentDate({ year, month, day });
+    if (typeof window !== 'undefined') {
+      window.onpopstate = saveSelectedDate;
+    }
+    setInitialSelectedDate();
   }, []);
+
+  useEffect(() => {
+    window.onpopstate = saveSelectedDate;
+  }, [selectedDate]);
 
   const onChangeMonth = (direction: string) => {
     switch (direction) {
@@ -63,8 +66,24 @@ export const useCalendar = () => {
   const selectDate = (e: React.MouseEvent) => {
     if (e.target instanceof HTMLElement) {
       const target = e.target.closest('td') as HTMLTableCellElement;
-      onChangeMonth(target.id);
-      setSelectedDate({ ...selectedDate, day: Number(target.innerText) });
+      const { id } = target;
+      switch (id) {
+        case 'prev':
+          setSelectedDate({
+            ...getPrevDate(currentDate),
+            day: Number(target.innerText),
+          });
+          break;
+        case 'current':
+          setSelectedDate({ ...currentDate, day: Number(target.innerText) });
+          break;
+        case 'next':
+          setSelectedDate({
+            ...getNextDate(currentDate),
+            day: Number(target.innerText),
+          });
+          break;
+      }
     }
   };
 
@@ -79,11 +98,7 @@ export const useCalendar = () => {
   };
 
   const renderCalendarDates = () => {
-    const {
-      year: currentYear,
-      month: currentMonth,
-      day: currentDay,
-    } = currentDate;
+    const { year: currentYear, month: currentMonth } = currentDate;
     const { lastDay: daysInMonth, firstDayOfWeek } = getMonthTotalDays(
       currentYear,
       currentMonth,
@@ -106,13 +121,20 @@ export const useCalendar = () => {
           rowCells.push(
             <td
               key={j}
-              className={`text-GRAY_300 ${
+              id="prev"
+              style={
                 activate({
                   year: prev.year,
                   month: prev.month,
                   day: prevDays,
-                }) && 'h-[42px] w-[42px] rounded-full bg-BLUE_600 text-white'
-              }`}
+                })
+                  ? {
+                      borderRadius: '50%',
+                      backgroundColor: '#0066FF',
+                      color: '#fff',
+                    }
+                  : { height: '47px', color: '#9FAABA' }
+              }
             >
               {prevDays++}
             </td>,
@@ -121,13 +143,20 @@ export const useCalendar = () => {
           rowCells.push(
             <td
               key={j}
-              className={`text-GRAY_300 ${
+              id="next"
+              style={
                 activate({
                   year: next.year,
                   month: next.month,
                   day: nextDays,
-                }) && 'h-[42px] w-[42px] rounded-full bg-BLUE_600 text-white'
-              }`}
+                })
+                  ? {
+                      borderRadius: '50%',
+                      backgroundColor: '#0066FF',
+                      color: '#fff',
+                    }
+                  : { height: '47px', color: '#9FAABA' }
+              }
             >
               {nextDays++}
             </td>,
@@ -136,13 +165,20 @@ export const useCalendar = () => {
           rowCells.push(
             <td
               key={j}
-              className={`text-GRAY_800 ${
+              id="current"
+              style={
                 activate({
                   year: currentYear,
                   month: currentMonth,
                   day: tableDataCellDay,
-                }) && 'h-[42px] w-[42px] rounded-full bg-BLUE_600 text-white'
-              }`}
+                })
+                  ? {
+                      borderRadius: '50%',
+                      backgroundColor: '#0066FF',
+                      color: '#fff',
+                    }
+                  : { height: '47px', color: '#364659' }
+              }
             >
               {tableDataCellDay++}
             </td>,
@@ -158,5 +194,16 @@ export const useCalendar = () => {
     return calendarRows;
   };
 
-  return { selectedDate, currentDate, renderCalendarDates, onChangeMonth };
+  const saveSelectedDate = () => {
+    sessionStorage.setItem('date', JSON.stringify(selectedDate));
+  };
+
+  const setInitialSelectedDate = () => {
+    const item = sessionStorage.getItem('date');
+    const date = item ? JSON.parse(item) : new Date();
+    setSelectedDate(date);
+    setCurrentDate(date);
+  };
+
+  return { currentDate, renderCalendarDates, onChangeMonth };
 };

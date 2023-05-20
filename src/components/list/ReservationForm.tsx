@@ -19,7 +19,7 @@ function ReservationForm() {
     }
   };
 
-  const routeToCalendarPage = () => {
+  const routeToOptionSelectPage = () => {
     const title = query.title as string | undefined;
     if (typeof title === 'undefined') return;
 
@@ -34,7 +34,7 @@ function ReservationForm() {
     const target = event.target as HTMLImageElement;
     if (target.closest('button') === null) return;
     if (resetButtonClicked(target)) return;
-    routeToCalendarPage();
+    routeToOptionSelectPage();
   };
 
   return (

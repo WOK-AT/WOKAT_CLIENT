@@ -6,40 +6,44 @@ import { useCalendar } from '@/hooks/useCalendar';
 const dayList = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 function Calendar() {
-  const { selectedDate, currentDate, renderCalendarDates, onChangeMonth } =
-    useCalendar();
-  const { year, month, day } = currentDate;
+  const { currentDate, renderCalendarDates, onChangeMonth } = useCalendar();
+  const { year, month } = currentDate;
   const calendarRows = renderCalendarDates();
 
+  const changeMonth = (e: React.MouseEvent) => {
+    if (e.target instanceof HTMLElement) {
+      const target = e.target.closest('button') as HTMLButtonElement;
+      if (!target) return;
+      onChangeMonth(target.id);
+    }
+  };
+
   return (
-    <div>
+    <div className="mb-5 w-full flex-col items-center justify-center border-b-2 border-b-GRAY_100 pb-[18px]">
       <section
-        className="flex"
-        onClick={(e: React.MouseEvent) => {
-          if (e.target instanceof HTMLElement) {
-            const target = e.target.closest('button') as HTMLButtonElement;
-            onChangeMonth(target.id);
-          }
-        }}
+        className="flex w-full items-center justify-center pb-[21px] pt-5"
+        onClick={changeMonth}
       >
         <button id="prev">
           <Image src={arrow_left} alt="prev" />
         </button>
-        <h1>{`${year}년 ${month}월`}</h1>
+        <h1 className="mx-2 flex w-[120px] justify-center font-system2_bold text-system2_bold text-GRAY_900">{`${year}년 ${month}월`}</h1>
         <button id="next">
           <Image src={arrow_right} alt="next" />
         </button>
       </section>
 
-      <table>
+      <table className="flex-col items-center justify-center w-full text-center">
         <thead>
-          <tr>
+          <tr className="font-system4_medium text-system4_medium text-GRAY_800">
             {dayList.map((day, index) => (
               <th key={index}>{day}</th>
             ))}
           </tr>
         </thead>
-        <tbody>{calendarRows}</tbody>
+        <tbody className="h-[47px] font-system4 text-system4 text-GRAY_800">
+          {calendarRows}
+        </tbody>
       </table>
     </div>
   );
