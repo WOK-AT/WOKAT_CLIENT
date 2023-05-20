@@ -1,4 +1,5 @@
 import Layout from '@/components/common/Layout';
+import Map from '@/components/detail/location/Map';
 import { useRouter } from 'next/router';
 
 function Location() {
@@ -6,7 +7,7 @@ function Location() {
 
   return (
     <Layout>
-      <section className="bg-BLUE_100">지도</section>
+      <Map location={router.query.location} />
       <article className="fixed bottom-0 z-10 -ml-4 h-[198px] w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]">
         <h1 className="mt-[14px] font-system3_bold text-system3_bold text-GRAY_800">
           {router.query.title}
@@ -26,6 +27,9 @@ function Location() {
         <button
           type="button"
           className="mt-[20px] flex h-[52px] w-full items-center justify-center rounded-[38px] bg-BLUE_50 font-system4_bold text-system4_bold text-BLUE_500"
+          onClick={() =>
+            window.open(`http://map.naver.com/?query=${router.query.location}`)
+          }
         >
           네이버 지도로 길찾기
         </button>

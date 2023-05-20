@@ -9,15 +9,14 @@ import Image from 'next/image';
 import Map from './Map';
 
 interface PlaceLocationProps {
+  place: string;
   location: string;
 }
 
-function PlaceLocation({ location }: PlaceLocationProps) {
+function PlaceLocation({ place, location }: PlaceLocationProps) {
   const router = useRouter();
   const copyLocation = async () => {
-    await navigator.clipboard.writeText(location).catch((error) => {
-      console.error(error);
-    });
+    await navigator.clipboard.writeText(location);
   };
 
   return (
@@ -29,8 +28,8 @@ function PlaceLocation({ location }: PlaceLocationProps) {
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
-              title: '홍대 우유기지',
-              location: '인천 연수구 아트센터로 168번길 100',
+              title: place,
+              location: location,
             },
           }}
         >
