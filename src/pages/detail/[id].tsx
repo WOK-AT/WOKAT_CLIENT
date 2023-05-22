@@ -1,7 +1,7 @@
 import Layout from '@/components/common/Layout';
 import login from '@/assets/icons/login.svg';
-import PlaceInfo from '@/components/detail/PlaceInfo.tsx';
-import ImageCarousel from '@/components/detail/ImageCarousel';
+import PlaceInfo from '@/components/detail/placeInfo';
+import ImageCarousel from '@/components/detail/imageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 
 function Detail() {
