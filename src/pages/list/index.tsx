@@ -60,6 +60,12 @@ const dummy = [
   },
 ];
 
+const initialDate = {
+  year: new Date().getFullYear(),
+  month: new Date().getMonth() + 1,
+  day: new Date().getDate(),
+};
+
 function List() {
   const router = useRouter();
   const title = router.query.title as string;
@@ -71,8 +77,8 @@ function List() {
       <Layout title={`${title}역`} right={profile}>
         <FAB />
         <Navigation />
-        <ListFilter />
         {navType === '무료 회의룸' && <ReservationForm />}
+        <ListFilter />
         {placeList.map(
           ({ imageUrl, title, distance, count, hashtags }, index) => (
             // TODO : index -> id로 변경

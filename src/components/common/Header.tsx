@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  const { title, right } = props;
+  const { title = '', right } = props;
   const router = useRouter();
 
   return (
@@ -20,7 +20,7 @@ function Header(props: HeaderProps) {
 
       {title ? (
         <h1 className="font-system2_bold text-system2_bold text-BLUE_600">
-          {title}
+          {title || ''}
         </h1>
       ) : (
         <div className="relative h-[13px] w-[105px]">
