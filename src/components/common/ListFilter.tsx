@@ -1,8 +1,7 @@
 import { useFilter } from '@/hooks/useFilter';
 import check from '@/assets/icons/check.svg';
 import Image from 'next/image';
-import Modal, { ModalContext } from './Modal';
-import { useContext } from 'react';
+import Modal from './Modal';
 
 const filterOptions = ['거리 가까운 순', '인기 많은 순'];
 
@@ -21,7 +20,9 @@ function ListFilter() {
 
   return (
     <Modal onChange={changeOption}>
-      <Modal.Trigger as={<ListFilterTrigger currentOption={currentOption} />} />
+      <Modal.Trigger
+        asChild={<ListFilterTrigger currentOption={currentOption} />}
+      />
       <Modal.Menu>
         <h1 className="mb-[10px] font-system3_bold text-system3_bold text-GRAY_900">
           {currentOption}
@@ -30,7 +31,7 @@ function ListFilter() {
           <Modal.Contents
             key={option}
             value={option}
-            as={
+            asChild={
               <ListFilterContent
                 content={option}
                 currentOption={currentOption}
