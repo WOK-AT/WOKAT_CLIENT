@@ -116,7 +116,7 @@ export const useOption = () => {
     const { year, month, day } = date;
 
     return (
-      selectedDate.year === year &&
+      selectedDate?.year === year &&
       selectedDate.month === month &&
       selectedDate.day === day
     );

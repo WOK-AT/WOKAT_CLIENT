@@ -26,13 +26,15 @@ function Calendar() {
         <button id="prev">
           <Image src={arrow_left} alt="prev" />
         </button>
-        <h1 className="mx-2 flex w-[120px] justify-center font-system2_bold text-system2_bold text-GRAY_900">{`${currentDate?.year}년 ${currentDate?.month}월`}</h1>
+        <h1 className="mx-2 flex w-[120px] justify-center font-system2_bold text-system2_bold text-GRAY_900">{`${
+          currentDate ? currentDate.year : new Date().getFullYear()
+        }년 ${currentDate ? currentDate.month : new Date().getMonth()+1}월`}</h1>
         <button id="next">
           <Image src={arrow_right} alt="next" />
         </button>
       </section>
 
-      <table className="w-full flex-col items-center justify-center text-center">
+      <table className="flex-col items-center justify-center w-full text-center">
         <thead>
           <tr className="font-system4_medium text-system4_medium text-GRAY_800">
             {dayList.map((day, index) => (

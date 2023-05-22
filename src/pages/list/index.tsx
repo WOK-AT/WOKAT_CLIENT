@@ -65,12 +65,6 @@ const dummy = [
 
 const RESERVATION_MESSAGE = '무료 회의룸은 예약이 필요한 공간입니다.';
 
-const initialDate = {
-  year: new Date().getFullYear(),
-  month: new Date().getMonth() + 1,
-  day: new Date().getDate(),
-};
-
 function List() {
   const router = useRouter();
   const title = router.query.title as string;
