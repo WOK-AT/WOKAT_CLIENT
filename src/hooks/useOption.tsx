@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { COLOR } from '@/styles/color';
 import { getSessionStorageItem, setSessionStorageItem } from '@/utils/storage';
-import useNavigation from './useNavigation';
 
 export interface DateType {
   year: number;
@@ -29,7 +28,6 @@ export const useOption = () => {
   const [selectedDate, setSelectedDate] = useState<DateType | null>(null); // 캘린더에서 선택한 날짜
   const [currentDate, setCurrentDate] = useState<DateType | null>(null); // 현재 캘린더 날짜
   const [headCount, setHeadCount] = useState(0); // 인원수
-  const { switchNavType } = useNavigation();
 
   const modifyHeadCount = (operator: Operator) => {
     switch (operator) {
@@ -216,7 +214,6 @@ export const useOption = () => {
   useEffect(() => {
     setInitialSelectedDate();
     setInitialHeadCount();
-    switchNavType('무료 회의룸');
   }, []);
 
   useEffect(() => {

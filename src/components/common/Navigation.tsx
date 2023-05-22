@@ -1,16 +1,8 @@
-import { createContext, useContext } from 'react';
+import { NavigationContext } from '@/context/NavigationContext';
 import { NavType } from '@/hooks/useNavigation';
+import { useContext } from 'react';
 
 const NAV_TYPE: NavType[] = ['무료 공간', '무료 회의룸', '카페'];
-interface NavigationContext {
-  navType: string;
-  switchNavType: (args: NavType) => void;
-}
-
-export const NavigationContext = createContext({
-  navType: '무료 공간',
-  switchNavType: (args: NavType) => {},
-});
 
 function Navigation() {
   const { navType, switchNavType } = useContext(NavigationContext);
