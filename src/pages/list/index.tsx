@@ -6,6 +6,7 @@ import profile from '@/assets/icons/profile.svg';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
+import info from '@/assets/icons/info.svg';
 import testImage from '@/assets/images/main_background.svg';
 import FAB from '@/components/list/FAB';
 import ListFilter from '@/components/common/ListFilter';
@@ -13,6 +14,8 @@ import Navigation, { NavigationContext } from '@/components/common/Navigation';
 import Link from 'next/link';
 import ReservationForm from '@/components/list/ReservationForm';
 import useNavigation from '@/hooks/useNavigation';
+import { useOption } from '@/hooks/useOption';
+import { COLOR } from '@/styles/color';
 
 interface PlaceListType {
   imageUrl: string;
@@ -60,6 +63,8 @@ const dummy = [
   },
 ];
 
+const RESERVATION_MESSAGE = '무료 회의룸은 예약이 필요한 공간입니다.';
+
 const initialDate = {
   year: new Date().getFullYear(),
   month: new Date().getMonth() + 1,
@@ -71,6 +76,7 @@ function List() {
   const title = router.query.title as string;
   const [placeList, setPlaceList] = useState<PlaceListType[]>(dummy);
   const { navType, switchNavType } = useNavigation();
+  const { headCount } = useOption();
 
   return (
     <NavigationContext.Provider value={{ navType, switchNavType }}>
@@ -78,7 +84,29 @@ function List() {
         <FAB />
         <Navigation />
         {navType === '무료 회의룸' && <ReservationForm />}
-        <ListFilter />
+
+        <section className="flex justify-end">
+          {navType === '무료 회의룸' && (
+            <div
+              style={{
+                color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+              }}
+              className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
+            >
+              <Image
+                src={info}
+                alt="reservation check message icon"
+                style={{
+                  fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+                }}
+                className="mr-1"
+              />
+              {RESERVATION_MESSAGE}
+            </div>
+          )}
+          <ListFilter />
+        </section>
+
         {placeList.map(
           ({ imageUrl, title, distance, count, hashtags }, index) => (
             // TODO : index -> id로 변경
