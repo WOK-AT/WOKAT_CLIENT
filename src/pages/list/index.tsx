@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Layout from '@/components/common/Layout';
 import { useRouter } from 'next/router';
@@ -16,6 +16,7 @@ import ReservationForm from '@/components/list/ReservationForm';
 import useNavigation from '@/hooks/useNavigation';
 import { useOption } from '@/hooks/useOption';
 import { COLOR } from '@/styles/color';
+import { OptionContext, OptionContextProvider } from '@/context/OptionContext';
 
 interface PlaceListType {
   imageUrl: string;
@@ -70,104 +71,110 @@ function List() {
   const title = router.query.title as string;
   const [placeList, setPlaceList] = useState<PlaceListType[]>(dummy);
   const { navType, switchNavType } = useNavigation();
-  const { headCount } = useOption();
 
   return (
     <NavigationContext.Provider value={{ navType, switchNavType }}>
-      <Layout title={`${title}역`} right={profile}>
-        <FAB />
-        <Navigation />
-        {navType === '무료 회의룸' && <ReservationForm />}
+      <OptionContextProvider>
+        <Layout title={`${title}역`} right={profile}>
+          <FAB />
+          <Navigation />
+          {navType === '무료 회의룸' && <ReservationForm />}
 
-        <section className="flex justify-end">
-          {navType === '무료 회의룸' && (
-            <div
-              style={{
-                color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-              }}
-              className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
-            >
-              <Image
-                src={info}
-                alt="reservation check message icon"
-                style={{
-                  fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-                }}
-                className="mr-1"
-              />
-              {RESERVATION_MESSAGE}
-            </div>
-          )}
-          <ListFilter />
-        </section>
-
-        {placeList.map(
-          ({ imageUrl, title, distance, count, hashtags }, index) => (
-            // TODO : index -> id로 변경
-            <Link
-              href={`detail/${index}`}
-              key={index}
-              className="h-30 mb-4 flex w-full border-b-2 border-GRAY_100 pb-4 scrollbar-hide"
-            >
-              <div className="relative">
-                <Image
-                  src={imageUrl || testImage}
-                  alt="place image"
-                  className="h-[120px] w-[100px] overflow-hidden rounded border border-black max-[360px]:h-[100px] max-[360px]:w-[80px]"
-                />
-                <Image
-                  src={bookmark}
-                  alt="bookmark button"
-                  className="absolute bottom-2 right-2"
-                />
-              </div>
-              <div className="ml-3 flex flex-col items-center justify-between">
-                <div className="flex-col">
-                  <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
-                    {title}
-                  </h1>
-                  <div className="mb-1 flex">
+          <section className="flex justify-end">
+            <OptionContext.Consumer>
+              {({ headCount }) =>
+                navType === '무료 회의룸' && (
+                  <div
+                    style={{
+                      color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+                    }}
+                    className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
+                  >
                     <Image
-                      src={list_location}
-                      alt="location icon"
-                      width={20}
-                      height={20}
-                    />
-                    <p className=" font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
-                      {distance}
-                    </p>
-                  </div>
-                  <div className="flex">
-                    <Image
-                      src={list_profile}
-                      alt="profile icon"
-                      width={20}
-                      height={20}
-                    />
-                    <p className="font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
-                      {count}
-                    </p>
-                  </div>
-                </div>
-                <ul className="flex">
-                  {hashtags.map((tag, index) => (
-                    <li
-                      key={index}
-                      className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 font-system6 text-system6 text-BLUE_600 max-[360px]:px-1 "
+                      src={info}
+                      alt="reservation check message icon"
                       style={{
-                        marginRight: index === hashtags.length - 1 ? 0 : '8px',
+                        fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
                       }}
-                    >
-                      <span className="mr-[3px]">#</span>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Link>
-          ),
-        )}
-      </Layout>
+                      className="mr-1"
+                    />
+                    {RESERVATION_MESSAGE}
+                  </div>
+                )
+              }
+            </OptionContext.Consumer>
+            <ListFilter />
+          </section>
+
+          {placeList.map(
+            ({ imageUrl, title, distance, count, hashtags }, index) => (
+              // TODO : index -> id로 변경
+              <Link
+                href={`detail/${index}`}
+                key={index}
+                className="h-30 mb-4 flex w-full border-b-2 border-GRAY_100 pb-4 scrollbar-hide"
+              >
+                <div className="relative">
+                  <Image
+                    src={imageUrl || testImage}
+                    alt="place image"
+                    className="h-[120px] w-[100px] overflow-hidden rounded border border-black max-[360px]:h-[100px] max-[360px]:w-[80px]"
+                  />
+                  <Image
+                    src={bookmark}
+                    alt="bookmark button"
+                    className="absolute bottom-2 right-2"
+                  />
+                </div>
+                <div className="ml-3 flex flex-col items-center justify-between">
+                  <div className="flex-col">
+                    <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
+                      {title}
+                    </h1>
+                    <div className="mb-1 flex">
+                      <Image
+                        src={list_location}
+                        alt="location icon"
+                        width={20}
+                        height={20}
+                      />
+                      <p className=" font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
+                        {distance}
+                      </p>
+                    </div>
+                    <div className="flex">
+                      <Image
+                        src={list_profile}
+                        alt="profile icon"
+                        width={20}
+                        height={20}
+                      />
+                      <p className="font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
+                        {count}
+                      </p>
+                    </div>
+                  </div>
+                  <ul className="flex">
+                    {hashtags.map((tag, index) => (
+                      <li
+                        key={index}
+                        className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 font-system6 text-system6 text-BLUE_600 max-[360px]:px-1 "
+                        style={{
+                          marginRight:
+                            index === hashtags.length - 1 ? 0 : '8px',
+                        }}
+                      >
+                        <span className="mr-[3px]">#</span>
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Link>
+            ),
+          )}
+        </Layout>
+      </OptionContextProvider>
     </NavigationContext.Provider>
   );
 }

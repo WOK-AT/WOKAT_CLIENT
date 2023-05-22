@@ -4,6 +4,8 @@ import reset from '@/assets/icons/delete_gray.svg';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useOption } from '@/hooks/useOption';
+import { OptionContext } from '@/context/OptionContext';
+import { useContext, useEffect } from 'react';
 export interface DateType {
   year: number;
   month: number;
@@ -19,7 +21,7 @@ const initialDate = {
 function ReservationForm() {
   const router = useRouter();
   const { pathname, query } = router;
-  const { currentDate, headCount, modifyHeadCount } = useOption();
+  const { headCount, modifyHeadCount } = useContext(OptionContext);
 
   const formatDate = (date: DateType) => {
     const { year, month, day } = date;
@@ -27,15 +29,6 @@ function ReservationForm() {
     const formatted_month = String(month).padStart(2, '0');
     const formatted_day = String(day).padStart(2, '0');
     return [formatted_year, formatted_month, formatted_day];
-  };
-
-  const resetButtonClicked = (target: HTMLImageElement) => {
-    if (target.id === 'reset') {
-      modifyHeadCount('reset');
-      return true;
-    } else {
-      return false;
-    }
   };
 
   const routeToOptionSelectPage = () => {
@@ -52,35 +45,44 @@ function ReservationForm() {
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLImageElement;
     if (target.closest('button') === null) return;
-    if (resetButtonClicked(target)) return;
+    if (target.id === 'reset') return;
     routeToOptionSelectPage();
   };
 
   return (
-    <div className="mb-2.5 flex gap-2" onClick={onClick}>
-      <button className="flex w-full items-center rounded-lg border border-GRAY_200 py-2 pl-2 outline-none">
-        <Image src={calendar} alt="calendar icon" className="mr-2" />
-        <p className="font-system5 text-system5 text-GRAY_900">
-          {formatDate(currentDate || initialDate).join('-')}
-        </p>
-      </button>
+    <OptionContext.Consumer>
+      {({ currentDate }) => (
+        <div className="mb-2.5 flex gap-2" onClick={onClick}>
+          <button className="flex w-full items-center rounded-lg border border-GRAY_200 py-2 pl-2 outline-none">
+            <Image src={calendar} alt="calendar icon" className="mr-2" />
+            <p className="font-system5 text-system5 text-GRAY_900">
+              {formatDate(currentDate || initialDate).join('-')}
+            </p>
+          </button>
 
-      <button className="flex w-full items-center rounded-lg border border-GRAY_200 p-2 outline-none">
-        <Image src={person_icon} alt="person icon" className="mr-2" />
-        <div className="flex w-full justify-between">
-          <p
-            className={`text-system5 text-GRAY_900 ${
-              headCount ? 'font-system5_bold' : 'font-system5'
-            }`}
-          >
-            {headCount || '인원'}
-          </p>
-          {headCount > 0 && (
-            <Image id="reset" src={reset} alt="reset person icon" />
-          )}
+          <button className="flex w-full items-center rounded-lg border border-GRAY_200 p-2 outline-none">
+            <Image src={person_icon} alt="person icon" className="mr-2" />
+            <div className="flex w-full justify-between">
+              <p
+                className={`text-system5 text-GRAY_900 ${
+                  headCount ? 'font-system5_bold' : 'font-system5'
+                }`}
+              >
+                {headCount || '인원'}
+              </p>
+              {headCount > 0 && (
+                <Image
+                  id="reset"
+                  src={reset}
+                  alt="reset person icon"
+                  onClick={() => modifyHeadCount('reset')}
+                />
+              )}
+            </div>
+          </button>
         </div>
-      </button>
-    </div>
+      )}
+    </OptionContext.Consumer>
   );
 }
 
