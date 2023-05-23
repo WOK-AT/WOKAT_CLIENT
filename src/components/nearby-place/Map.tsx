@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import centerBtn from '@/assets/icons/center_button.svg';
+import useLocation from '@/hooks/useLocation';
 
 declare global {
   interface Window {
@@ -35,7 +36,7 @@ const dummy = [
 function Map() {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
-  const [cposition, setPosition] = useState();
+  const { userLocation, stationLocation } = useLocation();
 
   //지도 로드하기
   useEffect(() => {
@@ -49,53 +50,21 @@ function Map() {
   //지도 로드 후 근처 지하철역 찾기
   useEffect(() => {
     if (!mapLoaded) return;
-
     window.kakao.maps.load(async () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          const lat = position.coords.latitude; // 위도
-          const lon = position.coords.longitude; // 경도
-          const locPosition = new window.kakao.maps.LatLng(lat, lon);
-
-          const mapContainer = document.getElementById('map');
-          const mapOption = {
-            center: locPosition, // 지도의 중심좌표
-            level: 3, // 지도의 확대 레벨
-          };
-          const map = await new window.kakao.maps.Map(mapContainer, mapOption);
-          setMap(map);
-
-          const places = new window.kakao.maps.services.Places();
-
-          const callback = (result: any, status: any) => {
-            if (status === window.kakao.maps.services.Status.OK) {
-              setPosition(
-                new window.kakao.maps.LatLng(result[0].y, result[0].x),
-              );
-            }
-          };
-          const options = {
-            location: locPosition,
-            radius: 10000,
-            sort: window.kakao.maps.services.SortBy.DISTANCE,
-            size: 1,
-          };
-
-          await places.keywordSearch('지하철역', callback, options);
-          if (cmap) {
-            cmap.setCenter(cposition);
-          }
-        });
-      } else {
-        alert('위치 정보를 받아오는데 실패했습니다');
-      }
+      const mapContainer = document.getElementById('map');
+      const mapOption = {
+        center: userLocation, // 지도의 중심좌표
+        level: 3, // 지도의 확대 레벨
+      };
+      const map = await new window.kakao.maps.Map(mapContainer, mapOption);
+      setMap(map);
     });
   }, [mapLoaded]);
 
   //근처 지하철역으로 중심좌표 이동 및 마커 표시
   useEffect(() => {
     if (cmap) {
-      cmap.setCenter(cposition);
+      cmap.setCenter(stationLocation);
 
       //위치마다 마커를 생성합니다
       for (let i = 0; i < dummy.length; i++) {
@@ -118,7 +87,7 @@ function Map() {
                 result[0].x,
               );
 
-              const marker = new window.kakao.maps.Marker({
+              new window.kakao.maps.Marker({
                 map: cmap,
                 position: coords,
                 title: dummy[i].place,
@@ -129,11 +98,11 @@ function Map() {
         );
       }
     }
-  }, [cposition]);
+  }, [stationLocation]);
 
   const onCenter = () => {
     if (cmap) {
-      cmap.setCenter(cposition);
+      cmap.setCenter(stationLocation);
     }
   };
 
