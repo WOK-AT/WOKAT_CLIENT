@@ -43,15 +43,17 @@ function Home() {
               지하철역을 검색하세요.
             </Link>
 
-            <button
-              className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
+            <Link href="/nearby-place">
+              <button
+                className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            font-system4_bold text-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
-            >
-              <div className="relative mr-2 h-6 w-6">
-                <Image src={location} alt="location" fill />
-              </div>
-              내 주변 장소 찾기
-            </button>
+              >
+                <div className="relative mr-2 h-6 w-6">
+                  <Image src={location} alt="location" fill />
+                </div>
+                내 주변 장소 찾기
+              </button>
+            </Link>
           </section>
         </div>
       </div>

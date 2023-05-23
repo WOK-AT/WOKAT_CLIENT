@@ -7,10 +7,10 @@ import delete_gray from '@/assets/icons/delete_gray.svg';
 import recent from '@/assets/icons/recent.svg';
 import Image from 'next/image';
 import subway_info from '@/data/subway_station_info.json';
-import { getStorageItem, setStorageItem } from '@/utils/localStorage';
 import { useRouter } from 'next/router';
 import { SubwayType } from '@/types/search';
 import SearchList from '@/components/search/SearchList';
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
 function Search() {
   const { input, onChange, onReset } = useInput();
@@ -34,13 +34,13 @@ function Search() {
 
   const deleteSearch = (target: SubwayType) => {
     const updatedRecentSearch = recentSearch.filter((v) => v !== target);
-    setStorageItem('recent', updatedRecentSearch);
+    setLocalStorageItem('recent', updatedRecentSearch);
     setRecentSearch(updatedRecentSearch);
   };
 
   const resetSearch = () => {
     isSearching ? setSearchResult([]) : setRecentSearch([]);
-    setStorageItem('recent', []);
+    setLocalStorageItem('recent', []);
   };
 
   const addRecentSearch = (target: SubwayType) => {
@@ -51,7 +51,7 @@ function Search() {
         ({ station_nm }) => target.station_nm !== station_nm,
       ),
     ];
-    setStorageItem('recent', updatedRecentSearch);
+    setLocalStorageItem('recent', updatedRecentSearch);
   };
 
   const onStationClickRoute = (station: SubwayType) => {
@@ -63,7 +63,7 @@ function Search() {
   };
 
   useEffect(() => {
-    const storage = getStorageItem<SubwayType[]>('recent', []);
+    const storage = getLocalStorageItem<SubwayType[]>('recent', []);
     setRecentSearch(storage);
   }, []);
 
@@ -74,7 +74,7 @@ function Search() {
 
   return (
     <Layout>
-      <div className="flex flex-col mt-3">
+      <div className="mt-3 flex flex-col">
         <section className="relative mb-[18px] flex items-center justify-center ">
           <input
             type="text"
@@ -102,7 +102,7 @@ function Search() {
         </section>
 
         <section>
-          <nav className="flex items-center justify-between mb-1">
+          <nav className="mb-1 flex items-center justify-between">
             <h1 className="text-GRAY-900 font-system3_bold text-system3_bold">
               {isSearching ? '검색 결과' : '최근 검색'}
             </h1>
