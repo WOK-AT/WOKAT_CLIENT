@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import centerButton from '@/assets/icons/center_button.svg';
+import Image from 'next/image';
 
 declare global {
   interface Window {
@@ -17,6 +19,7 @@ interface MapProps {
 
 function Map({ location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
+  const [cmap, setMap]: any = useState();
 
   //지도 로드하기
   useEffect(() => {
@@ -55,6 +58,7 @@ function Map({ location }: MapProps) {
               level: 3, // 지도의 확대 레벨
             };
             const map = new window.kakao.maps.Map(mapContainer, mapOption);
+            setMap(map);
 
             // 공간 정보 마커 표시
             const imageSize = new window.kakao.maps.Size(60, 60);
@@ -76,12 +80,35 @@ function Map({ location }: MapProps) {
     });
   }, [mapLoaded]);
 
+  const onCenter = () => {
+    if (cmap) {
+      window.kakao.maps.load(async () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude; // 위도
+            const lon = position.coords.longitude; // 경도
+            const locPosition = new window.kakao.maps.LatLng(lat, lon);
+
+            cmap.setCenter(locPosition);
+          });
+        }
+      });
+    }
+  };
+
   return (
-    <div className="relative h-[216px]  overflow-hidden rounded-t-[10px] ">
+    <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
       <article
         id="map"
         className="relative z-0 h-full w-full overflow-hidden "
       ></article>
+      <button
+        type="button"
+        className="z-1 absolute bottom-[250px] left-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
+        onClick={() => onCenter()}
+      >
+        <Image priority={true} src={centerButton} alt="center button" />
+      </button>
     </div>
   );
 }

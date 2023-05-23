@@ -9,6 +9,7 @@ import { OperationHours } from '@/types/operationHours';
 import { Information } from '@/types/information';
 
 interface PlaceDetailInfoProps {
+  place: string;
   category: number;
   introduce: string;
   information: Information[];
@@ -18,6 +19,7 @@ interface PlaceDetailInfoProps {
 }
 
 function PlaceDetailInfo({
+  place,
   category,
   introduce,
   information,
@@ -34,7 +36,7 @@ function PlaceDetailInfo({
         information={information}
         maxPeopleCount={maxPeopleCount}
       />
-      <PlaceLocation location={location} />
+      <PlaceLocation place={place} location={location} />
       {category === 1 && <BookingButton />}
     </main>
   );

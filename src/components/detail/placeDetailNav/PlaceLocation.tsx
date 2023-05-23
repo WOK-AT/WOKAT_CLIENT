@@ -1,26 +1,40 @@
 import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import placeLocation from '@/assets/icons/placeLocation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
 import Image from 'next/image';
 import Map from './Map';
+
 interface PlaceLocationProps {
+  place: string;
   location: string;
 }
 
-function PlaceLocation({ location }: PlaceLocationProps) {
+function PlaceLocation({ place, location }: PlaceLocationProps) {
+  const router = useRouter();
   const copyLocation = async () => {
-    await navigator.clipboard.writeText(location).catch((error) => {
-      console.error(error);
-    });
+    await navigator.clipboard.writeText(location);
   };
 
   return (
     <section id="nav-3" className="scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 h-[306px] rounded-[10px] 	border-[1px]">
-        <Map location={location} />
+        <Link
+          className="h-[300px] bg-BLUE_100"
+          href={{
+            pathname: `/detail/${router.query.id}/location`,
+            query: {
+              title: place,
+              location: location,
+            },
+          }}
+        >
+          <Map location={location} />
+        </Link>
         <p className="my-3 flex w-full justify-center font-system5_medium text-system5_medium text-GRAY_800">
           {location}
         </p>
