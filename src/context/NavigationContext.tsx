@@ -2,7 +2,7 @@ import useNavigation, { NavType } from '@/hooks/useNavigation';
 import { PropsWithChildren, createContext } from 'react';
 
 interface NavigationContext {
-  navType: string;
+  navType: NavType;
   switchNavType: (args: NavType) => void;
 }
 

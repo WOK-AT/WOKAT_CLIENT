@@ -16,12 +16,24 @@ const initialDate = {
 
 export type Operator = 'decrease' | 'increase' | 'reset';
 
-const selectedStyle = {
+const SELECTED_STYLE = {
   borderRadius: '50%',
   backgroundColor: COLOR.BLUE_600,
   color: '#fff',
   boxShadow: 'inset 1px 1px 1px rgba(255, 255, 255, 0.25)',
   filter: 'drop-shadow(4px 4px 20px rgba(0, 0, 0, 0.15))',
+};
+
+const DEFAULT_STYLE = {
+  prev: {
+    color: COLOR.GRAY_300,
+  },
+  next: {
+    color: COLOR.GRAY_300,
+  },
+  current: {
+    color: COLOR.GRAY_800,
+  },
 };
 
 export const useOption = () => {
@@ -120,13 +132,13 @@ export const useOption = () => {
     );
   };
 
-  const renderCalendarDates = () => {
+  const renderCalendarDates = (): JSX.Element => {
     if (!currentDate) return <></>;
     const { year: currentYear, month: currentMonth } = currentDate;
     const { lastDayOfMonth: totalDaysInMonth, firstDayOfMonth } =
       getMonthTotalDays(currentYear, currentMonth);
 
-    const calendarRows = []; // 행
+    const calendarRows: JSX.Element[] = []; // 행
     let tableDataCellDay = 1; // td의 innerText로 들어가는 날짜
     const prev = getPrevDate(currentDate); // 지난달 날짜 정보
     const next = getNextDate(currentDate); // 다음달 날짜 정보
@@ -138,56 +150,69 @@ export const useOption = () => {
       (firstDayOfMonth - 1);
     let nextDays = 1;
 
+    const getCellData = (
+      date: DateType,
+      id: string,
+      style: React.CSSProperties,
+    ): JSX.Element => {
+      return (
+        <td
+          key={`${date.year}-${date.month}-${date.day}`}
+          id={id}
+          style={style}
+          className="h-[47px]"
+        >
+          {date.day}
+        </td>
+      );
+    };
+
     while (tableDataCellDay <= totalDaysInMonth) {
-      const rowCells = [];
+      const rowCells: JSX.Element[] = [];
 
       for (let j = 0; j < 7; j++) {
-        let cellDate: DateType | null;
-        let cellId: string;
-        let cellStyle: React.CSSProperties;
+        let cellData: JSX.Element;
 
+        // 1
         if (tableDataCellDay === 1 && j < firstDayOfMonth) {
-          cellDate = {
+          const cellDate: DateType = {
             year: prev.year,
             month: prev.month,
             day: prevDays,
           };
-          cellId = 'prev';
-          cellStyle = activateSelectedDate(cellDate)
-            ? {
-                ...selectedStyle,
-              }
-            : { height: '47px', color: COLOR.GRAY_300 };
+          const cellId = 'prev';
+          const cellStyle = activateSelectedDate(cellDate)
+            ? SELECTED_STYLE
+            : DEFAULT_STYLE.prev;
+          cellData = getCellData(cellDate, cellId, cellStyle);
           prevDays++;
         } else if (tableDataCellDay > totalDaysInMonth) {
-          cellDate = {
+          const cellDate: DateType = {
             year: next.year,
             month: next.month,
             day: nextDays,
           };
-          cellId = 'next';
-          cellStyle = activateSelectedDate(cellDate)
-            ? selectedStyle
-            : { height: '47px', color: COLOR.GRAY_300 };
+          const cellId = 'next';
+          const cellStyle = activateSelectedDate(cellDate)
+            ? SELECTED_STYLE
+            : DEFAULT_STYLE.next;
+          cellData = getCellData(cellDate, cellId, cellStyle);
           nextDays++;
         } else {
-          cellDate = {
+          const cellDate: DateType = {
             year: currentYear,
             month: currentMonth,
             day: tableDataCellDay,
           };
-          cellId = 'current';
-          cellStyle = activateSelectedDate(cellDate)
-            ? selectedStyle
-            : { height: '47px', color: COLOR.GRAY_800 };
+          const cellId = 'current';
+          const cellStyle = activateSelectedDate(cellDate)
+            ? SELECTED_STYLE
+            : DEFAULT_STYLE.current;
+          cellData = getCellData(cellDate, cellId, cellStyle);
           tableDataCellDay++;
         }
 
-        rowCells.push(
-          <td key={j} id={cellId} style={cellStyle}>
-            {cellDate.day}
-          </td>,
-        );
+        rowCells.push(cellData);
       }
 
       calendarRows.push(
@@ -197,7 +222,7 @@ export const useOption = () => {
       );
     }
 
-    return calendarRows;
+    return <>{calendarRows}</>;
   };
 
   const setInitialSelectedDate = () => {

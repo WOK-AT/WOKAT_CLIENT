@@ -3,7 +3,7 @@ import arrow_right from '@/assets/icons/arrow_right.svg';
 import arrow_left from '@/assets/icons/arrow_left.svg';
 import { useOption } from '@/hooks/useOption';
 
-const dayList = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const DAY_LIST = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 function Calendar() {
   const { currentDate, renderCalendarDates, onChangeMonth } = useOption();
@@ -28,7 +28,9 @@ function Calendar() {
         </button>
         <h1 className="mx-2 flex w-[120px] justify-center font-system2_bold text-system2_bold text-GRAY_900">{`${
           currentDate ? currentDate.year : new Date().getFullYear()
-        }년 ${currentDate ? currentDate.month : new Date().getMonth()+1}월`}</h1>
+        }년 ${
+          currentDate ? currentDate.month : new Date().getMonth() + 1
+        }월`}</h1>
         <button id="next">
           <Image src={arrow_right} alt="next" />
         </button>
@@ -37,7 +39,7 @@ function Calendar() {
       <table className="flex-col items-center justify-center w-full text-center">
         <thead>
           <tr className="font-system4_medium text-system4_medium text-GRAY_800">
-            {dayList.map((day, index) => (
+            {DAY_LIST.map((day, index) => (
               <th key={index}>{day}</th>
             ))}
           </tr>
