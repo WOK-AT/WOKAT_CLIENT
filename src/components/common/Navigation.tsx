@@ -1,10 +1,11 @@
-import React from 'react';
-import useNavigation from '@/hooks/useNavigation';
+import { NavigationContext } from '@/context/NavigationContext';
+import { NavType } from '@/hooks/useNavigation';
+import { useContext } from 'react';
 
-const NAV_TYPE = ['무료 공간', '무료 회의룸', '카페'];
+const NAV_TYPE: NavType[] = ['무료 공간', '무료 회의룸', '카페'];
 
 function Navigation() {
-  const { navType, switchNavType } = useNavigation();
+  const { navType, switchNavType } = useContext(NavigationContext);
 
   return (
     <div className="my-[1.2rem] flex items-center justify-between rounded-[42px] bg-GRAY_50 px-[0.4rem] py-[0.4rem]">

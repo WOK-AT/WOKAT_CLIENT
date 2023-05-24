@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  const { title, right } = props;
+  const { title = '', right } = props;
   const router = useRouter();
 
   return (
