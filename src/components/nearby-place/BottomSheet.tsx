@@ -2,8 +2,8 @@ import React from 'react';
 import BottomSheetHeader from './BottomSheetHeader';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { motion } from 'framer-motion';
-import List from '@/pages/list';
-
+import PlaceList from '../list/PlaceList';
+import ListFilter from '../common/ListFilter';
 function BottomSheet() {
   const { sheet, content } = useBottomSheet();
   return (
@@ -12,8 +12,14 @@ function BottomSheet() {
       ref={sheet}
     >
       <BottomSheetHeader />
-      <div ref={content} className="overflow-auto md:overflow-scroll">
-        <List />
+      <div
+        ref={content}
+        className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
+      >
+        <div className="mx-4">
+          <ListFilter />
+          <PlaceList />
+        </div>
       </div>
     </motion.div>
   );

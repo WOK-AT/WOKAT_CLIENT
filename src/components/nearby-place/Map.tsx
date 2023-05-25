@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import centerBtn from '@/assets/icons/center_button.svg';
 
@@ -32,7 +32,12 @@ const dummy = [
   },
 ];
 
-function Map() {
+interface MapProps {
+  setStationName: Dispatch<SetStateAction<string>>;
+}
+
+function Map(props: MapProps) {
+  const { setStationName } = props;
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
@@ -72,6 +77,7 @@ function Map() {
               setPosition(
                 new window.kakao.maps.LatLng(result[0].y, result[0].x),
               );
+              setStationName(result[0].place_name.split(' ')[0]);
             }
           };
           const options = {
@@ -102,7 +108,7 @@ function Map() {
         const imageSize = new window.kakao.maps.Size(35, 35);
 
         const markerImage = new window.kakao.maps.MarkerImage(
-          'http://127.0.0.1:5500/src/assets/icons/marker.svg',
+          'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
           imageSize,
         );
         const geocoder = new window.kakao.maps.services.Geocoder();

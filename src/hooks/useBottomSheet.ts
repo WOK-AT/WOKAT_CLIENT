@@ -93,7 +93,7 @@ function useBottomSheet() {
           nextSheetY = MAX_Y;
         }
 
-        sheet.current!.style.setProperty(
+        sheet.current?.style.setProperty(
           'transform',
           `translateY(${nextSheetY - MAX_Y}px)`,
         );
@@ -124,7 +124,6 @@ function useBottomSheet() {
           }, 100);
         }
       }
-
       // metrics 초기화.
       metrics.current = {
         touchStart: {
