@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const MIN_Y = 60;
@@ -16,7 +16,14 @@ interface BottomSheetMetrics {
   isContentAreaTouched: boolean;
 }
 
-function useBottomSheet() {
+interface BottomSheetProps {
+  stationName: string;
+}
+
+function useBottomSheet(props: BottomSheetProps) {
+  const { stationName } = props;
+  const router = useRouter();
+  const [route, setRoute] = useState(false);
   const sheet = useRef<HTMLDivElement>(null);
 
   const content = useRef<HTMLDivElement>(null);
@@ -33,7 +40,14 @@ function useBottomSheet() {
     isContentAreaTouched: false,
   });
 
-  const router = useRouter();
+  const routeToListPage = () => {
+    if (route) {
+      router.push({
+        pathname: '/list',
+        query: { title: stationName.replace('역', '') },
+      });
+    }
+  };
 
   useEffect(() => {
     const canUserMoveBottomSheet = () => {
@@ -120,7 +134,7 @@ function useBottomSheet() {
             `translateY(${MIN_Y - MAX_Y}px)`,
           );
           setTimeout(() => {
-            router.push('/list');
+            setRoute(true);
           }, 100);
         }
       }
@@ -142,6 +156,10 @@ function useBottomSheet() {
     sheet.current!.addEventListener('touchmove', handleTouchMove);
     sheet.current!.addEventListener('touchend', handleTouchEnd);
   }, []);
+
+  useEffect(() => {
+    routeToListPage();
+  }, [route]);
 
   return { sheet, content };
 }
