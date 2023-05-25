@@ -18,7 +18,7 @@ function Calendar() {
   };
 
   return (
-    <div className="mb-5 w-full flex-col items-center justify-center border-b-2 border-b-GRAY_100 pb-[18px]">
+    <div className="mb-5  w-full flex-col items-center justify-center border-b-2 border-b-GRAY_100 pb-[18px]">
       <section
         className="flex w-full items-center justify-center pb-[21px] pt-5"
         onClick={changeMonth}
@@ -36,15 +36,15 @@ function Calendar() {
         </button>
       </section>
 
-      <table className="flex-col items-center justify-center w-full text-center">
-        <thead>
+      <table className="h-[338px] w-full text-center ">
+        <thead className="h-10">
           <tr className="font-system4_medium text-system4_medium text-GRAY_800">
             {DAY_LIST.map((day, index) => (
               <th key={index}>{day}</th>
             ))}
           </tr>
         </thead>
-        <tbody className="h-[47px] font-system4 text-system4 text-GRAY_800">
+        <tbody className="font-system4 text-system4 text-GRAY_800">
           {calendarRows}
         </tbody>
       </table>

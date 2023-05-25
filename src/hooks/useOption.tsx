@@ -21,7 +21,6 @@ const SELECTED_STYLE = {
   backgroundColor: COLOR.BLUE_600,
   color: '#fff',
   boxShadow: 'inset 1px 1px 1px rgba(255, 255, 255, 0.25)',
-  filter: 'drop-shadow(4px 4px 20px rgba(0, 0, 0, 0.15))',
 };
 
 const DEFAULT_STYLE = {
@@ -167,13 +166,12 @@ export const useOption = () => {
       );
     };
 
-    while (tableDataCellDay <= totalDaysInMonth) {
+    while (calendarRows.length < 6) {
       const rowCells: JSX.Element[] = [];
 
       for (let j = 0; j < 7; j++) {
         let cellData: JSX.Element;
 
-        // 1
         if (tableDataCellDay === 1 && j < firstDayOfMonth) {
           const cellDate: DateType = {
             year: prev.year,
@@ -216,7 +214,11 @@ export const useOption = () => {
       }
 
       calendarRows.push(
-        <tr key={tableDataCellDay} onClick={selectDate}>
+        <tr
+          key={calendarRows.length + 1}
+          onClick={selectDate}
+          className="h-[47.7px]"
+        >
           {rowCells}
         </tr>,
       );

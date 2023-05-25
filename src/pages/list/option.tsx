@@ -18,6 +18,13 @@ function Option() {
     <Layout title={`${title}역`} right={profile}>
       <Calendar />
       <HeadCount />
+
+      <button
+        onClick={() => router.back()}
+        className="mt-10 w-full rounded-full bg-BLUE_500 py-[18px] text-center font-system4_bold text-system4_bold text-white"
+      >
+        확인
+      </button>
     </Layout>
   );
 }
