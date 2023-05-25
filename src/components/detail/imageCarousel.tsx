@@ -21,7 +21,6 @@ function ImageCarousel({ imageURLs }: ImageCarouselProps) {
   return (
     <Slider className="-ml-4 w-screen" {...settings}>
       {imageURLs?.map((imageURL, index) => {
-        console.log(imageURL);
         return (
           <section key={index}>
             <p className="h-48 w-full bg-indigo-500">
