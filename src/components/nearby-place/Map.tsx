@@ -45,6 +45,7 @@ function Map(props: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
+  let selectedMarker: any = null;
 
   //지도 로드하기
   useEffect(() => {
@@ -126,11 +127,15 @@ function Map(props: MapProps) {
 
       //위치마다 마커를 생성합니다
       for (let i = 0; i < dummy.length; i++) {
-        const imageSize = new window.kakao.maps.Size(35, 35);
-
-        const markerImage = new window.kakao.maps.MarkerImage(
-          'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
-          imageSize,
+        const markerImageUrl =
+          'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg';
+        const normalMarkerImage = new window.kakao.maps.MarkerImage(
+          markerImageUrl,
+          new window.kakao.maps.Size(70, 70),
+        );
+        const clickMarkerImage = new window.kakao.maps.MarkerImage(
+          markerImageUrl,
+          new window.kakao.maps.Size(100, 100),
         );
         const geocoder = new window.kakao.maps.services.Geocoder();
 
@@ -148,8 +153,25 @@ function Map(props: MapProps) {
               const marker = new window.kakao.maps.Marker({
                 map: cmap,
                 position: coords,
-                title: dummy[i].place,
-                image: markerImage,
+                image: normalMarkerImage,
+              });
+
+              window.kakao.maps.event.addListener(marker, 'click', () => {
+                // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+                // 마커의 이미지를 클릭 이미지로 변경합니다
+                if (!selectedMarker || selectedMarker !== marker) {
+                  // 클릭된 마커 객체가 null이 아니면
+                  // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+                  if (!!selectedMarker) {
+                    selectedMarker.setImage(normalMarkerImage);
+                  }
+
+                  // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+                  marker.setImage(clickMarkerImage);
+                }
+
+                // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
+                selectedMarker = marker;
               });
             }
           },
