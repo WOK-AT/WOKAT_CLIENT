@@ -11,11 +11,19 @@ interface HeaderProps {
 function Header(props: HeaderProps) {
   const { title = '', right } = props;
   const router = useRouter();
+  const showBackButton = router.pathname !== '/';
 
   return (
-    <header className="flex h-14 cursor-pointer items-center justify-between px-4">
-      <button className="relative h-6 w-6" onClick={() => router.back()}>
-        <Image src={arrow_back} alt="back" fill />
+    <header className="flex items-center justify-between px-4 cursor-pointer h-14">
+      <button className="relative w-6 h-6">
+        {showBackButton && (
+          <Image
+            src={arrow_back}
+            alt="back"
+            fill
+            onClick={() => router.back()}
+          />
+        )}
       </button>
 
       {title ? (
@@ -28,7 +36,7 @@ function Header(props: HeaderProps) {
         </div>
       )}
 
-      <button className="relative h-6 w-6">
+      <button className="relative w-6 h-6">
         {right && <Image src={right} alt="right_icon" fill />}
       </button>
     </header>
