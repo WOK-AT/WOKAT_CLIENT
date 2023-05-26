@@ -22,7 +22,7 @@ function ListLanding() {
   const { navType } = useContext(NavigationContext);
 
   return (
-    <Layout title={`${title}역`} right={profile}>
+    <Layout title={title ? `${title}역` : ''} right={profile}>
       <FAB />
       <Navigation />
       {navType === '무료 회의룸' && <ReservationOption />}

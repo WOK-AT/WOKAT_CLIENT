@@ -5,7 +5,7 @@ import paste from '@/assets/icons/paste.svg';
 import share from '@/assets/icons/share.svg';
 import { useRouter } from 'next/router';
 
-const LINK = 'https://wokat-client.vercel.app/';
+const SERVICE_URL = 'https://wokat-client.vercel.app';
 
 const shareModalContents = {
   kakaoShare: {
@@ -25,21 +25,14 @@ function ShareModal() {
 
   const shareWithKakao = () => {
     window.Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: 'WOKAT',
-        description: '일과 함께 워캣으로 떠나요!',
-        imageUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/thumbnail.png`,
-        link: {
-          webUrl: LINK,
-          mobileWebUrl: LINK,
-        },
+      objectType: 'text',
+      text: '일과 함께 워캣으로 떠나요!',
+      link: {
+        webUrl: SERVICE_URL,
+        mobileWebUrl: SERVICE_URL,
       },
       buttonTitle: '워캣 바로가기',
       installTalk: true,
-      serverCallbackArgs: {
-        key: 'value',
-      },
     });
   };
 
@@ -83,7 +76,7 @@ function KakaoShareButton() {
       onClick={() => onChange('kakaoShare')}
       className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] font-system4_medium text-system4_medium text-GRAY_800"
     >
-      {text} <div className="w-6 h-6 rounded-full bg-GRAY_800"></div>
+      {text} <div className="h-6 w-6 rounded-full bg-GRAY_800"></div>
     </button>
   );
 }
