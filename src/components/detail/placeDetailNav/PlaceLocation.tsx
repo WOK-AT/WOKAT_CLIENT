@@ -28,7 +28,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
-              title: place,
+              place: place,
               location: location,
             },
           }}

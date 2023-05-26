@@ -14,10 +14,11 @@ interface PlacePosition {
 }
 
 interface MapProps {
+  place: string;
   location: string;
 }
 
-function Map({ location }: MapProps) {
+function Map({ place, location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
 
@@ -61,7 +62,7 @@ function Map({ location }: MapProps) {
             setMap(map);
 
             // 공간 정보 마커 표시
-            const imageSize = new window.kakao.maps.Size(60, 60);
+            const imageSize = new window.kakao.maps.Size(130, 130);
 
             const markerImage = new window.kakao.maps.MarkerImage(
               'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
@@ -73,6 +74,41 @@ function Map({ location }: MapProps) {
               map: map,
               position: coords,
               image: markerImage,
+            });
+
+            // HTML 문자열 또는 Dom Element의 커스텀 오버레이에 표시할 내용입니다
+            const customOverlayContent = `
+            <articel  style="color : #576981;text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard'; font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 16px;
+            text-align: center;"
+            >${place}</articel>`;
+            const customOverlay = new window.kakao.maps.CustomOverlay({
+              position: coords,
+              content: customOverlayContent,
+            });
+
+            customOverlay.setMap(map);
+
+            // 마커 클릭시
+            window.kakao.maps.event.addListener(marker, 'click', function () {
+              customOverlay.setMap(null);
+              const newOverlayContent = `
+              <articel style="color:#0066FF; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 14px;
+              line-height: 150%;
+              text-align: center;
+              letter-spacing: -0.02em;">${place}</articel>`;
+
+              const newOverlay = new window.kakao.maps.CustomOverlay({
+                position: coords,
+                content: newOverlayContent,
+              });
+
+              newOverlay.setMap(map);
             });
           }
         },
@@ -100,7 +136,7 @@ function Map({ location }: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
       <article
         id="map"
-        className="relative z-0 w-full h-full overflow-hidden "
+        className="relative z-0 h-full w-full overflow-hidden "
       ></article>
       <button
         type="button"

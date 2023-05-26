@@ -4,19 +4,21 @@ import { useRouter } from 'next/router';
 
 interface ctxType {
   query: {
+    place: string;
     location: string;
   };
 }
 
 interface Props {
+  place: string;
   location: string;
 }
 
-function Location({ location }: Props) {
+function Location({ place, location }: Props) {
   const router = useRouter();
   return (
     <Layout>
-      <Map location={location} />
+      <Map place={place} location={location} />
       <article className="fixed bottom-0 z-10 -ml-4 h-[198px] w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]">
         <h1 className="mt-[14px] font-system3_bold text-system3_bold text-GRAY_800">
           {router.query.title}
@@ -51,6 +53,6 @@ export default Location;
 
 export const getServerSideProps = async (context: ctxType) => {
   const { query } = context;
-  const { location } = query;
-  return { props: { location } };
+  const { place, location } = query;
+  return { props: { place, location } };
 };
