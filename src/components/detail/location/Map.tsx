@@ -78,12 +78,12 @@ function Map({ place, location }: MapProps) {
 
             // HTML 문자열 또는 Dom Element의 커스텀 오버레이에 표시할 내용입니다
             const customOverlayContent = `
-            <articel  style="color : #576981;text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard'; font-style: normal;
+            <article  style="color : #576981;text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard'; font-style: normal;
             font-weight: 600;
             font-size: 13px;
             line-height: 16px;
             text-align: center;"
-            >${place}</articel>`;
+            >${place}</article>`;
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: coords,
               content: customOverlayContent,
@@ -95,13 +95,13 @@ function Map({ place, location }: MapProps) {
             window.kakao.maps.event.addListener(marker, 'click', function () {
               customOverlay.setMap(null);
               const newOverlayContent = `
-              <articel style="color:#0066FF; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard';
+              <article style="color:#0066FF; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard';
               font-style: normal;
               font-weight: 700;
               font-size: 14px;
               line-height: 150%;
               text-align: center;
-              letter-spacing: -0.02em;">${place}</articel>`;
+              letter-spacing: -0.02em;">${place}</article>`;
 
               const newOverlay = new window.kakao.maps.CustomOverlay({
                 position: coords,
