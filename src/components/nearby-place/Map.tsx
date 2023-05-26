@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import centerBtn from '@/assets/icons/center_button.svg';
+import { useRouter } from 'next/router';
 
 declare global {
   interface Window {
@@ -37,6 +38,9 @@ interface MapProps {
 }
 
 function Map(props: MapProps) {
+  const router = useRouter();
+  const stationQuery = router.query.station as string[];
+
   const { setStationName } = props;
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
@@ -70,26 +74,43 @@ function Map(props: MapProps) {
           const map = await new window.kakao.maps.Map(mapContainer, mapOption);
           setMap(map);
 
-          const places = new window.kakao.maps.services.Places();
+          if (stationQuery !== undefined && stationQuery[0] !== '') {
+            const places = new window.kakao.maps.services.Places();
+            const callback = (result: any, status: any) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                setPosition(
+                  new window.kakao.maps.LatLng(result[0].y, result[0].x),
+                );
+                setStationName(result[0].place_name.split(' ')[0]);
+              }
+            };
 
-          const callback = (result: any, status: any) => {
-            if (status === window.kakao.maps.services.Status.OK) {
-              setPosition(
-                new window.kakao.maps.LatLng(result[0].y, result[0].x),
-              );
-              setStationName(result[0].place_name.split(' ')[0]);
+            places.keywordSearch(stationQuery, callback);
+            if (cmap) {
+              cmap.setCenter(cposition);
             }
-          };
-          const options = {
-            location: locPosition,
-            radius: 10000,
-            sort: window.kakao.maps.services.SortBy.DISTANCE,
-            size: 1,
-          };
+          } else {
+            const places = new window.kakao.maps.services.Places();
 
-          await places.keywordSearch('지하철역', callback, options);
-          if (cmap) {
-            cmap.setCenter(cposition);
+            const callback = (result: any, status: any) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                setPosition(
+                  new window.kakao.maps.LatLng(result[0].y, result[0].x),
+                );
+                setStationName(result[0].place_name.split(' ')[0]);
+              }
+            };
+            const options = {
+              location: locPosition,
+              radius: 10000,
+              sort: window.kakao.maps.services.SortBy.DISTANCE,
+              size: 1,
+            };
+
+            await places.keywordSearch('지하철역', callback, options);
+            if (cmap) {
+              cmap.setCenter(cposition);
+            }
           }
         });
       } else {
