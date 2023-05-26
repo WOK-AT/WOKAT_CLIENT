@@ -22,7 +22,6 @@ function BottomSheet(props: BottomSheetProps) {
         className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <ListFilter />
           <PlaceList />
         </div>
       </div>
