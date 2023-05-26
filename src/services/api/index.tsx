@@ -5,6 +5,6 @@ const BaseURL = axios.create({
 });
 
 export const getPlaceDetail = async () => {
-  const { data } = await BaseURL.get('place/0/646c9fe21f66c2fbf4321562');
+  const { data } = await BaseURL.get('place/2/646c9fd61f66c2fbf43214f2ㅅ');
   return data;
 };

@@ -17,15 +17,15 @@ function Detail() {
         distance={list?.data.distance}
         hashtags={list?.data.hashtags}
       />
-      {/* <PlaceDetailInfo
-        place={data.place}
-        category={data.category}
-        operationHours={data.operationHours}
-        introduce={data.introduce}
-        information={data.information}
-        maxPeopleCount={data.count}
-        location={data.location}
-      /> */}
+      <PlaceDetailInfo
+        place={list?.data.place}
+        category={list?.data.category}
+        operationHours={list?.data.operationHours}
+        introduce={list?.data.introduce}
+        information={list?.data.information}
+        maxPeopleCount={list?.data.count}
+        location={list?.data.location}
+      />
     </Layout>
   );
 }
