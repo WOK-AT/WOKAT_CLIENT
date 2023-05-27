@@ -69,7 +69,12 @@ function ShareModal() {
 
 function KakaoShareButton() {
   const { text } = shareModalContents['kakaoShare'];
-  const { onChange } = useContext(ModalContext);
+  const { onChange: onClick, close } = useContext(ModalContext);
+
+  const onChange = (type: keyof typeof shareModalContents) => {
+    onClick(type);
+    close();
+  };
 
   return (
     <button
@@ -82,7 +87,12 @@ function KakaoShareButton() {
 }
 function URLCopy() {
   const { text } = shareModalContents['urlCopy'];
-  const { onChange } = useContext(ModalContext);
+  const { onChange: onClick, close } = useContext(ModalContext);
+
+  const onChange = (type: keyof typeof shareModalContents) => {
+    onClick(type);
+    close();
+  };
 
   return (
     <div
