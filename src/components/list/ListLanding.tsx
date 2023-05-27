@@ -1,14 +1,11 @@
 import { useContext } from 'react';
 import Image from 'next/image';
-import Layout from '@/components/common/Layout';
-import profile from '@/assets/icons/profile.svg';
 import info from '@/assets/icons/info.svg';
 import FAB from '@/components/list/FAB';
 import ListFilter from '@/components/common/ListFilter';
 import Navigation from '@/components/common/Navigation';
 import ReservationOption from '@/components/list/ReservationOption';
 import PlaceList from './PlaceList';
-import { useRouter } from 'next/router';
 import { COLOR } from '@/styles/color';
 import { OptionContext } from '@/context/OptionContext';
 import { NavigationContext } from '@/context/NavigationContext';
@@ -16,13 +13,11 @@ import { NavigationContext } from '@/context/NavigationContext';
 const RESERVATION_MESSAGE = '무료 회의룸은 예약이 필요한 공간입니다.';
 
 function ListLanding() {
-  const router = useRouter();
-  const title = router.query.title as string;
   const { headCount } = useContext(OptionContext);
   const { navType } = useContext(NavigationContext);
 
   return (
-    <Layout title={title ? `${title}역` : ''} right={profile}>
+    <>
       <FAB />
       <Navigation />
       {navType === '무료 회의룸' && <ReservationOption />}
@@ -48,8 +43,9 @@ function ListLanding() {
         )}
         <ListFilter />
       </section>
+
       <PlaceList />
-    </Layout>
+    </>
   );
 }
 
