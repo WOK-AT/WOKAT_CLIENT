@@ -62,10 +62,10 @@ function Map({ place, location }: MapProps) {
             setMap(map);
 
             // 공간 정보 마커 표시
-            const imageSize = new window.kakao.maps.Size(130, 130);
+            const imageSize = new window.kakao.maps.Size(40, 60);
 
             const markerImage = new window.kakao.maps.MarkerImage(
-              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
+              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png',
               imageSize,
             );
 
@@ -117,7 +117,7 @@ function Map({ place, location }: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
       <article
         id="map"
-        className="relative z-0 h-full w-full overflow-hidden "
+        className="relative z-0 w-full h-full overflow-hidden "
       ></article>
       <button
         type="button"

@@ -140,14 +140,14 @@ function Map(props: MapProps) {
       //위치마다 마커를 생성합니다
       for (let i = 0; i < dummy.length; i++) {
         const markerImageUrl =
-          'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg';
+          'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png';
         const normalMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(100, 100),
+          new window.kakao.maps.Size(40, 60),
         );
         const clickMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(130, 130),
+          new window.kakao.maps.Size(50, 70),
         );
         const geocoder = new window.kakao.maps.services.Geocoder();
 
@@ -172,6 +172,7 @@ function Map(props: MapProps) {
               const customOverlay = new window.kakao.maps.CustomOverlay({
                 position: coords,
                 content: customOverlayContent,
+                yAnchor: -0.2,
               });
 
               customOverlay.setMap(cmap);
@@ -194,6 +195,7 @@ function Map(props: MapProps) {
                     const oriOverlay = new window.kakao.maps.CustomOverlay({
                       position: selectedCustomOverlay.n,
                       content: oriOverlayContent,
+                      yAnchor: -0.2,
                     });
 
                     oriOverlay.setMap(cmap);
@@ -215,6 +217,7 @@ function Map(props: MapProps) {
                 const newOverlay = new window.kakao.maps.CustomOverlay({
                   position: coords,
                   content: newOverlayContent,
+                  yAnchor: -0.2,
                 });
 
                 newOverlay.setMap(cmap);
