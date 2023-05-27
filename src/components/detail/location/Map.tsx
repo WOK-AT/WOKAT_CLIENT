@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import centerButton from '@/assets/icons/center_button.svg';
 import Image from 'next/image';
+import zoomInIcon from '@/assets/icons/zoomIn.svg';
+import zoomOutIcon from '@/assets/icons/zoomOut.svg';
 
 declare global {
   interface Window {
@@ -21,8 +23,6 @@ interface MapProps {
 function Map({ place, location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
-
-  console.log('place', place);
 
   //지도 로드하기
   useEffect(() => {
@@ -101,6 +101,18 @@ function Map({ place, location }: MapProps) {
     });
   }, [mapLoaded]);
 
+  const zoomIn = () => {
+    window.kakao.maps.load(() => {
+      cmap.setLevel(cmap.getLevel() - 1);
+    });
+  };
+
+  const zoomOut = () => {
+    window.kakao.maps.load(() => {
+      cmap.setLevel(cmap.getLevel() + 1);
+    });
+  };
+
   const onCenter = () => {
     if (cmap) {
       window.kakao.maps.load(async () => {
@@ -130,6 +142,22 @@ function Map({ place, location }: MapProps) {
       >
         <Image priority={true} src={centerButton} alt="center button" />
       </button>
+      <article className="z-1 absolute bottom-[250px] right-[16px] flex flex-col">
+        <button
+          type="button"
+          className="h-[40px] w-[40px] bg-white  "
+          onClick={() => zoomIn()}
+        >
+          <Image src={zoomInIcon} alt="zoomIn button" />
+        </button>
+        <button
+          type="button"
+          className="h-[40px] w-[40px] bg-white  "
+          onClick={() => zoomOut()}
+        >
+          <Image src={zoomOutIcon} alt="zoomOut button" />
+        </button>
+      </article>
     </div>
   );
 }
