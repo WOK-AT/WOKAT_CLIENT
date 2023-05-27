@@ -134,7 +134,7 @@ function Map({ place, location }: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
       <article
         id="map"
-        className="relative z-0 h-full w-full overflow-hidden "
+        className="relative z-0 w-full h-full overflow-hidden "
       ></article>
       <button
         type="button"

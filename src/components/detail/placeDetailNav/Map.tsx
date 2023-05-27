@@ -80,7 +80,7 @@ function Map({ location }: MapProps) {
     <div className="relative h-[216px]  overflow-hidden rounded-t-[10px] ">
       <article
         id="map"
-        className="relative z-0 h-full w-full overflow-hidden "
+        className="relative z-0 w-full h-full overflow-hidden "
       ></article>
     </div>
   );
