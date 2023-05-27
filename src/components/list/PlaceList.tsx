@@ -83,25 +83,27 @@ function PlaceList() {
     >
       {navType === '무료 회의룸' && <ReservationOption />}
 
-      <section className="flex justify-end">
-        {navType === '무료 회의룸' && (
-          <div
-            style={{
-              color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-            }}
-            className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
-          >
-            <Image
-              src={info}
-              alt="reservation check message icon"
-              style={{
-                fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-              }}
-              className="mr-1"
-            />
-            {RESERVATION_MESSAGE}
-          </div>
-        )}
+      <section className="flex justify-between">
+        <div
+          style={{
+            color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+          }}
+          className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
+        >
+          {navType === '무료 회의룸' && (
+            <>
+              <Image
+                src={info}
+                alt="reservation check message icon"
+                style={{
+                  fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+                }}
+                className="mr-1"
+              />
+              {RESERVATION_MESSAGE}
+            </>
+          )}
+        </div>
         <ListFilter currentOption={currentOption} onChange={changeOption} />
       </section>
       {placeList.map(
