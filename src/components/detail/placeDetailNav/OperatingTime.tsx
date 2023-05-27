@@ -5,7 +5,7 @@ import DetailInformationTextBox from '@/components/common/detail/DetailInformati
 import { OperationHours } from '@/types/operationHours';
 
 interface OperatingTimeProps {
-  operationHours: OperationHours[];
+  operationHours: OperationHours;
 }
 function OperatingTime({ operationHours }: OperatingTimeProps) {
   return (
@@ -17,16 +17,20 @@ function OperatingTime({ operationHours }: OperatingTimeProps) {
             영업 시간
           </h2>
           <div>
-            {operationHours[0].open.map((hour: string, index: number) => {
-              return (
-                <p
-                  key={index}
-                  className="font-system4 text-system4 text-GRAY_600"
-                >
-                  {hour}
-                </p>
-              );
-            })}
+            {operationHours &&
+              Object.entries(operationHours.open).map(
+                ([timeRange, day], index: number) => {
+                  return (
+                    <article
+                      key={index}
+                      className="flex flex-row font-system4 text-system4 text-GRAY_600"
+                    >
+                      <p className="mr-2">{day}</p>
+                      {timeRange}
+                    </article>
+                  );
+                },
+              )}
           </div>
         </div>
         <div className="flex flex-row items-start">
@@ -34,7 +38,7 @@ function OperatingTime({ operationHours }: OperatingTimeProps) {
             휴무일
           </h2>
           <p className="font-system4 text-system4 text-GRAY_600">
-            {operationHours[0].closed}
+            {operationHours?.closed}
           </p>
         </div>
       </DetailInformationTextBox>

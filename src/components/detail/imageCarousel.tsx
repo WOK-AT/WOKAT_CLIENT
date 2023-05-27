@@ -5,9 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
 
 interface ImageCarouselProps {
-  imgUrls: string[];
+  imageURLs: string[];
 }
-function ImageCarousel({ imgUrls }: ImageCarouselProps) {
+function ImageCarousel({ imageURLs }: ImageCarouselProps) {
   const settings = {
     dots: true,
     infinite: true,
@@ -20,10 +20,17 @@ function ImageCarousel({ imgUrls }: ImageCarouselProps) {
 
   return (
     <Slider className="-ml-4 w-screen" {...settings}>
-      {imgUrls.map((imgUrl, index) => {
+      {imageURLs?.map((imageURL, index) => {
         return (
           <section key={index}>
-            <p className="h-48 bg-indigo-500">{imgUrl}</p>
+            <p className="h-48 w-full bg-indigo-500">
+              <Image
+                src={imageURL}
+                alt="place image"
+                width={481}
+                height={192}
+              />
+            </p>
           </section>
         );
       })}

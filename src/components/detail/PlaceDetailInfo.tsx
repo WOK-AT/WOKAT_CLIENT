@@ -10,10 +10,10 @@ import { Information } from '@/types/information';
 
 interface PlaceDetailInfoProps {
   place: string;
-  category: number;
+  category: string;
   introduce: string;
-  information: Information[];
-  operationHours: OperationHours[];
+  information: Information;
+  operationHours: OperationHours;
   maxPeopleCount: string;
   location: string;
 }
@@ -37,7 +37,7 @@ function PlaceDetailInfo({
         maxPeopleCount={maxPeopleCount}
       />
       <PlaceLocation place={place} location={location} />
-      {category === 1 && <BookingButton />}
+      {category === '0' && <BookingButton />}
     </main>
   );
 }
