@@ -145,14 +145,15 @@ function Map({ place, location }: MapProps) {
       <article className="z-1 absolute bottom-[250px] right-[16px] flex flex-col">
         <button
           type="button"
-          className="h-[40px] w-[40px] bg-white  "
+          className="h-[40px] w-[40px] rounded-t-[5px] bg-white "
           onClick={() => zoomIn()}
         >
           <Image src={zoomInIcon} alt="zoomIn button" />
         </button>
+        <div className="h-[0.5px] w-full bg-GRAY_200"></div>
         <button
           type="button"
-          className="h-[40px] w-[40px] bg-white  "
+          className="h-[40px] w-[40px] rounded-b-[5px] bg-white"
           onClick={() => zoomOut()}
         >
           <Image src={zoomOutIcon} alt="zoomOut button" />
