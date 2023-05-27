@@ -13,7 +13,7 @@ import Image from 'next/image';
 import { Information } from '@/types/information';
 
 interface FacilityInformationProps {
-  information: Information[];
+  information: Information;
   maxPeopleCount: string;
 }
 
@@ -21,15 +21,29 @@ function FacilityInformation({
   information,
   maxPeopleCount,
 }: FacilityInformationProps) {
-  const FACILITY_LIST = [
-    { icon: elec, title: '콘센트', status: true },
-    { icon: parking, title: '주차 공간 여부', status: true },
-    { icon: hdmi, title: 'HDMI / 스크린 여부', status: false },
-    { icon: person, title: '최대 수용 인원', status: { maxPeopleCount } },
-  ];
+  let wifiId = '모름';
+  let wifiPW = '모름';
 
-  const { 'wi-fi': wifiInformation } = information[0];
-  const { ID: wifiId, PW: wifiPW } = wifiInformation[0];
+  if (information) {
+    const { 'wi-fi': wifiInformation } = information;
+    if (wifiInformation !== null) {
+      let { ID: wifiId, PW: wifiPW } = wifiInformation;
+    }
+  }
+  const FACILITY_LIST = [
+    { icon: elec, title: '콘센트', status: information?.socket },
+    {
+      icon: parking,
+      title: '주차 공간 여부',
+      status: information?.parking,
+    },
+    {
+      icon: hdmi,
+      title: 'HDMI / 스크린 여부',
+      status: information?.['hdmi-screen'],
+    },
+    { icon: person, title: '최대 수용 인원', status: maxPeopleCount },
+  ];
 
   return (
     <section id="nav-2" className="mb-9 scroll-mt-[50px]">
@@ -39,13 +53,16 @@ function FacilityInformation({
           <div className="mb-3 flex flex-row">
             <Image src={phone} alt="phone icon" className="mr-4" />
             <h2 className="mr-4 font-system4 text-system4 text-GRAY_400">
-              {information[0].contact}
+              {information?.contact}
             </h2>
           </div>
           <div className="flex flex-row">
             <Image src={internet} alt="internet icon" className="mr-4" />
-            <h2 className="mr-4 font-system4 text-system4 text-GRAY_400">
-              {information[0].homepage}
+            <h2
+              className="mr-4 w-full break-all font-system4 text-system4 text-GRAY_400"
+              onClick={() => window.open(information?.homepage)}
+            >
+              {information?.homepage}
             </h2>
           </div>
         </div>
@@ -87,11 +104,7 @@ function FacilityInformation({
                 </h2>
               </div>
               <p className="font-system4 text-system4 text-GRAY_400">
-                {typeof item.status === 'boolean'
-                  ? item.status
-                    ? '있음'
-                    : '없음'
-                  : maxPeopleCount}
+                {item.status}
               </p>
             </div>
           );

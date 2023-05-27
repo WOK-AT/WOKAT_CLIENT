@@ -75,9 +75,11 @@ function DetailNavigator() {
       <nav className="sticky top-0 -ml-4 flex h-[34px] w-screen flex-row items-center justify-between bg-WHTIE px-4">
         {navigator.map(({ index, name, active }) => {
           return (
-            <article className=" flex flex-col items-center active:text-BLUE_600">
+            <article
+              className=" flex flex-col items-center active:text-BLUE_600"
+              key={index}
+            >
               <button
-                key={index}
                 onClick={() => setNavIndex(index)}
                 type="button"
                 className={`flex flex-col items-center font-system4_bold text-system4_bold ${

@@ -4,9 +4,9 @@ import Image from 'next/image';
 import ShareModal from './ShareModal';
 
 interface PlaceInfoProps {
-  category: number;
+  category: string;
   place: string;
-  distance: string;
+  distance: object;
   hashtags: string[];
 }
 
@@ -15,7 +15,7 @@ function PlaceInfo({ category, place, distance, hashtags }: PlaceInfoProps) {
     <>
       <section className="mb-2 mt-8 flex flex-row items-center justify-between">
         <p className="font-system6_medium text-system6_medium text-GRAY_400">
-          {category === 1 ? '무료 회의룸' : '무료 대여 공간'}
+          {category === '0' ? '무료 대여 공간' : '무료 회의룸'}
         </p>
         <article className="flex flex-row items-center justify-center">
           <ShareModal />
@@ -26,11 +26,20 @@ function PlaceInfo({ category, place, distance, hashtags }: PlaceInfoProps) {
         {place}
       </h1>
       <section className="mb-2 flex flex-row items-center">
-        <Image src={spot} alt="spot" className="mr-2.5" />
-        <p className="font-system5 text-system5 text-GRAY_600">{distance}</p>
+        {distance &&
+          Object.entries(distance).map(([station, value], index: number) => {
+            return (
+              <article key={index} className="flex flex-row">
+                <Image src={spot} alt="spot" className="mr-2.5" />
+                <p className="font-system5 text-system5 text-GRAY_600">
+                  {station} {value}
+                </p>
+              </article>
+            );
+          })}
       </section>
       <section className="mb-5 flex flex-row items-center">
-        {hashtags.map((tag, index) => {
+        {hashtags?.map((tag: string, index: number) => {
           return (
             <article
               key={index}

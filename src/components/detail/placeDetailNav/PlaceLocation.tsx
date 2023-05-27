@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import placeLocation from '@/assets/icons/placeLocation.svg';
@@ -7,6 +7,7 @@ import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
 import Image from 'next/image';
 import Map from './Map';
+import { useGetPlaceAddress } from '@/hooks/useDetail';
 
 interface PlaceLocationProps {
   place: string;
@@ -14,13 +15,24 @@ interface PlaceLocationProps {
 }
 
 function PlaceLocation({ place, location }: PlaceLocationProps) {
+  const [address, setAddress] = useState<string>(location);
+  const [isRoadName, setIsRoadName] = useState<boolean>(false);
+  const { value } = useGetPlaceAddress(isRoadName, address);
   const router = useRouter();
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
   };
 
+  const changeRoadName = () => {
+    setIsRoadName(!isRoadName);
+  };
+
+  useEffect(() => {
+    setAddress(value?.data);
+  }, [value]);
+
   return (
-    <section id="nav-3" className="scroll-mt-[50px]">
+    <section id="nav-3" className="mb-8 scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 h-[306px] rounded-[10px] 	border-[1px]">
         <Link
@@ -28,19 +40,22 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
-              title: place,
+              place: place,
               location: location,
             },
           }}
         >
           <Map location={location} />
         </Link>
-        <p className="my-3 flex w-full justify-center font-system5_medium text-system5_medium text-GRAY_800">
-          {location}
+        <p className="my-3 ml-[14px] flex w-full justify-start font-system5_medium text-system5_medium text-GRAY_800">
+          {address}
         </p>
         <div className="border-color-GRAY_100 mx-[3px] h-[1px] border-[1px]" />
         <section className="flex w-full flex-row justify-between">
-          <article className="flex w-full cursor-pointer flex-row items-center justify-center">
+          <article
+            className="flex w-full cursor-pointer flex-row items-center justify-center"
+            onClick={() => changeRoadName()}
+          >
             <Image
               src={change}
               alt="change icon"
