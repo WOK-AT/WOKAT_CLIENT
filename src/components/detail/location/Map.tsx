@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import centerButton from '@/assets/icons/center_button.svg';
 import Image from 'next/image';
+import zoomInIcon from '@/assets/icons/zoomIn.svg';
+import zoomOutIcon from '@/assets/icons/zoomOut.svg';
 
 declare global {
   interface Window {
@@ -62,10 +64,10 @@ function Map({ place, location }: MapProps) {
             setMap(map);
 
             // 공간 정보 마커 표시
-            const imageSize = new window.kakao.maps.Size(130, 130);
+            const imageSize = new window.kakao.maps.Size(40, 60);
 
             const markerImage = new window.kakao.maps.MarkerImage(
-              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
+              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png',
               imageSize,
             );
 
@@ -84,10 +86,13 @@ function Map({ place, location }: MapProps) {
             font-size: 14px;
             line-height: 150%;
             text-align: center;
-            letter-spacing: -0.02em;">${place}</article>`;
+            letter-spacing: -0.02em;
+            ">${place}</article>`;
+
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: coords,
               content: customOverlayContent,
+              yAnchor: -0.2,
             });
 
             customOverlay.setMap(map);
@@ -96,6 +101,18 @@ function Map({ place, location }: MapProps) {
       );
     });
   }, [mapLoaded]);
+
+  const zoomIn = () => {
+    if (cmap) {
+      cmap.setLevel(cmap.getLevel() - 1);
+    }
+  };
+
+  const zoomOut = () => {
+    if (cmap) {
+      cmap.setLevel(cmap.getLevel() + 1);
+    }
+  };
 
   const onCenter = () => {
     if (cmap) {
@@ -126,6 +143,23 @@ function Map({ place, location }: MapProps) {
       >
         <Image priority={true} src={centerButton} alt="center button" />
       </button>
+      <article className="z-1 absolute bottom-[250px] right-[16px] flex flex-col">
+        <button
+          type="button"
+          className="h-[40px] w-[40px] rounded-t-[5px] bg-white "
+          onClick={() => zoomIn()}
+        >
+          <Image src={zoomInIcon} alt="zoomIn button" />
+        </button>
+        <div className="h-[0.5px] w-full bg-GRAY_200"></div>
+        <button
+          type="button"
+          className="h-[40px] w-[40px] rounded-b-[5px] bg-white"
+          onClick={() => zoomOut()}
+        >
+          <Image src={zoomOutIcon} alt="zoomOut button" />
+        </button>
+      </article>
     </div>
   );
 }
