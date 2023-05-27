@@ -17,7 +17,7 @@ interface PlaceLocationProps {
 function PlaceLocation({ place, location }: PlaceLocationProps) {
   const [address, setAddress] = useState<string>(location);
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
-  const { value } = useGetPlaceAddress(isRoadName);
+  const { value } = useGetPlaceAddress(isRoadName, address);
   const router = useRouter();
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
