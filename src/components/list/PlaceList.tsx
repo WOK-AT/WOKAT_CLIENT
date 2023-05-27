@@ -88,7 +88,7 @@ function PlaceList() {
             {RESERVATION_MESSAGE}
           </div>
         )}
-        <ListFilter />
+        <ListFilter currentOption={currentOption} onChange={changeOption} />
       </section>
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         // TODO : index -> id로 변경
