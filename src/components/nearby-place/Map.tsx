@@ -186,25 +186,17 @@ function Map(props: MapProps) {
                   // 커스텀 오버레이도 다시 회색으로 변경합니다
                   if (!!selectedMarker && !!selectedCustomOverlay) {
                     selectedMarker.setImage(normalMarkerImage);
-                    selectedCustomOverlay.setMap(null);
 
                     const oriOverlayContent = getOverlayContent(
                       selectedCustomOverlay.a.innerText,
                     );
 
-                    const oriOverlay = new window.kakao.maps.CustomOverlay({
-                      position: selectedCustomOverlay.n,
-                      content: oriOverlayContent,
-                      yAnchor: -0.2,
-                    });
-
-                    oriOverlay.setMap(cmap);
+                    selectedCustomOverlay.a.innerHTML = oriOverlayContent;
                   }
-
-                  // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
                 }
+
                 marker.setImage(clickMarkerImage);
-                customOverlay.setMap(null);
+
                 const newOverlayContent = `
               <article style="color:#0066FF; text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; font-family: 'Pretendard';
               font-style: normal;
@@ -214,16 +206,10 @@ function Map(props: MapProps) {
               text-align: center;
               letter-spacing: -0.02em;">${dummy[i].place}</article>`;
 
-                const newOverlay = new window.kakao.maps.CustomOverlay({
-                  position: coords,
-                  content: newOverlayContent,
-                  yAnchor: -0.2,
-                });
-
-                newOverlay.setMap(cmap);
+                customOverlay.a.innerHTML = newOverlayContent;
                 // 클릭된 마커와 커스텀오버레이를 현재 클릭된 마커 객체/클릭된 오버레이 객체로 설정합니다
                 selectedMarker = marker;
-                selectedCustomOverlay = newOverlay;
+                selectedCustomOverlay = customOverlay;
               });
             }
           },
