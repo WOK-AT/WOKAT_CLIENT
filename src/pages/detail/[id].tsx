@@ -4,9 +4,12 @@ import PlaceInfo from '@/components/detail/placeInfo';
 import ImageCarousel from '@/components/detail/imageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 import { useGetPlaceDetail } from '@/hooks/useDetail';
+import { useRouter } from 'next/router';
 
 function Detail() {
-  const { list } = useGetPlaceDetail();
+  const router = useRouter();
+  const placeId = router.query.id as string;
+  const { list } = useGetPlaceDetail('646c9fd61f66c2fbf43214f2');
 
   return (
     <Layout right={login}>

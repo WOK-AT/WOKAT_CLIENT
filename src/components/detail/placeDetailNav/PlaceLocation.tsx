@@ -15,10 +15,15 @@ interface PlaceLocationProps {
 }
 
 function PlaceLocation({ place, location }: PlaceLocationProps) {
+  const router = useRouter();
+  const placeId = router.query.id as string;
+
   const [address, setAddress] = useState<string>(location);
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
-  const { value } = useGetPlaceAddress(isRoadName, address);
-  const router = useRouter();
+  const { value } = useGetPlaceAddress(
+    { placeId: '646c9fd61f66c2fbf43214f2', isRoadName },
+    address,
+  );
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
   };

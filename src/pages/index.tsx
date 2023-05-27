@@ -15,7 +15,7 @@ function Home() {
         alt="wokat_background"
         className="fixed bottom-0 w-screen translate-x-[-15px]"
       />
-      <div className="relative flex flex-col items-center w-full mt-6">
+      <div className="relative mt-6 flex w-full flex-col items-center">
         <Image src={block} alt="block" className="absolute  top-6 h-[334px] " />
         <div className="absolute  top-[72px]  h-full">
           <section className="mb-[49px] flex flex-col items-center">
@@ -48,10 +48,10 @@ function Home() {
                 className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            font-system4_bold text-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
               >
-                <div className="relative w-6 h-6 mr-2">
+                <div className="relative mr-2 h-6 w-6">
                   <Image src={location} alt="location" fill />
                 </div>
-                내 주변 장소 찾기
+                주변 업무 공간 찾기
               </button>
             </Link>
           </section>
