@@ -88,6 +88,7 @@ function Map({ place, location }: MapProps) {
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: coords,
               content: customOverlayContent,
+              yAnchor: -0.2,
             });
 
             customOverlay.setMap(map);
