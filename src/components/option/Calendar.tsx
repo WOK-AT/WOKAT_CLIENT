@@ -2,6 +2,7 @@ import Image from 'next/image';
 import arrow_right from '@/assets/icons/arrow_right.svg';
 import arrow_left from '@/assets/icons/arrow_left.svg';
 import { useOption } from '@/hooks/useOption';
+import { useEffect } from 'react';
 
 const DAY_LIST = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -36,7 +37,7 @@ function Calendar() {
         </button>
       </section>
 
-      <table className="h-[338px] w-full text-center ">
+      <table className="h-[338px] w-full text-center">
         <thead className="h-10">
           <tr className="font-system4_medium text-system4_medium text-GRAY_800">
             {DAY_LIST.map((day, index) => (

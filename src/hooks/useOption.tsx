@@ -257,7 +257,6 @@ export const useOption = () => {
     headCount,
     renderCalendarDates,
     onChangeMonth,
-    modifyDate: selectDate,
     modifyHeadCount,
   };
 };

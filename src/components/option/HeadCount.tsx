@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import increase from '@/assets/icons/increase.svg';
 import decrease from '@/assets/icons/decrease.svg';
-import { useOption } from '@/hooks/useOption';
+import { useContext } from 'react';
+import { OptionContext } from '@/context/OptionContext';
 
 function HeadCount() {
-  const { headCount, modifyHeadCount } = useOption();
+  const { headCount, modifyHeadCount } = useContext(OptionContext);
 
   return (
     <section className="flex-col">

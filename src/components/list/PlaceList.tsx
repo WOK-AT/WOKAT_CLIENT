@@ -74,7 +74,7 @@ function PlaceList() {
   //   fetchPlaceList({ station: '', filter: '', date: '', person: headCount }),
   // );
   // if (!data) return;
-  // const { placeList } = data;
+  // const { placeList } = data.data;
 
   return (
     <div>

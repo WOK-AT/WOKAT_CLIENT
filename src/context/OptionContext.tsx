@@ -1,5 +1,6 @@
+import { useBoolean } from '@/hooks/useBoolean';
 import { useOption } from '@/hooks/useOption';
-import { PropsWithChildren, createContext } from 'react';
+import { PropsWithChildren, createContext, useEffect } from 'react';
 
 interface DateType {
   year: number;
@@ -18,6 +19,10 @@ interface OptionContextType {
   currentDate: DateType | null;
   headCount: number;
   modifyHeadCount: (args: any) => void;
+
+  isOpen: boolean;
+  open: () => void;
+  close: () => void;
 }
 
 export const OptionContext = createContext<OptionContextType>({
@@ -25,15 +30,28 @@ export const OptionContext = createContext<OptionContextType>({
   currentDate: initialDate,
   headCount: 0,
   modifyHeadCount: (args: any) => {},
+
+  isOpen: false,
+  open: () => {},
+  close: () => {},
 });
 
 export const OptionContextProvider = (props: PropsWithChildren) => {
   const { children } = props;
   const { selectedDate, currentDate, headCount, modifyHeadCount } = useOption();
+  const { isOpen, open, close } = useBoolean(false);
 
   return (
     <OptionContext.Provider
-      value={{ selectedDate, currentDate, headCount, modifyHeadCount }}
+      value={{
+        selectedDate,
+        currentDate,
+        headCount,
+        modifyHeadCount,
+        isOpen,
+        open,
+        close,
+      }}
     >
       {children}
     </OptionContext.Provider>
