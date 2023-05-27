@@ -103,15 +103,15 @@ function Map({ place, location }: MapProps) {
   }, [mapLoaded]);
 
   const zoomIn = () => {
-    window.kakao.maps.load(() => {
+    if (cmap) {
       cmap.setLevel(cmap.getLevel() - 1);
-    });
+    }
   };
 
   const zoomOut = () => {
-    window.kakao.maps.load(() => {
+    if (cmap) {
       cmap.setLevel(cmap.getLevel() + 1);
-    });
+    }
   };
 
   const onCenter = () => {
