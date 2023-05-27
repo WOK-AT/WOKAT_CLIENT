@@ -1,10 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import info from '@/assets/icons/info.svg';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
 import testImage from '@/assets/images/main_background.svg';
+import { OptionContext } from '@/context/OptionContext';
+import { NavigationContext } from '@/context/NavigationContext';
+import ReservationOption from './ReservationOption';
+import ListFilter from '@/components/common/ListFilter';
+import { COLOR } from '@/styles/color';
+
+const RESERVATION_MESSAGE = '무료 회의룸은 예약이 필요한 공간입니다.';
 
 interface PlaceListType {
   imgUrl: string;
@@ -50,10 +58,35 @@ const dummy = [
 ];
 
 function PlaceList() {
+  const { headCount } = useContext(OptionContext);
+  const { navType } = useContext(NavigationContext);
   const [placeList, setPlaceList] = useState<PlaceListType[]>(dummy);
 
   return (
     <>
+      {navType === '무료 회의룸' && <ReservationOption />}
+
+      <section className="flex justify-end">
+        {navType === '무료 회의룸' && (
+          <div
+            style={{
+              color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+            }}
+            className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
+          >
+            <Image
+              src={info}
+              alt="reservation check message icon"
+              style={{
+                fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+              }}
+              className="mr-1"
+            />
+            {RESERVATION_MESSAGE}
+          </div>
+        )}
+        <ListFilter />
+      </section>
       {placeList.map(({ imgUrl, title, placeInfo, tags }, index) => (
         // TODO : index -> id로 변경
         <Link
