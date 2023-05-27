@@ -87,11 +87,12 @@ function Map({ place, location }: MapProps) {
             line-height: 150%;
             text-align: center;
             letter-spacing: -0.02em;
-            margin-top: 20px;">${place}</article>`;
+            ">${place}</article>`;
 
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: coords,
               content: customOverlayContent,
+              yAnchor: -0.2,
             });
 
             customOverlay.setMap(map);
