@@ -18,7 +18,7 @@ function Detail() {
         hashtags={list?.data.hashtags}
       />
       <PlaceDetailInfo
-        place={list?.data.place}
+        place={list?.data.placeName}
         category={list?.data.category}
         operationHours={list?.data.operationHours}
         introduce={list?.data.introduce}

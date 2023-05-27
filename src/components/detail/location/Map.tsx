@@ -22,6 +22,8 @@ function Map({ place, location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
 
+  console.log('place', place);
+
   //지도 로드하기
   useEffect(() => {
     const mapScript = document.createElement('script');
@@ -62,10 +64,10 @@ function Map({ place, location }: MapProps) {
             setMap(map);
 
             // 공간 정보 마커 표시
-            const imageSize = new window.kakao.maps.Size(130, 130);
+            const imageSize = new window.kakao.maps.Size(40, 60);
 
             const markerImage = new window.kakao.maps.MarkerImage(
-              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
+              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png',
               imageSize,
             );
 
@@ -84,7 +86,9 @@ function Map({ place, location }: MapProps) {
             font-size: 14px;
             line-height: 150%;
             text-align: center;
-            letter-spacing: -0.02em;">${place}</article>`;
+            letter-spacing: -0.02em;
+            margin-top: 20px;">${place}</article>`;
+
             const customOverlay = new window.kakao.maps.CustomOverlay({
               position: coords,
               content: customOverlayContent,

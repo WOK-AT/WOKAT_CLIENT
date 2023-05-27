@@ -57,10 +57,10 @@ function Map({ location }: MapProps) {
             const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
             // 공간 정보 마커 표시
-            const imageSize = new window.kakao.maps.Size(60, 60);
+            const imageSize = new window.kakao.maps.Size(20, 30);
 
             const markerImage = new window.kakao.maps.MarkerImage(
-              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.svg',
+              'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png',
               imageSize,
             );
 
