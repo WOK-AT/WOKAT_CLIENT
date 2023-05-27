@@ -143,11 +143,11 @@ function Map(props: MapProps) {
           'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png';
         const normalMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(40, 60),
+          new window.kakao.maps.Size(37, 50),
         );
         const clickMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(50, 70),
+          new window.kakao.maps.Size(47, 62),
         );
         const geocoder = new window.kakao.maps.services.Geocoder();
 
