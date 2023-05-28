@@ -16,23 +16,17 @@ const initialDate = {
 
 export type Operator = 'decrease' | 'increase' | 'reset';
 
-const SELECTED_STYLE = {
+const SELECTED_STYLE: React.CSSProperties = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '42px',
+  height: '42px',
   borderRadius: '50%',
   backgroundColor: COLOR.BLUE_600,
-  color: '#fff',
   boxShadow: 'inset 1px 1px 1px rgba(255, 255, 255, 0.25)',
-};
-
-const DEFAULT_STYLE = {
-  prev: {
-    color: COLOR.GRAY_300,
-  },
-  next: {
-    color: COLOR.GRAY_300,
-  },
-  current: {
-    color: COLOR.GRAY_800,
-  },
+  zIndex: -1,
 };
 
 export const useOption = () => {
@@ -121,7 +115,7 @@ export const useOption = () => {
     }
   };
 
-  const activateSelectedDate = (date: DateType) => {
+  const isSelectedDate = (date: DateType) => {
     const { year, month, day } = date;
 
     return (
@@ -159,8 +153,9 @@ export const useOption = () => {
           key={`${date.year}-${date.month}-${date.day}`}
           id={id}
           style={style}
-          className="h-[47px]"
+          className="relative h-[47px] w-[47px]"
         >
+          {isSelectedDate(date) && <div style={SELECTED_STYLE}></div>}
           {date.day}
         </td>
       );
@@ -179,9 +174,9 @@ export const useOption = () => {
             day: prevDays,
           };
           const cellId = 'prev';
-          const cellStyle = activateSelectedDate(cellDate)
-            ? SELECTED_STYLE
-            : DEFAULT_STYLE.prev;
+          const cellStyle = isSelectedDate(cellDate)
+            ? { color: '#fff' }
+            : { color: COLOR.GRAY_300 };
           cellData = getCellData(cellDate, cellId, cellStyle);
           prevDays++;
         } else if (tableDataCellDay > totalDaysInMonth) {
@@ -191,9 +186,9 @@ export const useOption = () => {
             day: nextDays,
           };
           const cellId = 'next';
-          const cellStyle = activateSelectedDate(cellDate)
-            ? SELECTED_STYLE
-            : DEFAULT_STYLE.next;
+          const cellStyle = isSelectedDate(cellDate)
+            ? { color: '#fff' }
+            : { color: COLOR.GRAY_300 };
           cellData = getCellData(cellDate, cellId, cellStyle);
           nextDays++;
         } else {
@@ -203,9 +198,9 @@ export const useOption = () => {
             day: tableDataCellDay,
           };
           const cellId = 'current';
-          const cellStyle = activateSelectedDate(cellDate)
-            ? SELECTED_STYLE
-            : DEFAULT_STYLE.current;
+          const cellStyle = isSelectedDate(cellDate)
+            ? { color: '#fff' }
+            : { color: COLOR.GRAY_800 };
           cellData = getCellData(cellDate, cellId, cellStyle);
           tableDataCellDay++;
         }
@@ -217,7 +212,7 @@ export const useOption = () => {
         <tr
           key={calendarRows.length + 1}
           onClick={selectDate}
-          className="h-[47.7px]"
+          className="relative"
         >
           {rowCells}
         </tr>,
