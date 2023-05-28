@@ -20,7 +20,7 @@ Wokat은 **최적의 업무공간을 찾고자 하는 사람들** 의 고민에�
 <br />
 
 ## 👩🏻‍💻 웹 팀원 소개
-|나림|송우영|이서영|
+|나림|이서영|송우영|
 |:-:|:-:|:-:|
 |<img src="https://avatars.githubusercontent.com/u/87795291?v=4" width="200px" />|<img src="https://avatars.githubusercontent.com/u/66051416?v=4" width="200px" />|<img src="https://avatars.githubusercontent.com/u/62867581?v=4" width="200px" />|
 |[@R1mmm](https://github.com/R1mmm)|[@leeseooo](https://github.com/leeseooo)|[@f0rever0](https://github.com/f0rever0)|
