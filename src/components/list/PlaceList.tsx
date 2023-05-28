@@ -73,7 +73,7 @@ function PlaceList() {
   // const { data } = useQuery(['list'], () =>
   //   fetchPlaceList({ station: '', filter: '', date: '', person: headCount }),
   // );
-  // if (!data) return;
+  // if (!data) return <></>;
   // const { placeList } = data.data;
 
   return (
@@ -139,7 +139,7 @@ function PlaceList() {
                   <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
                     {place}
                   </h1>
-                  <div className="mb-1 flex">
+                  <div className="relative mb-1 flex">
                     <Image
                       src={list_location}
                       alt="location icon"

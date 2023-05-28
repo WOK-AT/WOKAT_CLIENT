@@ -37,78 +37,93 @@ body {
     font-family: 'system1';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system2';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system3';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system4';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system5';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system6';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
       format('woff');
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'system4_medium';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system5_medium';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system6_medium';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff')
       format('woff');
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'system1_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system2_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system3_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system4_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system5_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
   @font-face {
     font-family: 'system6_bold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff')
       format('woff');
+    font-display: swap;
   }
 }
 
