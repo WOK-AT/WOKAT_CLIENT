@@ -209,11 +209,7 @@ export const useOption = () => {
       }
 
       calendarRows.push(
-        <tr
-          key={calendarRows.length + 1}
-          onClick={selectDate}
-          className="relative"
-        >
+        <tr key={calendarRows.length + 1} onClick={selectDate}>
           {rowCells}
         </tr>,
       );
