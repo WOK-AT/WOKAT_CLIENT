@@ -18,6 +18,10 @@ const shareModalContents = {
   },
 };
 
+interface ModalContentsProps {
+  onChange?: (args: string) => void;
+}
+
 function ShareModal() {
   const router = useRouter();
   const { element: kakaoShareButton } = shareModalContents['kakaoShare'];
@@ -57,7 +61,7 @@ function ShareModal() {
         }
       />
       <Modal.Menu>
-        <h1 className="mb-[10px] font-system3_bold text-system3_bold text-GRAY_900">
+        <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
           공유하기
         </h1>
         <Modal.Contents asChild={kakaoShareButton} />
@@ -67,39 +71,29 @@ function ShareModal() {
   );
 }
 
-function KakaoShareButton() {
+function KakaoShareButton(props: ModalContentsProps) {
   const { text } = shareModalContents['kakaoShare'];
-  const { onChange: onClick, close } = useContext(ModalContext);
-
-  const onChange = (type: keyof typeof shareModalContents) => {
-    onClick(type);
-    close();
-  };
+  const { onChange } = props;
 
   return (
     <button
-      onClick={() => onChange('kakaoShare')}
-      className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] font-system4_medium text-system4_medium text-GRAY_800"
+      className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] text-system4_medium font-system4_medium text-GRAY_800"
+      onClick={() => onChange && onChange('kakaoShare')}
     >
       {text} <div className="h-6 w-6 rounded-full bg-GRAY_800"></div>
     </button>
   );
 }
-function URLCopy() {
+function URLCopy(props: ModalContentsProps) {
   const { text } = shareModalContents['urlCopy'];
-  const { onChange: onClick, close } = useContext(ModalContext);
-
-  const onChange = (type: keyof typeof shareModalContents) => {
-    onClick(type);
-    close();
-  };
+  const { onChange } = props;
 
   return (
     <div
       className="border-b-[1px] border-GRAY_100 pb-4"
-      onClick={() => onChange('urlCopy')}
+      onClick={() => onChange && onChange('urlCopy')}
     >
-      <button className="relative mt-[10px]  flex h-12 w-full items-center justify-between rounded-[30px] bg-BLUE_400 px-[18px] font-system4_medium text-system4_medium text-WHTIE">
+      <button className="relative mt-[10px]  flex h-12 w-full items-center justify-between rounded-[30px] bg-BLUE_400 px-[18px] text-system4_medium font-system4_medium text-WHTIE">
         {text}
         <Image src={paste} alt="paste url" width={24} height={24} />
       </button>

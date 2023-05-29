@@ -72,7 +72,7 @@ Modal.Menu = function Contents(props: PropsWithChildren) {
             <button
               type="button"
               onClick={close}
-              className="mt-[10px] flex w-full items-center justify-end font-system4_medium text-system4_medium text-GRAY_600"
+              className="mt-[10px] flex w-full items-center justify-end text-system4_medium font-system4_medium text-GRAY_600"
             >
               취소
             </button>
@@ -91,10 +91,10 @@ Modal.Trigger = function Trigger(props: TriggerProps) {
 };
 
 Modal.Contents = function Contents(props: PropsWithChildren<ContentsProps>) {
-  const { asChild, children, value } = props;
+  const { asChild, children } = props;
   const { onChange: select, close } = useContext(ModalContext);
 
-  const onChange = () => {
+  const onChange = (value: string) => {
     select(value);
     close();
   };
