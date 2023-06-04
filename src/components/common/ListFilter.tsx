@@ -1,9 +1,13 @@
-import { useFilter } from '@/hooks/useFilter';
 import check from '@/assets/icons/check.svg';
 import Image from 'next/image';
 import Modal from './Modal';
 
-const filterOptions = ['거리 가까운 순', '인기 많은 순'];
+export const filterOptions = ['거리 가까운 순', '인기 많은 순'];
+
+interface ListFilterProps {
+  currentOption: string;
+  onChange: (args: string) => void;
+}
 
 interface ListFilterTriggerProps {
   currentOption: string;
@@ -15,11 +19,11 @@ interface ListFilterContentProps {
   onChange?: () => void;
 }
 
-function ListFilter() {
-  const { currentOption, changeOption } = useFilter(filterOptions[0]);
+function ListFilter(props: ListFilterProps) {
+  const { currentOption, onChange } = props;
 
   return (
-    <Modal onChange={changeOption}>
+    <Modal onChange={onChange}>
       <Modal.Trigger
         asChild={<ListFilterTrigger currentOption={currentOption} />}
       />

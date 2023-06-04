@@ -1,20 +1,21 @@
-import Layout from '@/components/common/Layout';
-import profile from '@/assets/icons/profile.svg';
 import FAB from '@/components/list/FAB';
 import Navigation from '@/components/common/Navigation';
 import PlaceList from './PlaceList';
-import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { OptionContext } from '@/context/OptionContext';
+import OptionSelector from './OptionSelector';
 
 function ListLanding() {
-  const router = useRouter();
-  const title = router.query.title as string;
+  const { isOpen: optionSelectorOpen } = useContext(OptionContext);
 
-  return (
-    <Layout title={`${title}역`} right={profile}>
-      <FAB />
+  return optionSelectorOpen ? (
+    <OptionSelector />
+  ) : (
+    <>
       <Navigation />
       <PlaceList />
-    </Layout>
+      <FAB />
+    </>
   );
 }
 

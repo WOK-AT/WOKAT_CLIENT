@@ -1,16 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
-import { getPlaceDetail, getPlaceAddress } from '@/services/api';
+import { getPlaceDetail, getPlaceAddress } from '@/services/detail';
 
-export const useGetPlaceDetail = () => {
-  const { data } = useQuery(['PlaceDetail'], getPlaceDetail);
+export const useGetPlaceDetail = (placeId: string) => {
+  const { data } = useQuery(['PlaceDetail'], () => getPlaceDetail(placeId));
   return { list: data };
 };
 
-export const useGetPlaceAddress = (isRoadName: boolean, address: string) => {
+export const useGetPlaceAddress = (
+  payload: { placeId: string; isRoadName: boolean },
+  address: string,
+) => {
+  const { placeId, isRoadName } = payload;
+
   const param = isRoadName ? 1 : 0;
   const { data } = useQuery(
     ['PlaceAddress', isRoadName, address],
-    () => getPlaceAddress(param),
+    () => getPlaceAddress({ placeId, isRoadName: param }),
     {
       staleTime: 1000 * 30,
     },

@@ -2,9 +2,9 @@ import person_icon from '@/assets/icons/person_line.svg';
 import calendar from '@/assets/icons/calendar.svg';
 import reset from '@/assets/icons/delete_gray.svg';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { OptionContext } from '@/context/OptionContext';
 import { useContext } from 'react';
+import { useOption } from '@/hooks/useOption';
 export interface DateType {
   year: number;
   month: number;
@@ -18,9 +18,8 @@ const initialDate = {
 };
 
 function ReservationOption() {
-  const router = useRouter();
-  const { pathname, query } = router;
-  const { currentDate, headCount, modifyHeadCount } = useContext(OptionContext);
+  const { selectedDate } = useOption();
+  const { headCount, modifyHeadCount, open } = useContext(OptionContext);
 
   const formatDate = (date: DateType) => {
     const { year, month, day } = date;
@@ -30,36 +29,25 @@ function ReservationOption() {
     return [formatted_year, formatted_month, formatted_day];
   };
 
-  const routeToOptionSelectPage = () => {
-    const title = query.title as string | undefined;
-    if (typeof title === 'undefined') return;
-
-    const newUrl = `${pathname}/option`;
-    router.push({
-      pathname: newUrl,
-      query,
-    });
-  };
-
   const onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLImageElement;
     if (target.closest('button') === null) return;
     if (target.id === 'reset') return;
-    routeToOptionSelectPage();
+    open();
   };
 
   return (
     <div className="mb-2.5 flex gap-2" onClick={onClick}>
-      <button className="flex items-center w-full py-2 pl-2 border rounded-lg outline-none border-GRAY_200">
+      <button className="flex w-full items-center rounded-lg border border-GRAY_200 py-2 pl-2 outline-none">
         <Image src={calendar} alt="calendar icon" className="mr-2" />
         <p className="font-system5 text-system5 text-GRAY_900">
-          {formatDate(currentDate || initialDate).join('-')}
+          {formatDate(selectedDate || initialDate).join('-')}
         </p>
       </button>
 
-      <button className="flex items-center w-full p-2 border rounded-lg outline-none border-GRAY_200">
+      <button className="flex w-full items-center rounded-lg border border-GRAY_200 p-2 outline-none">
         <Image src={person_icon} alt="person icon" className="mr-2" />
-        <div className="flex justify-between w-full">
+        <div className="flex w-full justify-between">
           <p
             className={`text-system5 text-GRAY_900 ${
               headCount ? 'font-system5_bold' : 'font-system5'

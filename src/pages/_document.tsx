@@ -4,14 +4,19 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script
-          src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-          crossOrigin="anonymous"
-        ></script>
+        <link
+          rel="stylesheet"
+          as="style"
+          href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/variable/pretendardvariable-dynamic-subset.css"
+        />
       </Head>
       <body>
         <Main />
         <NextScript />
+        <script
+          src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+          crossOrigin="anonymous"
+        ></script>
       </body>
     </Html>
   );
