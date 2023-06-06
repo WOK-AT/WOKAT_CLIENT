@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import Layout from '@/components/common/Layout';
 import { useInput } from '@/hooks/useInput';
 import search from '@/assets/icons/search.svg';
@@ -6,52 +5,23 @@ import reset from '@/assets/icons/delete.svg';
 import delete_gray from '@/assets/icons/delete_gray.svg';
 import recent from '@/assets/icons/recent.svg';
 import Image from 'next/image';
-import subway_info from '@/data/subway_station_info.json';
 import { useRouter } from 'next/router';
 import { SubwayType } from '@/types/search';
 import SearchList from '@/components/search/SearchList';
-import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
+import SearchListItem from '@/components/search/SearchListItem';
+import { useStationSearch } from '@/hooks/useStationSearch';
 
 function Search() {
-  const { input, onChange, onReset } = useInput();
   const router = useRouter();
-  const [searchResult, setSearchResult] = useState<SubwayType[]>([]);
-  const [recentSearch, setRecentSearch] = useState<SubwayType[]>([]);
-  const [isSearching, setIsSearching] = useState(false);
-
-  const searchStation = () => {
-    const stations = subway_info.data
-      .filter(
-        ({ station_nm }) =>
-          input.slice(0, input.length) === station_nm.slice(0, input.length),
-      )
-      .sort((a, b) =>
-        a.station_nm.localeCompare(b.station_nm, 'ko', { sensitivity: 'base' }),
-      );
-    setSearchResult(stations);
-  };
-
-  const deleteSearch = (target: SubwayType) => {
-    const updatedRecentSearch = recentSearch.filter((v) => v !== target);
-    setLocalStorageItem('recent', updatedRecentSearch);
-    setRecentSearch(updatedRecentSearch);
-  };
-
-  const resetSearch = () => {
-    isSearching ? setSearchResult([]) : setRecentSearch([]);
-    setLocalStorageItem('recent', []);
-  };
-
-  const addRecentSearch = (target: SubwayType) => {
-    if (!isSearching) return;
-    const updatedRecentSearch = [
-      target,
-      ...recentSearch.filter(
-        ({ station_nm }) => target.station_nm !== station_nm,
-      ),
-    ];
-    setLocalStorageItem('recent', updatedRecentSearch);
-  };
+  const { input, onChange, onReset } = useInput();
+  const {
+    searchResult,
+    recentSearch,
+    isSearching,
+    deleteSearch,
+    resetSearch,
+    addRecentSearch,
+  } = useStationSearch(input);
 
   const onStationClickRoute = (station: SubwayType) => {
     addRecentSearch(station);
@@ -61,15 +31,33 @@ function Search() {
     });
   };
 
-  useEffect(() => {
-    const storage = getLocalStorageItem<SubwayType[]>('recent', []);
-    setRecentSearch(storage);
-  }, []);
-
-  useEffect(() => {
-    setIsSearching(input.length > 0);
-    input.length && searchStation();
-  }, [input]);
+  const searchListItem = isSearching
+    ? searchResult.map((item, index) => (
+        <SearchListItem
+          key={index}
+          data={item}
+          icon={
+            recentSearch.some((rs) => rs.station_nm === item.station_nm) && (
+              <Image src={recent} alt="recent search icon" />
+            )
+          }
+          onClick={() => onStationClickRoute(item)}
+        />
+      ))
+    : recentSearch.map((item, index) => (
+        <SearchListItem
+          data={item}
+          key={index}
+          icon={
+            <Image
+              src={delete_gray}
+              alt="delete search history"
+              onClick={() => deleteSearch(item)}
+            />
+          }
+          onClick={() => onStationClickRoute(item)}
+        />
+      ));
 
   return (
     <Layout>
@@ -117,33 +105,7 @@ function Search() {
             style={{ height: 'calc(100vh - 170px)' }}
             className="flex flex-col overflow-y-scroll scrollbar-hide"
           >
-            {isSearching
-              ? searchResult.map((item, index) => (
-                  <SearchList
-                    key={index}
-                    data={item}
-                    icon={
-                      recentSearch.some(
-                        (rs) => rs.station_nm === item.station_nm,
-                      ) && <Image src={recent} alt="recent search icon" />
-                    }
-                    onClick={() => onStationClickRoute(item)}
-                  />
-                ))
-              : recentSearch.map((item, index) => (
-                  <SearchList
-                    key={index}
-                    data={item}
-                    icon={
-                      <Image
-                        src={delete_gray}
-                        alt="delete search history"
-                        onClick={() => deleteSearch(item)}
-                      />
-                    }
-                    onClick={() => onStationClickRoute(item)}
-                  />
-                ))}
+            <SearchList item={searchListItem} />
           </ul>
         </section>
       </div>
