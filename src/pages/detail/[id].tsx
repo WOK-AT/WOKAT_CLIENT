@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 function Detail() {
   const router = useRouter();
   const placeId = router.query.id as string;
-  const { list } = useGetPlaceDetail('646c9fd61f66c2fbf43214f2');
+  const { list } = useGetPlaceDetail('6480edcdb408a9bab2f5a4b3');
 
   return (
     <Layout right={login}>
@@ -28,6 +28,7 @@ function Detail() {
         information={list?.data.information}
         maxPeopleCount={list?.data.count}
         location={list?.data.location}
+        bookingURL={list?.data.bookingURL}
       />
     </Layout>
   );
