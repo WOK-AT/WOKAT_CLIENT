@@ -52,14 +52,14 @@ function FacilityInformation({
         <div className="mb-1.5 flex flex-col items-start">
           <div className="mb-3 flex flex-row">
             <Image src={phone} alt="phone icon" className="mr-4" />
-            <h2 className="mr-4 font-system4 text-system4 text-GRAY_400">
+            <h2 className="mr-4 text-system4 font-system4 text-GRAY_400">
               {information?.contact}
             </h2>
           </div>
           <div className="flex flex-row">
             <Image src={internet} alt="internet icon" className="mr-4" />
             <h2
-              className="mr-4 w-full break-all font-system4 text-system4 text-GRAY_400"
+              className="mr-4 w-full break-all text-system4 font-system4 text-GRAY_400"
               onClick={() => window.open(information?.homepage)}
             >
               {information?.homepage}
@@ -72,18 +72,18 @@ function FacilityInformation({
           <Image src={wifi} alt="wifi icon" className="mr-4" />
           <div>
             <div className="mb-1.5 flex flex-row items-start">
-              <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
+              <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
                 ID :
               </h2>
-              <p className="font-system4 text-system4 text-GRAY_600">
+              <p className="text-system4 font-system4 text-GRAY_600">
                 {wifiId}
               </p>
             </div>
             <div className="mb-1.5 flex flex-row items-start">
-              <h2 className="mr-2 w-[40px] font-system4_bold text-system4_bold text-GRAY_600">
+              <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
                 PW :
               </h2>
-              <p className="font-system4 text-system4 text-GRAY_600">
+              <p className="text-system4 font-system4 text-GRAY_600">
                 {wifiPW}
               </p>
             </div>
@@ -99,11 +99,11 @@ function FacilityInformation({
             >
               <div className="flex flex-row items-center">
                 <Image src={item.icon} alt="info icon" className="mr-3" />
-                <h2 className="font-system4_medium text-system4_medium text-GRAY_600">
+                <h2 className="text-system4_medium font-system4_medium text-GRAY_600">
                   {item.title}
                 </h2>
               </div>
-              <p className="font-system4 text-system4 text-GRAY_400">
+              <p className="flex w-32 flex-row justify-end text-system4 font-system4 text-GRAY_400">
                 {item.status}
               </p>
             </div>
