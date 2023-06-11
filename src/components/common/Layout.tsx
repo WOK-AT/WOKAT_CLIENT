@@ -15,12 +15,9 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
   }, []);
 
   return (
-    <main className="flex flex-col h-screen">
+    <main>
       <Header title={title} right={right} />
-      <div
-        className="h-full px-4 mx-auto"
-        style={{ height: 'calc(100% - 80px)' }}
-      >
+      <div className="px-4 mx-auto" style={{ height: 'calc(100% - 80px)' }}>
         {children}
       </div>
     </main>

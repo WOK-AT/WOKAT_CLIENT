@@ -9,7 +9,7 @@ import block from '@/assets/images/block.svg';
 function Home() {
   return (
     <Layout>
-      <div className="flex flex-col">
+      <div className="flex flex-col justify-between">
         <article className="relative mt-6 flex h-[354px] w-full flex-col items-center">
           <Image src={block} alt="block" className="absolute top-6" />
           <div className="absolute top-[72px]">
@@ -60,7 +60,7 @@ function Home() {
           <Image
             src={background}
             alt="wokat_background"
-            className="w-screen h-full opacity-70"
+            className="w-full h-full opacity-70"
           />
         </article>
       </div>
