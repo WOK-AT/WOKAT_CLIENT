@@ -5,7 +5,7 @@ import info from '@/assets/icons/info.svg';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
-import testImage from '@/assets/images/main_background.svg';
+import testImage from '@/assets/images/background.svg';
 import { OptionContext } from '@/context/OptionContext';
 import { NavigationContext } from '@/context/NavigationContext';
 import ReservationOption from './ReservationOption';
@@ -80,27 +80,29 @@ function PlaceList() {
     <div>
       {navType === '무료 회의룸' && <ReservationOption />}
 
-      <section className="flex justify-between">
-        <div
-          style={{
-            color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-          }}
-          className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 font-system6 text-system6"
-        >
-          {navType === '무료 회의룸' && (
-            <>
-              <Image
-                src={info}
-                alt="reservation check message icon"
-                style={{
-                  fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
-                }}
-                className="mr-1"
-              />
-              {RESERVATION_MESSAGE}
-            </>
-          )}
-        </div>
+      <section
+        className={`${
+          navType === '무료 회의룸' ? 'justify-between' : 'justify-end'
+        } flex`}
+      >
+        {navType === '무료 회의룸' && (
+          <div
+            style={{
+              color: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+            }}
+            className="mr-[13px] flex h-[26px] items-center rounded-full bg-BLUE_50 px-1.5 py-1 text-system6 font-system6"
+          >
+            <Image
+              src={info}
+              alt="reservation check message icon"
+              style={{
+                fill: `${headCount ? COLOR.GRAY_600 : COLOR.BLUE_600}`,
+              }}
+              className="mr-1"
+            />
+            {RESERVATION_MESSAGE}
+          </div>
+        )}
         <ListFilter currentOption={currentOption} onChange={changeOption} />
       </section>
 
@@ -120,7 +122,7 @@ function PlaceList() {
             <Link
               href={`detail/${index}`}
               key={index}
-              className="mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
+              className="flex w-full pb-4 mb-4 border-b-2 border-GRAY_100"
             >
               <div className="relative">
                 <Image
@@ -134,19 +136,19 @@ function PlaceList() {
                   className="absolute bottom-2 right-2"
                 />
               </div>
-              <div className="ml-3 flex flex-col items-center justify-between">
+              <div className="flex flex-col items-center justify-between ml-3">
                 <div className="flex-col">
-                  <h1 className="mb-2 font-system3_bold text-system3_bold text-GRAY_900 max-[360px]:text-system4">
+                  <h1 className="mb-2 text-system3_bold font-system3_bold text-GRAY_900 max-[360px]:text-system4">
                     {place}
                   </h1>
-                  <div className="relative mb-1 flex">
+                  <div className="relative flex mb-1">
                     <Image
                       src={list_location}
                       alt="location icon"
                       width={20}
                       height={20}
                     />
-                    <p className=" font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
+                    <p className=" text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
                       {location}
                     </p>
                   </div>
@@ -157,7 +159,7 @@ function PlaceList() {
                       width={20}
                       height={20}
                     />
-                    <p className="font-system5 text-system5 text-GRAY_600 max-[360px]:text-system6">
+                    <p className="text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
                       최대 {count}명
                     </p>
                   </div>
@@ -166,7 +168,7 @@ function PlaceList() {
                   {hashtags.map((tag: string, index: number) => (
                     <li
                       key={index}
-                      className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 font-system6 text-system6 text-BLUE_600 max-[360px]:px-1 "
+                      className="rounded-full bg-[#E0EDFFB2] px-2 py-0.5 text-system6 font-system6 text-BLUE_600 max-[360px]:px-1 "
                       style={{
                         marginRight:
                           index === hashtags.length - 1 ? '0px' : '8px',

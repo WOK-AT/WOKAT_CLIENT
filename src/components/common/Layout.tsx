@@ -17,7 +17,7 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
   return (
     <main>
       <Header title={title} right={right} />
-      <div className="px-4 mx-auto" style={{ height: 'calc(100% - 80px)' }}>
+      <div className="px-4 mx-auto" style={{ height: 'calc(100% - 56px)' }}>
         {children}
       </div>
     </main>
