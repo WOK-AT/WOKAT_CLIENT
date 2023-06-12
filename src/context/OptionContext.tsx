@@ -1,6 +1,6 @@
 import { useBoolean } from '@/hooks/useBoolean';
 import { useOption } from '@/hooks/useOption';
-import { PropsWithChildren, createContext, useEffect } from 'react';
+import { PropsWithChildren, createContext } from 'react';
 
 interface DateType {
   year: number;

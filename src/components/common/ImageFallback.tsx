@@ -16,24 +16,13 @@ function ImageFallback(props: ImageFallbackProps): ReactElement {
   };
 
   return (
-    <>
-      {error ? (
-        <Image
-          src={fallbackImage}
-          alt={alt}
-          className="overflow-hidden rounded"
-          fill
-        />
-      ) : (
-        <Image
-          src={src}
-          alt={alt}
-          onError={onError}
-          className="overflow-hidden rounded"
-          fill
-        />
-      )}
-    </>
+    <Image
+      src={error ? fallbackImage : src}
+      alt={alt}
+      onError={onError}
+      className="overflow-hidden rounded"
+      fill
+    />
   );
 }
 
