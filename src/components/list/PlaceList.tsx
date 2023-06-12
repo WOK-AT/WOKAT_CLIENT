@@ -3,19 +3,24 @@ import Image from 'next/image';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
-import { Place } from '@/services/list/types';
 import ImageFallback from '../common/ImageFallback';
 import ListFilter, { filterOptions } from '../common/ListFilter';
 import { useFilter } from '@/hooks/useFilter';
+import { usePlaceList } from '@/hooks/queries/usePlaceList';
+import { NavType } from '@/hooks/useNavigation';
+import Loading from '../common/Loading';
 
 interface PlaceListProps {
-  placeList: Place[];
-  navType: string;
+  navType?: NavType;
 }
 
 function PlaceList(props: PlaceListProps) {
-  const { placeList, navType } = props;
+  const { navType } = props;
   const { currentOption, changeOption } = useFilter(filterOptions[0]);
+
+  const { data: placeList, isLoading } = usePlaceList({ navType });
+
+  if (isLoading) return <Loading />;
 
   return (
     <div>
