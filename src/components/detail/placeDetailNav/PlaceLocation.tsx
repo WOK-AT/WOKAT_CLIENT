@@ -7,7 +7,7 @@ import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
 import Image from 'next/image';
 import Map from './Map';
-import { useGetPlaceAddress } from '@/hooks/useDetail';
+import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
   place: string;

@@ -3,7 +3,7 @@ import login from '@/assets/icons/login.svg';
 import PlaceInfo from '@/components/detail/placeInfo';
 import ImageCarousel from '@/components/detail/imageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
-import { useGetPlaceDetail } from '@/hooks/useDetail';
+import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 
 function Detail() {
