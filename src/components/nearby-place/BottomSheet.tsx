@@ -1,9 +1,7 @@
-import React from 'react';
 import BottomSheetHeader from './BottomSheetHeader';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { motion } from 'framer-motion';
 import PlaceList from '../list/PlaceList';
-import ListFilter from '../common/ListFilter';
 
 interface BottomSheetProps {
   stationName: string;
@@ -19,7 +17,7 @@ function BottomSheet(props: BottomSheetProps) {
       <BottomSheetHeader />
       <div
         ref={content}
-        className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
+        className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
       >
         <div className="mx-4">
           <PlaceList />
