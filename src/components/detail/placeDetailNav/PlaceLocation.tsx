@@ -20,10 +20,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
 
   const [address, setAddress] = useState<string>(location);
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
-  const { value } = useGetPlaceAddress(
-    { placeId: '6480edcdb408a9bab2f5a4b3', isRoadName },
-    address,
-  );
+  const { value } = useGetPlaceAddress({ placeId, isRoadName }, address);
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
   };
