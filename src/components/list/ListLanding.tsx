@@ -1,13 +1,14 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+import { useQuery } from '@tanstack/react-query';
+import PlaceList from './PlaceList';
+import Loading from '../common/Loading';
 import FAB from '@/components/list/FAB';
 import Navigation from '@/components/common/Navigation';
-import PlaceList from './PlaceList';
-import { useContext } from 'react';
-import { OptionContext } from '@/context/OptionContext';
 import OptionSelector from './OptionSelector';
+import { OptionContext } from '@/context/OptionContext';
 import { NavigationContext } from '@/context/NavigationContext';
-import { useQuery } from '@tanstack/react-query';
 import { fetchPlaceList } from '@/services/list';
-import { useRouter } from 'next/router';
 import { GetPlaceListOutput, Place } from '@/services/list/types';
 
 function ListLanding() {
@@ -16,13 +17,13 @@ function ListLanding() {
   const { isOpen: optionSelectorOpen } = useContext(OptionContext);
   const { navType } = useContext(NavigationContext);
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ['placeList', navType],
     () =>
       fetchPlaceList({
         navType: getNavType(),
         station,
-        filter: '0', // TODO : 서버 추가 개발 이후 수정, 현재는 0 고정값
+        filter: '0', // TODO : 서버 추가 개발 이후 수정 예정, 현재는 0 고정값
         page: 0,
       }),
     {
@@ -63,7 +64,11 @@ function ListLanding() {
   ) : (
     <>
       <Navigation />
-      <PlaceList placeList={getPlaceListData()} navType={navType} />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <PlaceList placeList={getPlaceListData()} navType={navType} />
+      )}
       <FAB />
     </>
   );
