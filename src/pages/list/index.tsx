@@ -14,7 +14,7 @@ function List() {
     <NavigationContextProvider>
       <Layout title={title ? `${title}역` : ''} right={profile}>
         <Navigation />
-        <PlaceList />
+        <PlaceList station={title} />
         <FAB />
       </Layout>
     </NavigationContextProvider>

@@ -1,4 +1,8 @@
-import { DateType } from '@/hooks/useOption';
+interface DateType {
+  year: number;
+  month: number;
+  day: number;
+}
 
 export const formatDate = (date: DateType) => {
   const { year, month, day } = date;

@@ -228,7 +228,7 @@ function Map(props: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[600px] w-screen overflow-hidden ">
       <div
         id="map"
-        className="relative z-0 w-full h-full overflow-hidden "
+        className="relative z-0 h-full w-full overflow-hidden "
       ></div>
       <div
         className="z-1 absolute left-[85%] top-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"

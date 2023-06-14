@@ -5,16 +5,16 @@ import { useRouter } from 'next/router';
 import { NavType } from '../useNavigation';
 
 interface PlaceListProps {
+  station: string;
   navType: NavType;
 }
 
 export const usePlaceList = (props: PlaceListProps) => {
-  const { navType } = props;
+  const { station, navType } = props;
   const router = useRouter();
 
   const isNearbyPlace = router.pathname.includes('nearby-place');
 
-  const station = router.query.station?.[0]?.replace('역', '') || '';
   const title = router.query.title as string;
 
   const stationParam: string = isNearbyPlace ? station : title;

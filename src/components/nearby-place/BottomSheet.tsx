@@ -2,8 +2,6 @@ import BottomSheetHeader from './BottomSheetHeader';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { motion } from 'framer-motion';
 import PlaceList from '../list/PlaceList';
-import { useContext } from 'react';
-import { NavigationContext } from '@/context/NavigationContext';
 
 interface BottomSheetProps {
   stationName: string;
@@ -11,7 +9,6 @@ interface BottomSheetProps {
 function BottomSheet(props: BottomSheetProps) {
   const { stationName } = props;
   const { sheet, content } = useBottomSheet({ stationName } || '');
-  const { navType } = useContext(NavigationContext);
 
   return (
     <motion.div
@@ -24,7 +21,7 @@ function BottomSheet(props: BottomSheetProps) {
         className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <PlaceList />
+          <PlaceList station={stationName.replace('역', '')} />
         </div>
       </div>
     </motion.div>

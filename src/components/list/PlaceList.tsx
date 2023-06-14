@@ -9,9 +9,14 @@ import Loading from '../common/Loading';
 import { useContext } from 'react';
 import { NavigationContext } from '@/context/NavigationContext';
 
-function PlaceList() {
+interface PlaceListProps {
+  station: string;
+}
+
+function PlaceList(props: PlaceListProps) {
+  const { station } = props;
   const { navType } = useContext(NavigationContext);
-  const { data: placeList, isLoading } = usePlaceList({ navType });
+  const { data: placeList, isLoading } = usePlaceList({ station, navType });
 
   if (isLoading) return <Loading />;
 
