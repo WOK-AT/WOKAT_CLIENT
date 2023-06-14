@@ -5,15 +5,12 @@ import list_location from '@/assets/icons/list_location.svg';
 import bookmark from '@/assets/icons/bookmark.svg';
 import ImageFallback from '../common/ImageFallback';
 import { usePlaceList } from '@/hooks/queries/usePlaceList';
-import { NavType } from '@/hooks/useNavigation';
 import Loading from '../common/Loading';
+import { useContext } from 'react';
+import { NavigationContext } from '@/context/NavigationContext';
 
-interface PlaceListProps {
-  navType: NavType;
-}
-
-function PlaceList(props: PlaceListProps) {
-  const { navType } = props;
+function PlaceList() {
+  const { navType } = useContext(NavigationContext);
   const { data: placeList, isLoading } = usePlaceList({ navType });
 
   if (isLoading) return <Loading />;

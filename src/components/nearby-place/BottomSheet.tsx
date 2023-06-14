@@ -24,7 +24,7 @@ function BottomSheet(props: BottomSheetProps) {
         className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <PlaceList navType={navType} />
+          <PlaceList />
         </div>
       </div>
     </motion.div>

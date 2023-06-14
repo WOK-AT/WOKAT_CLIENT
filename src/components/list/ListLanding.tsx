@@ -15,7 +15,7 @@ function ListLanding() {
   ) : (
     <>
       <Navigation />
-      <PlaceList navType={navType} />
+      <PlaceList />
       <FAB />
     </>
   );
