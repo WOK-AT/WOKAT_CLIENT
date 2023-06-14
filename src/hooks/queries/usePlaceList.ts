@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { NavType } from '../useNavigation';
 
 interface PlaceListProps {
-  navType?: NavType;
+  navType: NavType;
 }
 
 export const usePlaceList = (props: PlaceListProps) => {
@@ -31,7 +31,7 @@ export const usePlaceList = (props: PlaceListProps) => {
   };
 
   const { data, isLoading } = useQuery(
-    ['placeList', navType || '무료 공간'],
+    ['placeList', navType, stationParam],
     () =>
       fetchPlaceList({
         navType: getNavType(),

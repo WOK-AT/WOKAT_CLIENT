@@ -9,7 +9,7 @@ import { NavType } from '@/hooks/useNavigation';
 import Loading from '../common/Loading';
 
 interface PlaceListProps {
-  navType?: NavType;
+  navType: NavType;
 }
 
 function PlaceList(props: PlaceListProps) {
