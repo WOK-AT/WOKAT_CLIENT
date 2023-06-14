@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect } from 'react';
+import Onboarding from '../onboarding/Onboarding';
 import Header from './Header';
 interface LayoutProps {
   title?: string;
@@ -17,7 +18,7 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
   return (
     <main>
       <Header title={title} right={right} />
-      <div className="container px-4 mx-auto">{children}</div>
+      <div className="container mx-auto px-4">{children}</div>
     </main>
   );
 }
