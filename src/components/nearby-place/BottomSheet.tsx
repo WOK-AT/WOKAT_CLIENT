@@ -2,6 +2,8 @@ import BottomSheetHeader from './BottomSheetHeader';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { motion } from 'framer-motion';
 import PlaceList from '../list/PlaceList';
+import { useContext } from 'react';
+import { NavigationContext } from '@/context/NavigationContext';
 
 interface BottomSheetProps {
   stationName: string;
@@ -9,6 +11,8 @@ interface BottomSheetProps {
 function BottomSheet(props: BottomSheetProps) {
   const { stationName } = props;
   const { sheet, content } = useBottomSheet({ stationName } || '');
+  const { navType } = useContext(NavigationContext);
+
   return (
     <motion.div
       className="z-1  fixed top-[80%] -ml-4 h-full w-full flex-col rounded-t-2xl bg-white shadow-[0px_22px_40px_4px_#5b5b5b8e] transition ease-in-out"
@@ -20,7 +24,7 @@ function BottomSheet(props: BottomSheetProps) {
         className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <PlaceList />
+          <PlaceList navType={navType} />
         </div>
       </div>
     </motion.div>
