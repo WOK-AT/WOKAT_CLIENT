@@ -1,3 +1,4 @@
+import React, { Dispatch, SetStateAction } from 'react';
 import delete_gray from '@/assets/icons/delete_gray.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -9,7 +10,20 @@ import onboarding_3 from '@/assets/images/onboarding_3.png';
 import onboarding_4 from '@/assets/images/onboarding_4.png';
 import onboarding_5 from '@/assets/images/onboarding_5.png';
 
-function Onboarding() {
+interface OnboardingProps {
+  setShowOnboarding: Dispatch<SetStateAction<boolean>>;
+}
+
+function Onboarding({ setShowOnboarding }: OnboardingProps) {
+  const closeOnboarding = () => {
+    const expires = new Date();
+    expires.setHours(expires.getHours() + 24);
+    const new_expires = expires;
+    localStorage.setItem('homeVisited', new_expires.toString());
+    // 현재 시간의 24시간 뒤의 시간을 homeVisited에 저장
+    setShowOnboarding(false);
+  };
+
   const settings = {
     dots: true,
     speed: 100,
@@ -39,11 +53,12 @@ function Onboarding() {
     <div className="fixed z-10 w-screen">
       <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
-          <Image
-            src={delete_gray}
-            alt="delete_onboarding"
+          <div
+            onClick={closeOnboarding}
             className="relative left-[260px] top-[16px] h-[20px] w-[16px]"
-          />
+          >
+            <Image src={delete_gray} alt="delete_onboarding" />
+          </div>
 
           <Slider {...settings}>
             <div className="mt-[-15px] flex h-[300px] w-[250px] items-center justify-center">
@@ -133,7 +148,10 @@ function Onboarding() {
             </div>
           </Slider>
 
-          <div className="m-auto h-[44px] w-[268px] rounded-[30px] bg-BLUE_100 py-[10px] text-center font-system4_bold text-BLUE_500">
+          <div
+            onClick={closeOnboarding}
+            className="m-auto h-[44px] w-[268px] rounded-[30px] bg-BLUE_100 py-[10px] text-center font-system4_bold text-BLUE_500"
+          >
             WOKAT 시작하기
           </div>
         </div>

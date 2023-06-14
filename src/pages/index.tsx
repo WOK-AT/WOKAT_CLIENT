@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Layout from '@/components/common/Layout';
 import search from '@/assets/icons/search.svg';
 import location from '@/assets/icons/location.svg';
@@ -8,16 +9,36 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 function Home() {
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  // 기본 세팅 값은 false
+  // localStorage에 homeVisited 조회
+  const [HOME_VISITED, setHOME_VISITED] = useState('');
+
+  useEffect(() => {
+    const home_visited: any = localStorage.getItem('homeVisited');
+    if (home_visited !== null) {
+      setHOME_VISITED(home_visited);
+    }
+    const today = new Date();
+    const handleMainPop = () => {
+      if (home_visited === '' || new Date(home_visited) < today) {
+        // 저장된 date가 없거나 today보다 작다면 온보딩 노출
+        setShowOnboarding(true);
+      }
+    };
+    handleMainPop();
+  }, [HOME_VISITED]);
+
   return (
     <>
-      <Onboarding />
+      {showOnboarding && <Onboarding setShowOnboarding={setShowOnboarding} />}
       <Layout>
         <Image
           src={background}
           alt="wokat_background"
           className="fixed bottom-0 w-screen translate-x-[-15px]"
         />
-        <div className="relative mt-6 flex w-full flex-col items-center">
+        <div className="relative flex flex-col items-center w-full mt-6">
           <Image
             src={block}
             alt="block"
@@ -54,7 +75,7 @@ function Home() {
                   className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            text-system4_bold font-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
                 >
-                  <div className="relative mr-2 h-6 w-6">
+                  <div className="relative w-6 h-6 mr-2">
                     <Image src={location} alt="location" fill />
                   </div>
                   주변 업무 공간 찾기
