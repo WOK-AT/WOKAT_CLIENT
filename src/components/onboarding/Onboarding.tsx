@@ -27,7 +27,7 @@ function Onboarding({ setShowOnboarding }: OnboardingProps) {
   const settings = {
     dots: true,
     speed: 100,
-    Infinity: false,
+    infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 0,
