@@ -36,7 +36,7 @@ function PlaceList(props: PlaceListProps) {
           <Link
             href={`detail/${id}`}
             key={id}
-            className="flex w-full pb-4 mb-4 border-b-2 border-GRAY_100"
+            className="mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
           >
             <div className="relative">
               <div className="flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
@@ -48,12 +48,12 @@ function PlaceList(props: PlaceListProps) {
                 className="absolute bottom-2 right-2"
               />
             </div>
-            <div className="flex flex-col items-start justify-between ml-3">
+            <div className="ml-3 flex flex-col items-start justify-between">
               <div className="flex-col">
                 <h1 className="mb-2 text-system3_bold font-system3_bold text-GRAY_900 max-[360px]:text-system4">
                   {place}
                 </h1>
-                <div className="relative flex mb-1">
+                <div className="relative mb-1 flex">
                   <Image
                     src={list_location}
                     alt="location icon"
@@ -72,7 +72,7 @@ function PlaceList(props: PlaceListProps) {
                     height={20}
                   />
                   <p className="text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
-                    최대 {count || 0}명
+                    {count || '제한 없음'}
                   </p>
                 </div>
               </div>

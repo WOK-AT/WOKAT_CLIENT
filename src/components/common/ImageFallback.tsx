@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import Image from 'next/image';
-import fallbackImage from '@/assets/images/main_background.svg';
+import fallbackImage from '@/assets/images/background.svg';
 
 interface ImageFallbackProps {
   src: string;
