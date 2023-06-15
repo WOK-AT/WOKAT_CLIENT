@@ -9,6 +9,7 @@ import onboarding_2 from '@/assets/images/onboarding_2.webp';
 import onboarding_3 from '@/assets/images/onboarding_3.webp';
 import onboarding_4 from '@/assets/images/onboarding_4.webp';
 import onboarding_5 from '@/assets/images/onboarding_5.webp';
+import { setLocalStorageItem } from '@/utils/storage';
 
 interface OnboardingProps {
   setShowOnboarding: Dispatch<SetStateAction<boolean>>;
@@ -19,7 +20,7 @@ function Onboarding({ setShowOnboarding }: OnboardingProps) {
     const expires = new Date();
     expires.setHours(expires.getHours() + 24);
     const new_expires = expires;
-    localStorage.setItem('homeVisited', new_expires.toString());
+    setLocalStorageItem('homeVisited', new_expires.toString());
     // 현재 시간의 24시간 뒤의 시간을 homeVisited에 저장
     setShowOnboarding(false);
   };

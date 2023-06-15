@@ -7,6 +7,7 @@ import block from '@/assets/images/block.svg';
 import Onboarding from '@/components/onboarding/Onboarding';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getLocalStorageItem } from '@/utils/storage';
 
 function Home() {
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -15,7 +16,7 @@ function Home() {
   const [HOME_VISITED, setHOME_VISITED] = useState('');
 
   useEffect(() => {
-    const home_visited: any = localStorage.getItem('homeVisited');
+    const home_visited: string = getLocalStorageItem('homeVisited', '');
     if (home_visited !== null) {
       setHOME_VISITED(home_visited);
     }
