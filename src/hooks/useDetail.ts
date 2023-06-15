@@ -2,7 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { getPlaceDetail, getPlaceAddress } from '@/services/detail';
 
 export const useGetPlaceDetail = (placeId: string) => {
-  const { data } = useQuery(['PlaceDetail'], () => getPlaceDetail(placeId));
+  const { data } = useQuery(['PlaceDetail', placeId], () =>
+    getPlaceDetail(placeId),
+  );
   return { list: data };
 };
 
