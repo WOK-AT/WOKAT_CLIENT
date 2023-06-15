@@ -2,7 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import { getPlaceDetail, getPlaceAddress } from '@/services/detail';
 
 export const useGetPlaceDetail = (placeId: string) => {
-  const { data } = useQuery(['PlaceDetail'], () => getPlaceDetail(placeId));
+  const { data } = useQuery(['PlaceDetail'], () => getPlaceDetail(placeId), {
+    enabled: !!placeId,
+  });
   return { list: data };
 };
 
@@ -18,6 +20,7 @@ export const useGetPlaceAddress = (
     () => getPlaceAddress({ placeId, isRoadName: param }),
     {
       staleTime: 1000 * 30,
+      enabled: !!placeId,
     },
   );
   return { value: data };

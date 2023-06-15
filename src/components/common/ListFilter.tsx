@@ -16,7 +16,7 @@ interface ListFilterTriggerProps {
 interface ListFilterContentProps {
   content: string;
   currentOption: string;
-  onChange?: () => void;
+  onChange?: (arg: string) => void;
 }
 
 function ListFilter(props: ListFilterProps) {
@@ -28,7 +28,7 @@ function ListFilter(props: ListFilterProps) {
         asChild={<ListFilterTrigger currentOption={currentOption} />}
       />
       <Modal.Menu>
-        <h1 className="mb-[10px] font-system3_bold text-system3_bold text-GRAY_900">
+        <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
           {currentOption}
         </h1>
         {filterOptions.map((option) => (
@@ -55,7 +55,7 @@ function ListFilterTrigger(props: ListFilterTriggerProps) {
 
   return (
     <div className="mb-5 flex justify-end">
-      <p className="font-system5_medium text-system5_medium text-GRAY_400">
+      <p className="text-system5_medium font-system5_medium text-GRAY_400">
         {currentOption} {'▼'}
       </p>
     </div>
@@ -67,8 +67,8 @@ function ListFilterContent(props: ListFilterContentProps) {
 
   return (
     <div
-      onClick={onChange}
-      className="relative mt-[14px] flex h-full w-full justify-between border-b-[1px] border-GRAY_100 pb-[14px]  font-system4_medium text-system4_medium"
+      onClick={() => onChange && onChange(content)}
+      className="relative mt-[14px] flex h-full w-full justify-between border-b-[1px] border-GRAY_100 pb-[14px]  text-system4_medium font-system4_medium"
     >
       <p
         className={`${

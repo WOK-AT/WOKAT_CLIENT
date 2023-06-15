@@ -3,13 +3,13 @@ import login from '@/assets/icons/login.svg';
 import PlaceInfo from '@/components/detail/placeInfo';
 import ImageCarousel from '@/components/detail/imageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
-import { useGetPlaceDetail } from '@/hooks/useDetail';
+import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 
 function Detail() {
   const router = useRouter();
   const placeId = router.query.id as string;
-  const { list } = useGetPlaceDetail('646c9fd61f66c2fbf43214f2');
+  const { list } = useGetPlaceDetail(placeId);
 
   return (
     <Layout right={login}>
@@ -28,6 +28,7 @@ function Detail() {
         information={list?.data.information}
         maxPeopleCount={list?.data.count}
         location={list?.data.location}
+        bookingURL={list?.data.bookingURL}
       />
     </Layout>
   );

@@ -1,14 +1,21 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-export const useBoolean = (initialValue: boolean) => {
-  const [isOpen, setIsOpen] = useState(initialValue);
+export const useBoolean = (
+  initialValue: boolean,
+): [boolean, VoidFunction, VoidFunction, VoidFunction] => {
+  const [boolean, setBoolean] = useState(initialValue);
 
-  const open = () => {
-    setIsOpen(true);
-  };
+  const open = useCallback(() => {
+    setBoolean(true);
+  }, []);
 
-  const close = () => {
-    setIsOpen(false);
-  };
-  return { isOpen, open, close };
+  const close = useCallback(() => {
+    setBoolean(false);
+  }, []);
+
+  const toggle = useCallback(() => {
+    setBoolean((prev) => !prev);
+  }, []);
+
+  return [boolean, open, close, toggle];
 };
