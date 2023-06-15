@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import profile from '@/assets/icons/profile.svg';
-import { OptionContextProvider } from '@/context/OptionContext';
-import { NavigationContextProvider } from '@/context/NavigationContext';
-import ListLanding from '@/components/list/ListLanding';
 import Layout from '@/components/common/Layout';
+import { NavigationContextProvider } from '@/context/NavigationContext';
+import Navigation from '@/components/common/Navigation';
+import PlaceList from '@/components/list/PlaceList';
+import FAB from '@/components/list/FAB';
 
 function List() {
   const router = useRouter();
@@ -11,11 +12,11 @@ function List() {
 
   return (
     <NavigationContextProvider>
-      <OptionContextProvider>
-        <Layout title={title ? `${title}역` : ''} right={profile}>
-          <ListLanding />
-        </Layout>
-      </OptionContextProvider>
+      <Layout title={title ? `${title}역` : ''} right={profile}>
+        <Navigation />
+        <PlaceList station={title} />
+        <FAB />
+      </Layout>
     </NavigationContextProvider>
   );
 }

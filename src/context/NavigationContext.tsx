@@ -6,7 +6,7 @@ interface NavigationContext {
   switchNavType: (args: NavType) => void;
 }
 
-export const NavigationContext = createContext({
+export const NavigationContext = createContext<NavigationContext>({
   navType: '무료 공간',
   switchNavType: (args: NavType) => {},
 });

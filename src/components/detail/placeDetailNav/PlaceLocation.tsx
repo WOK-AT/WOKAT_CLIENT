@@ -7,7 +7,7 @@ import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
 import Image from 'next/image';
 import Map from './Map';
-import { useGetPlaceAddress } from '@/hooks/useDetail';
+import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
   place: string;
@@ -20,10 +20,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
 
   const [address, setAddress] = useState<string>(location);
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
-  const { value } = useGetPlaceAddress(
-    { placeId: '6480edcdb408a9bab2f5a4b3', isRoadName },
-    address,
-  );
+  const { value } = useGetPlaceAddress({ placeId, isRoadName }, address);
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
   };

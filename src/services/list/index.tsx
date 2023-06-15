@@ -4,9 +4,11 @@ import { GetPlaceListInput, GetPlaceListOutput } from './types';
 export const fetchPlaceList = async (
   payload: GetPlaceListInput,
 ): Promise<GetPlaceListOutput> => {
-  const { station, filter, date, person } = payload;
+  const { navType, station, filter, page } = payload;
   const { data } = await client.get(
-    `/place/station=${station}?filter=${filter}?date=${date}?person=${person}`,
+    `/place/filter/${navType}?station=${encodeURIComponent(
+      station,
+    )}&filter=${filter}&page=${page}`,
   );
   return data;
 };

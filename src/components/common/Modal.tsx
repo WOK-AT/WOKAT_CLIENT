@@ -38,7 +38,7 @@ ModalContext.displayName = 'Modal';
 
 export default function Modal(props: PropsWithChildren<ModalProviderProps>) {
   const { children, onChange } = props;
-  const { isOpen, open, close } = useBoolean(false);
+  const [isOpen, open, close] = useBoolean(false);
 
   return (
     <ModalContext.Provider value={{ isOpen, onChange, open, close }}>

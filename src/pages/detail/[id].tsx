@@ -3,13 +3,13 @@ import login from '@/assets/icons/login.svg';
 import PlaceInfo from '@/components/detail/placeInfo';
 import ImageCarousel from '@/components/detail/imageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
-import { useGetPlaceDetail } from '@/hooks/useDetail';
+import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 
 function Detail() {
   const router = useRouter();
   const placeId = router.query.id as string;
-  const { list } = useGetPlaceDetail('6480edcdb408a9bab2f5a4b3');
+  const { list } = useGetPlaceDetail(placeId);
 
   return (
     <Layout right={login}>
