@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import delete_gray from '@/assets/icons/delete_gray.svg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -45,14 +45,16 @@ function Onboarding({ close }: OnboardingProps) {
       <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
-            onClick={close}
-            className="relative left-[260px] top-[16px] h-[20px] w-[16px]"
+            onClick={() => {
+              console.log('냐냐');
+            }}
+            className="relative left-[260px] mt-[16px] h-[20px] w-[16px]"
           >
             <Image src={delete_gray} alt="delete_onboarding" />
           </div>
 
           <Slider {...settings}>
-            <div className="mt-[-15px] flex h-[300px] w-[250px] items-center justify-center">
+            <div className="mt-[-30px] flex h-[300px] w-[250px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
                 나에게 맞는{' '}
                 <span className="text-blue-600 font-system3_bold">
@@ -71,7 +73,7 @@ function Onboarding({ close }: OnboardingProps) {
               </div>
             </div>
 
-            <div className="mt-[-15px] flex h-[300px] w-[305px] items-center justify-center">
+            <div className="mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
                 오늘은{' '}
                 <span className="inline text-blue-600 font-system3_bold">
@@ -90,7 +92,7 @@ function Onboarding({ close }: OnboardingProps) {
               </div>
             </div>
 
-            <div className=" mt-[-15px] flex h-[300px] w-[305px] items-center justify-center">
+            <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
                 <span className="inline text-blue-600 font-system3_bold">
                   무료의{' '}
@@ -107,7 +109,7 @@ function Onboarding({ close }: OnboardingProps) {
               />
             </div>
 
-            <div className=" mt-[-15px] flex h-[300px] w-[305px] items-center justify-center">
+            <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
                 콘센트여부, 분위기 등<br />
                 <span className="inline text-blue-600 font-system3_bold">
@@ -123,7 +125,7 @@ function Onboarding({ close }: OnboardingProps) {
               />
             </div>
 
-            <div className="mt-[-15px] flex h-[300px] w-[305px] items-center justify-center">
+            <div className="mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
                 나에게 맞는 업무공간 찾기,
                 <br />
