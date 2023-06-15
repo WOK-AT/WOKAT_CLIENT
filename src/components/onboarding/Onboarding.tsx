@@ -45,9 +45,7 @@ function Onboarding({ close }: OnboardingProps) {
       <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
-            onClick={() => {
-              console.log('냐냐');
-            }}
+            onClick={close}
             className="relative left-[260px] mt-[16px] h-[20px] w-[16px]"
           >
             <Image src={delete_gray} alt="delete_onboarding" />
