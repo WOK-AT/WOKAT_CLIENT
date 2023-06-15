@@ -7,13 +7,22 @@ import block from '@/assets/images/block.svg';
 import Onboarding from '@/components/onboarding/Onboarding';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getLocalStorageItem } from '@/utils/storage';
+import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
 function Home() {
   const [showOnboarding, setShowOnboarding] = useState(false);
   // 기본 세팅 값은 false
   // localStorage에 homeVisited 조회
   const [HOME_VISITED, setHOME_VISITED] = useState('');
+
+  const closeOnboarding = () => {
+    const expires = new Date();
+    expires.setHours(expires.getHours() + 24);
+    const new_expires = expires;
+    setLocalStorageItem('homeVisited', new_expires.toString());
+    // 현재 시간의 24시간 뒤의 시간을 homeVisited에 저장
+    setShowOnboarding(false);
+  };
 
   useEffect(() => {
     const home_visited: string = getLocalStorageItem('homeVisited', '');
@@ -32,7 +41,7 @@ function Home() {
 
   return (
     <>
-      {showOnboarding && <Onboarding setShowOnboarding={setShowOnboarding} />}
+      {showOnboarding && <Onboarding close={closeOnboarding} />}
       <Layout>
         <Image
           src={background}

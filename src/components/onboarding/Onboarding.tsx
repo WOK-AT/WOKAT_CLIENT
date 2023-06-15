@@ -9,22 +9,12 @@ import onboarding_2 from '@/assets/images/onboarding_2.webp';
 import onboarding_3 from '@/assets/images/onboarding_3.webp';
 import onboarding_4 from '@/assets/images/onboarding_4.webp';
 import onboarding_5 from '@/assets/images/onboarding_5.webp';
-import { setLocalStorageItem } from '@/utils/storage';
 
 interface OnboardingProps {
-  setShowOnboarding: Dispatch<SetStateAction<boolean>>;
+  close: () => void;
 }
 
-function Onboarding({ setShowOnboarding }: OnboardingProps) {
-  const closeOnboarding = () => {
-    const expires = new Date();
-    expires.setHours(expires.getHours() + 24);
-    const new_expires = expires;
-    setLocalStorageItem('homeVisited', new_expires.toString());
-    // 현재 시간의 24시간 뒤의 시간을 homeVisited에 저장
-    setShowOnboarding(false);
-  };
-
+function Onboarding({ close }: OnboardingProps) {
   const settings = {
     dots: true,
     speed: 100,
@@ -55,7 +45,7 @@ function Onboarding({ setShowOnboarding }: OnboardingProps) {
       <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
-            onClick={closeOnboarding}
+            onClick={close}
             className="relative left-[260px] top-[16px] h-[20px] w-[16px]"
           >
             <Image src={delete_gray} alt="delete_onboarding" />
@@ -150,7 +140,7 @@ function Onboarding({ setShowOnboarding }: OnboardingProps) {
           </Slider>
 
           <div
-            onClick={closeOnboarding}
+            onClick={close}
             className="m-auto h-[44px] w-[268px] rounded-[30px] bg-BLUE_100 py-[10px] text-center font-system4_bold text-BLUE_500"
           >
             WOKAT 시작하기
