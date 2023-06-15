@@ -4,11 +4,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
-import onboarding_1 from '@/assets/images/onboarding_1.png';
-import onboarding_2 from '@/assets/images/onboarding_2.png';
-import onboarding_3 from '@/assets/images/onboarding_3.png';
-import onboarding_4 from '@/assets/images/onboarding_4.png';
-import onboarding_5 from '@/assets/images/onboarding_5.png';
+import onboarding_1 from '@/assets/images/onboarding_1.webp';
+import onboarding_2 from '@/assets/images/onboarding_2.webp';
+import onboarding_3 from '@/assets/images/onboarding_3.webp';
+import onboarding_4 from '@/assets/images/onboarding_4.webp';
+import onboarding_5 from '@/assets/images/onboarding_5.webp';
 
 interface OnboardingProps {
   setShowOnboarding: Dispatch<SetStateAction<boolean>>;
