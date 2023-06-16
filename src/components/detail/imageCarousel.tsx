@@ -16,10 +16,11 @@ function ImageCarousel({ imageURLs }: ImageCarouselProps) {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: false,
+    className: 'detail-slider',
   };
 
   return (
-    <Slider className="-ml-4 w-screen" {...settings}>
+    <Slider {...settings}>
       {imageURLs?.map((imageURL, index) => {
         return (
           <section key={index}>

@@ -35,20 +35,25 @@ body {
 
 /* react-slick css */
 
-.slick-slider .slick-dots button:before {
+.detail-slider {
+  margin-left: -1rem;
+  width: 100vw;
+}
+
+.detail-slider .slick-dots button:before {
   color: #c5cbd5;
 }
 
-.slick-slider .slick-dots li.slick-active button::before {
+.detail-slider .slick-dots li.slick-active button::before {
   color: #3687ff;
   opacity: 1;
 }
 
-.slick-slider .slick-dots {
+.detail-slider .slick-dots {
   bottom: -30px;
 }
 
-.slick-slider .slick-dots li {
+.detail-slider .slick-dots li {
   width: 10px;
   font-size: 4px;
 }
