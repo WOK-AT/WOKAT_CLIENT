@@ -24,8 +24,8 @@ function Map({ location }: MapProps) {
     mapScript.async = true;
     mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false&libraries=services`;
     document.head.appendChild(mapScript);
-    mapScript.addEventListener('load', () => setMapLoaded(true));
-  }, []);
+    if (location) mapScript.addEventListener('load', () => setMapLoaded(true));
+  }, [location]);
 
   //지도 로드 및 마커 표시
   useEffect(() => {
@@ -80,7 +80,7 @@ function Map({ location }: MapProps) {
     <div className="relative h-[216px]  overflow-hidden rounded-t-[10px] ">
       <article
         id="map"
-        className="relative z-0 w-full h-full overflow-hidden "
+        className="relative z-0 h-full w-full overflow-hidden "
       ></article>
     </div>
   );
