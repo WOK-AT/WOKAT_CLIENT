@@ -86,7 +86,7 @@ function Map(props: MapProps) {
           const mapContainer = document.getElementById('map');
           const mapOption = {
             center: locPosition, // 지도의 중심좌표
-            level: 3, // 지도의 확대 레벨
+            level: 6, // 지도의 확대 레벨
           };
           const map = await new window.kakao.maps.Map(mapContainer, mapOption);
           setMap(map);
