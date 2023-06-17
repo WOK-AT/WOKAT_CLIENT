@@ -14,8 +14,8 @@ function Header(props: HeaderProps) {
   const showBackButton = router.pathname !== '/';
 
   return (
-    <header className="flex h-14 cursor-pointer items-center justify-between px-4">
-      <button id="back" aria-label="Header Left" className="relative h-6 w-6">
+    <header className="flex h-[62px] cursor-pointer items-center justify-between px-4">
+      <button id="back" aria-label="Header Left" className="relative w-6 h-6">
         {showBackButton && (
           <Image
             src={arrow_back}
@@ -39,7 +39,7 @@ function Header(props: HeaderProps) {
       <button
         id="profile"
         aria-label="Header Right"
-        className="relative h-6 w-6"
+        className="relative w-6 h-6"
       >
         {right && <Image src={right} alt="right_icon" fill />}
       </button>
