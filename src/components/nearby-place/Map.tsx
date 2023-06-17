@@ -104,7 +104,7 @@ function Map(props: MapProps) {
 
             places.keywordSearch(stationQuery, callback);
             if (cmap) {
-              cmap.setCenter(cposition);
+              cmap.panTo(cposition);
             }
           } else {
             const places = new window.kakao.maps.services.Places();
@@ -225,7 +225,7 @@ function Map(props: MapProps) {
 
   const onCenter = () => {
     if (cmap) {
-      cmap.setCenter(cposition);
+      cmap.panTo(cposition);
     }
   };
 
