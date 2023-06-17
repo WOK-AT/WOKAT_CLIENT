@@ -44,9 +44,11 @@ function Home() {
       {showOnboarding && <Onboarding close={closeOnboarding} />}
       <Layout>
         <div
+          id="background gradient"
           className="fixed bottom-0 w-full h-1/3 bg-gradient-to-b from-transparent via-blue-200 to-blue-300"
           style={{ marginLeft: '-16px', marginRight: '-16px' }}
         ></div>
+
         <article className="relative mt-6 flex h-[354px] w-full flex-col items-center">
           <Image src={block} alt="block" className="absolute top-6" />
           <div className="absolute top-[72px]">
