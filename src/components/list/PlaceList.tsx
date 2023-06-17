@@ -21,8 +21,8 @@ function PlaceList(props: PlaceListProps) {
       style={{
         height: `${
           navType === '무료 회의룸'
-            ? 'calc(100vh - 247px)'
-            : 'calc(100vh - 190px)'
+            ? 'calc(100vh - 180px)'
+            : 'calc(100vh - 150px)'
         }`,
       }}
     >
