@@ -19,7 +19,10 @@ function NearbyPlace() {
       <Layout title={station || stationName} right={profile}>
         <Navigation />
         <div className="flex">
-          <Map setStationName={setStationName}></Map>
+          <Map
+            setStationName={setStationName}
+            station={station.replace('역', '') || stationName}
+          ></Map>
           <BottomSheet stationName={station || stationName} />
         </div>
       </Layout>

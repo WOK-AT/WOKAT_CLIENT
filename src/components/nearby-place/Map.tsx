@@ -1,7 +1,15 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import React, {
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  useContext,
+} from 'react';
 import Image from 'next/image';
 import centerBtn from '@/assets/icons/center_button.svg';
+import { usePlaceList } from '@/hooks/queries/usePlaceList';
 import { useRouter } from 'next/router';
+import { NavigationContext } from '@/context/NavigationContext';
 
 declare global {
   interface Window {
@@ -14,37 +22,21 @@ interface PlacePosition {
   y: string;
 }
 
-const dummy = [
-  {
-    place: '캐치카페 한양대',
-    location: '서울 성동구 왕십리로 223 동우빌딩 2층 캐치카페 한양대',
-  },
-  {
-    place: '스타벅스 한양대점',
-    location: '서울 성동구 왕십리로 225',
-  },
-  {
-    place: '덕수고등학교',
-    location: '서울특별시 성동구 왕십리로 199',
-  },
-  {
-    place: '정문약국',
-    location: '서울특별시 성동구 왕십리로 236-1 1층 정문약국',
-  },
-];
-
 interface MapProps {
   setStationName: Dispatch<SetStateAction<string>>;
+  station: string;
 }
 
 function Map(props: MapProps) {
-  const router = useRouter();
-  const stationQuery = router.query.station as string[];
-
-  const { setStationName } = props;
+  const { setStationName, station } = props;
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
+
+  const { navType } = useContext(NavigationContext);
+  const { data: placeList, isLoading } = usePlaceList({ station, navType });
+  const router = useRouter();
+  const stationQuery = router.query.station as string[];
   let selectedMarker: any = null;
   let selectedCustomOverlay: any = null;
 
@@ -64,8 +56,20 @@ function Map(props: MapProps) {
     const mapScript = document.createElement('script');
     mapScript.async = true;
     mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false&libraries=services`;
+
+    const handleScriptLoad = () => {
+      setMapLoaded(true);
+    };
+
+    if (location) {
+      mapScript.addEventListener('load', handleScriptLoad);
+    }
     document.head.appendChild(mapScript);
-    mapScript.addEventListener('load', () => setMapLoaded(true));
+
+    return () => {
+      if (location) mapScript.removeEventListener('load', handleScriptLoad);
+      document.head.removeChild(mapScript);
+    };
   }, []);
 
   //지도 로드 후 근처 지하철역 찾기
@@ -130,7 +134,7 @@ function Map(props: MapProps) {
         alert('위치 정보를 받아오는데 실패했습니다');
       }
     });
-  }, [mapLoaded]);
+  }, [mapLoaded, navType]);
 
   //근처 지하철역으로 중심좌표 이동 및 마커 표시
   useEffect(() => {
@@ -138,22 +142,21 @@ function Map(props: MapProps) {
       cmap.setCenter(cposition);
 
       //위치마다 마커를 생성합니다
-      for (let i = 0; i < dummy.length; i++) {
+      for (let i = 0; i < placeList.length; i++) {
         const markerImageUrl =
           'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default-mapMarker.png';
         const normalMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(37, 50),
+          new window.kakao.maps.Size(35, 50),
         );
         const clickMarkerImage = new window.kakao.maps.MarkerImage(
           markerImageUrl,
-          new window.kakao.maps.Size(47, 62),
+          new window.kakao.maps.Size(44, 62),
         );
         const geocoder = new window.kakao.maps.services.Geocoder();
-
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
-          dummy[i].location,
+          placeList[i].location,
           (result: Array<PlacePosition>, status: string) => {
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
@@ -168,7 +171,9 @@ function Map(props: MapProps) {
                 image: normalMarkerImage,
               });
 
-              const customOverlayContent = getOverlayContent(dummy[i].place);
+              const customOverlayContent = getOverlayContent(
+                placeList[i].place,
+              );
               const customOverlay = new window.kakao.maps.CustomOverlay({
                 position: coords,
                 content: customOverlayContent,
@@ -204,7 +209,7 @@ function Map(props: MapProps) {
               font-size: 14px;
               line-height: 150%;
               text-align: center;
-              letter-spacing: -0.02em;">${dummy[i].place}</article>`;
+              letter-spacing: -0.02em;">${placeList[i].place}</article>`;
 
                 customOverlay.a.innerHTML = newOverlayContent;
                 // 클릭된 마커와 커스텀오버레이를 현재 클릭된 마커 객체/클릭된 오버레이 객체로 설정합니다
@@ -216,7 +221,7 @@ function Map(props: MapProps) {
         );
       }
     }
-  }, [cposition]);
+  }, [cposition, isLoading]);
 
   const onCenter = () => {
     if (cmap) {
@@ -228,7 +233,7 @@ function Map(props: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[600px] w-screen overflow-hidden ">
       <div
         id="map"
-        className="relative z-0 h-full w-full overflow-hidden "
+        className="relative z-0 w-full h-full overflow-hidden "
       ></div>
       <div
         className="z-1 absolute left-[85%] top-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
