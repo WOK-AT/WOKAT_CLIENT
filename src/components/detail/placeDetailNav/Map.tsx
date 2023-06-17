@@ -12,10 +12,11 @@ interface PlacePosition {
 }
 
 interface MapProps {
+  addressHeight: number;
   location: string;
 }
 
-function Map({ location }: MapProps) {
+function Map({ addressHeight, location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
   //지도 로드하기
@@ -89,7 +90,12 @@ function Map({ location }: MapProps) {
   }, [mapLoaded]);
 
   return (
-    <div className="relative h-[216px]  overflow-hidden rounded-t-[10px] ">
+    <div
+      style={{
+        height: `calc(237px - ${addressHeight}px)`,
+      }}
+      className="relative h-[216px] overflow-hidden rounded-t-[10px] "
+    >
       <article
         id="map"
         className="relative z-0 h-full w-full overflow-hidden "

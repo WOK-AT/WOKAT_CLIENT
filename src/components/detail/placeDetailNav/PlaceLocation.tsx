@@ -20,6 +20,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
 
   const [address, setAddress] = useState<string>(location);
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
+  const [addressHeight, setAddressHeight] = useState<number>(0);
   const { value } = useGetPlaceAddress({ placeId, isRoadName }, address);
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
@@ -31,6 +32,8 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
 
   useEffect(() => {
     setAddress(value?.data);
+    const height = document.getElementById('address')?.clientHeight;
+    if (height) setAddressHeight(height);
   }, [value]);
 
   return (
@@ -38,7 +41,6 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 rounded-[10px] 	border-[1px]">
         <Link
-          className="h-[300px] bg-BLUE_100"
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
@@ -47,9 +49,12 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
             },
           }}
         >
-          <Map location={location} />
+          <Map addressHeight={addressHeight} location={location} />
         </Link>
-        <p className="mx-[14px] my-3 flex justify-start text-system5_medium font-system5_medium text-GRAY_800">
+        <p
+          id="address"
+          className="mx-[14px] my-3 flex justify-start text-system5_medium font-system5_medium text-GRAY_800"
+        >
           {address}
         </p>
         <div className="border-color-GRAY_100 mx-[3px] h-[1px] border-[1px]" />
