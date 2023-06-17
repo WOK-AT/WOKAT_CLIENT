@@ -99,7 +99,7 @@ function useBottomSheet(props: BottomSheetProps) {
         const touchOffset = currentTouch.clientY - touchStart.touchY;
         let nextSheetY = touchStart.sheetY + touchOffset;
 
-        if (nextSheetY <= MIN_Y && typeof MIN_Y === 'number') {
+        if (typeof MIN_Y === 'number' && nextSheetY <= MIN_Y) {
           nextSheetY = MIN_Y;
         }
 
@@ -123,7 +123,7 @@ function useBottomSheet(props: BottomSheetProps) {
       // Snap Animation
       const currentSheetY = sheet.current!.getBoundingClientRect().y;
 
-      if (currentSheetY !== MIN_Y && typeof MIN_Y === 'number') {
+      if (typeof MIN_Y === 'number' && currentSheetY !== MIN_Y) {
         if (touchMove.movingDirection === 'down') {
           sheet.current!.style.setProperty('transform', 'translateY(0)');
         }
