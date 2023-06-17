@@ -8,6 +8,7 @@ import ImageFallback from '../common/ImageFallback';
 import { usePlaceList } from '@/hooks/queries/usePlaceList';
 import Loading from '../common/Loading';
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { NavigationContext } from '@/context/NavigationContext';
 
 interface PlaceListProps {
@@ -18,6 +19,8 @@ function PlaceList(props: PlaceListProps) {
   const { station } = props;
   const { navType } = useContext(NavigationContext);
   const { data: placeList, isLoading } = usePlaceList({ station, navType });
+  const router = useRouter();
+  const isNearbyPlace = router.pathname.includes('nearby-place');
 
   if (isLoading) return <Loading />;
 
@@ -96,6 +99,15 @@ function PlaceList(props: PlaceListProps) {
             </Link>
           ),
         )
+      ) : isNearbyPlace ? (
+        <div className="flex flex-col items-center justify-center h-auto">
+          <div className="mb-[8px] font-system4_medium text-GRAY_900">
+            주변 추천 업무 공간이 없어요.
+          </div>
+          <div className=" font-system5 text-GRAY_400">
+            다른 역을 검색하거나 지도를 이동해주세요.
+          </div>
+        </div>
       ) : (
         <div className="flex flex-col items-center justify-center w-full h-full ">
           <Image
