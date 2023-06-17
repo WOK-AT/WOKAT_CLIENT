@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-const MIN_Y = 60;
-const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 250;
+const MIN_Y = typeof window !== 'undefined' && window.innerHeight * 0.2;
+const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 132;
 
 interface BottomSheetMetrics {
   touchStart: {
@@ -97,9 +97,9 @@ function useBottomSheet(props: BottomSheetProps) {
         e.preventDefault();
 
         const touchOffset = currentTouch.clientY - touchStart.touchY;
-        let nextSheetY: number = touchStart.sheetY + touchOffset;
+        let nextSheetY = touchStart.sheetY + touchOffset;
 
-        if (nextSheetY <= MIN_Y) {
+        if (nextSheetY <= MIN_Y && typeof MIN_Y === 'number') {
           nextSheetY = MIN_Y;
         }
 
@@ -123,7 +123,7 @@ function useBottomSheet(props: BottomSheetProps) {
       // Snap Animation
       const currentSheetY = sheet.current!.getBoundingClientRect().y;
 
-      if (currentSheetY !== MIN_Y) {
+      if (currentSheetY !== MIN_Y && typeof MIN_Y === 'number') {
         if (touchMove.movingDirection === 'down') {
           sheet.current!.style.setProperty('transform', 'translateY(0)');
         }
@@ -135,7 +135,7 @@ function useBottomSheet(props: BottomSheetProps) {
           );
           setTimeout(() => {
             setRoute(true);
-          }, 100);
+          }, 70);
         }
       }
       // metrics 초기화.
