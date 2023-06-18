@@ -12,7 +12,7 @@ interface PlaceItemProps {
 
 function PlaceItem(props: PlaceItemProps) {
   const {
-    data: { id, place, count, hashtags = [], location, imageURL },
+    data: { id, place, count, hashtags = [], distance, imageURL },
   } = props;
 
   return (
@@ -44,7 +44,7 @@ function PlaceItem(props: PlaceItemProps) {
               height={20}
             />
             <p className=" text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
-              {location}
+              {Object.values(distance).join('')}
             </p>
           </div>
           <div className="flex">
