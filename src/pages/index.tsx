@@ -43,61 +43,62 @@ function Home() {
     <>
       {showOnboarding && <Onboarding close={closeOnboarding} />}
       <Layout>
-        <div className="flex flex-col justify-between">
-          <article className="relative mt-6 flex h-[354px] w-full flex-col items-center">
-            <Image src={block} alt="block" className="absolute top-6" />
-            <div className="absolute top-[72px]">
-              <section className="mb-[49px] flex flex-col items-center">
-                <p className=" text-system1_bold font-system1_bold text-GRAY_800">
-                  일과 함께
-                </p>
-                <p className=" text-system1_bold font-system1_bold text-GRAY_800">
-                  <strong className="text-BLUE_600">워캣</strong> 으로 떠나요!
-                </p>
+        <div
+          id="background gradient"
+          className="fixed bottom-0 w-full h-1/3 bg-gradient-to-b from-transparent via-blue-200 to-blue-300"
+          style={{ marginLeft: '-16px', marginRight: '-16px' }}
+        ></div>
 
-                <p className="mt-3.5 font-system4_medium text-GRAY_400">
-                  주변의 업무 공간을 찾아드려요
-                </p>
-              </section>
+        <article className="relative mt-6 flex h-[354px] w-full flex-col items-center">
+          <Image src={block} alt="block" className="absolute top-6" />
+          <div className="absolute top-[72px]">
+            <section className="mb-[49px] flex flex-col items-center">
+              <p className=" text-system1_bold font-system1_bold text-GRAY_800">
+                일과 함께
+              </p>
+              <p className=" text-system1_bold font-system1_bold text-GRAY_800">
+                <strong className="text-BLUE_600">워캣</strong> 으로 떠나요!
+              </p>
 
-              <section className="flex flex-col items-center justify-center">
-                <Link
-                  href="/search"
-                  className="mb-3.5 flex h-[52px] w-[303px] items-center  rounded-[38px] border border-solid
+              <p className="mt-3.5 font-system4_medium text-GRAY_400">
+                주변의 업무 공간을 찾아드려요
+              </p>
+            </section>
+
+            <section className="flex flex-col items-center justify-center">
+              <Link
+                href="/search"
+                className="mb-3.5 flex h-[52px] w-[303px] items-center  rounded-[38px] border border-solid
            border-BLUE_400 bg-white py-3.5 pl-6 text-system4 font-system4 text-GRAY_200 max-[340px]:h-[42px] max-[340px]:w-[250px]"
-                >
-                  <div className="relative mr-[13px] h-6 w-6 ">
-                    <Image src={search} alt="search" fill />
-                  </div>
-                  지하철역을 검색하세요.
-                </Link>
+              >
+                <div className="relative mr-[13px] h-6 w-6 ">
+                  <Image src={search} alt="search" fill />
+                </div>
+                지하철역을 검색하세요.
+              </Link>
 
-                <Link href="/nearby-place">
-                  <button
-                    className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
+              <Link href="/nearby-place">
+                <button
+                  className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            text-system4_bold font-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
-                  >
-                    <div className="relative w-6 h-6 mr-2">
-                      <Image src={location} alt="location" fill />
-                    </div>
-                    주변 업무 공간 찾기
-                  </button>
-                </Link>
-              </section>
-            </div>
-          </article>
+                >
+                  <div className="relative w-6 h-6 mr-2">
+                    <Image src={location} alt="location" fill />
+                  </div>
+                  주변 업무 공간 찾기
+                </button>
+              </Link>
+            </section>
+          </div>
+        </article>
 
-          <article
-            className="bg-gradient-to-b from-transparent via-blue-200 to-blue-300"
-            style={{ marginLeft: '-16px', marginRight: '-16px' }}
-          >
-            <Image
-              src={background}
-              alt="wokat_background"
-              className="w-full h-full opacity-70"
-            />
-          </article>
-        </div>
+        <article>
+          <Image
+            src={background}
+            alt="wokat_background"
+            className="w-full opacity-70"
+          />
+        </article>
       </Layout>
     </>
   );
