@@ -14,13 +14,17 @@ function NearbyPlace() {
   const station = query ? query[0] : '';
   const [stationName, setStationName] = useState('');
 
+  const onChange = (station: string) => {
+    setStationName(station);
+  };
+
   return (
     <NavigationContextProvider>
       <Layout title={station || stationName} right={profile}>
         <Navigation />
         <div className="flex">
           <Map
-            setStationName={setStationName}
+            onChange={onChange}
             station={station.replace('역', '') || stationName}
           />
           <BottomSheet stationName={station || stationName} />

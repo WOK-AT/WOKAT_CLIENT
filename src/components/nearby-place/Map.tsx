@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  useContext,
-} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import centerBtn from '@/assets/icons/center_button.svg';
 import { usePlaceList } from '@/hooks/queries/usePlaceList';
@@ -23,12 +17,12 @@ interface PlacePosition {
 }
 
 interface MapProps {
-  setStationName: Dispatch<SetStateAction<string>>;
+  onChange: (station: string) => void;
   station: string;
 }
 
 function Map(props: MapProps) {
-  const { setStationName, station } = props;
+  const { onChange, station } = props;
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
@@ -98,7 +92,7 @@ function Map(props: MapProps) {
                 setPosition(
                   new window.kakao.maps.LatLng(result[0].y, result[0].x),
                 );
-                setStationName(result[0].place_name.split(' ')[0]);
+                onChange(result[0].place_name.split(' ')[0]);
               }
             };
 
@@ -114,7 +108,7 @@ function Map(props: MapProps) {
                 setPosition(
                   new window.kakao.maps.LatLng(result[0].y, result[0].x),
                 );
-                setStationName(result[0].place_name.split(' ')[0]);
+                onChange(result[0].place_name.split(' ')[0]);
               }
             };
             const options = {
