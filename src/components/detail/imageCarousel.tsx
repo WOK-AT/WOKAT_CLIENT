@@ -16,10 +16,11 @@ function ImageCarousel({ imageURLs }: ImageCarouselProps) {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: false,
+    className: 'detail-slider',
   };
 
   return (
-    <Slider className="-ml-4 w-screen" {...settings}>
+    <Slider {...settings}>
       {imageURLs?.map((imageURL, index) => {
         return (
           <section key={index}>
@@ -27,8 +28,10 @@ function ImageCarousel({ imageURLs }: ImageCarouselProps) {
               <Image
                 src={imageURL}
                 alt="place image"
-                width={481}
-                height={192}
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{ width: '100%', height: 'auto' }}
               />
             </p>
           </section>

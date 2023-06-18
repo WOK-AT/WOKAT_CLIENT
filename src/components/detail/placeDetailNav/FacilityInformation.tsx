@@ -104,7 +104,7 @@ function FacilityInformation({
                 </h2>
               </div>
               <p className="flex w-32 flex-row justify-end text-system4 font-system4 text-GRAY_400">
-                {item.status}
+                {item.status === null ? '-' : item.status}
               </p>
             </div>
           );
