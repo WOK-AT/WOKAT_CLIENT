@@ -12,13 +12,13 @@ function BottomSheet(props: BottomSheetProps) {
 
   return (
     <motion.div
-      className="z-1  fixed top-[80%] -ml-4 h-full w-full flex-col rounded-t-2xl bg-white shadow-[0px_22px_40px_4px_#5b5b5b8e] transition ease-in-out"
+      className="z-1 fixed top-[80%]  -ml-4 h-full w-full flex-col rounded-t-2xl bg-white shadow-[0px_22px_40px_4px_#5b5b5b8e]"
       ref={sheet}
     >
       <BottomSheetHeader />
       <div
         ref={content}
-        className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
+        className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
       >
         <div className="mx-4">
           <PlaceList station={stationName.replace('역', '')} />
