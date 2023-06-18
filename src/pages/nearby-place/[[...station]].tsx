@@ -22,7 +22,7 @@ function NearbyPlace() {
           <Map
             setStationName={setStationName}
             station={station.replace('역', '') || stationName}
-          ></Map>
+          />
           <BottomSheet stationName={station || stationName} />
         </div>
       </Layout>
