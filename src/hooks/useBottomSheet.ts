@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-const MIN_Y = typeof window !== 'undefined' && window.innerHeight * 0.2;
-const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 132;
+const MIN_Y = 60;
+const MAX_Y = typeof window !== 'undefined' && window.innerHeight - 250;
 
 interface BottomSheetMetrics {
   touchStart: {
@@ -17,11 +17,11 @@ interface BottomSheetMetrics {
 }
 
 interface BottomSheetProps {
-  stationName: string;
+  station: string;
 }
 
 function useBottomSheet(props: BottomSheetProps) {
-  const { stationName } = props;
+  const { station } = props;
   const router = useRouter();
   const [route, setRoute] = useState(false);
   const sheet = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ function useBottomSheet(props: BottomSheetProps) {
     if (route) {
       router.push({
         pathname: '/list',
-        query: { title: stationName.replace('역', '') },
+        query: { title: station },
       });
     }
   };
@@ -97,9 +97,9 @@ function useBottomSheet(props: BottomSheetProps) {
         e.preventDefault();
 
         const touchOffset = currentTouch.clientY - touchStart.touchY;
-        let nextSheetY = touchStart.sheetY + touchOffset;
+        let nextSheetY: number = touchStart.sheetY + touchOffset;
 
-        if (typeof MIN_Y === 'number' && nextSheetY <= MIN_Y) {
+        if (nextSheetY <= MIN_Y) {
           nextSheetY = MIN_Y;
         }
 
@@ -123,7 +123,7 @@ function useBottomSheet(props: BottomSheetProps) {
       // Snap Animation
       const currentSheetY = sheet.current!.getBoundingClientRect().y;
 
-      if (typeof MIN_Y === 'number' && currentSheetY !== MIN_Y) {
+      if (currentSheetY !== MIN_Y) {
         if (touchMove.movingDirection === 'down') {
           sheet.current!.style.setProperty('transform', 'translateY(0)');
         }
@@ -135,7 +135,7 @@ function useBottomSheet(props: BottomSheetProps) {
           );
           setTimeout(() => {
             setRoute(true);
-          }, 70);
+          }, 100);
         }
       }
       // metrics 초기화.

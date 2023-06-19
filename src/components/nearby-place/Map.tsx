@@ -18,14 +18,19 @@ interface PlacePosition {
 
 interface MapProps {
   onChange: (station: string) => void;
-  station: string;
+  stationName: string;
 }
 
 function Map(props: MapProps) {
-  const { onChange, station } = props;
+  const { onChange, stationName } = props;
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
   const [cposition, setPosition] = useState();
+
+  const station =
+    stationName.charAt(stationName.length - 1) === '역'
+      ? stationName.substring(0, stationName.length - 1)
+      : stationName;
 
   const { navType } = useContext(NavigationContext);
   const { data: placeList, isLoading } = usePlaceList({ station, navType });
