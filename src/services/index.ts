@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const client = axios.create({
-  baseURL: 'https://api.wokat.link/',
+  baseURL: process.env.NEXT_PUBLIC_END,
 });

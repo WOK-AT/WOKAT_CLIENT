@@ -29,7 +29,6 @@ export const useStationSearch = (input: string) => {
   };
 
   const addRecentSearch = (target: SubwayType) => {
-    if (!isSearching) return;
     const updatedRecentSearch = [
       target,
       ...recentSearch.filter(
