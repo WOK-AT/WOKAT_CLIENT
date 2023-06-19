@@ -24,13 +24,11 @@ function FacilityInformation({
   let wifiId: string[] = ['모름'];
   let wifiPW: string[] = ['모름'];
 
-  if (information) {
-    const { 'wi-fi': wifiInformation } = information;
-    if (wifiInformation !== null) {
-      wifiId = wifiInformation.ID;
-      wifiPW = wifiInformation.PW;
-    }
+  if (information['wi-fi']) {
+    wifiId = information['wi-fi'].ID;
+    wifiPW = information['wi-fi'].PW;
   }
+
   const FACILITY_LIST = [
     { icon: elec, title: '콘센트', status: information?.socket },
     {

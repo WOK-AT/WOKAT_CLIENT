@@ -1,13 +1,17 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import Image from 'next/image';
+import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
+import { useRouter } from 'next/router';
 
-interface ImageCarouselProps {
-  imageURLs: string[];
-}
-function ImageCarousel({ imageURLs }: ImageCarouselProps) {
+function ImageCarousel() {
+  const router = useRouter();
+  const placeId = router.query.id as string;
+  const { list } = useGetPlaceDetail(placeId);
+  if (!list) return <h1></h1>;
+  const imageURLs = list?.data.imageURLs;
+
   const settings = {
     dots: true,
     infinite: true,
@@ -21,7 +25,7 @@ function ImageCarousel({ imageURLs }: ImageCarouselProps) {
 
   return (
     <Slider {...settings}>
-      {imageURLs?.map((imageURL, index) => {
+      {imageURLs?.map((imageURL: string, index: number) => {
         return (
           <section key={index}>
             <p className="h-48 w-full bg-indigo-500">
