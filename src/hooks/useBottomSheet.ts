@@ -17,11 +17,11 @@ interface BottomSheetMetrics {
 }
 
 interface BottomSheetProps {
-  stationName: string;
+  station: string;
 }
 
 function useBottomSheet(props: BottomSheetProps) {
-  const { stationName } = props;
+  const { station } = props;
   const router = useRouter();
   const [route, setRoute] = useState(false);
   const sheet = useRef<HTMLDivElement>(null);
@@ -44,7 +44,7 @@ function useBottomSheet(props: BottomSheetProps) {
     if (route) {
       router.push({
         pathname: '/list',
-        query: { title: stationName.replace('역', '') },
+        query: { title: station },
       });
     }
   };

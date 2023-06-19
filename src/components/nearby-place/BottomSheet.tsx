@@ -8,11 +8,16 @@ interface BottomSheetProps {
 }
 function BottomSheet(props: BottomSheetProps) {
   const { stationName } = props;
-  const { sheet, content } = useBottomSheet({ stationName } || '');
+
+  const station =
+    stationName.charAt(stationName.length - 1) === '역'
+      ? stationName.substring(0, stationName.length - 1)
+      : stationName;
+  const { sheet, content } = useBottomSheet({ station } || '');
 
   return (
     <motion.div
-      className="z-1 fixed top-[80%]  -ml-4 h-full w-full flex-col rounded-t-2xl bg-white shadow-[0px_22px_40px_4px_#5b5b5b8e]"
+      className="z-1  fixed top-[80%] -ml-4 h-full w-full flex-col rounded-t-2xl bg-white shadow-[0px_22px_40px_4px_#5b5b5b8e] transition ease-in-out"
       ref={sheet}
     >
       <BottomSheetHeader />
@@ -21,7 +26,7 @@ function BottomSheet(props: BottomSheetProps) {
         className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <PlaceList station={stationName.replace('역', '')} />
+          <PlaceList station={station} />
         </div>
       </div>
     </motion.div>
