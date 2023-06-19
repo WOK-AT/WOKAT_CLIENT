@@ -135,7 +135,7 @@ function Map({ place, location }: MapProps) {
             const lon = position.coords.longitude; // 경도
             const locPosition = new window.kakao.maps.LatLng(lat, lon);
 
-            cmap.setCenter(locPosition);
+            cmap.panTo(locPosition);
           });
         }
       });
