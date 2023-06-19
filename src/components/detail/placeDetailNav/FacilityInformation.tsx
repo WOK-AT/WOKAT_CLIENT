@@ -21,13 +21,14 @@ function FacilityInformation({
   information,
   maxPeopleCount,
 }: FacilityInformationProps) {
-  let wifiId = '모름';
-  let wifiPW = '모름';
+  let wifiId: string[] = ['모름'];
+  let wifiPW: string[] = ['모름'];
 
   if (information) {
     const { 'wi-fi': wifiInformation } = information;
     if (wifiInformation !== null) {
-      let { ID: wifiId, PW: wifiPW } = wifiInformation;
+      wifiId = wifiInformation.ID;
+      wifiPW = wifiInformation.PW;
     }
   }
   const FACILITY_LIST = [
@@ -75,17 +76,35 @@ function FacilityInformation({
               <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
                 ID :
               </h2>
-              <p className="text-system4 font-system4 text-GRAY_600">
-                {wifiId}
-              </p>
+              <div className="flex flex-col">
+                {wifiId.map((value: string, index: number) => {
+                  return (
+                    <p
+                      key={index}
+                      className="text-system4 font-system4 text-GRAY_600"
+                    >
+                      {value}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
             <div className="mb-1.5 flex flex-row items-start">
               <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
                 PW :
               </h2>
-              <p className="text-system4 font-system4 text-GRAY_600">
-                {wifiPW}
-              </p>
+              <div className="flex flex-col">
+                {wifiPW.map((value: string, index: number) => {
+                  return (
+                    <p
+                      key={index}
+                      className="text-system4 font-system4 text-GRAY_600"
+                    >
+                      {value}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
