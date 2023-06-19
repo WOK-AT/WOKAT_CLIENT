@@ -11,7 +11,7 @@ import { Information } from '@/types/information';
 interface PlaceDetailInfoProps {
   place: string;
   category: string;
-  introduce: string;
+  introduce: string[];
   information: Information;
   operationHours: OperationHours;
   maxPeopleCount: string;

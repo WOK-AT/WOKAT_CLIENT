@@ -12,10 +12,11 @@ interface PlacePosition {
 }
 
 interface MapProps {
+  addressHeight: number;
   location: string;
 }
 
-function Map({ location }: MapProps) {
+function Map({ addressHeight, location }: MapProps) {
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
 
   //지도 로드하기
@@ -23,9 +24,21 @@ function Map({ location }: MapProps) {
     const mapScript = document.createElement('script');
     mapScript.async = true;
     mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false&libraries=services`;
+
+    const handleScriptLoad = () => {
+      setMapLoaded(true);
+    };
+
+    if (location) {
+      mapScript.addEventListener('load', handleScriptLoad);
+    }
     document.head.appendChild(mapScript);
-    mapScript.addEventListener('load', () => setMapLoaded(true));
-  }, []);
+
+    return () => {
+      if (location) mapScript.removeEventListener('load', handleScriptLoad);
+      document.head.removeChild(mapScript);
+    };
+  }, [location]);
 
   //지도 로드 및 마커 표시
   useEffect(() => {
@@ -77,10 +90,15 @@ function Map({ location }: MapProps) {
   }, [mapLoaded]);
 
   return (
-    <div className="relative h-[216px]  overflow-hidden rounded-t-[10px] ">
+    <div
+      style={{
+        height: `calc(237px - ${addressHeight}px)`,
+      }}
+      className="relative h-[216px] overflow-hidden rounded-t-[10px] "
+    >
       <article
         id="map"
-        className="relative z-0 w-full h-full overflow-hidden "
+        className="relative z-0 h-full w-full overflow-hidden "
       ></article>
     </div>
   );

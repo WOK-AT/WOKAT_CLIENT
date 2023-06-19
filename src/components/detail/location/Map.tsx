@@ -29,9 +29,21 @@ function Map({ place, location }: MapProps) {
     const mapScript = document.createElement('script');
     mapScript.async = true;
     mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&autoload=false&libraries=services`;
+
+    const handleScriptLoad = () => {
+      setMapLoaded(true);
+    };
+
+    if (location) {
+      mapScript.addEventListener('load', handleScriptLoad);
+    }
     document.head.appendChild(mapScript);
-    mapScript.addEventListener('load', () => setMapLoaded(true));
-  }, []);
+
+    return () => {
+      if (location) mapScript.removeEventListener('load', handleScriptLoad);
+      document.head.removeChild(mapScript);
+    };
+  }, [location]);
 
   //지도 로드 및 마커 표시
   useEffect(() => {
@@ -123,7 +135,7 @@ function Map({ place, location }: MapProps) {
             const lon = position.coords.longitude; // 경도
             const locPosition = new window.kakao.maps.LatLng(lat, lon);
 
-            cmap.setCenter(locPosition);
+            cmap.panTo(locPosition);
           });
         }
       });
@@ -134,7 +146,7 @@ function Map({ place, location }: MapProps) {
     <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
       <article
         id="map"
-        className="relative z-0 w-full h-full overflow-hidden "
+        className="relative z-0 h-full w-full overflow-hidden "
       ></article>
       <button
         type="button"
