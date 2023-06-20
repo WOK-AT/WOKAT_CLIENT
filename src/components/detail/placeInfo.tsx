@@ -2,15 +2,23 @@ import book from '@/assets/icons/book.svg';
 import spot from '@/assets/icons/spot.svg';
 import Image from 'next/image';
 import ShareModal from './ShareModal';
+import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
+import { useRouter } from 'next/router';
 
-interface PlaceInfoProps {
+interface PlaceInfo {
   category: string;
   place: string;
   distance: object;
   hashtags: string[];
 }
 
-function PlaceInfo({ category, place, distance, hashtags }: PlaceInfoProps) {
+function PlaceInfo() {
+  const router = useRouter();
+  const placeId = router.query.id as string;
+  const { list } = useGetPlaceDetail(placeId);
+  if (!list) return <h1></h1>;
+  const { category, place, distance, hashtags }: PlaceInfo = list?.data;
+
   return (
     <>
       <section className="mb-2 mt-8 flex flex-row items-center justify-between">
