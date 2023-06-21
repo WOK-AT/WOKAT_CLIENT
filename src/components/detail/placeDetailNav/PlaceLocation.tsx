@@ -37,7 +37,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
   }, [value]);
 
   return (
-    <section id="nav-3" className="mb-8 scroll-mt-[50px]">
+    <section id="nav-3" className="mb-[40px] scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 rounded-[10px] 	border-[1px]">
         <Link
