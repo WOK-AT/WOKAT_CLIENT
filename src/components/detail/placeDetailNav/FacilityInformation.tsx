@@ -33,7 +33,7 @@ function FacilityInformation({
     { icon: elec, title: '콘센트', status: information?.socket },
     {
       icon: parking,
-      title: '주차 공간 여부',
+      title: '주차 공간',
       status: information?.parking,
     },
     {
