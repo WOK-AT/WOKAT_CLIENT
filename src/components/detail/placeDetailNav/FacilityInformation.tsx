@@ -45,20 +45,20 @@ function FacilityInformation({
   ];
 
   return (
-    <section id="nav-2" className="mb-9 scroll-mt-[50px]">
+    <section id="nav-2" className="mb-[10px] scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
-        <div className="mb-1.5 flex flex-col items-start">
-          <div className="mb-3 flex flex-row">
-            <Image src={phone} alt="phone icon" className="mr-4" />
+        <div className="flex flex-col items-start">
+          <div className="mb-[18px] flex flex-row">
+            <Image src={phone} alt="phone icon" className="mr-[18px]" />
             <h2 className="mr-4 text-system4 font-system4 text-GRAY_400">
               {information?.contact}
             </h2>
           </div>
           <div className="flex flex-row">
-            <Image src={internet} alt="internet icon" className="mr-4" />
+            <Image src={internet} alt="internet icon" className="mr-[18px]" />
             <h2
-              className="mr-4 w-full break-all text-system4 font-system4 text-GRAY_400"
+              className="w-full break-all text-system4 font-system4 text-GRAY_400"
               onClick={() => window.open(information?.homepage)}
             >
               {information?.homepage}
@@ -68,7 +68,7 @@ function FacilityInformation({
       </DetailInformationTextBox>
       <DetailInformationTextBox>
         <div className="flex flex-row">
-          <Image src={wifi} alt="wifi icon" className="mr-4" />
+          <Image src={wifi} alt="wifi icon" className="mr-[18px]" />
           <div>
             <div className="mb-1.5 flex flex-row items-start">
               <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
@@ -107,11 +107,11 @@ function FacilityInformation({
           </div>
         </div>
       </DetailInformationTextBox>
-      <DetailInformationTextBox>
+      <article className="mb-[10px] rounded-[10px] bg-GRAY_50 px-4 py-5">
         {FACILITY_LIST.map((item, index) => {
           return (
             <div
-              className="mb-4 flex w-full flex-row items-center justify-between last:mb-0"
+              className="mb-[14px] flex w-full flex-row items-center justify-between last:mb-0"
               key={index}
             >
               <div className="flex flex-row items-center">
@@ -126,7 +126,7 @@ function FacilityInformation({
             </div>
           );
         })}
-      </DetailInformationTextBox>
+      </article>
     </section>
   );
 }

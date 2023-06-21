@@ -9,11 +9,11 @@ interface OperatingTimeProps {
 }
 function OperatingTime({ operationHours }: OperatingTimeProps) {
   return (
-    <section id="nav-1" className="mb-9 scroll-mt-[50px]">
+    <section id="nav-1" className="mb-[22px] scroll-mt-[50px]">
       <DetailInformationTitle icon={operatingTime} title="운영 시간" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-row items-start">
-          <h2 className="mr-4  w-[60px] font-system4_bold text-system4_bold text-GRAY_600">
+          <h2 className="mr-4  w-[60px] text-system4_bold font-system4_bold text-GRAY_600">
             영업 시간
           </h2>
           <div>
@@ -23,7 +23,7 @@ function OperatingTime({ operationHours }: OperatingTimeProps) {
                   return (
                     <article
                       key={index}
-                      className="flex flex-row font-system4 text-system4 text-GRAY_600"
+                      className="flex flex-row text-system4 font-system4 text-GRAY_600"
                     >
                       <p className="mr-2">{day}</p>
                       {timeRange}
@@ -34,10 +34,10 @@ function OperatingTime({ operationHours }: OperatingTimeProps) {
           </div>
         </div>
         <div className="flex flex-row items-start">
-          <h2 className="mr-4  w-[60px] font-system4_bold text-system4_bold text-GRAY_600">
+          <h2 className="mr-4  w-[60px] text-system4_bold font-system4_bold text-GRAY_600">
             휴무일
           </h2>
-          <p className="font-system4 text-system4 text-GRAY_600">
+          <p className="text-system4 font-system4 text-GRAY_600">
             {operationHours?.closed}
           </p>
         </div>
