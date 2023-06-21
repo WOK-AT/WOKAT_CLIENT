@@ -21,8 +21,8 @@ function FacilityInformation({
   information,
   maxPeopleCount,
 }: FacilityInformationProps) {
-  let wifiId: string[] = ['모름'];
-  let wifiPW: string[] = ['모름'];
+  let wifiId: string[] = ['-'];
+  let wifiPW: string[] = ['-'];
 
   if (information['wi-fi']) {
     wifiId = information['wi-fi'].ID;
