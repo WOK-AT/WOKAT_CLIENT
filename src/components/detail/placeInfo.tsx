@@ -23,7 +23,11 @@ function PlaceInfo() {
     <>
       <section className="mb-2 mt-8 flex flex-row items-center justify-between">
         <p className="text-system6_medium font-system6_medium text-GRAY_400">
-          {category === '0' ? '무료 대여 공간' : '무료 회의룸'}
+          {category === '0'
+            ? '무료 대여 공간'
+            : category === '1'
+            ? '무료 회의룸'
+            : '카페'}
         </p>
         <article className="flex flex-row items-center justify-center">
           <ShareModal />
