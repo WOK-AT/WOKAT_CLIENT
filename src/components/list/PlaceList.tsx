@@ -50,7 +50,7 @@ function PlaceList(props: PlaceListProps) {
             />
           )}
           <div className="mb-[8px] font-system4_medium text-GRAY_900">
-            주변 추천 업무 공간이 없어요.
+            주변 추천 업무공간이 없어요.
           </div>
           <div className=" font-system5 text-GRAY_400">
             다른 역을 검색하거나 지도를 이동해주세요.
