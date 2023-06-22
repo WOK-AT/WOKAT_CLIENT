@@ -43,6 +43,7 @@ function PlaceDetailInfo() {
       <PlaceIntroduce introduce={introduce} />
       <OperatingTime operationHours={operationHours} />
       <FacilityInformation
+        category={category}
         information={information}
         maxPeopleCount={maxPeopleCount}
       />
