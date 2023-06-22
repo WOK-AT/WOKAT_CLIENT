@@ -42,7 +42,7 @@ function Onboarding({ close }: OnboardingProps) {
 
   return (
     <div className="fixed z-10 w-screen">
-      <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
+      <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen flex-col items-center bg-black/50 pt-[135px]">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
             onClick={close}
