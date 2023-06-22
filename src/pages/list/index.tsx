@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import profile from '@/assets/icons/profile.svg';
 import Layout from '@/components/common/Layout';
 import { NavigationContextProvider } from '@/context/NavigationContext';
 import Navigation from '@/components/common/Navigation';
@@ -12,7 +11,7 @@ function List() {
 
   return (
     <NavigationContextProvider>
-      <Layout title={title ? `${title}역` : ''} right={profile}>
+      <Layout title={title ? `${title}역` : ''}>
         <Navigation />
         <PlaceList station={title} />
         <FAB />
