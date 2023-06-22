@@ -9,7 +9,7 @@ interface OperatingTimeProps {
 }
 function OperatingTime({ operationHours }: OperatingTimeProps) {
   return (
-    <section id="nav-1" className="mb-[22px] scroll-mt-[50px]">
+    <section id="nav-1" className="mb-[20px] scroll-mt-[50px]">
       <DetailInformationTitle icon={operatingTime} title="운영 시간" />
       <DetailInformationTextBox>
         <div className="mb-1.5 flex flex-row items-start">

@@ -32,7 +32,7 @@ function FacilityInformation({
   }
 
   return (
-    <section id="nav-2" className="mb-[10px] scroll-mt-[50px]">
+    <section id="nav-2" className="mb-[20px] scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="flex flex-col items-start">
@@ -132,7 +132,7 @@ interface FacilityProps {
 
 export function Facility({ icon, title, status }: FacilityProps) {
   return (
-    <article className="mb-[14px] flex w-full flex-row items-center justify-between last:mb-0">
+    <article className="mb-[20px] flex w-full flex-row items-center justify-between last:mb-0">
       <div className="flex flex-row items-center">
         <Image src={icon} alt="info icon" className="mr-3" />
         <h2 className="text-system4_medium font-system4_medium text-GRAY_600">
