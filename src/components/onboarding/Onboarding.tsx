@@ -46,7 +46,7 @@ function Onboarding({ close }: OnboardingProps) {
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
             onClick={close}
-            className="relative left-[260px] mt-[16px] h-[20px] w-[16px]"
+            className="relative left-[270px] mt-[16px] h-[20px] w-[16px]"
           >
             <Image src={delete_gray} alt="delete_onboarding" />
           </div>
