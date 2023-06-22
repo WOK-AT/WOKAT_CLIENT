@@ -31,11 +31,11 @@ function PlaceList(props: PlaceListProps) {
         }`,
       }}
     >
-      {placeList.length > 0 ?  placeList.map((data) => (
-        <PlaceItem data={data} />
-      )) : (
+      {placeList.length > 0 ? (
+        placeList.map((data) => <PlaceItem data={data} />)
+      ) : (
         <div
-          className="flex flex-col items-center justify-center"
+          className="flex flex-col items-center"
           style={{
             height: `${isListPage ? '100%' : 'auto'}`,
           }}
@@ -46,7 +46,7 @@ function PlaceList(props: PlaceListProps) {
               alt="noResultImg"
               width={103}
               height={132}
-              className="mb-[20px] mt-[-50px]"
+              className="mb-[20px] mt-[132px]"
             />
           )}
           <div className="mb-[8px] font-system4_medium text-GRAY_900">
