@@ -10,11 +10,11 @@ import Map from './Map';
 import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
-  place: string;
+  placeName: string;
   location: string;
 }
 
-function PlaceLocation({ place, location }: PlaceLocationProps) {
+function PlaceLocation({ placeName, location }: PlaceLocationProps) {
   const router = useRouter();
   const placeId = router.query.id as string;
 
@@ -44,7 +44,7 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
-              place: place,
+              place: placeName,
               location: location,
             },
           }}

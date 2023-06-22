@@ -11,7 +11,7 @@ import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 
 interface PlaceDetailInfo {
-  place: string;
+  placeName: string;
   category: string;
   introduce: string[];
   information: Information;
@@ -27,7 +27,7 @@ function PlaceDetailInfo() {
   const { list } = useGetPlaceDetail(placeId);
   if (!list) return <h1></h1>;
   const {
-    place,
+    placeName,
     category,
     introduce,
     information,
@@ -46,7 +46,7 @@ function PlaceDetailInfo() {
         information={information}
         maxPeopleCount={maxPeopleCount}
       />
-      <PlaceLocation place={place} location={location} />
+      <PlaceLocation placeName={placeName} location={location} />
       {category === '1' && <BookingButton bookingURL={bookingURL} />}
     </main>
   );

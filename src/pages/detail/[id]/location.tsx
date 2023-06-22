@@ -9,25 +9,25 @@ interface ctxType {
   };
 }
 
-interface Props {
+interface LocationProps {
   place: string;
   location: string;
 }
 
-function Location({ place, location }: Props) {
+function Location({ place, location }: LocationProps) {
   const router = useRouter();
   return (
     <Layout>
       <Map place={place} location={location} />
-      <article className="fixed bottom-0 z-10 -ml-4 h-[198px] w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]">
+      <article className="z-1 fixed bottom-0 -ml-4 w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]">
         <h1 className="mt-[14px] text-system3_bold font-system3_bold text-GRAY_800">
-          {router.query.title}
+          {router.query.place}
         </h1>
         <div className="mt-[17px] flex flex-row items-center justify-between text-system5_medium font-system5_medium ">
-          <p className="w-80 text-GRAY_600">{router.query.location}</p>
+          <p className="text-GRAY_600">{router.query.location}</p>
           <button
             type="button"
-            className="cursor-pointer text-BLUE_500"
+            className="w-[25px] cursor-pointer text-BLUE_500"
             onClick={() => {
               navigator.clipboard.writeText(`${router.query.location}`);
             }}
