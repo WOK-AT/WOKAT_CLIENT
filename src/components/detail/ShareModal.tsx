@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Modal, { ModalContext } from '../common/Modal';
 import paste from '@/assets/icons/paste.svg';
 import share from '@/assets/icons/share.svg';
+import kakaoTalk_logo from '@/assets/icons/kakaoTalk_logo.svg';
 import { useRouter } from 'next/router';
 
 const SERVICE_URL = 'https://wokat-client.vercel.app';
@@ -80,7 +81,8 @@ function KakaoShareButton(props: ModalContentsProps) {
       className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] text-system4_medium font-system4_medium text-GRAY_800"
       onClick={() => onChange && onChange('kakaoShare')}
     >
-      {text} <div className="h-6 w-6 rounded-full bg-GRAY_800"></div>
+      {text}
+      <Image src={kakaoTalk_logo} alt="kakaoTalk logo" width={24} height={24} />
     </button>
   );
 }
