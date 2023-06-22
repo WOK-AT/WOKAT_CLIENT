@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 interface PlaceInfo {
   category: string;
-  place: string;
+  placeName: string;
   distance: object;
   hashtags: string[];
 }
@@ -17,7 +17,7 @@ function PlaceInfo() {
   const placeId = router.query.id as string;
   const { list } = useGetPlaceDetail(placeId);
   if (!list) return <h1></h1>;
-  const { category, place, distance, hashtags }: PlaceInfo = list?.data;
+  const { category, placeName, distance, hashtags }: PlaceInfo = list?.data;
 
   return (
     <>
@@ -35,7 +35,7 @@ function PlaceInfo() {
         </article>
       </section>
       <h1 className="mb-2 text-system2_bold font-system2_bold text-GRAY_800">
-        {place}
+        {placeName}
       </h1>
       <section className="mb-2 flex flex-row items-center">
         {distance &&
