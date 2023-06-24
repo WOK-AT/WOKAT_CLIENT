@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 interface PlaceDetailInfo {
   placeName: string;
   category: string;
-  introduce: string[];
+  introduce: string;
   information: Information;
   operationHours: OperationHours;
   maxPeopleCount: string;
