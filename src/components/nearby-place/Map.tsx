@@ -114,6 +114,9 @@ function Map(props: MapProps) {
                   new window.kakao.maps.LatLng(result[0].y, result[0].x),
                 );
                 onChange(result[0].place_name.split(' ')[0]);
+              } else {
+                setPosition(locPosition);
+                onChange('역없음');
               }
             };
             const options = {

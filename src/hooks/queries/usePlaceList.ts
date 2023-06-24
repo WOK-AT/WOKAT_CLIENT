@@ -54,5 +54,8 @@ export const usePlaceList = (props: PlaceListProps) => {
     );
   };
 
-  return { data: isDataValid(data) ? data.placeList.data : [], isLoading };
+  return {
+    data: isDataValid(data) ? data.placeList.data : [],
+    isLoading,
+  };
 };

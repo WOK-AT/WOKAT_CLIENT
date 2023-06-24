@@ -42,20 +42,20 @@ function Onboarding({ close }: OnboardingProps) {
 
   return (
     <div className="fixed z-10 w-screen">
-      <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen items-center justify-center bg-black/50">
+      <div className="backdrop-[blur(0.2rem)] fixed flex h-screen w-screen flex-col items-center bg-black/50 pt-[135px]">
         <div className="z-10 h-[400px] w-[305px] rounded-[20px] bg-white">
           <div
             onClick={close}
-            className="relative left-[260px] mt-[16px] h-[20px] w-[16px]"
+            className="relative left-[270px] mt-[16px] h-[20px] w-[16px]"
           >
             <Image src={delete_gray} alt="delete_onboarding" />
           </div>
 
           <Slider {...settings}>
             <div className="mt-[-30px] flex h-[300px] w-[250px] items-center justify-center">
-              <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
+              <div className="h-[54px] w-[210px] text-center text-system3_bold font-system3_bold text-gray-800">
                 나에게 맞는{' '}
-                <span className="text-blue-600 font-system3_bold">
+                <span className="text-blue-600 text-system3_bold font-system3_bold">
                   업무공간,
                 </span>
                 <br />
@@ -72,9 +72,9 @@ function Onboarding({ close }: OnboardingProps) {
             </div>
 
             <div className="mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
-              <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
+              <div className="h-[54px] w-[210px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 오늘은{' '}
-                <span className="inline text-blue-600 font-system3_bold">
+                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
                   어디로
                 </span>
                 <br />
@@ -91,8 +91,8 @@ function Onboarding({ close }: OnboardingProps) {
             </div>
 
             <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
-              <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
-                <span className="inline text-blue-600 font-system3_bold">
+              <div className="h-[54px] w-[210px]  text-center text-system3_bold font-system3_bold text-gray-800">
+                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
                   무료의{' '}
                 </span>
                 업무공간과
@@ -108,9 +108,9 @@ function Onboarding({ close }: OnboardingProps) {
             </div>
 
             <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
-              <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
+              <div className="h-[54px] w-[220px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 콘센트여부, 분위기 등<br />
-                <span className="inline text-blue-600 font-system3_bold">
+                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
                   공간의 정보
                 </span>
                 를 미리 들여다봐요
@@ -124,10 +124,12 @@ function Onboarding({ close }: OnboardingProps) {
             </div>
 
             <div className="mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
-              <div className="h-[54px] w-[210px] text-center font-system3_bold text-gray-800">
+              <div className="h-[54px] w-[210px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 나에게 맞는 업무공간 찾기,
                 <br />
-                <span className="text-blue-600 font-system3_bold">워캣</span>
+                <span className="text-blue-600 text-system3_bold font-system3_bold">
+                  워캣
+                </span>
                 에서 시작하세요
               </div>
               <Image
@@ -141,7 +143,7 @@ function Onboarding({ close }: OnboardingProps) {
 
           <div
             onClick={close}
-            className="m-auto h-[44px] w-[268px] rounded-[30px] bg-BLUE_100 py-[10px] text-center font-system4_bold text-BLUE_500"
+            className="m-auto h-[44px] w-[268px] rounded-[30px] bg-BLUE_100 py-[10px] text-center text-system4_bold font-system4_bold text-BLUE_500"
           >
             WOKAT 시작하기
           </div>
