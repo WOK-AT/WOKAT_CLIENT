@@ -130,7 +130,7 @@ interface FacilityProps {
   status: string;
 }
 
-export function Facility({ icon, title, status }: FacilityProps) {
+function Facility({ icon, title, status }: FacilityProps) {
   return (
     <article className="mb-[20px] flex w-full flex-row items-center justify-between last:mb-0">
       <div className="flex flex-row items-center">
