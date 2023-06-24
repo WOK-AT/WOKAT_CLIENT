@@ -9,10 +9,10 @@ function PlaceIntroduce({ introduce }: PlaceIntroduceProps) {
   return (
     <section id="nav-0" className="mb-9 scroll-mt-[50px]">
       <DetailInformationTitle icon={placeIntroduce} title="공간 소개" />
-      {introduce.split('\n').map((line: string) => {
+      {introduce.split('\n').map((line: string, index: number) => {
         return (
           <p
-            key={line}
+            key={index}
             className="break-keep text-system4 font-system4 text-GRAY_600"
           >
             {line}
