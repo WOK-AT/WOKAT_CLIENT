@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Safari TabBar Color */}
-        <meta name="theme-color" content="#fff" />
+        <meta name="theme-color" content="#ffffff" />
         <meta
           name="viewport"
           content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
