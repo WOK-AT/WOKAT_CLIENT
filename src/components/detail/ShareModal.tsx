@@ -3,7 +3,7 @@ import Modal from '../common/Modal';
 import paste from '@/assets/icons/paste.svg';
 import share from '@/assets/icons/share.svg';
 import { useRouter } from 'next/router';
-import { ToastContext, ToastContextProvider } from '@/context/ToastContext';
+import { ToastContext } from '@/context/ToastContext';
 import { useContext } from 'react';
 
 interface ModalContentsProps {
@@ -22,15 +22,13 @@ function ShareModal() {
           <Image src={share} alt="share" className="mr-2.5 cursor-pointer" />
         }
       />
-      <ToastContextProvider>
-        <Modal.Menu>
-          <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
-            공유하기
-          </h1>
-          <Modal.Contents asChild={<KakaoShareButton />} />
-          <Modal.Contents asChild={<URLCopy />} />
-        </Modal.Menu>
-      </ToastContextProvider>
+      <Modal.Menu>
+        <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
+          공유하기
+        </h1>
+        <Modal.Contents asChild={<KakaoShareButton />} />
+        <Modal.Contents asChild={<URLCopy />} />
+      </Modal.Menu>
     </Modal>
   );
 }
