@@ -5,7 +5,6 @@ import Layout from '@/components/common/Layout';
 import Map from '@/components/nearby-place/Map';
 import Navigation from '@/components/common/Navigation';
 import BottomSheet from '@/components/nearby-place/BottomSheet';
-import { NavigationContextProvider } from '@/context/NavigationContext';
 
 function NearbyPlace() {
   const router = useRouter();
@@ -19,15 +18,13 @@ function NearbyPlace() {
   };
 
   return (
-    <NavigationContextProvider>
-      <Layout title={station || stationName} right={profile}>
-        <Navigation />
-        <div className="flex">
-          <Map onChange={onChange} stationName={station || stationName} />
-          <BottomSheet stationName={station || stationName} />
-        </div>
-      </Layout>
-    </NavigationContextProvider>
+    <Layout title={station || stationName} right={profile}>
+      <Navigation />
+      <div className="flex">
+        <Map onChange={onChange} stationName={station || stationName} />
+        <BottomSheet stationName={station || stationName} />
+      </div>
+    </Layout>
   );
 }
 

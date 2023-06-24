@@ -1,5 +1,6 @@
 import { PropsWithChildren, useEffect } from 'react';
 import Header from './Header';
+import { NavigationContextProvider } from '@/context/NavigationContext';
 interface LayoutProps {
   title?: string;
   right?: string;
@@ -17,8 +18,8 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
   return (
     <main>
       <Header title={title} right={right} />
-      <div className="px-4 mx-auto" style={{ minHeight: 'calc(100% - 56px)' }}>
-        {children}
+      <div className="mx-auto px-4" style={{ minHeight: 'calc(100% - 56px)' }}>
+        <NavigationContextProvider>{children}</NavigationContextProvider>
       </div>
     </main>
   );
