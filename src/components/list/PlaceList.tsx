@@ -19,6 +19,7 @@ function PlaceList(props: PlaceListProps) {
   const isListPage = router.pathname.includes('list');
 
   if (isLoading) return <Skeleton />;
+  return <Skeleton />;
 
   return (
     <div
