@@ -157,8 +157,18 @@ function Map(props: MapProps) {
         );
         const geocoder = new window.kakao.maps.services.Geocoder();
         // 주소로 좌표를 검색합니다
+
+        let placeLocation = placeList[i].location;
+
+        if (placeList[i].location.indexOf('(') !== -1) {
+          placeLocation = placeList[i].location.slice(
+            0,
+            placeList[i].location.indexOf('('),
+          );
+        }
+
         geocoder.addressSearch(
-          placeList[i].location,
+          placeLocation,
           (result: Array<PlacePosition>, status: string) => {
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
