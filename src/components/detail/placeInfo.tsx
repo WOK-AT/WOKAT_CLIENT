@@ -31,7 +31,7 @@ function PlaceInfo() {
         </p>
         <article className="flex flex-row items-center justify-center">
           <ShareModal />
-          <Image src={book} alt="book" className="cursor-pointer" />
+          {/* <Image src={book} alt="book" className="cursor-pointer" /> */}
         </article>
       </section>
       <h1 className="mb-2 text-system2_bold font-system2_bold text-GRAY_800">
