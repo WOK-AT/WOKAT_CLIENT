@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Map from './Map';
+import { ToastContext } from '@/context/ToastContext';
 import placeLocation from '@/assets/icons/placeLocation.svg';
 import DetailInformationTitle from '@/components/common/detail/DetailInformationTitle';
 import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
-import Image from 'next/image';
-import Map from './Map';
 import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
@@ -22,8 +23,11 @@ function PlaceLocation({ placeName, location }: PlaceLocationProps) {
   const [isRoadName, setIsRoadName] = useState<boolean>(false);
   const [addressHeight, setAddressHeight] = useState<number>(0);
   const { value } = useGetPlaceAddress({ placeId, isRoadName }, address);
+  const { showToast } = useContext(ToastContext);
+
   const copyLocation = async () => {
     await navigator.clipboard.writeText(location);
+    showToast('클립 보드에 복사되었습니다.');
   };
 
   const changeRoadName = () => {
@@ -61,7 +65,7 @@ function PlaceLocation({ placeName, location }: PlaceLocationProps) {
         <section className="flex w-full flex-row justify-between">
           <article
             className="flex w-full cursor-pointer flex-row items-center justify-center"
-            onClick={() => changeRoadName()}
+            onClick={changeRoadName}
           >
             <Image
               src={change}
@@ -75,9 +79,7 @@ function PlaceLocation({ placeName, location }: PlaceLocationProps) {
           <div className="border-color-GRAY_100 worigin-bottom-left mx-[3px] h-[42px] w-[1px] border-[1px]" />
           <article
             className="flex w-full cursor-pointer flex-row items-center justify-center"
-            onClick={() => {
-              copyLocation();
-            }}
+            onClick={copyLocation}
           >
             <Image
               src={locationPaste}

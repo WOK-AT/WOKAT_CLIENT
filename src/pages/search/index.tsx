@@ -1,11 +1,12 @@
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Layout from '@/components/common/Layout';
 import { useInput } from '@/hooks/useInput';
 import search from '@/assets/icons/search.svg';
 import reset from '@/assets/icons/delete.svg';
 import delete_gray from '@/assets/icons/delete_gray.svg';
 import recent from '@/assets/icons/recent.svg';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { SubwayType } from '@/types/search';
 import SearchList from '@/components/search/SearchList';
 import SearchListItem from '@/components/search/SearchListItem';
@@ -14,6 +15,7 @@ import { useStationSearch } from '@/hooks/useStationSearch';
 function Search() {
   const router = useRouter();
   const { input, onChange, onReset } = useInput();
+  const inputRef = useRef<HTMLInputElement>(null);
   const {
     searchResult,
     recentSearch,
@@ -59,6 +61,15 @@ function Search() {
         />
       ));
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        inputRef.current.dispatchEvent(new Event('focus'));
+      }
+    }
+  }, []);
+
   return (
     <Layout>
       <div className="mt-3 flex flex-col">
@@ -71,6 +82,7 @@ function Search() {
             maxLength={12}
             className="flex  h-[52px] w-full items-center rounded-[38px] border border-solid border-BLUE_400
             bg-white py-3.5 pl-6 text-system4 font-system4 text-GRAY_900 shadow-[0px_0px_2px_rgba(0,0,0,0.3)] selection:mb-3.5 focus:outline-none"
+            ref={inputRef}
           />
           <div className="absolute right-[24px]  h-6 w-6 ">
             {isSearching ? (

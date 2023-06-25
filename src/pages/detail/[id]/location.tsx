@@ -1,7 +1,8 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Layout from '@/components/common/Layout';
 import Map from '@/components/detail/location/Map';
-import { useRouter } from 'next/router';
-
+import { ToastContext } from '@/context/ToastContext';
 interface ctxType {
   query: {
     place: string;
@@ -16,6 +17,13 @@ interface LocationProps {
 
 function Location({ place, location }: LocationProps) {
   const router = useRouter();
+  const { showToast } = useContext(ToastContext);
+
+  const copyLocation = () => {
+    navigator.clipboard.writeText(`${router.query.location}`);
+    showToast('클립 보드에 복사되었습니다.');
+  };
+
   return (
     <Layout>
       <Map place={place} location={location} />
@@ -28,9 +36,7 @@ function Location({ place, location }: LocationProps) {
           <button
             type="button"
             className="w-[25px] cursor-pointer text-BLUE_500"
-            onClick={() => {
-              navigator.clipboard.writeText(`${router.query.location}`);
-            }}
+            onClick={copyLocation}
           >
             복사
           </button>

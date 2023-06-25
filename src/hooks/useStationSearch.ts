@@ -10,7 +10,7 @@ export const useStationSearch = (input: string) => {
 
   const searchStation = () => {
     const stations = subway_info.data
-      .filter(({ station_nm }) => station_nm.startsWith(input))
+      .filter(({ station_nm }) => `${station_nm}역`.startsWith(input))
       .sort((a, b) =>
         a.station_nm.localeCompare(b.station_nm, 'ko', { sensitivity: 'base' }),
       );

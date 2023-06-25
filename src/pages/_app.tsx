@@ -1,7 +1,9 @@
-import WokatSEO from '@/components/WokatSEO';
-import '@/styles/globals.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '@/styles/globals.css';
+import WokatSEO from '@/components/WokatSEO';
+import { NavigationContextProvider } from '@/context/NavigationContext';
+import { ToastContextProvider } from '@/context/ToastContext';
 
 declare global {
   interface Window {
@@ -20,7 +22,11 @@ export default function App({ Component, pageProps }: AppProps) {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
+      <NavigationContextProvider>
+        <ToastContextProvider>
+          <Component {...pageProps} />
+        </ToastContextProvider>
+      </NavigationContextProvider>
       <WokatSEO />
     </QueryClientProvider>
   );

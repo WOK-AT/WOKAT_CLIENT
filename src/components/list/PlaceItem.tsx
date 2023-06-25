@@ -17,7 +17,7 @@ function PlaceItem(props: PlaceItemProps) {
 
   return (
     <Link
-      href={`detail/${id}`}
+      href={`/detail/${id}`}
       key={id}
       className="mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
     >
