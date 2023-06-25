@@ -140,7 +140,7 @@ function Facility({ icon, title, status }: FacilityProps) {
         </h2>
       </div>
       <p className="flex flex-row justify-end text-system4 font-system4 text-GRAY_400">
-        {status === null || status === undefined ? '-' : status}
+        {!status ? '-' : status}
       </p>
     </article>
   );
