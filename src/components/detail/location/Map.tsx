@@ -143,7 +143,7 @@ function Map({ place, location }: MapProps) {
   };
 
   return (
-    <div className="relative -ml-4 -mr-4 h-[90vh] w-screen overflow-hidden ">
+    <div className="fixed -ml-4 -mr-4 h-full w-screen overflow-hidden ">
       <article
         id="map"
         className="relative z-0 h-full w-full overflow-hidden "
