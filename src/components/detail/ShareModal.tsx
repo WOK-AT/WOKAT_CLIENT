@@ -19,9 +19,7 @@ function ShareModal() {
   return (
     <Modal onChange={onChange}>
       <Modal.Trigger
-        asChild={
-          <Image src={share} alt="share" className="mr-2.5 cursor-pointer" />
-        }
+        asChild={<Image src={share} alt="share" className="cursor-pointer" />}
       />
       <Modal.Menu>
         <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
