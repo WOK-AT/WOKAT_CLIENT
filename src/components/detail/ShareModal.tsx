@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Modal from '../common/Modal';
 import paste from '@/assets/icons/paste.svg';
 import share from '@/assets/icons/share.svg';
+import kakaoTalk_logo from '@/assets/icons/kakaoTalk_logo.svg';
 import { useRouter } from 'next/router';
 import { ToastContext } from '@/context/ToastContext';
 import { useContext } from 'react';
@@ -54,7 +55,8 @@ function KakaoShareButton(props: ModalContentsProps) {
       className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] text-system4_medium font-system4_medium text-GRAY_800"
       onClick={() => onChange && onChange(shareWithKakao)}
     >
-      카카오톡 공유하기 <div className="h-6 w-6 rounded-full bg-GRAY_800"></div>
+      카카오톡 공유하기
+      <Image src={kakaoTalk_logo} alt="kakaoTalk logo" width={24} height={24} />
     </button>
   );
 }
