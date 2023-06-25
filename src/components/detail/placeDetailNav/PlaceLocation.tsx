@@ -10,11 +10,11 @@ import Map from './Map';
 import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
-  place: string;
+  placeName: string;
   location: string;
 }
 
-function PlaceLocation({ place, location }: PlaceLocationProps) {
+function PlaceLocation({ placeName, location }: PlaceLocationProps) {
   const router = useRouter();
   const placeId = router.query.id as string;
 
@@ -37,14 +37,14 @@ function PlaceLocation({ place, location }: PlaceLocationProps) {
   }, [value]);
 
   return (
-    <section id="nav-3" className="mb-8 scroll-mt-[50px]">
+    <section id="nav-3" className="mb-[40px] scroll-mt-[50px]">
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 rounded-[10px] 	border-[1px]">
         <Link
           href={{
             pathname: `/detail/${router.query.id}/location`,
             query: {
-              place: place,
+              place: placeName,
               location: location,
             },
           }}

@@ -150,12 +150,12 @@ function Map({ place, location }: MapProps) {
       ></article>
       <button
         type="button"
-        className="z-1 absolute bottom-[250px] left-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
+        className="z-1 absolute bottom-[47%] left-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
         onClick={() => onCenter()}
       >
         <Image priority={true} src={centerButton} alt="center button" />
       </button>
-      <article className="z-1 absolute bottom-[250px] right-[16px] flex flex-col">
+      <article className="z-1 absolute bottom-[47%] right-[16px] flex flex-col">
         <button
           type="button"
           className="h-[40px] w-[40px] rounded-t-[5px] bg-white "

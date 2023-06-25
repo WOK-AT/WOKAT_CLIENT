@@ -35,6 +35,10 @@ function DetailNavigator() {
   }, [navIndex]);
 
   useEffect(() => {
+    const getScrollTop = () => {
+      return document.documentElement.scrollTop || document.body.scrollTop;
+    };
+
     const handleScroll = () => {
       setScrollY(document.body.scrollTop);
 
@@ -44,8 +48,8 @@ function DetailNavigator() {
         if (
           activeTab &&
           nextTab &&
-          activeTab?.offsetTop - 70 < document.body.scrollTop &&
-          document.body.scrollTop < nextTab?.offsetTop - 70
+          activeTab?.offsetTop - 70 < getScrollTop() &&
+          getScrollTop() < nextTab?.offsetTop - 70
         ) {
           return {
             ...item,
@@ -82,7 +86,7 @@ function DetailNavigator() {
               <button
                 onClick={() => setNavIndex(index)}
                 type="button"
-                className={`flex flex-col items-center font-system4_bold text-system4_bold ${
+                className={`flex flex-col items-center text-system4_bold font-system4_bold ${
                   active ? 'text-BLUE_600' : 'text-GRAY_300 '
                 }`}
               >

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 interface PlaceInfo {
   category: string;
-  place: string;
+  placeName: string;
   distance: object;
   hashtags: string[];
 }
@@ -17,13 +17,17 @@ function PlaceInfo() {
   const placeId = router.query.id as string;
   const { list } = useGetPlaceDetail(placeId);
   if (!list) return <h1></h1>;
-  const { category, place, distance, hashtags }: PlaceInfo = list?.data;
+  const { category, placeName, distance, hashtags }: PlaceInfo = list?.data;
 
   return (
     <>
       <section className="mb-2 mt-8 flex flex-row items-center justify-between">
         <p className="text-system6_medium font-system6_medium text-GRAY_400">
-          {category === '0' ? '무료 대여 공간' : '무료 회의룸'}
+          {category === '0'
+            ? '무료 대여 공간'
+            : category === '1'
+            ? '무료 회의룸'
+            : '카페'}
         </p>
         <article className="flex flex-row items-center justify-center">
           <ShareModal />
@@ -31,7 +35,7 @@ function PlaceInfo() {
         </article>
       </section>
       <h1 className="mb-2 text-system2_bold font-system2_bold text-GRAY_800">
-        {place}
+        {placeName}
       </h1>
       <section className="mb-2 flex flex-row items-center">
         {distance &&

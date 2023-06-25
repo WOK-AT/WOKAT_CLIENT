@@ -47,6 +47,9 @@ function Map({ addressHeight, location }: MapProps) {
     window.kakao.maps.load(async () => {
       const geocoder = new window.kakao.maps.services.Geocoder();
       // 주소로 좌표를 검색합니다
+      if (location.indexOf('(') !== -1) {
+        location = location.slice(0, location.indexOf('('));
+      }
       geocoder.addressSearch(
         location,
         (result: Array<PlacePosition>, status: string) => {

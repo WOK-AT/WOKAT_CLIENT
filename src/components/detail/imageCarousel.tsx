@@ -28,14 +28,14 @@ function ImageCarousel() {
       {imageURLs?.map((imageURL: string, index: number) => {
         return (
           <section key={index}>
-            <p className="h-48 w-full bg-indigo-500">
+            <p className="relative h-48 w-full bg-indigo-500">
               <Image
                 src={imageURL}
                 alt="place image"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: '100%', height: 'auto' }}
+                fill
+                style={{
+                  background: ' #3687ff',
+                }}
               />
             </p>
           </section>
