@@ -16,7 +16,7 @@ interface PlaceDetailInfo {
   introduce: string;
   information: Information;
   operationHours: OperationHours;
-  maxPeopleCount: string;
+  count: string;
   location: string;
   bookingURL: string;
 }
@@ -32,7 +32,7 @@ function PlaceDetailInfo() {
     introduce,
     information,
     operationHours,
-    maxPeopleCount,
+    count,
     location,
     bookingURL,
   }: PlaceDetailInfo = list?.data;
@@ -45,7 +45,7 @@ function PlaceDetailInfo() {
       <FacilityInformation
         category={category}
         information={information}
-        maxPeopleCount={maxPeopleCount}
+        maxPeopleCount={count}
       />
       <PlaceLocation placeName={placeName} location={location} />
       {category === '1' && <BookingButton bookingURL={bookingURL} />}
