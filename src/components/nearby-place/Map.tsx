@@ -23,7 +23,7 @@ interface MapProps {
 
 function Map(props: MapProps) {
   const { onChange, stationName } = props;
-  const [cmap, setMap]: any = useState();
+  const [cmap, setCmap]: any = useState(null);
   const [cposition, setPosition] = useState();
   const [markers, setMarkers]: any = useState([]);
   const [overlays, setOverlays]: any = useState([]);
@@ -75,7 +75,8 @@ function Map(props: MapProps) {
               mapContainer,
               mapOption,
             );
-            setMap(map);
+            await setCmap(map);
+            setPosition(locPosition);
 
             //근처 지하철역 찾기
             if (stationQuery !== undefined && stationQuery[0] !== '') {
@@ -89,21 +90,22 @@ function Map(props: MapProps) {
                 }
               };
 
-              places.keywordSearch(stationQuery, callback);
+              await places.keywordSearch(stationQuery, callback);
               if (cmap) {
-                cmap.panTo(cposition);
+                await cmap.panTo(cposition);
               }
             } else {
               const places = new window.kakao.maps.services.Places();
 
               const callback = (result: any, status: any) => {
                 if (status === window.kakao.maps.services.Status.OK) {
+                  console.log();
                   setPosition(
                     new window.kakao.maps.LatLng(result[0].y, result[0].x),
                   );
                   onChange(result[0].place_name.split(' ')[0]);
                 } else {
-                  setPosition(locPosition);
+                  // setPosition(locPosition);
                   onChange('역없음');
                 }
               };
@@ -116,7 +118,7 @@ function Map(props: MapProps) {
 
               await places.keywordSearch('지하철역', callback, options);
               if (cmap) {
-                cmap.setCenter(cposition);
+                await cmap.panTo(cposition);
               }
             }
           });
@@ -144,9 +146,8 @@ function Map(props: MapProps) {
     }
 
     if (!cmap) return;
-
-    if (cmap !== undefined) {
-      cmap.panTo(cposition);
+    if (cmap) {
+      cmap?.panTo(cposition);
 
       //위치마다 마커를 생성합니다
       for (let i = 0; i < placeList.length; i++) {
