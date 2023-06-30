@@ -21,8 +21,17 @@ interface MapProps {
 }
 
 function Map({ place, location }: MapProps) {
+  const [bottomSheetHeight, setBottomSheetHeight] = useState(0);
   const [mapLoaded, setMapLoaded] = useState<boolean>(false);
   const [cmap, setMap]: any = useState();
+
+  useEffect(() => {
+    const bottomSheetComponent = document.getElementById(
+      'detail-location-bottomSheet',
+    );
+    if (bottomSheetComponent?.offsetHeight !== undefined)
+      setBottomSheetHeight(bottomSheetComponent?.offsetHeight + 71);
+  }, []);
 
   //지도 로드하기
   useEffect(() => {
@@ -150,12 +159,20 @@ function Map({ place, location }: MapProps) {
       ></article>
       <button
         type="button"
-        className="z-1 absolute bottom-[47%] left-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
+        className="z-1 absolute left-[16px] flex h-[40px] w-[40px] items-center justify-center rounded-lg bg-white drop-shadow-lg"
         onClick={() => onCenter()}
+        style={{
+          bottom: `${bottomSheetHeight}px`,
+        }}
       >
         <Image priority={true} src={centerButton} alt="center button" />
       </button>
-      <article className="z-1 absolute bottom-[47%] right-[16px] flex flex-col">
+      <article
+        className="z-1 absolute right-[16px] flex flex-col"
+        style={{
+          bottom: `${bottomSheetHeight}px`,
+        }}
+      >
         <button
           type="button"
           className="h-[40px] w-[40px] rounded-t-[5px] bg-white "
