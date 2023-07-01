@@ -36,6 +36,8 @@ function ImageCarousel() {
                 style={{
                   background: ' #3687ff',
                 }}
+                placeholder="blur"
+                blurDataURL={`/_next/image?url=${imageURL}&w=16&q=1`}
               />
             </p>
           </section>
