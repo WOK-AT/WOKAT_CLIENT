@@ -8,9 +8,8 @@ function DetailNavigator() {
     { index: 2, name: '시설 정보', active: false },
     { index: 3, name: '공간 위치', active: false },
   ]);
-  const [scrollY, setScrollY] = useState(0);
 
-  const clickNavigator = (index: number) => {
+  const activeNavigator = (index: number) => {
     const newNavigator = navigator.map((item) => {
       if (item.index === index) {
         return {
@@ -31,7 +30,7 @@ function DetailNavigator() {
   useEffect(() => {
     const activeTab = document.getElementById(`nav-${navIndex}`);
     activeTab?.scrollIntoView({ behavior: 'smooth' });
-    clickNavigator(navIndex);
+    activeNavigator(navIndex);
   }, [navIndex]);
 
   useEffect(() => {
@@ -40,35 +39,34 @@ function DetailNavigator() {
     };
 
     const handleScroll = () => {
-      setScrollY(document.body.scrollTop);
+      const placeLocationComponent = document.getElementById('nav-3');
 
-      const newNavigator = navigator.map((item) => {
-        const activeTab = document.getElementById(`nav-${item.index}`);
-        const nextTab = document.getElementById(`nav-${item.index + 1}`);
-        if (
-          activeTab &&
-          nextTab &&
-          activeTab?.offsetTop - 70 < getScrollTop() &&
-          getScrollTop() < nextTab?.offsetTop - 70
-        ) {
-          return {
-            ...item,
-            active: true,
-          };
-        } else {
-          return {
-            ...item,
-            active: false,
-          };
-        }
-      });
-
-      setNavigator(newNavigator);
+      if (
+        placeLocationComponent &&
+        getScrollTop() >
+          placeLocationComponent?.offsetTop -
+            placeLocationComponent?.offsetHeight
+      ) {
+        activeNavigator(3);
+      } else {
+        navigator.map(({ index }) => {
+          const activeTab = document.getElementById(`nav-${index}`);
+          const nextTab = document.getElementById(`nav-${index + 1}`);
+          if (
+            activeTab &&
+            nextTab &&
+            activeTab?.offsetTop - 100 < getScrollTop() &&
+            getScrollTop() < nextTab?.offsetTop - 100
+          ) {
+            activeNavigator(index);
+          }
+        });
+      }
     };
 
     window.addEventListener('scroll', handleScroll, true);
     return window.removeEventListener('scroll', handleScroll);
-  }, [scrollY]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);

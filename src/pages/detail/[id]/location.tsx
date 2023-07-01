@@ -27,7 +27,10 @@ function Location({ place, location }: LocationProps) {
   return (
     <Layout>
       <Map place={place} location={location} />
-      <article className="z-1 fixed bottom-0 -ml-4 w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]">
+      <article
+        id="detail-location-bottomSheet"
+        className="z-1 fixed bottom-0 -ml-4 w-full rounded-t-[20px] bg-WHTIE p-[16px] shadow-[0_-6px_34px_rgb(0,0,0,0.15)]"
+      >
         <h1 className="mt-[14px] text-system3_bold font-system3_bold text-GRAY_800">
           {router.query.place}
         </h1>
