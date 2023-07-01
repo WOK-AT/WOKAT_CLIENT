@@ -29,8 +29,8 @@ function Map({ place, location }: MapProps) {
     const bottomSheetComponent = document.getElementById(
       'detail-location-bottomSheet',
     );
-    if (bottomSheetComponent?.offsetHeight !== undefined)
-      setBottomSheetHeight(bottomSheetComponent?.offsetHeight + 71);
+    if (!bottomSheetComponent) return;
+    setBottomSheetHeight(bottomSheetComponent?.offsetHeight + 71);
   }, []);
 
   //지도 로드하기
