@@ -18,6 +18,9 @@ function WokatSEO(props: WokatSEOProps) {
       ></meta>
       <meta name="keywords" content=""></meta>
 
+      <link rel="apple-touch-icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+
       <meta property="og:title" content="WOKAT" />
       <meta property="og:description" content="일과 함께 워캣으로 떠나요!" />
       <meta property="og:image" content="/assets/icons/logo.svg" />
