@@ -23,8 +23,9 @@ interface PlaceDetailInfo {
 
 function PlaceDetailInfo() {
   const router = useRouter();
-  const placeId = router.query.id as string;
-  const { list } = useGetPlaceDetail(placeId);
+  const id = router.query.id as string;
+  const station = router.query.station as string;
+  const { list } = useGetPlaceDetail(id, station);
   if (!list) return <h1></h1>;
   const {
     placeName,

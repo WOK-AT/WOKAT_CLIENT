@@ -24,3 +24,8 @@ export interface GetPlaceAddressInput {
   placeId: string;
   isRoadName: number;
 }
+
+export interface GetPlaceDetailInput {
+  placeId: string;
+  station: string;
+}

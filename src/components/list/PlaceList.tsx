@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { NavigationContext } from '@/context/NavigationContext';
 import PlaceItem from './PlaceItem';
 import Skeleton from './Skeleton';
+import Link from 'next/link';
 
 interface PlaceListProps {
   station: string;
@@ -32,7 +33,20 @@ function PlaceList(props: PlaceListProps) {
       }}
     >
       {placeList.length > 0 ? (
-        placeList.map((data, index) => <PlaceItem data={data} key={index} />)
+        placeList.map((data, index) => (
+          <Link
+            href={{
+              pathname: `/detail/${data.id}`,
+              query: {
+                station,
+              },
+            }}
+            key={index}
+            className="mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
+          >
+            <PlaceItem data={data} />
+          </Link>
+        ))
       ) : (
         <div
           className="flex flex-col items-center"
