@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
@@ -8,26 +7,15 @@ import { Place } from '@/services/list/types';
 
 interface PlaceItemProps {
   data: Place;
-  station: string;
 }
 
 function PlaceItem(props: PlaceItemProps) {
   const {
-    data: { id, place, count, hashtags = [], distance, imageURL },
-    station,
+    data: { place, count, hashtags = [], distance, imageURL },
   } = props;
 
   return (
-    <Link
-      key={id}
-      className="mb-4 flex w-full border-b-2 border-GRAY_100 pb-4"
-      href={{
-        pathname: `/detail/${id}`,
-        query: {
-          station: station,
-        },
-      }}
-    >
+    <>
       <div className="relative">
         <div className="flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
           <ImageFallback src={imageURL} alt={place} />
@@ -80,7 +68,7 @@ function PlaceItem(props: PlaceItemProps) {
           ))}
         </ul>
       </div>
-    </Link>
+    </>
   );
 }
 

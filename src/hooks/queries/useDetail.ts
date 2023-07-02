@@ -4,7 +4,7 @@ import { getPlaceDetail, getPlaceAddress } from '@/services/detail';
 export const useGetPlaceDetail = (placeId: string, station: string) => {
   const { data } = useQuery(
     ['PlaceDetail'],
-    () => getPlaceDetail(placeId, station),
+    () => getPlaceDetail({ placeId, station }),
     {
       enabled: !!placeId,
     },

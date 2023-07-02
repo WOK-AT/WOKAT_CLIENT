@@ -14,8 +14,9 @@ interface PlaceInfo {
 
 function PlaceInfo() {
   const router = useRouter();
-  const { id, station } = router.query;
-  const { list } = useGetPlaceDetail(id as string, station as string);
+  const id = router.query.id as string;
+  const station = router.query.station as string;
+  const { list } = useGetPlaceDetail(id, station);
   if (!list) return <h1></h1>;
   const { category, placeName, distance, hashtags }: PlaceInfo = list?.data;
 
