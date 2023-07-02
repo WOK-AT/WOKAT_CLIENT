@@ -44,7 +44,7 @@ function PlaceItem(props: PlaceItemProps) {
               height={20}
             />
             <p className=" text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
-              {Object.values(distance).join('')}
+              {distance}
             </p>
           </div>
           <div className="flex">
