@@ -18,6 +18,8 @@ function ImageFallback(props: ImageFallbackProps): ReactElement {
   return (
     <Image
       src={error ? fallbackImage : src}
+      placeholder="blur"
+      blurDataURL={`/_next/image?url=${src}&w=16&q=1`}
       alt={alt}
       onError={onError}
       className="overflow-hidden rounded"
