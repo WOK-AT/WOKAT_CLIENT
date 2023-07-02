@@ -8,14 +8,14 @@ import { useRouter } from 'next/router';
 interface PlaceInfo {
   category: string;
   placeName: string;
-  distance: object;
+  distance: string;
   hashtags: string[];
 }
 
 function PlaceInfo() {
   const router = useRouter();
-  const placeId = router.query.id as string;
-  const { list } = useGetPlaceDetail(placeId);
+  const { id, station } = router.query;
+  const { list } = useGetPlaceDetail(id as string, station as string);
   if (!list) return <h1></h1>;
   const { category, placeName, distance, hashtags }: PlaceInfo = list?.data;
 
@@ -38,17 +38,10 @@ function PlaceInfo() {
         {placeName}
       </h1>
       <section className="mb-2 flex flex-row items-center">
-        {distance &&
-          Object.entries(distance).map(([station, value], index: number) => {
-            return (
-              <article key={index} className="flex flex-row">
-                <Image src={spot} alt="spot" className="mr-2.5" />
-                <p className="mr-2.5 text-system5 font-system5 text-GRAY_600">
-                  {station} {value}
-                </p>
-              </article>
-            );
-          })}
+        <Image src={spot} alt="spot" className="mr-2.5" />
+        <p className="mr-2.5 text-system5 font-system5 text-GRAY_600">
+          {distance}
+        </p>
       </section>
       <section className="mb-5 flex flex-row items-center">
         {hashtags?.map((tag: string, index: number) => {

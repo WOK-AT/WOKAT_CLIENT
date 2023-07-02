@@ -32,7 +32,9 @@ function PlaceList(props: PlaceListProps) {
       }}
     >
       {placeList.length > 0 ? (
-        placeList.map((data, index) => <PlaceItem data={data} key={index} />)
+        placeList.map((data, index) => (
+          <PlaceItem data={data} key={index} station={station} />
+        ))
       ) : (
         <div
           className="flex flex-col items-center"

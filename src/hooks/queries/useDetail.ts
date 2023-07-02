@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPlaceDetail, getPlaceAddress } from '@/services/detail';
 
-export const useGetPlaceDetail = (placeId: string) => {
-  const { data } = useQuery(['PlaceDetail'], () => getPlaceDetail(placeId), {
-    enabled: !!placeId,
-  });
+export const useGetPlaceDetail = (placeId: string, station: string) => {
+  const { data } = useQuery(
+    ['PlaceDetail'],
+    () => getPlaceDetail(placeId, station),
+    {
+      enabled: !!placeId,
+    },
+  );
   return { list: data };
 };
 

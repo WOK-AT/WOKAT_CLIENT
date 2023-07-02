@@ -1,8 +1,8 @@
 import { client } from '..';
 import { GetPlaceAddressInput } from './types';
 
-export const getPlaceDetail = async (placeId: string) => {
-  const { data } = await client.get(`/place/${placeId}`);
+export const getPlaceDetail = async (placeId: string, station: string) => {
+  const { data } = await client.get(`/place/${placeId}?station=${station}`);
   return data;
 };
 
