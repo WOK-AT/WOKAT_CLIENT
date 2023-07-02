@@ -128,7 +128,7 @@ body {
   animation-iteration-count: infinite;
   animation-name: shimmerAnimation;
   animation-timing-function: linear;
-  background: linear-gradient(to right, #c5cbd5 4%, #eceff5 25%, #c5cbd5 36%);
+  background: linear-gradient(to right, #eceff5 4%, #e5e8eb 25%, #e2e4e9 36%);
   background-size: 200px 120px;
   position: relative;
 }
