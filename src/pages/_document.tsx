@@ -15,6 +15,8 @@ export default function Document() {
           as="style"
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/variable/pretendardvariable-dynamic-subset.css"
         />
+        <link rel="apple-touch-icon" href="/app_icon.png" />
+        <link rel="shortcut icon" href="/app_icon.png" />
       </Head>
       <body>
         <Main />
