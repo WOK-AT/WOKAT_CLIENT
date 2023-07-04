@@ -18,7 +18,7 @@ function NearbyPlace() {
   };
 
   return (
-    <Layout title={station || stationName} right={profile}>
+    <Layout title={station || stationName}>
       <Navigation />
       <div className="flex">
         <Map onChange={onChange} stationName={station || stationName} />
