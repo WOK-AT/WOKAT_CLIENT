@@ -45,12 +45,12 @@ function Home() {
       <Layout>
         <div
           id="background gradient"
-          className="fixed bottom-0 w-full h-1/3 bg-gradient-to-b from-transparent via-blue-200 to-blue-300"
+          className="fixed bottom-0 h-1/3 w-full bg-gradient-to-b from-transparent via-blue-200 to-blue-300"
           style={{ marginLeft: '-16px', marginRight: '-16px' }}
         ></div>
 
         <article className="relative mt-6 flex h-[354px] w-full flex-col items-center">
-          <Image src={block} alt="block" className="absolute top-6" />
+          <Image src={block} alt="block" className="absolute top-6" priority />
           <div className="absolute top-[72px]">
             <section className="mb-[49px] flex flex-col items-center">
               <p className=" text-system1_bold font-system1_bold text-GRAY_800">
@@ -82,7 +82,7 @@ function Home() {
                   className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            text-system4_bold font-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
                 >
-                  <div className="relative w-6 h-6 mr-2">
+                  <div className="relative mr-2 h-6 w-6">
                     <Image src={location} alt="location" fill />
                   </div>
                   주변 업무 공간 찾기

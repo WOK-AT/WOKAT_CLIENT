@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
-import bookmark from '@/assets/icons/bookmark.svg';
 import ImageFallback from '../common/ImageFallback';
 import { Place } from '@/services/list/types';
 
@@ -20,11 +19,6 @@ function PlaceItem(props: PlaceItemProps) {
         <div className="flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
           <ImageFallback src={imageURL} alt={place} />
         </div>
-        <Image
-          src={bookmark}
-          alt="bookmark button"
-          className="absolute bottom-2 right-2"
-        />
       </div>
       <div className="ml-3 flex flex-col items-start justify-between">
         <div className="flex-col">
