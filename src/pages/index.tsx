@@ -39,6 +39,21 @@ function Home() {
     handleMainPop();
   }, [HOME_VISITED]);
 
+  useEffect(() => {
+    const setDisableOverflow = () => {
+      document.body.style.overflow = 'hidden';
+    };
+    const resetDisableOverflow = () => {
+      document.body.style.overflow = 'unset';
+    };
+
+    setDisableOverflow();
+
+    return () => {
+      resetDisableOverflow();
+    };
+  }, []);
+
   return (
     <>
       {showOnboarding && <Onboarding close={closeOnboarding} />}
