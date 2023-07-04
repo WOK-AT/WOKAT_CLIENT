@@ -29,7 +29,7 @@ function ImageCarousel() {
       {imageURLs?.map((imageURL: string, index: number) => {
         return (
           <section key={index}>
-            <p className="relative h-48 w-full bg-indigo-500">
+            <p className="relative h-48 w-full">
               <Image
                 src={imageURL}
                 alt="place image"
