@@ -20,7 +20,7 @@ function WokatSEO(props: WokatSEOProps) {
 
       <meta property="og:title" content="WOKAT" />
       <meta property="og:description" content="일과 함께 워캣으로 떠나요!" />
-      <meta property="og:image" content="/assets/icons/logo.svg" />
+      <meta property="og:image" content="/og_thumbnail.webp" />
     </Head>
   );
 }
