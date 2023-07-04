@@ -1,12 +1,11 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import noResult_Img from '@/assets/images/noResult.webp';
 import { usePlaceList } from '@/hooks/queries/usePlaceList';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { NavigationContext } from '@/context/NavigationContext';
 import PlaceItem from './PlaceItem';
-import Skeleton from './Skeleton';
-import Link from 'next/link';
 
 interface PlaceListProps {
   station: string;
@@ -14,23 +13,44 @@ interface PlaceListProps {
 
 function PlaceList(props: PlaceListProps) {
   const { station } = props;
-  const { navType } = useContext(NavigationContext);
-  const { data: placeList, isLoading } = usePlaceList({ station, navType });
   const router = useRouter();
-  const isListPage = router.pathname.includes('list');
+  const { navType } = useContext(NavigationContext);
 
-  if (isLoading) return <Skeleton />;
+  const { data: placeList } = usePlaceList({ station, navType });
+
+  const isListPage = router.pathname.includes('list');
+  const placeListWrapperRef = useRef<HTMLDivElement>(null);
+
+  const setDisableOverflow = () => {
+    document.body.style.overflow = 'hidden';
+  };
+
+  const resetDisableOverflow = () => {
+    document.body.style.overflow = 'unset';
+  };
+
+  useEffect(() => {
+    if (placeListWrapperRef.current) {
+      const userAgent = navigator.userAgent.toLowerCase();
+
+      const isSafari = /safari/i.test(userAgent);
+      const isNaver = /naver/i.test(userAgent);
+      if (isSafari && !isNaver) {
+        // set id only safari
+        placeListWrapperRef.current.id = 'place-list';
+      }
+    }
+
+    setDisableOverflow();
+    return () => {
+      resetDisableOverflow();
+    };
+  }, []);
 
   return (
     <div
-      className="mt-4 overflow-y-scroll scrollbar-hide"
-      style={{
-        height: `${
-          navType === '무료 회의룸'
-            ? 'calc(100vh - 180px)'
-            : 'calc(100vh - 150px)'
-        }`,
-      }}
+      ref={placeListWrapperRef}
+      className="mt-4 h-[calc(100vh-150px)] overflow-y-scroll scrollbar-hide"
     >
       {placeList.length > 0 ? (
         placeList.map((data, index) => (

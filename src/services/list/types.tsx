@@ -19,7 +19,7 @@ export interface Place {
   id: string;
   place: string;
   distance: string;
-  count: string;
+  count: string | null;
   hashtags: string[];
   location: string;
   imageURL: string;

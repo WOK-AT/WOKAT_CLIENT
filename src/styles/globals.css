@@ -33,10 +33,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* Safari ver 15 이상에서 로딩 중 이미지 회색 테두리 표시 제거 */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  /* Safari ver 15 이상에서 로딩 중 이미지 회색 테두리 표시 제거 */
   img[loading='lazy'] {
     clip-path: inset(0.6px);
+  }
+  #place-list {
+    height: calc(100vh - 230px);
   }
 }
 

@@ -1,11 +1,16 @@
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import BottomSheetHeader from './BottomSheetHeader';
 import useBottomSheet from '@/hooks/useBottomSheet';
 import { motion } from 'framer-motion';
-import PlaceList from '../list/PlaceList';
+import Skeleton from '../list/Skeleton';
 
 interface BottomSheetProps {
   stationName: string;
 }
+
+const PlaceList = dynamic(() => import('@/components/list/PlaceList'));
+
 function BottomSheet(props: BottomSheetProps) {
   const { stationName } = props;
 
@@ -23,10 +28,12 @@ function BottomSheet(props: BottomSheetProps) {
       <BottomSheetHeader />
       <div
         ref={content}
-        className="overflow-auto scrolling-touch touch-auto md:overflow-scroll"
+        className="scrolling-touch touch-auto overflow-auto md:overflow-scroll"
       >
         <div className="mx-4">
-          <PlaceList station={station} />
+          <Suspense fallback={<Skeleton />}>
+            <PlaceList station={station} />
+          </Suspense>
         </div>
       </div>
     </motion.div>

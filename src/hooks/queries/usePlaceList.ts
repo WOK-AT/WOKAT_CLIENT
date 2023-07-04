@@ -30,7 +30,7 @@ export const usePlaceList = (props: PlaceListProps) => {
     }
   };
 
-  const { data, isLoading } = useQuery(
+  const { data } = useQuery(
     ['placeList', navType, stationParam],
     () =>
       fetchPlaceList({
@@ -41,6 +41,7 @@ export const usePlaceList = (props: PlaceListProps) => {
       }),
     {
       enabled: !!stationParam,
+      suspense: true,
     },
   );
 
@@ -56,6 +57,5 @@ export const usePlaceList = (props: PlaceListProps) => {
 
   return {
     data: isDataValid(data) ? data.placeList.data : [],
-    isLoading,
   };
 };
