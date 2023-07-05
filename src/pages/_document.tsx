@@ -11,7 +11,7 @@ export default function Document() {
           content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
         />
         <link
-          rel="stylesheet"
+          rel="stylesheet preload"
           as="style"
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/variable/pretendardvariable-dynamic-subset.css"
         />

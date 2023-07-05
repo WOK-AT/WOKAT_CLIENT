@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Layout from '@/components/common/Layout';
 import search from '@/assets/icons/search.svg';
 import location from '@/assets/icons/location.svg';
-import background from '@/assets/images/background.svg';
-import block from '@/assets/images/block.svg';
+import background from '@/assets/images/background.webp';
+import block from '@/assets/images/block.webp';
 import Onboarding from '@/components/onboarding/Onboarding';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
 
@@ -112,6 +112,7 @@ function Home() {
             src={background}
             alt="wokat_background"
             className="w-full opacity-70"
+            priority
           />
         </article>
       </Layout>

@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import Image from 'next/image';
-import fallbackImage from '@/assets/images/background.svg';
+import fallbackImage from '@/assets/images/background.webp';
 
 interface ImageFallbackProps {
   src: string;
