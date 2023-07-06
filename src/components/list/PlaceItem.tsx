@@ -16,33 +16,27 @@ function PlaceItem(props: PlaceItemProps) {
   return (
     <>
       <div className="relative">
-        <div className="flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
+        <div className="relative flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
           <ImageFallback src={imageURL} alt={place} />
         </div>
       </div>
-      <div className="ml-3 flex flex-col items-start justify-between">
-        <div className="flex-col">
+      <div className="flex flex-col items-start justify-between ml-3">
+        <div className="flex-col w-full">
           <h1 className="mb-2 text-system3_bold font-system3_bold text-GRAY_900 max-[360px]:text-system4">
             {place}
           </h1>
-          <div className="relative mb-1 flex">
-            <Image
-              src={list_location}
-              alt="location icon"
-              width={20}
-              height={20}
-            />
-            <p className=" text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
+          <div className="flex mb-1">
+            <div className="relative flex w-5 h-5 mb-1">
+              <Image src={list_location} alt="location icon" fill />
+            </div>
+            <p className="text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
               {distance}
             </p>
           </div>
           <div className="flex">
-            <Image
-              src={list_profile}
-              alt="profile icon"
-              width={20}
-              height={20}
-            />
+            <div className="relative w-5 h-5">
+              <Image src={list_profile} alt="profile icon" fill />
+            </div>
             <p className="text-system5 font-system5 text-GRAY_600 max-[360px]:text-system6">
               {count || '제한 없음'}
             </p>

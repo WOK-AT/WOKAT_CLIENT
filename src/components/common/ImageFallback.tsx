@@ -24,6 +24,7 @@ function ImageFallback(props: ImageFallbackProps): ReactElement {
       onError={onError}
       className="overflow-hidden rounded"
       fill
+      sizes="(max-width: 768px) 100vw"
     />
   );
 }

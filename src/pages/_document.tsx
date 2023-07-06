@@ -13,6 +13,7 @@ export default function Document() {
         <link
           rel="stylesheet preload"
           as="style"
+          crossOrigin=""
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/variable/pretendardvariable-dynamic-subset.css"
         />
       </Head>
@@ -21,7 +22,7 @@ export default function Document() {
         <NextScript />
         <script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-          crossOrigin="anonymous"
+          crossOrigin=""
         ></script>
       </body>
     </Html>
