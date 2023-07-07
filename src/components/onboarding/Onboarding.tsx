@@ -4,11 +4,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from 'next/image';
-import onboarding_1 from '@/assets/images/onboarding_1.webp';
-import onboarding_2 from '@/assets/images/onboarding_2.webp';
-import onboarding_3 from '@/assets/images/onboarding_3.webp';
-import onboarding_4 from '@/assets/images/onboarding_4.webp';
-import onboarding_5 from '@/assets/images/onboarding_5.webp';
+import onboarding_1 from '@/assets/images/onboarding_1.avif';
+import onboarding_2 from '@/assets/images/onboarding_2.avif';
+import onboarding_3 from '@/assets/images/onboarding_3.avif';
+import onboarding_4 from '@/assets/images/onboarding_4.avif';
+import onboarding_5 from '@/assets/images/onboarding_5.avif';
 
 interface OnboardingProps {
   close: () => void;
@@ -55,7 +55,7 @@ function Onboarding({ close }: OnboardingProps) {
             <div className="mt-[-30px] flex h-[300px] w-[250px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center text-system3_bold font-system3_bold text-gray-800">
                 나에게 맞는{' '}
-                <span className="text-blue-600 text-system3_bold font-system3_bold">
+                <span className="text-system3_bold font-system3_bold text-blue-600">
                   업무공간,
                 </span>
                 <br />
@@ -74,7 +74,7 @@ function Onboarding({ close }: OnboardingProps) {
             <div className="mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 오늘은{' '}
-                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
+                <span className="inline text-system3_bold font-system3_bold text-blue-600">
                   어디로
                 </span>
                 <br />
@@ -92,7 +92,7 @@ function Onboarding({ close }: OnboardingProps) {
 
             <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[210px]  text-center text-system3_bold font-system3_bold text-gray-800">
-                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
+                <span className="inline text-system3_bold font-system3_bold text-blue-600">
                   무료의{' '}
                 </span>
                 업무공간과
@@ -110,7 +110,7 @@ function Onboarding({ close }: OnboardingProps) {
             <div className=" mt-[-30px] flex h-[300px] w-[305px] items-center justify-center">
               <div className="h-[54px] w-[220px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 콘센트여부, 분위기 등<br />
-                <span className="inline text-blue-600 text-system3_bold font-system3_bold">
+                <span className="inline text-system3_bold font-system3_bold text-blue-600">
                   공간의 정보
                 </span>
                 를 미리 들여다봐요
@@ -127,7 +127,7 @@ function Onboarding({ close }: OnboardingProps) {
               <div className="h-[54px] w-[210px] text-center  text-system3_bold font-system3_bold text-gray-800">
                 나에게 맞는 업무공간 찾기,
                 <br />
-                <span className="text-blue-600 text-system3_bold font-system3_bold">
+                <span className="text-system3_bold font-system3_bold text-blue-600">
                   워캣
                 </span>
                 에서 시작하세요

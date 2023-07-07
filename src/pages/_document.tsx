@@ -11,8 +11,9 @@ export default function Document() {
           content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
         />
         <link
-          rel="stylesheet"
+          rel="stylesheet preload"
           as="style"
+          crossOrigin=""
           href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.6/variable/pretendardvariable-dynamic-subset.css"
         />
         <link rel="apple-touch-icon" href="/app_icon.png" />
@@ -23,7 +24,7 @@ export default function Document() {
         <NextScript />
         <script
           src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-          crossOrigin="anonymous"
+          crossOrigin=""
         ></script>
       </body>
     </Html>

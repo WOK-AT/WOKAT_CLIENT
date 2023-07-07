@@ -1,12 +1,9 @@
-import Image from 'next/image';
-import noResult_Img from '@/assets/images/noResult.webp';
+import Link from 'next/link';
 import { usePlaceList } from '@/hooks/queries/usePlaceList';
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
+import { useContext, useEffect, useRef } from 'react';
 import { NavigationContext } from '@/context/NavigationContext';
 import PlaceItem from './PlaceItem';
-import Skeleton from './Skeleton';
-import Link from 'next/link';
+import EmptyList from './EmptyList';
 
 interface PlaceListProps {
   station: string;
@@ -15,22 +12,26 @@ interface PlaceListProps {
 function PlaceList(props: PlaceListProps) {
   const { station } = props;
   const { navType } = useContext(NavigationContext);
-  const { data: placeList, isLoading } = usePlaceList({ station, navType });
-  const router = useRouter();
-  const isListPage = router.pathname.includes('list');
+  const { data: placeList } = usePlaceList({ station, navType });
+  const placeListWrapperRef = useRef<HTMLDivElement>(null);
 
-  if (isLoading) return <Skeleton />;
+  useEffect(() => {
+    if (placeListWrapperRef.current) {
+      const userAgent = navigator.userAgent.toLowerCase();
+
+      const isSafari = /safari/i.test(userAgent);
+      const isNaver = /naver/i.test(userAgent);
+      if (isSafari && !isNaver) {
+        // set id only safari
+        placeListWrapperRef.current.id = 'place-list';
+      }
+    }
+  }, []);
 
   return (
     <div
-      className="mt-4 overflow-y-scroll scrollbar-hide"
-      style={{
-        height: `${
-          navType === '무료 회의룸'
-            ? 'calc(100vh - 180px)'
-            : 'calc(100vh - 150px)'
-        }`,
-      }}
+      ref={placeListWrapperRef}
+      className="mt-4 h-[calc(100vh-150px)] overflow-y-scroll scrollbar-hide"
     >
       {placeList.length > 0 ? (
         placeList.map((data, index) => (
@@ -48,28 +49,7 @@ function PlaceList(props: PlaceListProps) {
           </Link>
         ))
       ) : (
-        <div
-          className="flex flex-col items-center"
-          style={{
-            height: `${isListPage ? '100%' : 'auto'}`,
-          }}
-        >
-          {isListPage && (
-            <Image
-              src={noResult_Img}
-              alt="noResultImg"
-              width={103}
-              height={132}
-              className="mb-[20px] mt-[132px]"
-            />
-          )}
-          <div className="mb-[8px] font-system4_medium text-GRAY_900">
-            주변 추천 업무공간이 없어요.
-          </div>
-          <div className=" font-system5 text-GRAY_400">
-            다른 역을 검색하거나 지도를 이동해주세요.
-          </div>
-        </div>
+        <EmptyList />
       )}
     </div>
   );

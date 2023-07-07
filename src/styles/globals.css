@@ -11,7 +11,7 @@
 html,
 body {
   /* font-size: 62.5%; */
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 
   padding: 0;
@@ -33,10 +33,13 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/* Safari ver 15 이상에서 로딩 중 이미지 회색 테두리 표시 제거 */
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  /* Safari ver 15 이상에서 로딩 중 이미지 회색 테두리 표시 제거 */
   img[loading='lazy'] {
     clip-path: inset(0.6px);
+  }
+  #place-list {
+    height: calc(100vh - 230px);
   }
 }
 
@@ -128,7 +131,7 @@ body {
   animation-iteration-count: infinite;
   animation-name: shimmerAnimation;
   animation-timing-function: linear;
-  background: linear-gradient(to right, #c5cbd5 4%, #eceff5 25%, #c5cbd5 36%);
+  background: linear-gradient(to right, #eceff5 4%, #e5e8eb 25%, #e2e4e9 36%);
   background-size: 200px 120px;
   position: relative;
 }
