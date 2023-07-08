@@ -1,10 +1,10 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Image from 'next/image';
 import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 import default_place from '@/assets/images/default_place.svg';
+import PlaceImage from './PlaceImage';
 
 function ImageCarousel() {
   const router = useRouter();
@@ -28,28 +28,11 @@ function ImageCarousel() {
   return (
     <Slider {...settings}>
       {imageURLs.length ? (
-        imageURLs?.map((imageURL: string, index: number) => {
-          return (
-            <section key={index}>
-              <p className="relative h-48 w-full">
-                <Image
-                  src={imageURL}
-                  alt="place image"
-                  fill
-                  style={{
-                    background: '#ECEFF5',
-                  }}
-                  placeholder="blur"
-                  blurDataURL={`/_next/image?url=${imageURL}&w=16&q=1`}
-                />
-              </p>
-            </section>
-          );
-        })
+        imageURLs?.map((imageURL: string, index: number) => (
+          <PlaceImage key={index} imageURL={imageURL} />
+        ))
       ) : (
-        <p className="relative h-48 w-full">
-          <Image alt="default place image" src={default_place} fill />
-        </p>
+        <PlaceImage imageURL={default_place} />
       )}
     </Slider>
   );
