@@ -7,7 +7,7 @@ interface PlaceImageProps {
 function PlaceImage({ imageURL }: PlaceImageProps) {
   return (
     <p className="relative h-48 w-full">
-      <Image alt={imageURL} src={imageURL} fill />
+      <Image alt={imageURL} src={imageURL} fill priority />
     </p>
   );
 }
