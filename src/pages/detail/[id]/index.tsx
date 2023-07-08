@@ -1,6 +1,6 @@
 import Layout from '@/components/common/Layout';
-import PlaceInfo from '@/components/detail/placeInfo';
-import ImageCarousel from '@/components/detail/imageCarousel';
+import PlaceInfo from '@/components/detail/Info';
+import ImageCarousel from '@/components/detail/Carousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 
 function Detail() {
