@@ -40,9 +40,7 @@ function PlaceInfo() {
       </h1>
       <section className="mb-2 flex flex-row items-center">
         <Image src={spot} alt="spot" className="mr-2.5" />
-        <p className="mr-2.5 text-system5 font-system5 text-GRAY_600">
-          {distance}
-        </p>
+        <p className="text-system5 font-system5 text-GRAY_600">{distance}</p>
       </section>
       <section className="mb-5 flex flex-row items-center">
         {hashtags?.map((tag: string, index: number) => {
