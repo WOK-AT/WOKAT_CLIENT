@@ -3,6 +3,7 @@ import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import fallbackImage from '@/assets/images/background.webp';
 import { Place } from '@/services/list/types';
+import { useState } from 'react';
 
 const transparent =
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
@@ -15,19 +16,26 @@ function PlaceItem(props: PlaceItemProps) {
   const {
     data: { place, count, hashtags = [], distance, imageURL },
   } = props;
+  const [error, setError] = useState(false);
+
+  const onError = () => {
+    setError(true);
+  };
 
   return (
     <>
       <div className="relative">
         <div className="relative flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
           <Image
-            src={imageURL || fallbackImage}
+            src={error ? fallbackImage : imageURL ?? fallbackImage}
             alt={place}
-            className="overflow-hidden rounded"
+            className="overflow-hidden rounded bg-cover"
+            style={{ objectFit: 'cover' }}
             placeholder="blur"
             blurDataURL={`data:image/gif;base64,${transparent}`}
             fill
             sizes="(max-width: 768px) 100vw"
+            onError={onError}
           />
         </div>
       </div>
