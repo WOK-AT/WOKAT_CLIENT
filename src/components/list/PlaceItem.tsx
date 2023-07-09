@@ -3,7 +3,7 @@ import list_profile from '@/assets/icons/list_profile.svg';
 import list_location from '@/assets/icons/list_location.svg';
 import fallbackImage from '@/assets/images/background.webp';
 import { Place } from '@/services/list/types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const transparent =
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII=';
