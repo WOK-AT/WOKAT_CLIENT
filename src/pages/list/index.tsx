@@ -2,9 +2,10 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/common/Layout';
 import Navigation from '@/components/common/Navigation';
 import FAB from '@/components/list/FAB';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import Skeleton from '@/components/list/Skeleton';
-import PlaceList from '@/components/list/PlaceList';
+
+const PlaceList = lazy(() => import('@/components/list/PlaceList'));
 
 function List() {
   const router = useRouter();

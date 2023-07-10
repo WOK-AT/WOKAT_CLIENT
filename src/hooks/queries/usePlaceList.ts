@@ -9,6 +9,13 @@ interface PlaceListProps {
   navType: NavType;
 }
 
+const navTypeMapper: Record<NavType, 0 | 1 | 2> = {
+  '무료 공간': 0,
+  '무료 회의룸': 1,
+  카페: 2,
+  '': 0,
+};
+
 export const usePlaceList = (props: PlaceListProps) => {
   const { station, navType } = props;
   const router = useRouter();
@@ -19,22 +26,11 @@ export const usePlaceList = (props: PlaceListProps) => {
 
   const stationParam: string = isNearbyPlace ? station : title;
 
-  const getNavType = () => {
-    switch (navType) {
-      case '무료 회의룸':
-        return 1;
-      case '카페':
-        return 2;
-      default:
-        return 0;
-    }
-  };
-
   const { data } = useQuery(
-    ['placeList', navType, stationParam],
+    ['placeList', navTypeMapper[navType], stationParam],
     () =>
       fetchPlaceList({
-        navType: getNavType(),
+        navType: navTypeMapper[navType],
         station: stationParam,
         filter: '0', // TODO : 서버 추가 개발 이후 수정 예정, 현재는 0 고정값
         page: 0,

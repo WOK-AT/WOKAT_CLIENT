@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter } from 'next/router';
 import profile from '@/assets/icons/profile.svg';
 import Layout from '@/components/common/Layout';
 import Map from '@/components/nearby-place/Map';
 import Navigation from '@/components/common/Navigation';
 import BottomSheet from '@/components/nearby-place/BottomSheet';
+import ListSkeleton from '@/components/list/Skeleton';
+import MapSkeleton from '@/components/nearby-place/Skeleton';
 
 function NearbyPlace() {
   const router = useRouter();
@@ -20,10 +22,15 @@ function NearbyPlace() {
   return (
     <Layout title={station || stationName} right={profile}>
       <Navigation />
-      <div className="flex">
-        <Map onChange={onChange} stationName={station || stationName} />
-        <BottomSheet stationName={station || stationName} />
-      </div>
+
+      <Suspense fallback={<MapSkeleton />}>
+        <div className="flex">
+          <Map onChange={onChange} stationName={station || stationName} />
+          <Suspense fallback={<ListSkeleton />}>
+            <BottomSheet stationName={station || stationName} />
+          </Suspense>
+        </div>
+      </Suspense>
     </Layout>
   );
 }
