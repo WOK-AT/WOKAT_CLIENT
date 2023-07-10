@@ -9,7 +9,7 @@ import WokatSEO from '@/components/WokatSEO';
 import { NavigationContextProvider } from '@/context/NavigationContext';
 import { ToastContextProvider } from '@/context/ToastContext';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Suspense } from 'react';
+import Link from 'next/link';
 
 declare global {
   interface Window {
@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div>
         <h1>오류가 발생했습니다!</h1>
         <p>{error.message}</p>
-        <button onClick={() => resetErrorBoundary()}>돌아가기</button>
+        <Link href='/' onClick={() => resetErrorBoundary()}>돌아가기</Link>
       </div>
     );
   }
