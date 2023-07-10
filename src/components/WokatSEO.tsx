@@ -17,7 +17,6 @@ function WokatSEO(props: WokatSEOProps) {
         content={description || '일과 함께 워캣으로 떠나요!'}
       ></meta>
       <meta name="keywords" content=""></meta>
-
       <meta property="og:title" content="WOKAT" />
       <meta property="og:description" content="일과 함께 워캣으로 떠나요!" />
       <meta property="og:image" content="/og_thumbnail.webp" />

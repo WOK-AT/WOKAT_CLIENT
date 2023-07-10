@@ -20,7 +20,7 @@ function NearbyPlace() {
   };
 
   return (
-    <Layout title={station || stationName} right={profile}>
+    <Layout title={station || stationName}>
       <Navigation />
 
       <Suspense fallback={<MapSkeleton />}>
