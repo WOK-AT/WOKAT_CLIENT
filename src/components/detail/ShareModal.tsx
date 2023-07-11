@@ -11,7 +11,17 @@ interface ModalContentsProps {
   onChange?: (args: Function) => void;
 }
 
-function ShareModal() {
+interface ShareModalProps {
+  placeName: string;
+  imageURL: string;
+  hashtags: string[];
+}
+
+interface KakaoShareButtonProps extends ModalContentsProps {
+  place: ShareModalProps;
+}
+
+function ShareModal(props: ShareModalProps) {
   const onChange = (cb: Function) => {
     cb();
   };
@@ -25,26 +35,40 @@ function ShareModal() {
         <h1 className="mb-[10px] text-system3_bold font-system3_bold text-GRAY_900">
           공유하기
         </h1>
-        <Modal.Contents asChild={<KakaoShareButton />} />
+        <Modal.Contents asChild={<KakaoShareButton place={props} />} />
         <Modal.Contents asChild={<URLCopy />} />
       </Modal.Menu>
     </Modal>
   );
 }
 
-function KakaoShareButton(props: ModalContentsProps) {
-  const { onChange } = props;
+function KakaoShareButton(props: KakaoShareButtonProps) {
+  const { onChange, place } = props;
+  const router = useRouter();
+  const { placeName, imageURL: imageUrl, hashtags } = place;
+  console.log(imageUrl);
 
   const shareWithKakao = () => {
     window.Kakao.Share.sendDefault({
-      objectType: 'text',
-      text: '일과 함께 워캣으로 떠나요!',
-      link: {
-        webUrl: process.env.NEXT_PUBLIC_DOMAIN,
-        mobileWebUrl: process.env.NEXT_PUBLIC_DOMAIN,
+      objectType: 'feed',
+      content: {
+        title: placeName,
+        description: hashtags.join(' '),
+        imageUrl,
+        link: {
+          mobileWebUrl: `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`,
+          webUrl: `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`,
+        },
       },
-      buttonTitle: '워캣 바로가기',
-      installTalk: true,
+      buttons: [
+        {
+          title: '바로가기',
+          link: {
+            mobileWebUrl: `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`,
+            webUrl: `${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`,
+          },
+        },
+      ],
     });
   };
 
@@ -71,15 +95,13 @@ function URLCopy(props: ModalContentsProps) {
   };
 
   return (
-    <div
-      className="border-b-[1px] border-GRAY_100 pb-4"
+    <button
+      className="relative mt-[10px]  flex h-12 w-full items-center justify-between rounded-[30px] bg-BLUE_400 px-[18px] text-system4_medium font-system4_medium text-WHTIE"
       onClick={() => onChange && onChange(urlCopy)}
     >
-      <button className="relative mt-[10px]  flex h-12 w-full items-center justify-between rounded-[30px] bg-BLUE_400 px-[18px] text-system4_medium font-system4_medium text-WHTIE">
-        URL 복사하기
-        <Image src={paste} alt="paste url" width={24} height={24} />
-      </button>
-    </div>
+      URL 복사하기
+      <Image src={paste} alt="paste url" width={24} height={24} />
+    </button>
   );
 }
 
