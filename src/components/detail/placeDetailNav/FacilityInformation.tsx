@@ -46,9 +46,9 @@ function FacilityInformation({
             <Image src={internet} alt="internet icon" className="mr-[18px]" />
             <h2
               className="w-full break-all text-system4 font-system4 text-GRAY_400"
-              onClick={() => window.open(information?.homepage)}
+              onClick={() => window.open(information?.homepageURL)}
             >
-              {information?.homepage}
+              {information?.homepageURL}
             </h2>
           </div>
         </div>
