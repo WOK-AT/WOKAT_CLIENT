@@ -16,17 +16,18 @@ function WokatSEO(props: WokatSEOProps) {
       <meta
         name="description"
         content={description || '일과 함께 워캣으로 떠나요!'}
-      ></meta>
-      <meta name="keywords" content=""></meta>
+      />
+
+      <meta property="og:type" content="website" />
       <meta property="og:title" content={title || 'WOKAT'} />
       <meta
         property="og:description"
         content={description || '일과 함께 워캣으로 떠나요!'}
       />
-      <meta
-        property="og:image"
-        content={imageURL || '/og_thumbnail.webpimageURL'}
-      />
+      <meta property="og:url" content={url || process.env.NEXT_PUBLIC_DOMAIN} />
+      <meta property="og:image" content={imageURL || '/og_thumbnail.webp'} />
+      <meta property="og:site_name" content="WOKAT" />
+      <meta property="og:locale" content="ko_KR" />
     </Head>
   );
 }

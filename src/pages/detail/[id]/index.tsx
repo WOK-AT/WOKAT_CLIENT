@@ -4,7 +4,6 @@ import ImageCarousel from '@/components/detail/ImageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
 import WokatSEO from '@/components/WokatSEO';
 import { NextPageContext } from 'next';
-import { client } from '@/services';
 import { getPlaceDetail } from '@/services/detail';
 import { PlaceDetail } from '@/services/detail/types';
 import { useRouter } from 'next/router';
@@ -33,7 +32,7 @@ function Detail(
 
 export default Detail;
 
-export const getServerSideProps = async ({ req, query }: NextPageContext) => {
+export const getServerSideProps = async ({ query }: NextPageContext) => {
   const placeId = query.id as string;
   const station = query.station as string;
   const { data } = await getPlaceDetail({ placeId, station });
