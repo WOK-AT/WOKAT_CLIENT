@@ -17,9 +17,9 @@ function List() {
   return (
     <Layout title={title ? `${title}역` : ''}>
       <Navigation />
-      <Suspense fallback={<Skeleton />}>
+      {/* <Suspense fallback={<Skeleton />}>
         <PlaceList station={title} />
-      </Suspense>
+      </Suspense> */}
       <FAB />
     </Layout>
   );
