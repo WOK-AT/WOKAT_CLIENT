@@ -11,11 +11,12 @@ import locationPaste from '@/assets/icons/locationPaste.svg';
 import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
 
 interface PlaceLocationProps {
+  category: string;
   placeName: string;
   location: string;
 }
 
-function PlaceLocation({ placeName, location }: PlaceLocationProps) {
+function PlaceLocation({ placeName, location, category }: PlaceLocationProps) {
   const router = useRouter();
   const placeId = router.query.id as string;
 
@@ -41,7 +42,12 @@ function PlaceLocation({ placeName, location }: PlaceLocationProps) {
   }, [value]);
 
   return (
-    <section id="nav-3" className="scroll-mt-[50px] pb-[135px]">
+    <section
+      id="nav-3"
+      className={`scroll-mt-[50px] ${
+        category === '1' ? 'pb-[135px]' : 'pb-[24px]'
+      }`}
+    >
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
       <div className="border-color-GRAY_100 rounded-[10px] 	border-[1px]">
         <Link

@@ -48,7 +48,11 @@ function PlaceDetailInfo() {
         information={information}
         maxPeopleCount={count}
       />
-      <PlaceLocation placeName={placeName} location={location} />
+      <PlaceLocation
+        category={category}
+        placeName={placeName}
+        location={location}
+      />
       {category === '1' && <BookingButton bookingURL={bookingURL} />}
     </main>
   );
