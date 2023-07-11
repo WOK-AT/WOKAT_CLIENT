@@ -1,15 +1,15 @@
 import { getSessionStorageItem, setSessionStorageItem } from '@/utils/storage';
 import { useState, useCallback, useEffect } from 'react';
 
-export type NavType = '무료 공간' | '무료 회의룸' | '카페' | '';
+export type NavType = '무료 공간' | '무료 회의룸' | '카페';
 
 type NavigationProps = {
-  navType: NavType;
+  navType: NavType | '';
   switchNavType: (data: NavType) => void;
 };
 
 const useNavigation = (): NavigationProps => {
-  const [navType, setNavType] = useState<NavType>('');
+  const [navType, setNavType] = useState<NavType | ''>('');
   const switchNavType = useCallback((data: NavType) => {
     setNavType(data);
   }, []);

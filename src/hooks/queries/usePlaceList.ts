@@ -13,7 +13,6 @@ const navTypeMapper: Record<NavType, 0 | 1 | 2> = {
   '무료 공간': 0,
   '무료 회의룸': 1,
   카페: 2,
-  '': 0,
 };
 
 export const usePlaceList = (props: PlaceListProps) => {

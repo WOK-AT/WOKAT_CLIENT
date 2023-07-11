@@ -46,7 +46,6 @@ function KakaoShareButton(props: KakaoShareButtonProps) {
   const { onChange, place } = props;
   const router = useRouter();
   const { placeName, imageURL: imageUrl, hashtags } = place;
-  console.log(imageUrl);
 
   const shareWithKakao = () => {
     window.Kakao.Share.sendDefault({
