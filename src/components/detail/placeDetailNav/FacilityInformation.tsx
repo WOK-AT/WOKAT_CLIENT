@@ -32,7 +32,7 @@ function FacilityInformation({
   }
 
   return (
-    <section id="nav-2" className="mb-[20px] scroll-mt-[50px]">
+    <section id="nav-2" className="scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="flex flex-col items-start">
