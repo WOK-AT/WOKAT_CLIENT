@@ -7,7 +7,7 @@ interface BookingButtonProps {
 function BookingButton({ bookingURL }: BookingButtonProps) {
   return (
     <article className="z-1 fixed bottom-0 -ml-4 flex w-full flex-col items-center bg-gradient-to-t from-[rgba(255,255,255,255)] to-[rgba(255,255,255,0)] px-4 pb-[24px]">
-      <Image src={bookingTag} alt="bookingTag" />
+      <Image src={bookingTag} alt="bookingTag" width={291} height={35} />
       <button
         type="button"
         onClick={() => window.open(bookingURL)}
