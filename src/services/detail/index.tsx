@@ -1,9 +1,17 @@
 import { client } from '..';
-import { GetPlaceAddressInput, GetPlaceDetailInput } from './types';
+import {
+  GetPlaceAddressInput,
+  GetPlaceDetailInput,
+  GetPlaceDetailOutput,
+} from './types';
 
-export const getPlaceDetail = async (payload: GetPlaceDetailInput) => {
+export const getPlaceDetail = async (
+  payload: GetPlaceDetailInput,
+): Promise<GetPlaceDetailOutput> => {
   const { placeId, station } = payload;
-  const { data } = await client.get(`/place/${placeId}?station=${station}`);
+  const { data } = await client.get<GetPlaceDetailOutput>(
+    `/place/${placeId}?station=${station}`,
+  );
   return data;
 };
 

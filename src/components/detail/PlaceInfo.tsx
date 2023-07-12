@@ -1,16 +1,15 @@
+import Image from 'next/image';
 import book from '@/assets/icons/book.svg';
 import spot from '@/assets/icons/spot.svg';
-import Image from 'next/image';
 import ShareModal from './ShareModal';
 import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
+import { PlaceDetail } from '@/services/detail/types';
 
-interface PlaceInfo {
-  category: string;
-  placeName: string;
-  distance: string;
-  hashtags: string[];
-}
+type PlaceInfo = Pick<
+  PlaceDetail,
+  'category' | 'placeName' | 'distance' | 'hashtags' | 'imageURLs'
+>;
 
 function PlaceInfo() {
   const router = useRouter();
@@ -18,7 +17,14 @@ function PlaceInfo() {
   const station = router.query.station as string;
   const { list } = useGetPlaceDetail(id, station);
   if (!list) return <h1></h1>;
-  const { category, placeName, distance, hashtags }: PlaceInfo = list?.data;
+  const { category, placeName, distance, hashtags, imageURLs }: PlaceInfo =
+    list?.data;
+
+  const shareModalProps = {
+    placeName,
+    imageURL: imageURLs.length ? imageURLs[0] : '',
+    hashtags,
+  };
 
   return (
     <>
@@ -31,7 +37,7 @@ function PlaceInfo() {
             : '카페'}
         </p>
         <article className="flex flex-row items-center justify-center">
-          <ShareModal />
+          <ShareModal {...shareModalProps} />
           {/* <Image src={book} alt="book" className="cursor-pointer" /> */}
         </article>
       </section>

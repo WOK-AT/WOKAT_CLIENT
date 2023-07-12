@@ -3,8 +3,8 @@ import info from '@/assets/icons/info.svg';
 
 function Message() {
   return (
-    <div className="mb-[9px] mt-2 flex">
-      <div className="relative mr-[6px] h-4 w-4">
+    <div className="mb-[9px] mt-2 flex items-center">
+      <div className="relative mr-[6px] h-4 w-4 overflow-hidden">
         <Image src={info} alt="message info icon" fill />
       </div>
       <p className="text-system6_medium font-system6_medium text-BLUE_500">
