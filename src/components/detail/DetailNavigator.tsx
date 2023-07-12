@@ -38,7 +38,7 @@ function DetailNavigator() {
       return document.documentElement.scrollTop || document.body.scrollTop;
     };
 
-    const getScrollHeigth = () => {
+    const getScrollHeight = () => {
       return (
         document.body.scrollHeight || document.documentElement.scrollHeight
       );
@@ -55,7 +55,7 @@ function DetailNavigator() {
 
       if (
         placeLocationComponent &&
-        getScrollTop() + getScrollOffsetHeight() >= getScrollHeigth()
+        getScrollTop() + getScrollOffsetHeight() >= getScrollHeight()
       ) {
         activeNavigator(3);
       } else {
