@@ -38,14 +38,24 @@ function DetailNavigator() {
       return document.documentElement.scrollTop || document.body.scrollTop;
     };
 
+    const getScrollHeight = () => {
+      return (
+        document.body.scrollHeight || document.documentElement.scrollHeight
+      );
+    };
+
+    const getScrollOffsetHeight = () => {
+      return (
+        document.body.offsetHeight || document.documentElement.offsetHeight
+      );
+    };
+
     const handleScroll = () => {
       const placeLocationComponent = document.getElementById('nav-3');
 
       if (
         placeLocationComponent &&
-        getScrollTop() >
-          placeLocationComponent?.offsetTop -
-            placeLocationComponent?.offsetHeight
+        getScrollTop() + getScrollOffsetHeight() >= getScrollHeight()
       ) {
         activeNavigator(3);
       } else {
