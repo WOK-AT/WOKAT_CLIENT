@@ -38,14 +38,18 @@ function DetailNavigator() {
       return document.documentElement.scrollTop || document.body.scrollTop;
     };
 
+    const getScrollHeigth = () => {
+      return (
+        document.body.scrollHeight || document.documentElement.scrollHeight
+      );
+    };
+
     const handleScroll = () => {
       const placeLocationComponent = document.getElementById('nav-3');
 
       if (
         placeLocationComponent &&
-        getScrollTop() >
-          placeLocationComponent?.offsetTop -
-            placeLocationComponent?.offsetHeight
+        getScrollTop() + document.body.offsetHeight >= getScrollHeigth()
       ) {
         activeNavigator(3);
       } else {
