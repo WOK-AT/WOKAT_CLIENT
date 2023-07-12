@@ -7,7 +7,7 @@ interface PlaceIntroduceProps {
 }
 function PlaceIntroduce({ introduce }: PlaceIntroduceProps) {
   return (
-    <section id="nav-0" className="mb-9 scroll-mt-[50px]">
+    <section id="nav-0" className="mb-9 scroll-mt-[36px]">
       <DetailInformationTitle icon={placeIntroduce} title="공간 소개" />
       {introduce &&
         introduce.split('\n').map((line: string, index: number) => {

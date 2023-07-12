@@ -2,6 +2,7 @@ import Layout from '@/components/common/Layout';
 import PlaceInfo from '@/components/detail/PlaceInfo';
 import ImageCarousel from '@/components/detail/ImageCarousel';
 import PlaceDetailInfo from '@/components/detail/PlaceDetailInfo';
+import { useEffect } from 'react';
 import WokatSEO from '@/components/WokatSEO';
 import { NextPageContext } from 'next';
 import { getPlaceDetail } from '@/services/detail';
@@ -14,6 +15,10 @@ function Detail(
   const { placeName, hashtags, imageURLs } = props;
   const router = useRouter();
 
+  useEffect(() => {
+    document.body.style.overflow = 'scroll';
+  }, []);
+    
   return (
     <Layout>
       <WokatSEO

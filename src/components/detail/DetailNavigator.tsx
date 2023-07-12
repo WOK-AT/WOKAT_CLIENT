@@ -74,7 +74,7 @@ function DetailNavigator() {
 
   return (
     <>
-      <nav className="sticky top-0 -ml-4 flex h-[34px] w-screen flex-row items-center justify-between bg-WHTIE px-4">
+      <nav className="sticky top-0 z-10 -ml-4 flex h-[34px] w-screen flex-row items-center justify-between bg-WHTIE px-4">
         {navigator.map(({ index, name, active }) => {
           return (
             <article

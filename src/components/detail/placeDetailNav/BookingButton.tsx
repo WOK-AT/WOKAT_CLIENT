@@ -1,16 +1,17 @@
+import Image from 'next/image';
+import bookingTag from '@/assets/icons/bookingTag.svg';
+
 interface BookingButtonProps {
   bookingURL: string;
 }
 function BookingButton({ bookingURL }: BookingButtonProps) {
   return (
-    <article className="pb-[40px]">
-      <p className="mt-[-20px] flex h-[34px] w-full flex-row items-center justify-center rounded-[100px] bg-GRAY_100 text-system6_medium font-system6_medium text-GRAY_600">
-        '서울시 예약사이트'에서 회원가입 후 무료로 이용할 수 있습니다.
-      </p>
+    <article className="z-1 fixed bottom-0 -ml-4 flex w-full flex-col items-center bg-gradient-to-t from-[rgba(255,255,255,255)] to-[rgba(255,255,255,0)] px-4 pb-[24px]">
+      <Image src={bookingTag} alt="bookingTag" width={291} height={35} />
       <button
         type="button"
         onClick={() => window.open(bookingURL)}
-        className="mt-[10px] flex h-[52px] w-full flex-row items-center justify-center rounded-[100px] bg-BLUE_500 text-system4_bold font-system4_bold text-WHTIE"
+        className="mt-[4px] flex h-[52px] w-full flex-row items-center justify-center rounded-[100px] bg-BLUE_500 px-4 text-system4_bold font-system4_bold text-WHTIE"
       >
         예약하러 가기
       </button>

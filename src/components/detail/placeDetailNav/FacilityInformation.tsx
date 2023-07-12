@@ -32,7 +32,7 @@ function FacilityInformation({
   }
 
   return (
-    <section id="nav-2" className="mb-[20px] scroll-mt-[50px]">
+    <section id="nav-2" className="scroll-mt-[50px]">
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       <DetailInformationTextBox>
         <div className="flex flex-col items-start">
@@ -46,9 +46,9 @@ function FacilityInformation({
             <Image src={internet} alt="internet icon" className="mr-[18px]" />
             <h2
               className="w-full break-all text-system4 font-system4 text-GRAY_400"
-              onClick={() => window.open(information?.homepage)}
+              onClick={() => window.open(information?.homepageURL)}
             >
-              {information?.homepage}
+              {information?.homepageURL}
             </h2>
           </div>
         </div>

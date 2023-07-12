@@ -1,6 +1,6 @@
 export interface Information {
   contact: string[];
-  homepage: string;
+  homepageURL: string;
   'wi-fi': { ID: string[]; PW: string[] } | null;
   socket: string;
   parking: string;
