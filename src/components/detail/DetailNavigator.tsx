@@ -44,12 +44,18 @@ function DetailNavigator() {
       );
     };
 
+    const getScrollOffsetHeight = () => {
+      return (
+        document.body.offsetHeight || document.documentElement.offsetHeight
+      );
+    };
+
     const handleScroll = () => {
       const placeLocationComponent = document.getElementById('nav-3');
 
       if (
         placeLocationComponent &&
-        getScrollTop() + document.body.offsetHeight >= getScrollHeigth()
+        getScrollTop() + getScrollOffsetHeight() >= getScrollHeigth()
       ) {
         activeNavigator(3);
       } else {
