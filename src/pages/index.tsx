@@ -8,6 +8,7 @@ import background from '@/assets/images/background.webp';
 import block from '@/assets/images/block.webp';
 import Onboarding from '@/components/onboarding/Onboarding';
 import { getLocalStorageItem, setLocalStorageItem } from '@/utils/storage';
+import { disableScroll } from '@/utils/disableScroll';
 
 function Home() {
   const [showOnboarding, setShowOnboarding] = useState(false);
@@ -39,20 +40,7 @@ function Home() {
     handleMainPop();
   }, [HOME_VISITED]);
 
-  useEffect(() => {
-    const setDisableOverflow = () => {
-      document.body.style.overflow = 'hidden';
-    };
-    const resetDisableOverflow = () => {
-      document.body.style.overflow = 'unset';
-    };
-
-    setDisableOverflow();
-
-    return () => {
-      resetDisableOverflow();
-    };
-  }, []);
+  disableScroll();
 
   return (
     <>
