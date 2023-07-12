@@ -52,7 +52,7 @@ Modal.Backdrop = function Backdrop() {
 
   return (
     <div
-      className="fixed left-0 top-0  z-10 h-full w-full bg-[rgba(0,0,0,0.5)]"
+      className="fixed left-0 top-0  z-20 h-full w-full bg-[rgba(0,0,0,0.5)]"
       onClick={close}
     ></div>
   );
@@ -67,7 +67,7 @@ Modal.Menu = function Contents(props: PropsWithChildren) {
       {isOpen && (
         <>
           <Modal.Backdrop />
-          <div className="fixed left-1/2 top-1/2 z-10 flex  w-[275px] translate-x-[-50%] translate-y-[-50%] flex-col  rounded-[10px] bg-WHTIE p-5">
+          <div className="fixed left-1/2 top-1/2 z-20 flex  w-[275px] translate-x-[-50%] translate-y-[-50%] flex-col  rounded-[10px] bg-WHTIE p-5">
             {children}
             <button
               type="button"
