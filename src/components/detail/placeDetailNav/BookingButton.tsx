@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import bookingTag from '@/assets/icons/bookingTag.svg';
+import { PlaceDetail } from '@/services/detail/types';
 
-interface BookingButtonProps {
-  bookingURL: string;
-}
-function BookingButton({ bookingURL }: BookingButtonProps) {
+function BookingButton({ bookingURL }: Pick<PlaceDetail, 'bookingURL'>) {
   return (
     <article className="z-1 fixed bottom-0 -ml-4 flex w-full flex-col items-center bg-gradient-to-t from-[rgba(255,255,255,255)] to-[rgba(255,255,255,0)] px-4 pb-[24px]">
       <Image src={bookingTag} alt="bookingTag" width={291} height={35} />

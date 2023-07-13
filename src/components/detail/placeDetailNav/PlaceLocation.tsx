@@ -9,14 +9,13 @@ import DetailInformationTitle from '@/components/common/detail/DetailInformation
 import change from '@/assets/icons/change.svg';
 import locationPaste from '@/assets/icons/locationPaste.svg';
 import { useGetPlaceAddress } from '@/hooks/queries/useDetail';
+import { PlaceDetail } from '@/services/detail/types';
 
-interface PlaceLocationProps {
-  category: string;
-  placeName: string;
-  location: string;
-}
-
-function PlaceLocation({ placeName, location, category }: PlaceLocationProps) {
+function PlaceLocation({
+  placeName,
+  location,
+  category,
+}: Pick<PlaceDetail, 'category' | 'location' | 'placeName'>) {
   const router = useRouter();
   const placeId = router.query.id as string;
 
@@ -45,7 +44,7 @@ function PlaceLocation({ placeName, location, category }: PlaceLocationProps) {
     <section
       id="nav-3"
       className={`scroll-mt-[50px] ${
-        category === '1' ? 'pb-[135px]' : 'pb-[24px]'
+        category === '회의룸' ? 'pb-[135px]' : 'pb-[24px]'
       }`}
     >
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
