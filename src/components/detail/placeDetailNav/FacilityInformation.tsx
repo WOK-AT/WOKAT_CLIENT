@@ -36,31 +36,25 @@ function FacilityInformation({
       <DetailInformationTitle icon={facilityInformation} title="시설 정보" />
       {information?.contact[0] !== '-' && information?.homepageURL !== '-' && (
         <DetailInformationTextBox>
-          <article className="flex flex-col items-start">
-            {information?.contact[0] !== '-' && (
-              <div className=" flex flex-row">
-                <Image src={phone} alt="phone icon" className="mr-[18px]" />
-                <h2 className="mr-4 text-system4 font-system4 text-GRAY_400">
-                  {information?.contact}
-                </h2>
-              </div>
-            )}
-            {information?.homepageURL !== '-' && (
-              <div className="mt-[18px] flex flex-row">
-                <Image
-                  src={internet}
-                  alt="internet icon"
-                  className="mr-[18px]"
-                />
-                <h2
-                  className="w-full break-all text-system4 font-system4 text-GRAY_400"
-                  onClick={() => window.open(information?.homepageURL)}
-                >
-                  {information?.homepageURL}
-                </h2>
-              </div>
-            )}
-          </article>
+          {information?.contact[0] !== '-' && (
+            <div className=" flex flex-row">
+              <Image src={phone} alt="phone icon" className="mr-[18px]" />
+              <h2 className="mr-4 text-system4 font-system4 text-GRAY_400">
+                {information?.contact}
+              </h2>
+            </div>
+          )}
+          {information?.homepageURL !== '-' && (
+            <div className="mt-[18px] flex flex-row">
+              <Image src={internet} alt="internet icon" className="mr-[18px]" />
+              <h2
+                className="w-full break-all text-system4 font-system4 text-GRAY_400"
+                onClick={() => window.open(information?.homepageURL)}
+              >
+                {information?.homepageURL}
+              </h2>
+            </div>
+          )}
         </DetailInformationTextBox>
       )}
       {category === '카페' && wifiId[0] !== '-' && (
@@ -68,40 +62,8 @@ function FacilityInformation({
           <article className="flex flex-row">
             <Image src={wifi} alt="wifi icon" className="mr-[18px]" />
             <article>
-              <div className="mb-1.5 flex flex-row items-start">
-                <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
-                  ID :
-                </h2>
-                <div className="flex flex-col">
-                  {wifiId.map((value: string, index: number) => {
-                    return (
-                      <p
-                        key={index}
-                        className="text-system4 font-system4 text-GRAY_600"
-                      >
-                        {value}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="mb-1.5 flex flex-row items-start">
-                <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
-                  PW :
-                </h2>
-                <div className="flex flex-col">
-                  {wifiPW.map((value: string, index: number) => {
-                    return (
-                      <p
-                        key={index}
-                        className="text-system4 font-system4 text-GRAY_600"
-                      >
-                        {value}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div>
+              <WIFIComponent title={'ID'} object={wifiId} />
+              <WIFIComponent title={'PW'} object={wifiPW} />
             </article>
           </article>
         </DetailInformationTextBox>
@@ -154,8 +116,32 @@ function Facility({ icon, title, status }: FacilityProps) {
         </h2>
       </div>
       <p className="flex flex-row justify-end text-system4 font-system4 text-GRAY_400">
-        {!status ? '-' : status}
+        {status}
       </p>
+    </article>
+  );
+}
+
+interface WIFIComponentProps {
+  title: string;
+  object: string[];
+}
+
+function WIFIComponent({ title, object }: WIFIComponentProps) {
+  return (
+    <article className="mb-1.5 flex flex-row items-start">
+      <h2 className="mr-2 w-[40px] text-system4_bold font-system4_bold text-GRAY_600">
+        {title} :
+      </h2>
+      <div className="flex flex-col">
+        {object.map((value: string, index: number) => {
+          return (
+            <p key={index} className="text-system4 font-system4 text-GRAY_600">
+              {value}
+            </p>
+          );
+        })}
+      </div>
     </article>
   );
 }
