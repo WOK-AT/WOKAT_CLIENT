@@ -39,9 +39,16 @@ function FacilityInformation({
           {information?.contact[0] !== '-' && (
             <div className=" flex flex-row">
               <Image src={phone} alt="phone icon" className="mr-[18px]" />
-              <h2 className="mr-4 text-system4 font-system4 text-GRAY_400">
-                {information?.contact}
-              </h2>
+              {information?.contact.map((contact: string) => {
+                return (
+                  <h2
+                    key={contact}
+                    className="mr-4 text-system4 font-system4 text-GRAY_400"
+                  >
+                    {contact}
+                  </h2>
+                );
+              })}
             </div>
           )}
           {information?.homepageURL !== '-' && (
