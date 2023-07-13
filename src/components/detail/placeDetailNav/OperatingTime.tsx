@@ -7,6 +7,7 @@ import { OperationHours } from '@/types/operationHours';
 interface OperatingTimeProps {
   operationHours: OperationHours;
 }
+
 function OperatingTime({ operationHours }: OperatingTimeProps) {
   return (
     <section id="nav-1" className="mb-[22px] scroll-mt-[50px]">

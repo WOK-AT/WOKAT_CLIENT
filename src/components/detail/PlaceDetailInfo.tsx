@@ -5,21 +5,9 @@ import OperatingTime from './placeDetailNav/OperatingTime';
 import PlaceIntroduce from './placeDetailNav/PlaceIntroduce';
 import PlaceLocation from './placeDetailNav/PlaceLocation';
 import BookingButton from './placeDetailNav/BookingButton';
-import { OperationHours } from '@/types/operationHours';
-import { Information } from '@/types/information';
 import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
-
-interface PlaceDetailInfo {
-  placeName: string;
-  category: string;
-  introduce: string;
-  information: Information;
-  operationHours: OperationHours;
-  count: string;
-  location: string;
-  bookingURL: string;
-}
+import { PlaceDetail } from '@/services/detail/types';
 
 function PlaceDetailInfo() {
   const router = useRouter();
@@ -27,6 +15,7 @@ function PlaceDetailInfo() {
   const station = router.query.station as string;
   const { list } = useGetPlaceDetail(id, station);
   if (!list) return <h1></h1>;
+
   const {
     placeName,
     category,
@@ -36,7 +25,8 @@ function PlaceDetailInfo() {
     count,
     location,
     bookingURL,
-  }: PlaceDetailInfo = list?.data;
+  }: Omit<PlaceDetail, 'id' | 'distance' | 'hashtags' | 'imageURLs'> =
+    list?.data;
 
   return (
     <main>
