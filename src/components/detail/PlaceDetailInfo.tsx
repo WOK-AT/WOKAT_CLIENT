@@ -28,22 +28,25 @@ function PlaceDetailInfo() {
   }: Omit<PlaceDetail, 'id' | 'distance' | 'hashtags' | 'imageURLs'> =
     list?.data;
 
+  const placeCategory =
+    category === '0' ? '공간' : category === '1' ? '회의룸' : '카페';
+
   return (
     <main>
       <DetailNavigator />
       <PlaceIntroduce introduce={introduce} />
       <OperatingTime operationHours={operationHours} />
       <FacilityInformation
-        category={category}
+        category={placeCategory}
         information={information}
         maxPeopleCount={count}
       />
       <PlaceLocation
-        category={category}
+        category={placeCategory}
         placeName={placeName}
         location={location}
       />
-      {category === '1' && <BookingButton bookingURL={bookingURL} />}
+      {placeCategory === '회의룸' && <BookingButton bookingURL={bookingURL} />}
     </main>
   );
 }

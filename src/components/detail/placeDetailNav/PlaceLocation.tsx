@@ -44,7 +44,7 @@ function PlaceLocation({
     <section
       id="nav-3"
       className={`scroll-mt-[50px] ${
-        category === '1' ? 'pb-[135px]' : 'pb-[24px]'
+        category === '회의룸' ? 'pb-[135px]' : 'pb-[24px]'
       }`}
     >
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />

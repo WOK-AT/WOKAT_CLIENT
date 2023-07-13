@@ -63,7 +63,7 @@ function FacilityInformation({
           </article>
         </DetailInformationTextBox>
       )}
-      {category === '2' && wifiId[0] !== '-' && (
+      {category === '카페' && wifiId[0] !== '-' && (
         <DetailInformationTextBox>
           <article className="flex flex-row">
             <Image src={wifi} alt="wifi icon" className="mr-[18px]" />
@@ -117,14 +117,14 @@ function FacilityInformation({
             status={information?.parking}
           />
         )}
-        {category === '1' && information?.['hdmi-screen'] !== '-' && (
+        {category === '회의룸' && information?.['hdmi-screen'] !== '-' && (
           <Facility
             icon={hdmi}
             title={'HDMI / 스크린 여부'}
             status={information?.['hdmi-screen']}
           />
         )}
-        {category !== '2' && (
+        {category !== '카페' && (
           <Facility
             icon={person}
             title={'최대 수용 인원'}
