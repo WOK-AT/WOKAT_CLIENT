@@ -16,22 +16,17 @@ function PlaceList(props: PlaceListProps) {
   const placeListWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (placeListWrapperRef.current) {
-      const userAgent = navigator.userAgent.toLowerCase();
-
-      const isSafari = /safari/i.test(userAgent);
-      const isNaver = /naver/i.test(userAgent);
-      if (isSafari && !isNaver) {
-        // set id only safari
-        placeListWrapperRef.current.id = 'place-list';
-      }
-    }
-  }, []);
+    if (!placeListWrapperRef.current) return;
+    placeListWrapperRef.current.style.height =
+      navType === '무료 회의룸'
+        ? `${window.innerHeight - 190}px`
+        : `${window.innerHeight - 150}px`;
+  }, [navType]);
 
   return (
     <div
       ref={placeListWrapperRef}
-      className="mt-4 h-[calc(100vh-150px)] overflow-y-scroll scrollbar-hide"
+      className="mt-4 overflow-y-scroll scrollbar-hide"
     >
       {placeList.length > 0 ? (
         placeList.map((data, index) => (
