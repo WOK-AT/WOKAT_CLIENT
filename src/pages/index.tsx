@@ -40,6 +40,14 @@ function Home() {
     handleMainPop();
   }, [HOME_VISITED]);
 
+  useEffect(() => {
+    if (showOnboarding) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showOnboarding]);
+
   disableScroll();
 
   return (
