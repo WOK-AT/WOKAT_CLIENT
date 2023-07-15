@@ -6,6 +6,9 @@ import { useGetPlaceDetail } from '@/hooks/queries/useDetail';
 import { useRouter } from 'next/router';
 import { PlaceDetail } from '@/services/detail/types';
 
+const default_place =
+  'https://wokat-default-image.s3.ap-northeast-2.amazonaws.com/default_place.png';
+
 type PlaceInfo = Pick<
   PlaceDetail,
   'category' | 'placeName' | 'distance' | 'hashtags' | 'imageURLs'
@@ -22,13 +25,13 @@ function PlaceInfo() {
 
   const shareModalProps = {
     placeName,
-    imageURL: imageURLs.length ? imageURLs[0] : '',
+    imageURL: imageURLs.length ? imageURLs[0] : default_place,
     hashtags,
   };
 
   return (
     <>
-      <section className="mb-2 mt-8 flex flex-row items-center justify-between">
+      <section className="flex flex-row items-center justify-between mt-8 mb-2">
         <p className="text-system6_medium font-system6_medium text-GRAY_400">
           {category === '0'
             ? '무료 대여 공간'
@@ -44,11 +47,11 @@ function PlaceInfo() {
       <h1 className="mb-2 text-system2_bold font-system2_bold text-GRAY_800">
         {placeName}
       </h1>
-      <section className="mb-2 flex flex-row items-center">
+      <section className="flex flex-row items-center mb-2">
         <Image src={spot} alt="spot" className="mr-1" />
         <p className="text-system5 font-system5 text-GRAY_600">{distance}</p>
       </section>
-      <section className="mb-5 flex flex-row items-center">
+      <section className="flex flex-row items-center mb-5">
         {hashtags?.map((tag: string, index: number) => {
           return (
             <article

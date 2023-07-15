@@ -38,9 +38,6 @@ body {
   img[loading='lazy'] {
     clip-path: inset(0.6px);
   }
-  #place-list {
-    height: calc(100vh - 230px);
-  }
 }
 
 /* react-slick css */
