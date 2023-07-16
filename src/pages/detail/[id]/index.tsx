@@ -9,10 +9,11 @@ import { getPlaceDetail } from '@/services/detail';
 import { PlaceDetail } from '@/services/detail/types';
 import { useRouter } from 'next/router';
 
-function Detail(
-  props: Pick<PlaceDetail, 'placeName' | 'hashtags' | 'imageURLs'>,
-) {
-  const { placeName, hashtags, imageURLs } = props;
+function Detail({
+  placeName,
+  hashtags,
+  imageURLs,
+}: Pick<PlaceDetail, 'placeName' | 'hashtags' | 'imageURLs'>) {
   const router = useRouter();
   const placeDetailWrapperRef = useRef<HTMLDivElement>(null);
 
