@@ -10,7 +10,7 @@ import { NavigationContextProvider } from '@/context/NavigationContext';
 import { ToastContextProvider } from '@/context/ToastContext';
 import { ErrorBoundary } from 'react-error-boundary';
 import Link from 'next/link';
-import GAScript from '@/components/list/GAScript';
+import GAScript from '@/components/GAScript';
 
 declare global {
   interface Window {
