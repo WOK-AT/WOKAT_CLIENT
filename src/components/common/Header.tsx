@@ -51,6 +51,7 @@ function Header(props: HeaderProps) {
           className="absolute right-[6px] top-[34px]"
           src={feedbackInfoText}
           alt="feedbackInfoText_icon"
+          layout="fixed"
         />
       )}
     </header>
