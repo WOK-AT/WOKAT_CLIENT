@@ -1,12 +1,12 @@
 import { PropsWithChildren, useEffect } from 'react';
 import Header from './Header';
+
 interface LayoutProps {
   title?: string;
-  right?: string;
 }
 
 function Layout(props: PropsWithChildren<LayoutProps>) {
-  const { children, title, right } = props;
+  const { children, title } = props;
 
   useEffect(() => {
     if (!window.Kakao.isInitialized()) {
@@ -16,7 +16,7 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
 
   return (
     <main>
-      <Header title={title} right={right} />
+      <Header title={title} />
       <div className="mx-auto px-4" style={{ minHeight: 'calc(100% - 56px)' }}>
         {children}
       </div>

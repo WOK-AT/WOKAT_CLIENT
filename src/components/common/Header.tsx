@@ -1,16 +1,17 @@
 import Image from 'next/image';
 import arrow_back from '@/assets/icons/arrow_back.svg';
+import feedback from '@/assets/icons/feedback.svg';
+import feedbackInfoText from '@/assets/icons/feedbackInfoText.svg';
 import logo from '@/assets/icons/logo.svg';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 interface HeaderProps {
   title?: string;
-  right?: string;
 }
 
 function Header(props: HeaderProps) {
-  const { title = '', right } = props;
+  const { title = '' } = props;
   const router = useRouter();
   const showBackButton = router.pathname !== '/';
 
@@ -42,8 +43,16 @@ function Header(props: HeaderProps) {
         aria-label="Header Right"
         className="relative h-6 w-6"
       >
-        {right && <Image src={right} alt="right_icon" fill />}
+        <Image src={feedback} alt="feedback_icon" fill />
       </button>
+
+      {router.pathname === '/' && (
+        <Image
+          className="absolute right-[6px] top-[34px]"
+          src={feedbackInfoText}
+          alt="feedbackInfoText_icon"
+        />
+      )}
     </header>
   );
 }
