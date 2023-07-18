@@ -20,6 +20,10 @@ export default function Document() {
         <link rel="shortcut icon" href="/app_icon.png" />
       </Head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>{`<iframe src=“https://www.googletagmanager.com/ns.html?id=GTM-5K2JHDQ”
+height=“0" width=“0” style=“display:none;visibility:hidden”></iframe>`}</noscript>
+        {/* End Google Tag Manager (noscript) */}
         <Main />
         <NextScript />
         <script
