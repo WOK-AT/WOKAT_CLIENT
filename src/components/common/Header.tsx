@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import arrow_back from '@/assets/icons/arrow_back.svg';
-import feedback from '@/assets/icons/feedback.svg';
-import feedbackInfoText from '@/assets/icons/feedbackInfoText.svg';
 import logo from '@/assets/icons/logo.svg';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import FeedbackButton from './FeedbackButton';
 
+FeedbackButton;
 interface HeaderProps {
   title?: string;
 }
@@ -14,7 +14,6 @@ function Header(props: HeaderProps) {
   const { title = '' } = props;
   const router = useRouter();
   const showBackButton = router.pathname !== '/';
-  const feedbackURL = 'https://walla.my/WOKAT';
 
   return (
     <header className="flex h-14 cursor-pointer items-center justify-between px-4">
@@ -39,23 +38,7 @@ function Header(props: HeaderProps) {
         </Link>
       )}
 
-      <button
-        id="profile"
-        aria-label="Header Right"
-        className="relative h-6 w-6"
-        onClick={() => window.open(feedbackURL)}
-      >
-        <Image src={feedback} alt="feedback_icon" fill />
-      </button>
-
-      {router.pathname === '/' && (
-        <Image
-          className="absolute right-[6px] top-[34px]"
-          src={feedbackInfoText}
-          alt="feedbackInfoText_icon"
-          layout="fixed"
-        />
-      )}
+      <FeedbackButton />
     </header>
   );
 }
