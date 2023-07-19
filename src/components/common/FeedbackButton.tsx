@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import feedback from '@/assets/icons/feedback.svg';
-import feedbackInfoText from '@/assets/icons/feedbackInfoText.svg';
+import feedbackInfoText from '@/assets/images/feedbackInfoText.webp';
 import { useRouter } from 'next/router';
 
 function FeedbackButton() {
@@ -19,10 +19,11 @@ function FeedbackButton() {
       </button>
       {router.pathname === '/' && (
         <Image
-          className="absolute right-[6px] top-[34px]"
+          className="absolute right-[8px] top-[37px]"
           src={feedbackInfoText}
           alt="feedbackInfoText_icon"
-          layout="fixed"
+          width={139}
+          height={36}
         />
       )}
     </section>
