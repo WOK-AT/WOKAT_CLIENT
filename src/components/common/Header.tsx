@@ -14,6 +14,7 @@ function Header(props: HeaderProps) {
   const { title = '' } = props;
   const router = useRouter();
   const showBackButton = router.pathname !== '/';
+  const feedbackURL = 'https://walla.my/WOKAT';
 
   return (
     <header className="flex h-14 cursor-pointer items-center justify-between px-4">
@@ -42,6 +43,7 @@ function Header(props: HeaderProps) {
         id="profile"
         aria-label="Header Right"
         className="relative h-6 w-6"
+        onClick={() => window.open(feedbackURL)}
       >
         <Image src={feedback} alt="feedback_icon" fill />
       </button>
