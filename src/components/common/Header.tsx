@@ -3,14 +3,15 @@ import arrow_back from '@/assets/icons/arrow_back.svg';
 import logo from '@/assets/icons/logo.svg';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import FeedbackButton from './FeedbackButton';
 
+FeedbackButton;
 interface HeaderProps {
   title?: string;
-  right?: string;
 }
 
 function Header(props: HeaderProps) {
-  const { title = '', right } = props;
+  const { title = '' } = props;
   const router = useRouter();
   const showBackButton = router.pathname !== '/';
 
@@ -37,13 +38,7 @@ function Header(props: HeaderProps) {
         </Link>
       )}
 
-      <button
-        id="profile"
-        aria-label="Header Right"
-        className="relative h-6 w-6"
-      >
-        {right && <Image src={right} alt="right_icon" fill />}
-      </button>
+      <FeedbackButton />
     </header>
   );
 }
