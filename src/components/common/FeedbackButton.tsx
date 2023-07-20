@@ -18,11 +18,10 @@ function FeedbackButton() {
         <Image src={feedback} alt="feedback_icon" fill />
       </button>
       {router.pathname === '/' && (
-        <Image
-          className="absolute right-[6px] top-[34px]"
-          src={feedbackInfoText}
-          alt="feedbackInfoText_icon"
-          layout="fixed"
+        <object
+          type="image/svg+xml"
+          className="absolute right-[6px] top-[37px]"
+          data={feedbackInfoText.src}
         />
       )}
     </section>
