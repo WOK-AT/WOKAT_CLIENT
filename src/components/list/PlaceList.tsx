@@ -15,6 +15,14 @@ function PlaceList(props: PlaceListProps) {
   const { data: placeList } = usePlaceList({ station, navType });
   const placeListWrapperRef = useRef<HTMLDivElement>(null);
 
+  const getId = () => {
+    let id = '';
+    if (navType === '무료 공간') id = 'click_free_place';
+    if (navType === '무료 회의룸') id = 'click_free_meetingroom';
+    if (navType === '카페') id = 'click_cafe';
+    return id;
+  };
+
   useEffect(() => {
     if (!placeListWrapperRef.current) return;
     placeListWrapperRef.current.style.height =
@@ -31,6 +39,7 @@ function PlaceList(props: PlaceListProps) {
       {placeList.length > 0 ? (
         placeList.map((data, index) => (
           <Link
+            id={getId()}
             href={{
               pathname: `/detail/${data.id}`,
               query: {
