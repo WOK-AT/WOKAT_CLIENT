@@ -75,6 +75,7 @@ function KakaoShareButton(props: KakaoShareButtonProps) {
     <button
       className="mt-[10px] flex h-12 w-full items-center justify-between rounded-[30px] bg-[#FEE500] px-[18px] text-system4_medium font-system4_medium text-GRAY_800"
       onClick={() => onChange && onChange(shareWithKakao)}
+      id="click_free_place_sharing_kakao"
     >
       카카오톡 공유하기
       <Image src={kakaoTalk_logo} alt="kakaoTalk logo" width={24} height={24} />
@@ -97,6 +98,7 @@ function URLCopy(props: ModalContentsProps) {
     <button
       className="relative mt-[10px]  flex h-12 w-full items-center justify-between rounded-[30px] bg-BLUE_400 px-[18px] text-system4_medium font-system4_medium text-WHTIE"
       onClick={() => onChange && onChange(urlCopy)}
+      id="click_free_place_sharing_url"
     >
       URL 복사하기
       <Image src={paste} alt="paste url" width={24} height={24} />

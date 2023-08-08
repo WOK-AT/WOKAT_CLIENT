@@ -48,7 +48,10 @@ function PlaceLocation({
       }`}
     >
       <DetailInformationTitle icon={placeLocation} title="공간 위치" />
-      <div className="border-color-GRAY_100 rounded-[10px] 	border-[1px]">
+      <section
+        className="border-color-GRAY_100 rounded-[10px] 	border-[1px]"
+        id="click_space_location"
+      >
         <Link
           href={{
             pathname: `/detail/${router.query.id}/location`,
@@ -71,6 +74,7 @@ function PlaceLocation({
           <article
             className="flex w-full cursor-pointer flex-row items-center justify-center"
             onClick={changeRoadName}
+            id="click_ad_number"
           >
             <Image
               src={change}
@@ -85,6 +89,7 @@ function PlaceLocation({
           <article
             className="flex w-full cursor-pointer flex-row items-center justify-center"
             onClick={copyLocation}
+            id="click_ad_number_copy"
           >
             <Image
               src={locationPaste}
@@ -96,7 +101,7 @@ function PlaceLocation({
             </p>
           </article>
         </section>
-      </div>
+      </section>
     </section>
   );
 }
