@@ -72,7 +72,7 @@ function Search() {
 
   return (
     <Layout>
-      <div className="mt-3 flex flex-col">
+      <div className="flex flex-col mt-3">
         <section className="relative mb-[18px] flex items-center justify-center ">
           <input
             type="text"
@@ -84,9 +84,9 @@ function Search() {
             bg-white py-3.5 pl-6 text-system4 font-system4 text-GRAY_900 shadow-[0px_0px_2px_rgba(0,0,0,0.3)] selection:mb-3.5 focus:outline-none"
             ref={inputRef}
           />
-          <div className="absolute right-[24px]  h-6 w-6 ">
+          <div className="absolute right-[24px] flex justify-center items-center">
             {isSearching ? (
-              <button>
+              <button className="w-6 h-6">
                 <Image
                   src={reset}
                   alt="input reset button"
@@ -95,13 +95,15 @@ function Search() {
                 />
               </button>
             ) : (
-              <Image src={search} alt="search button" fill />
+              <button id="click_search_subway" className="w-6 h-6">
+                <Image src={search} alt="search button" fill />
+              </button>
             )}
           </div>
         </section>
 
         <section>
-          <nav className="mb-1 flex items-center justify-between">
+          <nav className="flex items-center justify-between mb-1">
             <h1 className="text-GRAY-900 text-system3_bold font-system3_bold">
               {isSearching ? '검색 결과' : '최근 검색'}
             </h1>

@@ -90,6 +90,7 @@ function Home() {
 
               <Link href="/nearby-place">
                 <button
+                  id="click_nearby_place"
                   className="flex h-[52px] w-[303px] items-center justify-center  rounded-[38px] bg-BLUE_600
            text-system4_bold font-system4_bold text-GRAY_50 max-[340px]:h-[42px] max-[340px]:w-[250px]"
                 >
