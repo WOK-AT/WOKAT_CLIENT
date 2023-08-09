@@ -40,6 +40,7 @@ function Location({ place, location }: LocationProps) {
             type="button"
             className="w-[25px] cursor-pointer text-BLUE_500"
             onClick={copyLocation}
+            id="click_space_location_ad_copy"
           >
             복사
           </button>
@@ -50,6 +51,7 @@ function Location({ place, location }: LocationProps) {
           onClick={() =>
             window.open(`http://map.naver.com/?query=${router.query.location}`)
           }
+          id="click_space_location_direction_naver"
         >
           네이버 지도로 길찾기
         </button>
