@@ -24,19 +24,22 @@ function PlaceItem(props: PlaceItemProps) {
 
   return (
     <article className="flex">
-      <div className="relative flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
-        <Image
-          src={error ? fallbackImage : imageURL ?? fallbackImage}
-          alt={place}
-          className="overflow-hidden rounded bg-cover"
-          style={{ objectFit: 'cover' }}
-          placeholder="blur"
-          blurDataURL={`data:image/gif;base64,${transparent}`}
-          fill
-          sizes="(max-width: 768px) 100vw"
-          onError={onError}
-        />
+      <div className="relative">
+        <div className="flex h-[120px] w-[100px] items-center justify-center max-[360px]:h-[100px] max-[360px]:w-[80px]">
+          <Image
+            src={error ? fallbackImage : imageURL ?? fallbackImage}
+            alt={place}
+            className="overflow-hidden rounded bg-cover"
+            style={{ objectFit: 'cover' }}
+            placeholder="blur"
+            blurDataURL={`data:image/gif;base64,${transparent}`}
+            fill
+            sizes="(max-width: 768px) 100vw"
+            onError={onError}
+          />
+        </div>
       </div>
+
       <div className="ml-3 flex flex-col items-start justify-between">
         <div className="w-full flex-col">
           <h1 className="mb-2 text-system3_bold font-system3_bold text-GRAY_900 max-[360px]:text-system4">
